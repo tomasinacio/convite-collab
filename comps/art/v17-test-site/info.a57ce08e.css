@@ -107,27 +107,26 @@ html:not(.js) .i-count,html:not(.js) .i-count+.idiv{display:none}
 .faq details[open] p{animation:settle-up .3s var(--ease) both}
 @keyframes settle-up{from{opacity:0;translate:0 -4px}}
 
-/* =============== painted props and their motion hooks (rsvp/comps/ASSET-PROMPTS.md) ===============
-   ASSET SLOTS: each prop names its art once, here. Only real paintings are shown: the wheat, the lavender and the olive leaf
-   are the face's own art as themselves; the v17 pieces are being repainted (2026-11-14), so their slots are PENDING. At most two props
-   per section (user rule). Every slot still waiting for its painting is empty and hidden (PENDING below), so
-   no stand-in ever shows (R7). When a painting arrives: put its url(@@ART:art/v17/<file>.webp@@) on its line, fix its
-   aspect-ratio if needed, and take its class out of PENDING. The art is applied one screen before a section is seen
-   (.near, info.js), so it never weighs on the first load. Scale: 5u to 30u, at a section's side or base, never over text;
-   sides alternate down the page. */
+/* =============== painted props and their motion hooks (DESIGN-SPEC section 6) ===============
+   ASSET SLOTS: each prop names its art once, here. The wheat, the lavender and the olive leaf are the face's own art; the
+   2026-11-14 set adds five pieces only (fly agarics, bee, fig branch, dried peppers, wild carrot; Copilot v5 and v6), cut and toned by
+   comps/art/v17_props_v5.py (assets/LOG.md). Restraint is the rule: at most two props per section, several sections with
+   none, sides alternating, never over text or a button. A slot without art is empty and hidden (PENDING below), so no
+   stand-in ever shows. The art is applied one screen before a section is seen (.near, info.js), so it never weighs on the
+   first load. Scale 5u to 30u. */
 .isec.near,.foot-flora.near,html:not(.js) .isec,html:not(.js) .foot-flora{
   --ia-wheat:url(img/grass-a-2x.40ae28d7.webp);              /* wheat and wild oats (the face's own) */
-  --ia-lav:url(img/lavender.f51f48c4.webp);                  /* lavender (the face's own); later perhaps lavender with a resting bee (B2) */
+  --ia-lav:url(img/lavender.f51f48c4.webp);                  /* lavender (the face's own) */
   --ia-leaf:url(img/olive-leaf.250fab91.webp);               /* the falling olive leaf (the face's own) */
-  --ia-mush-a:none;                                /* PENDING (being repainted, 2026-11-14; was art/v17/mush-fly-agaric.webp): fly agarics, countdown foot, left */
-  --ia-mush-c:none;                                /* PENDING (being repainted; was art/v17/mush-caesar.webp): Caesar's mushrooms, gifts card base, right */
-  --ia-bee:none;                                   /* PENDING (being repainted; was art/v17/bee-flying.webp): flying bee, countdown, top right */
-  --ia-peppers:none;                               /* PENDING: tied bunch of dried peppers (P1) */
+  --ia-mush-a:url(img/fly-agaric.283e15dd.webp);   /* fly agarics (Copilot v6, toned): countdown foot, left, by the hairline */
+  --ia-fig:url(img/fig-branch.9aa80f65.webp);      /* fig branch (Copilot v5): gifts, top right, from the right edge */
+  --ia-carrot:url(img/wild-carrot.735f06ef.webp);  /* wild carrot (Copilot v5): page foot, left, on the rodape */
+  --ia-bee:url(img/bee.7339179c.webp);             /* honeybee (Copilot v6, faces left, so it flies in from the right): countdown, top right */
+  --ia-peppers:url(img/peppers.777034c4.webp);     /* dried hot peppers (Copilot v6, toned to terracotta): questions, right top (user, 2026-11-14) */
   --ia-branch-l:none;                              /* PENDING: olive branch entering from the left (L1) */
-  --ia-fennel:none;                                /* PENDING (being repainted; was art/v17/fennel.webp): wild fennel, page foot, left, on the rodape */
 }
-/* PENDING: hidden until their paintings arrive (take a class out of this list when its slot gets a url) */
-.lv.lv-peppers,.lv.lv-branch-l,.lv.lv-mush-a,.lv.lv-mush-c,.lv.lv-bee,.lv.lv-fennel{display:none}   /* .lv sets display:block later, so the class pair is needed to win */
+/* PENDING: hidden (take a class out of this list when its slot gets a url) */
+.lv.lv-branch-l{display:none}   /* .lv sets display:block later, so the class pair is needed to win */
 
 .lv{position:absolute;display:block;pointer-events:none}
 .lv>i{position:absolute;inset:0;display:block;background:var(--img,none) 0 0/100% 100% no-repeat}
@@ -135,19 +134,20 @@ html:not(.js) .i-count,html:not(.js) .i-count+.idiv{display:none}
 .lv-wheat{right:calc(var(--pu) * 6);bottom:0;width:calc(var(--pu) * 17);aspect-ratio:246/369;--img:var(--ia-wheat,none);--o:50% 100%;--a:1.1deg;--p:5.3s;
   -webkit-mask-image:linear-gradient(to top,transparent,#000 18%);mask-image:linear-gradient(to top,transparent,#000 18%)}
 .lv-lav{right:calc(var(--pu) * -3);bottom:0;width:calc(var(--pu) * 12);aspect-ratio:179/480;--img:var(--ia-lav,none);--o:50% 100%;--a:1.4deg;--p:6.1s;--d:.1s}
-/* mushrooms: at most two on the page (user, 2026-11-14), rooted at a section's foot, static (no sway), under the content */
-.lv-mush-a{left:calc(var(--pu) * 3);bottom:-.25rem;width:calc(var(--pu) * 12);aspect-ratio:176/212;--img:var(--ia-mush-a,none)}
-.lv-mush-c{right:calc(var(--pu) * 3);bottom:.25rem;width:calc(var(--pu) * 12);aspect-ratio:176/155;--img:var(--ia-mush-c,none);--d:.1s}
+/* mushrooms: one piece on the page (user: not overdone), static (fade in only), standing at the left end of the hairline under the countdown */
+.lv-mush-a{left:calc(50% - 4rem - var(--pu) * 11);bottom:-.25rem;width:calc(var(--pu) * 11);aspect-ratio:180/203;--img:var(--ia-mush-a,none)}
+/* gifts (centred): the fig branch enters from the right edge beside the head and sways about its cut end */
+.lv-fig{right:calc(var(--pu) * -3);top:-.5rem;width:calc(var(--pu) * 26);aspect-ratio:372/265;--img:var(--ia-fig,none);--o:100% 55%;--a:1.2deg;--p:6.7s}
 .lv-branch-l{left:calc(var(--pu) * -1);top:.5rem;width:calc(var(--pu) * 30);aspect-ratio:3/1;--img:var(--ia-branch-l,none);--o:0 50%;--a:1.6deg;--p:5.7s}
 .lv-leaf{left:calc(var(--pu) * 1.5);top:9.5rem;width:calc(var(--pu) * 3.2);aspect-ratio:46/120;--fall:calc(var(--pu) * 62)}
 .lv-leaf i i{position:absolute;inset:0;display:block;background:var(--ia-leaf,none) 0 0/100% 100% no-repeat;transform-origin:50% 20%}
-.lv-bee{right:calc(var(--pu) * 5);top:1.75rem;width:calc(var(--pu) * 5);aspect-ratio:120/89;--img:var(--ia-bee,none);--fx:calc(var(--pu) * 24);--fy:-1.5rem}   /* faces left, so it flies in from the right edge */
+.lv-bee{right:calc(var(--pu) * 5);top:1.75rem;width:calc(var(--pu) * 6);aspect-ratio:96/88;--img:var(--ia-bee,none);--fx:calc(var(--pu) * 24);--fy:-1.5rem}   /* faces left, so it flies in from the right edge */
 /* questions: the head and rows hold the left, so the peppers hang at the right top, beside the head (moved from the countdown) */
-.lv-peppers{right:calc(var(--pu) * 4);top:-.5rem;width:calc(var(--pu) * 7);aspect-ratio:1/3;--img:var(--ia-peppers,none);--o:50% 0;--a:2.2deg;--p:4.3s}
-/* the page foot: two props only (user rule, 2026-11-14): the fennel and the lavender standing on the rodapé at its two ends */
+.lv-peppers{right:calc(var(--pu) * 4);top:-.25rem;width:calc(var(--pu) * 8);aspect-ratio:108/238;--img:var(--ia-peppers,none);--o:50% 0;--a:1.2deg;--p:5.6s}
+/* the page foot: the wild carrot and the lavender standing on the rodapé at its two ends */
 .foot-flora{position:relative;height:calc(var(--pu) * 26);max-width:36rem;margin:0 auto;overflow-x:clip}
 .lv-flav{right:calc(var(--pu) * 4);bottom:-2px;width:calc(var(--pu) * 11);aspect-ratio:179/480;--img:var(--ia-lav,none);--o:50% 100%;--a:1.3deg;--p:6.4s;--d:.12s}
-.lv-fennel{left:calc(var(--pu) * 3);bottom:-2px;width:calc(var(--pu) * 14);aspect-ratio:168/292;--img:var(--ia-fennel,none);--o:50% 100%;--a:1.2deg;--p:5.9s}
+.lv-carrot{left:calc(var(--pu) * 3);bottom:-2px;width:calc(var(--pu) * 15);aspect-ratio:210/317;--img:var(--ia-carrot,none);--o:50% 100%;--a:1.2deg;--p:5.9s}
 .js .lv.hang{opacity:0}
 .js .seen .lv.hang{animation:settle-in .9s var(--ease) both}
 

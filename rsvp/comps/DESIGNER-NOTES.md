@@ -4,6 +4,20 @@ Owner: Tomas. Written 2026-11-12 by the Opus designer. Review date: 2026-11-19. 
 
 The user's feedback (Messages 41 to 53): the replay button goes, the opening is too slow (plants, the falling leaf), the page is light next to the five reference invitations, the information belongs in the middle where the grapes hang, keep the painted look, one paper tone, each fact said once, no flat vector tiles, and more painted life (mushrooms, bees, rocks, July wildflowers, dried peppers). This pass answers all of it in one build; `v15` stays untouched.
 
+## Props from the user's new paintings (2026-11-14)
+
+- Restraint first: four new pieces, two sections bare. Countdown: fly agarics at the hairline's left end and the bee top right (it faces left, so it flies in from the right). Gifts: fig branch top right. Questions: dried peppers top right (user). Page foot: wild carrot left, lavender right. Where carries nothing.
+- Dropped and why: `DESIGN-SPEC.md` decision log. One `consistency-red-team` pass: applied the mirrored RSVP lavender, the log rows, the saturation and black floor, the floating mushroom; the fig veins and the carrot's fine line were kept as taste.
+- Shots: `rsvp/comps/shots/v5-where.jpg`, `v5-count.jpg`, `v5-day.jpg`, `v5-dress.jpg`, `v5-gift.jpg`, `v5-faq.jpg`, `v5-foot.jpg`, `v5-rsvp.jpg`, `v5-1280.jpg`. First load 1451 KB.
+
+## Polish pass with the face's art only (2026-11-14)
+
+- Hidden while they are repainted: the fly agarics, the Caesar's, the bee and the fennel (`PENDING` in `info.css`; slots and motion hooks kept). The test build no longer ships their files.
+- Dress code: the head spans the column (it broke into two lines beside the vignette); the vignette and the note sit under it; the falling leaf starts below the head.
+- Gifts: the empty confirmation line no longer leaves a blank band under the copy button.
+- RSVP: the lavender stood over the code field and `Abrir`, the leaf over the card edge; both now hang on parts that do not change with the state (lavender at the head's right on the rule's line, leaf at the hairline's left end). Deadline label at the 13 pixel, 500 small-capital role. In the no-link card `Abrir` is the one solid button; WhatsApp is the outlined pill.
+- Checked: no prop over text or a button at 390, 360 and 195; no sideways scroll; first load 1451 KB. Shots: `rsvp/comps/shots/v4-count.jpg`, `v4-day.jpg`, `v4-dress.jpg`, `v4-gift.jpg`, `v4-faq.jpg`, `v4-foot.jpg`, `v4-rsvp.jpg`.
+
 ## v17 props and spec fixes (2026-11-14)
 
 - Placed: fly agarics at the countdown foot, left, 12u (`.lv-mush-a`); Caesar's under the gifts card, right, 12u (`.lv-mush-c`); the bee in the countdown, top right, 5u, flying in once from the right (`.lv-bee`); wild fennel at the page foot, left, 14u (`.lv-fennel`). Mushrooms fade in only and never sway.

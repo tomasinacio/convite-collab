@@ -12,7 +12,7 @@ Fonts: `Allura` and `EB Garamond` (regular, italic), self-hosted WOFF2, Latin su
 
 | Role | Font, weight, size / line height | Colour | Defined in |
 | --- | --- | --- | --- |
-| Names (face) | `EB Garamond` 600, `11.2cqw` / 1, tracking `.04em`, capitals; the joining word italic 400 at `.9em` (designer choice since v10, lettered like a tile house sign; no recorded user pick, see note) | `--az-ink` | `comps/prototype.v16.src.html` `.names` |
+| Names (face) | `EB Garamond` 600, `11.2cqw` / 1, tracking `.04em`, capitals; the joining word italic 400 at `.9em` (designer choice since v10, lettered like a tile house sign; kept by the user, 2026-11-14) | `--az-ink` | `comps/prototype.v16.src.html` `.names` |
 | `Quinta do Grilo` on the painted plaque | `Allura` 400, `30cqw` and `26cqw` / `.82` | `--az-ink` | same, `.plaque-text` |
 | Section and card heads | `Allura` 400, `clamp(3rem,15vw,4.25rem)` / 1.05; card heads `2.25rem` to `2.75rem` | `--olive` | `rsvp/page/info.css` `.ih`, `rsvp/page/rsvp.css` `.h-script`, `.card h3` |
 | Kicker and small-capital label | `EB Garamond` 500, `.8125rem` (13 pixels), tracking `.28em` (`.2em` for units and times), uppercase | `--brown` | `info.css` `.ikick`, `.ilabel`; `rsvp.css` `.rkick` |
@@ -20,10 +20,10 @@ Fonts: `Allura` and `EB Garamond` (regular, italic), self-hosted WOFF2, Latin su
 | Body (face / RSVP) | 18 pixels / 1.5; `1.125rem` / 1.55 | `--ink` | `body`; `rsvp.css` `.rsvp` |
 | Date / place / village (face) | 19 pixels italic; 23 pixels; 12.5 pixels capitals tracking `.24em` | `--ink`, `--warm-ink`, `--brown` | `.date`, `.place`, `.village` |
 | Countdown figures | `EB Garamond` 400, `clamp(2.5rem,12vw,3.25rem)` / 1, tabular lining figures | `--olive` | `info.css` `.iclock .n` |
-| Buttons | send `1.1875rem` 500; pill `1.0625rem`; Skip 16 pixels tracking `.04em` | `--paper` on olive; `--ink` | `rsvp.css` `.send`, `.btn`; face `.skip` |
+| Buttons | send `1.1875rem` 500; pill `1.0625rem`; Skip 16 pixels tracking `.04em`, 48 pixels tall | `--paper` on olive; `--ink` | `rsvp.css` `.send`, `.btn`; face `.skip` |
 | Inputs | 16 pixels (stops iOS zoom) / 1.4 | `--ink` | `rsvp.css` |
 
-Note on the names: `DESIGN.md` (2026-11-10) planned `Allura` for the names. Since v10 the face sets them in `EB Garamond` capitals inside the painted panel; `SPEC.md` has no user message choosing either, and the finished face stays untouched. Confirm with the user: `TODO(user)`.
+Note on the names: `DESIGN.md` (2026-11-10) planned `Allura` for the names. Since v10 the face sets them in `EB Garamond` capitals inside the painted panel; `SPEC.md` has no user message choosing either, and the finished face stays untouched. The user chose to keep `EB Garamond` (2026-11-14).
 
 Rules: script only for the plaque name and heads, never for anything a guest must read closely (`DESIGN.md`). Glyphs `ã ç ñ á é í ó ú ü` must render in all three languages: Latin subset covers them; a recorded glyph test is `TODO(user)` evidence.
 
@@ -65,7 +65,7 @@ Rules: script only for the plaque name and heads, never for anything a guest mus
 | Section rhythm | `3.25rem` top, `3.75rem` bottom (information); `4.5rem` top (RSVP) | same |
 | Section anatomy | kicker, script head, short rule, content; centred (plaque, countdown, gifts) or composed left (schedule, dress code, questions) | `DESIGNER-NOTES.md` (`Dolce Vita`, M38) |
 | Radii | 14 pixels for cards, choices, notices, inputs and send (`--r` in `rsvp.css`; `.icard` in `info.css`); pill buttons 999 pixels; focus 6 pixels; small tile 2 pixels | `rsvp.css`, `info.css` |
-| Tap targets | 48 pixels minimum (inputs, `.btn`, `.ibtn`, error-summary links; question rows and send 56 pixels); seal 100 pixels | `CLAUDE.md`; the face's Skip is 44 pixels (open finding: the face is frozen, `TODO(user)`) |
+| Tap targets | 48 pixels minimum (inputs, `.btn`, `.ibtn`, error-summary links; question rows and send 56 pixels); seal 100 pixels; the face's Skip 48 pixels (2026-11-14) | `CLAUDE.md` |
 | Reflow | no sideways scroll at 390, 360 and 195 pixels (200 % zoom) | `DESIGNER-NOTES.md` |
 | Opening | vertical only: top flap lifts, bottom drops, page scrolls down; no side opening | M12, M13, M27 |
 
@@ -76,9 +76,10 @@ Rules: script only for the plaque name and heads, never for anything a guest mus
 | Olive branch, orange branch | face corners; dress-code vignette | the reference pieces for the art style (section 6) |
 | Swallows | face sky | rare crossings, not loops (deck slide 28) |
 | Lavender, wheat | schedule base (wheat and lavender); page foot (lavender) | standing on a base line, never floating |
-| Wild fennel | page foot, left, on the `rodapé` (replaced the foot wheat) | sways like the other plants |
-| Mushrooms | fly agarics at the countdown's foot, left; Caesar's at the gifts card's base, right | the only two on the page; static, fade in only |
-| Bee | countdown, top right | flies in once from the right, then bobs |
+| Wild carrot | page foot, left, on the `rodapé` (in the fennel's place) | sways like the other plants |
+| Mushrooms | fly agarics only, at the left end of the hairline under the countdown | one piece on the page (not too many mushrooms); static, fade in only |
+| Fig branch | gifts, top right, entering from the right edge | sways about its cut end |
+| Bee | countdown, top right | faces left, so it flies in once from the right, then bobs |
 | Meadow strip, bindweed, clouds | face land, panel corners, sky | clouds soft-edged, no outline |
 | `Azulejo` names plaque | face hero | painted, cobalt; names inside it (M31) |
 | Address plaque (`barra` frame) | `Como chegar` | same cobalt hand, simpler frame (M47) |
@@ -146,7 +147,8 @@ Loose botanical watercolour of [SUBJECT]. Warm cotton paper, soft muted Mediterr
 ### Pieces per section and placement
 
 - One lead painted subject per section (`Dolce Vita` anatomy); supporting props at its sides or base. At most two painted props per section (user).
-- Placed now (v17): countdown: fly agarics (left foot, 12u) and bee (right top, 5u); schedule: wheat and lavender (right base); dress code: orange branch vignette and falling leaf; gifts: Caesar's (right base, 12u) and the pending left branch; questions: the pending peppers (right top); page foot: fennel (left, 14u) and lavender (right).
+- Shown now (2026-11-14): where: none (the face's vine and eucalyptus frame it); countdown: fly agarics (hairline's left end, 11u) and bee (right top, 6u); schedule: wheat and lavender (right base); dress code: orange branch vignette and falling leaf; gifts: fig branch (right top, 26u); questions: dried peppers (right top, 8u, 1.2 deg sway from the string); RSVP: olive twig (head, left), lavender (head, right, mirrored); page foot: wild carrot (left, 15u) and lavender (right).
+- Slot kept but hidden (`PENDING`, `info.css`): the left olive branch (gifts). Cut but not placed: `comps/art/v17/pebbles.webp`.
 - Scale 5u to 34u; never over the text column, a button or the plaque.
 - Sides alternate down the page (`ASSET-PROMPTS.md` placement rules).
 - Mushrooms: at most two pieces on the whole page: the fly agaric and the Caesar's pair (user, 2026-11-14). At section feet, rooted, static or 1 deg sway at most.
@@ -185,7 +187,7 @@ Loose botanical watercolour of [SUBJECT]. Warm cotton paper, soft muted Mediterr
 
 ## 10. Performance
 
-- First load under 1500 KB (stretch 500); v16 measured 1457 KB; the v17 test build 1450 KB before the tap (props load later, one screen ahead).
+- First load under 1500 KB (stretch 500); v16 measured 1457 KB; the v17 test build 1451 KB before the tap (2026-11-14) (props load later, one screen ahead).
 - Fonts self-hosted, three WOFF2 files. Images `WebP`. Props 15 to 45 KB each, loaded one screen ahead.
 - Compositor-only frames; p95 frame at or under 16.8 ms at CPU 4x (`V12-CHOREOGRAPHY-ADVICE.md`).
 
@@ -217,6 +219,13 @@ Loose botanical watercolour of [SUBJECT]. Warm cotton paper, soft muted Mediterr
 | 2026-11-14 | At most two painted props per section; never over text or a button; sides alternate; mushrooms static or 1 deg sway | user | chat, 2026-11-14 |
 | 2026-11-14 | Fly agarics, Caesar's, bee and fennel placed; foot wheat, carrot, stones and the gifts rock slot removed; peppers moved to the questions | Opus art director, Opus designer | `rsvp/comps/DESIGNER-NOTES.md` |
 | 2026-11-14 | One radius of 14 pixels; error-summary links 48 pixels; `#7F9BA8` retired; input edge figure corrected to 3.47:1 | Opus designer | same |
+| 2026-11-14 | New props (mushrooms, bee, fennel) hidden while they are repainted; only the face's own art shows | user | chat, 2026-11-14 |
+| 2026-11-14 | Names stay in `EB Garamond` capitals | user | chat, 2026-11-14 |
+| 2026-11-14 | Face Skip raised from 44 to 48 pixels (`min-height` only), to match every other tap target; minimal change to the frozen face | Opus designer, delegated by the user | `comps/prototype.v16.src.html` `.skip` |
+| 2026-11-14 | Page foot keeps one lavender, right: a mirrored second copy of the same cut-out would read as a stamp, and one plant at the end of the `rodapé` keeps the sides alternating; the fennel slot returns on the left when repainted | Opus designer, delegated by the user | same |
+| 2026-11-14 | Props from the user's new paintings, chosen for restraint: used Copilot v5 fig branch and wild carrot and Copilot v6 fly agarics and bee (same hand as the face; toned by `comps/art/v17_props_v5.py`). Dropped: cork oak (heavy, saturated bark texture, would dominate), cicada (one insect is enough), pebbles (gifts already has the fig; kept as a cut), peppers v6 (they would sit top right just after the fig, breaking the side rhythm; questions left bare), every `Higgsfield` piece (softer, different hand; v6 replaced them), the older v17 cut-outs (pen outline), RSVP leaf (clutter). Lavender in the RSVP head mirrored (the same painting shows three times) | Opus designer, delegated by the user | chat, 2026-11-14; `consistency-red-team` |
+| 2026-11-14 | Peppers v6 hung in the questions, toned to terracotta (saturation x0.6), small, gentle sway; bee and fly agarics kept in the countdown | user | chat, 2026-11-14 |
+| 2026-11-14 | Polish pass: dress head spans the column; IBAN card loses its blank band; RSVP lavender and leaf moved off the fields and buttons; deadline label at the small-capital role; one solid button in the no-link card | Opus designer | `rsvp/comps/DESIGNER-NOTES.md` |
 
 ## 12. Red-team checklist
 
@@ -246,7 +255,7 @@ Answer yes or no; every "no" is a finding with its place and the smallest fix.
 - [ ] `lang` set per language; no mixed languages in a section?
 - [ ] Only `transform` and `opacity` animate (plus `stroke-dashoffset` on ink lines)?
 - [ ] Opening done by about 5 s; reduced motion settles at once with props at rest?
-- [ ] Seal is a `<button>`; Skip first in focus order; every tap target at least 48 pixels (the face's Skip is 44 pixels today, open)?
+- [ ] Seal is a `<button>`; Skip first in focus order; every tap target at least 48 pixels?
 - [ ] Text pairs at least 4.5:1; focus ring visible on every control?
 - [ ] No sideways scroll at 390, 360 and 195 pixels?
 - [ ] First load under 1500 KB?

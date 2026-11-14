@@ -24,11 +24,11 @@ body{background:#F6EFDF url(@@IMG:00-img-paper@@) 0 0/341px repeat}
 .rsvp{position:relative;color:var(--ink);font:400 1.125rem/1.55 var(--serif);-webkit-text-size-adjust:100%;max-width:36rem;margin:0 auto;padding:4.5rem 1.25rem 3rem;overflow:hidden}
 .prop{position:absolute;pointer-events:none;background:no-repeat center/contain}
 .prop.twig{width:9.5rem;height:6rem;left:-2.6rem;top:1.4rem;background-image:url(@@IMG:olive-twig-trailing@@);transform:rotate(-8deg)}
-/* 2026-11-14: the lavender and the leaf were placed from the panel's foot, so they lay over the code field, the Abrir button and
-   the card edge, and over the message and send in the form. Both now hang on parts that do not change with the state: the
-   lavender stands at the head's right edge with its foot on the rule's line; the leaf rests at the left end of the hairline */
-.prop.lav{width:4.6rem;height:9rem;right:-1.6rem;bottom:2.3rem;background-image:url(@@IMG:lavender@@);background-position:50% 100%;opacity:.95}
-.prop.leaf{width:1.6rem;height:1.6rem;right:calc(100% + .5rem);top:-.8rem;background-image:url(@@IMG:olive-leaf@@);transform:rotate(-62deg)}
+/* 2026-11-14: the lavender (and a leaf, since dropped) were placed from the panel's foot, so they lay over the code field, the Abrir button and
+   the card edge, and over the message and send in the form. It now stands on a part that does not change with the state: the
+   lavender stands at the head's right edge with its foot on the rule's line */
+.prop.lav{width:4.6rem;height:9rem;right:-2rem;bottom:2.3rem;background-image:url(@@IMG:lavender@@);background-position:50% 100%;opacity:.95;scale:-1 1}   /* mirrored: the same lavender also stands in the schedule and the foot */
+/* the RSVP leaf was dropped on 2026-11-14 (restraint: the page carries enough props) */
 
 .head{text-align:center;position:relative}
 .rkick{margin:0;padding-left:.28em;font-size:.8125rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brown);font-weight:500}
