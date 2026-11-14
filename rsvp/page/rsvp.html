@@ -1,0 +1,130 @@
+<div class="rsvp-wrap" id="rsvp-wrap">
+<section class="rsvp" id="rsvp" data-state="nojs" aria-labelledby="rsvp-h">
+  <i class="prop lv from-l twig" aria-hidden="true"></i>
+
+  <header class="head">
+    <p class="rkick" data-i18n="kicker" data-fake>Confirmação</p>
+    <h2 class="h-script" id="rsvp-h" data-i18n="title" data-fake>Contamos convosco?</h2>
+    <span class="rule" aria-hidden="true"></span>
+    <!-- the lavender stands on the rule's line at the right edge, beside the head, clear of every field and button (2026-11-14) -->
+    <i class="prop lv from-r lav" aria-hidden="true"></i>
+    <p class="sub" data-i18n="sub" data-fake>Respondam até 30 de abril</p>
+  </header>
+  <p class="lead" data-i18n="lead" data-fake>Guardámos um lugar para cada um de vós. Digam-nos quem vem; podem mudar a resposta até lá.</p>
+
+  <!-- a twine hairline, as between the information sections (the rodapé is only the page foot) -->
+  <div class="idiv" aria-hidden="true"><i class="prop lv from-l leaf" aria-hidden="true"></i></div>
+
+  <div class="rpanel" id="panel">
+    <!-- loading -->
+    <div class="blk st-loading" aria-busy="true">
+      <p data-i18n="loading" data-fake>A abrir o vosso convite…</p>
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    </div>
+
+    <!-- form (also: sending, error, network, conflict) -->
+    <form class="blk st-form" id="form" novalidate>
+      <div class="notice n-error" id="errsum" tabindex="-1">
+        <h3 id="errsum-h" data-i18n="errTitle" data-fake>Falta pouco. Corrijam isto:</h3>
+        <ul id="errlist"></ul>
+      </div>
+      <div class="notice n-net" id="netbox" tabindex="-1">
+        <h3 data-i18n="netTitle" data-fake>Não foi possível enviar.</h3>
+        <p data-i18n="netText" data-fake>A ligação falhou. Não se perdeu nada: as vossas respostas continuam aqui.</p>
+        <div class="row"><button type="button" class="btn solid" id="retry" data-i18n="retry" data-fake>Tentar de novo</button></div>
+      </div>
+      <div class="notice n-conf" id="confbox" tabindex="-1">
+        <h3 data-i18n="confTitle" data-fake>As respostas mudaram noutro telemóvel.</h3>
+        <p data-i18n="confText" data-fake>Esta é a resposta guardada agora. Querem ficar com ela ou enviar a vossa?</p>
+        <ul class="saved-list" id="conflist"></ul>
+        <div class="row">
+          <button type="button" class="btn" id="usesaved" data-i18n="useSaved" data-fake>Ficar com a guardada</button>
+          <button type="button" class="btn solid" id="sendmine" data-i18n="sendMine" data-fake>Enviar a minha</button>
+        </div>
+      </div>
+
+      <p class="for"><span data-i18n="formFor" data-fake>Convite para</span> <strong id="family" translate="no"></strong></p>
+      <div id="people"></div>
+
+      <div class="field" id="f-msg">
+        <label for="msg"><span data-i18n="msg" data-fake>Uma mensagem para nós (opcional)</span> <span class="count" id="msgcount" aria-hidden="true">0/600</span></label>
+        <textarea id="msg" name="message" maxlength="600" rows="4" data-i18n-ph="msgPh" data-fake placeholder="Escrevam-nos umas linhas…"></textarea>
+      </div>
+      <!-- honeypot: hidden from people and assistive tech; a bot that fills it is ignored server-side -->
+      <div class="hp" aria-hidden="true"><label for="hp-field">Leave this empty</label><input type="text" id="hp-field" name="hp-field" tabindex="-1" autocomplete="off"></div>
+
+      <button type="submit" class="send" id="send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+        <span class="spin" aria-hidden="true"></span>
+        <span id="sendlbl" data-i18n="send" data-fake>Enviar resposta</span>
+      </button>
+    </form>
+
+    <!-- saved -->
+    <div class="blk st-saved" id="savedbox" tabindex="-1">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 data-i18n="savedTitle" data-fake>Obrigado!</h3>
+        <p id="savedtext" data-i18n="savedText" data-fake>Recebemos a vossa resposta.</p>
+        <ul class="saved-list" id="savedlist"></ul>
+        <div class="row"><button type="button" class="btn" id="edit" data-i18n="edit" data-fake>Alterar respostas</button></div>
+      </div>
+    </div>
+
+    <!-- closed -->
+    <div class="blk st-closed">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif" data-i18n="closedTitle" data-fake>As respostas já fecharam.</h3>
+        <p data-i18n="closedText" data-fake>Já não aceitamos respostas. Para mudar alguma coisa, falem connosco no WhatsApp.</p>
+        <ul class="saved-list" id="closedlist"></ul>
+        <div class="row">@@WA@@</div>
+      </div>
+    </div>
+
+    <!-- no or invalid link, and too many attempts -->
+    <div class="blk st-nolink">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif nl" data-i18n="nolinkTitle" data-fake>Não encontrámos o vosso convite.</h3>
+        <p class="nl" data-i18n="nolinkText" data-fake>Abram o link pessoal que vos enviámos no WhatsApp, ou escrevam o código que vem no fim dele.</p>
+        <h3 class="serif tm" data-i18n="tmTitle" data-fake>Demasiadas tentativas.</h3>
+        <p class="tm" data-i18n="tmText" data-fake>Por segurança, esperem uma hora e tentem de novo, ou abram o link do WhatsApp.</p>
+        <form class="code-row" id="codeform" novalidate>
+          <label class="lbl" for="code" data-i18n="code" data-fake>O vosso código</label>
+          <input type="text" id="code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="codehint" placeholder="XXXXXXXXXXXXXXXX">
+          <p class="err" id="codeerr" style="display:block"></p>
+          <p class="note" id="codehint" data-i18n="codeHint" data-fake>16 letras e números, sem espaços.</p>
+          <button type="submit" class="btn solid" data-i18n="open" data-fake>Abrir</button>
+        </form>
+        <div class="row">@@WA@@</div>
+      </div>
+    </div>
+
+    <!-- the invitation could not be loaded (network or server) -->
+    <div class="blk st-loaderr">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif" data-i18n="netTitle" data-fake>Não foi possível enviar.</h3>
+        <p data-i18n="loadErrText" data-fake>Não conseguimos abrir o vosso convite agora. Tentem de novo daqui a pouco.</p>
+        <div class="row"><button type="button" class="btn solid" id="reload" data-i18n="retry" data-fake>Tentar de novo</button></div>
+      </div>
+    </div>
+
+    <!-- JavaScript off: the same block the real <noscript> shows -->
+    <div class="blk st-nojs" id="nojs">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif" data-i18n="nojsTitle" data-fake>Para responder aqui, esta página precisa de JavaScript.</h3>
+        <p data-i18n="nojsText" data-fake>Respondam-nos pelo WhatsApp, ou abram o link noutro navegador.</p>
+        <div class="row">@@WA@@</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="rvh" id="live" role="status" aria-live="polite"></p>
+</section>
+<!-- the page foot: July wildflowers standing on the same painted rodapé, the wall's baseboard (art slots: info.css) -->
+<div class="foot-flora" aria-hidden="true"><i class="lv from-l sway lv-fennel"><i></i></i><i class="lv from-r sway lv-flav"><i></i></i></div>
+<div class="rodape foot" aria-hidden="true"></div>
+</div>

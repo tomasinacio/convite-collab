@@ -1,0 +1,17 @@
+# Private guest data and local secrets never go in git (rsvp/PLAN.md, privacy).
+guests/*
+!guests/README.md
+output/
+*.xlsx
+*.csv
+*.sqlite
+*.sqlite3
+*.db
+seed*.sql
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+.wrangler/
+node_modules/
+public/

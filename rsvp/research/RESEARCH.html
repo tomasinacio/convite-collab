@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>RSVP research</title>
+<style>
+:root{--paper:#F6EFDF;--sand:#E6D6B8;--ink:#3B2F25;--olive:#4F5F2E;--terra:#8A4129;--azul:#35566A;--line:#D9C9A8;--card:#FBF7EC}
+@media (prefers-color-scheme:dark){:root{--paper:#1F1B16;--sand:#332C22;--ink:#EFE6D2;--olive:#B9C98F;--terra:#E0A184;--azul:#9CC0D2;--line:#4A4033;--card:#28231C}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.55 Georgia,"EB Garamond",serif}
+main{max-width:46rem;margin:0 auto;padding:1.5rem 16px 4rem}
+h1{font-size:2rem;line-height:1.15;margin:.2em 0 .3em;color:var(--olive)}
+h2{font-size:1.45rem;margin:2.2em 0 .5em;color:var(--terra);border-bottom:1px solid var(--line);padding-bottom:.2em}
+h3{font-size:1.1rem;margin:1.4em 0 .3em;color:var(--azul)}
+p,li{max-width:40rem}
+.lede{font-size:1.1rem}
+.meta{color:var(--azul);font-size:.9rem}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--olive);border-radius:6px;padding:.9rem 1rem;margin:1rem 0}
+.box.warn{border-left-color:var(--terra)}
+.grid{display:grid;gap:12px}
+@media (min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem}
+.card h3{margin-top:0}
+.tag{display:inline-block;font-size:.8rem;padding:1px 8px;border-radius:99px;border:1px solid currentColor;margin-right:4px}
+.pick{color:var(--olive)} .no{color:var(--terra)} .maybe{color:var(--azul)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--sand)}
+.scroll{overflow-x:auto}
+a{color:var(--azul)}
+code{font:.9em ui-monospace,Menlo,monospace;background:var(--sand);padding:0 4px;border-radius:3px}
+ul{padding-left:1.2rem}
+footer{margin-top:3rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<p class="meta">Research notes · 2026-11-12 · generic searches only, no personal details used</p>
+<h1>RSVP for the invitation: what the research found</h1>
+<p class="lede">The question: how do we let about 150 guests answer from the invitation page, and let two non-developers read the answers on their phones, for free and safely?</p>
+
+<div class="box">
+<strong>Short answer.</strong> The most common free pattern is a static page on GitHub Pages that saves answers to a Google Sheet through Apps Script. It is easy to read but weak on security and hard to test. The stronger pattern, and the one I lean to, is a small Cloudflare Worker with a D1 database behind the same static page, plus a private phone page for the couple. It is also free, and the free limits are about a hundred times larger than what 150 guests need.
+</div>
+
+<h2>1. How wedding sites handle RSVPs today</h2>
+<p>Commercial tools (Zola, Joy, Wedibox, Bridebook and others) offer three ways to know who is answering:</p>
+<div class="grid">
+<div class="card"><h3>Name lookup</h3><p>The guest types their name on the RSVP page and picks their household. No link to manage, but misspelled names fail, and one guest's name can reveal who else is invited.</p></div>
+<div class="card"><h3>Unique link per household</h3><p>Each party gets its own link, so the form already knows who they are. This is what Bridebook offers, and what the plan here uses.</p></div>
+<div class="card"><h3>Printed code</h3><p>A code on the paper invitation opens the guest's own details: seats, meal options, event access. Described by Paperlust. Same idea as our link, delivered by hand.</p></div>
+</div>
+<ul>
+<li><strong>One answer per household</strong> is simpler, but partial attendance, meals and named plus-ones get harder. Several tools let any member answer for everyone.</li>
+<li><strong>Fixed seats versus open:</strong> Wedibox offers both. In invitation mode a household can never reply for more people than it was given.</li>
+<li><strong>Deadlines:</strong> at least one tool (Wedsites) shows the deadline only as a reminder and does not close the form. Closing the form on the server is a real difference.</li>
+<li>Advice repeated across vendors: make it work on a phone, and have a few friends try it first.</li>
+</ul>
+
+<h2>2. Open-source examples</h2>
+<div class="scroll"><table>
+<tr><th>Project</th><th>How it works</th><th>Takeaway</th></tr>
+<tr><td><a href="https://github.com/rampatra/wedding-website">rampatra/wedding-website</a></td><td>Static site on GitHub Pages, answers go to a Google Sheet through Apps Script, an email tells the owner. An invite code is checked in the browser (an MD5 hash comparison). GPL-3.0, about 1.9k stars.</td><td>The most popular free pattern. The code check is only a light gate, because anyone can read the script and the hashes.</td></tr>
+<tr><td>letsparty template</td><td>Single-page template, Apps Script backend, GitHub Pages.</td><td>Same pattern.</td></tr>
+<tr><td>jdleesmiller/wedding</td><td>Rails app with a guest list, dietary needs and plus-ones.</td><td>Shows the data a real RSVP tracks.</td></tr>
+<tr><td>Fredrikhov/wedding-rsvp, blakehartshorn/wedding-rs-vp</td><td>Small server-side RSVP apps (Node, Rust).</td><td>Real server-side checks, but they need a host to run.</td></tr>
+<tr><td>A Django RSVP described by freeCodeCamp</td><td>A unique invitation ID per party that only they know, no logins.</td><td>Matches the personal link idea.</td></tr>
+</table></div>
+
+<h2>3. Backend options</h2>
+<div class="scroll"><table>
+<tr><th>Option</th><th>Free limits found</th><th>Fit</th></tr>
+<tr><td><strong>Cloudflare Worker + D1</strong> <span class="tag pick">leaning</span></td><td>Workers Free: 100,000 requests a day, 10 ms CPU per request. D1 Free: 5 million rows read and 100,000 rows written a day, 5 GB storage, 10 databases. Since 2026-09-01 queries fail once a daily limit is passed (no surprise bill, no overage).</td><td>Server-side code checks, exact counters, runs locally for tests (D1 is SQLite). Needs a free account and one browser login.</td></tr>
+<tr><td>Google Sheet + Apps Script <span class="tag maybe">common</span></td><td>Free with a Google account; daily quotas apply and Google says they can change without notice.</td><td>Best phone reading (the Sheets app). But browser calls with a JSON body trip a CORS preflight, so scripts send plain text or form data. Reports of a desktop-works, mobile-blocked case. The script cannot be run locally, so tests would not prove much.</td></tr>
+<tr><td>Supabase <span class="tag no">not preferred</span></td><td>Free projects pause after about a week of low activity, two active projects.</td><td>Capable Postgres, but the pause would hit a site that sleeps for months, and the table editor is awkward on a phone.</td></tr>
+<tr><td>Form services (Web3Forms, Formspree, Tally)</td><td>Web3Forms about 250 submissions a month, Formspree about 50, Tally reported unlimited (not verified).</td><td>Fine for a contact box, not for a per-family form that must know who is answering and how many seats they have.</td></tr>
+</table></div>
+<div class="box"><strong>Sizing.</strong> 150 families at a few requests each is under a thousand requests in total. The free daily limits are 100 times higher or more, so the limit that matters is not capacity but safety.</div>
+
+<h2>4. Spam and abuse</h2>
+<ul>
+<li><strong>Unguessable codes are the main defence.</strong> A 12-character code has about 60 random bits. With a cap on failed attempts, guessing is not practical.</li>
+<li><strong>Cloudflare Turnstile</strong> is a free, invisible bot check. It needs a script from Cloudflare on the page and a server check of each token. It is an optional extra here, not a need, and it adds a third-party request for guests.</li>
+<li><strong>Cloudflare's Rate Limiting binding</strong> exists but its limits are approximate, per data-centre location, and only allow 10 or 60 second periods. The official page does not say whether the Free plan includes it. Exact counters in the database are simpler to test and to explain.</li>
+<li>Also standard: a request size cap, strict field lengths, and cross-origin calls accepted only from the invitation's own address.</li>
+</ul>
+
+<h2>5. The personal link and what stays private</h2>
+<ul>
+<li>The part of an address after <code>#</code> is never sent to a server and is not part of the request that a link preview fetches. Putting the code there keeps it out of server logs and out of <code>Referer</code> headers.</li>
+<li>Limits: the page's own JavaScript can read it, it shows in the address bar and in screenshots, and the preview behaviour of WhatsApp is not documented, so it must be checked on a real phone.</li>
+<li>The database should hold only a hash of each code, so a leaked copy cannot rebuild the links.</li>
+<li>A guest must only ever get their own household's record, and an unknown code must look the same as a malformed one.</li>
+</ul>
+
+<h2>6. Allergies and personal data</h2>
+<p>Several guides say that dietary needs and allergies count as health data under GDPR (Article 9), and that religious diets can reveal beliefs. None of the sources were from a regulator, and none settled whether a couple counts as a data controller, so treat this as a prompt to be careful, not as legal advice.</p>
+<ul>
+<li>Keep the field optional and short, and say why it is asked and who sees it (a one-line notice, wording is the couple's).</li>
+<li>Collect no phone, email or address. The invitation already arrives by WhatsApp.</li>
+<li>Share allergy information with the caterer only, and delete the database after the event (a date is set in the plan).</li>
+</ul>
+
+<h2>7. Accessibility of the form</h2>
+<ul>
+<li>Group each yes or no question in a <code>fieldset</code> with a short <code>legend</code>, so a screen reader announces who the question is about.</li>
+<li>Errors (WCAG 3.3.1, level A) must be text that says what to fix, not colour alone, and be tied to the field with <code>aria-describedby</code>.</li>
+<li>A live region must exist before its text is inserted, or nothing is announced.</li>
+<li>Inputs at 16 px or more stop iPhones from zooming in on focus.</li>
+</ul>
+
+<h2>8. WhatsApp's browser</h2>
+<p>I found no official documentation for the in-app browser of WhatsApp. On iPhone, in-app browsers are normally web views built on Safari's engine, so Safari's rules apply. One report says saved data in such web views can be missing between page loads. For us that means a draft saved on the phone is a convenience, never the proof of an answer. Only the server's confirmation counts. This has to be tested on real phones, which this machine cannot do.</p>
+
+<h2>9. What this means for the plan</h2>
+<div class="grid two">
+<div class="card"><h3>Keeps</h3><ul><li>Worker + D1, site stays on GitHub Pages.</li><li>Code after <code>#</code>, only its hash stored.</li><li>Per person yes or no, optional diet text, one message.</li><li>A couple-only phone page and a CSV export.</li></ul></div>
+<div class="card"><h3>Adjusts</h3><ul><li>Flood limits stay as exact database counters, no reliance on the rate-limit binding.</li><li>Turnstile stays off unless spam shows up.</li><li>Diet field gets a short purpose notice (wording is the couple's).</li><li>Saved drafts are treated as best effort.</li></ul></div>
+</div>
+
+<h2>10. What I could not confirm</h2>
+<ul>
+<li>Whether the Free plan includes the Rate Limiting binding (not needed by the plan).</li>
+<li>Tally's current free limits and the exact current Apps Script quotas.</li>
+<li>How WhatsApp's in-app browser treats storage, cross-origin calls and the <code>#</code> part. Needs a real phone.</li>
+<li>Legal position of a couple under GDPR. Needs a professional if it matters.</li>
+<li>Several comparison articles are vendor blogs. I used the official Cloudflare pages for the limits that matter.</li>
+</ul>
+
+<footer>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developers.cloudflare.com/d1/platform/pricing/">Cloudflare D1 pricing and free limits</a> (official)</li>
+<li><a href="https://developers.cloudflare.com/changelog/post/2026-09-01-d1-free-tier-limit-enforcement/">D1 free tier limit enforcement</a> (official changelog)</li>
+<li><a href="https://developers.cloudflare.com/workers/platform/limits">Workers limits</a> and <a href="https://developers.cloudflare.com/workers/platform/pricing/">pricing</a> (official)</li>
+<li><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/">Workers Rate Limiting binding</a> (official)</li>
+<li><a href="https://blog.cloudflare.com/turnstile-ga/">Turnstile is free for everyone</a> (official blog)</li>
+<li><a href="https://developers.google.com/apps-script/guides/services/quotas">Apps Script quotas</a> (official)</li>
+<li><a href="https://supabase.com/docs/guides/platform/free-project-pausing">Supabase project pausing</a> (official)</li>
+<li><a href="https://github.com/rampatra/wedding-website">rampatra/wedding-website</a></li>
+<li><a href="https://help.zola.com/hc/en-us/articles/115002259432">Zola RSVP help</a>, <a href="https://www.wedibox.com/help/open-vs-guest-list-rsvp">Wedibox open vs guest list</a>, <a href="https://paperlust.co/blog/online-rsvp-for-weddings/">Paperlust</a>, <a href="https://support.bridebook.com/en/support/how-can-my-guests-rsvp-online-what-does-that-experience-look-like-to-them">Bridebook</a></li>
+<li><a href="https://web.dev/learn/accessibility/forms">web.dev accessible forms</a>, <a href="https://prioritypixels.co.uk/insights/designing-accessible-forms-labels-errors-validation/">Priority Pixels on labels and errors</a></li>
+<li><a href="https://developer.apple.com/forums/thread/765680">Apple forums: web view storage</a>, <a href="https://webkit.org/?p=10882">WebKit App-Bound Domains</a></li>
+<li><a href="https://www.edps.europa.eu/sites/default/files/publication/02._the_restaurant_at_the_end_of_the_universe_case_study_event_management_en_0.pdf">EDPS event management case study</a> (regulator, on event data risk)</li>
+</ul>
+</footer>
+</main>
+</body>
+</html>

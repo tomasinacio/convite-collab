@@ -1,0 +1,9 @@
+# Stage A kit swarm. Format: name|agent|pool|brief. Generic questions only (privacy class P0): no personal, guest or venue detail.
+kit-01-cloudflare|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/01-cloudflare.md
+kit-02-security|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/02-security.md
+kit-03-testing|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/03-testing.md
+kit-04-accessibility|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/04-accessibility.md
+kit-05-i18n|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/05-i18n.md
+kit-06-privacy-data|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/06-privacy-data.md
+kit-07-excel|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/07-excel.md
+kit-08-subagent-collections|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/08-subagent-collections.md

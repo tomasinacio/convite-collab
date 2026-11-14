@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E3E2D6">
+<title>Maya e Tomás</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="Opening of the invitation face, approach A: a folded sheet with a wax seal; a tap cracks the seal, the top fold lifts, the bottom fold drops. Ends when the sheet is open.">
+<!-- owner: Tomas | prototype v9, approach A (layered code) | 2026-11-10 | NOT final art
+     Scope: ONLY the seal and the two-fold opening, from the tap until the sheet is fully open (1.68 s). Nothing after.
+     Built from comps/prototype.html (r8b) with comps/OPENING-ADVICE.md applied:
+       press 120 ms seal scale .97 | 0 ms whole seal swaps to two halves (the crack) | 0-180 halves part | 0-200 label and twine out
+       140-1140 top fold lifts (io), sheet carried down with it, fold shade, sheen and hinge shadow | 820-1680 bottom fold drops (io)
+       After the folds, the r8b order (MOTION-NOTES.md): 1650 opening line, 1650-2450 tile pane washes in | 2450-3460 names write
+       letter by letter | 3500-4500 date, tile mark, place, village. Red-team rounds 1 and 2 (2026-11-11) applied (comps/REDTEAM.md).
+     Faces are baked WebP layers at 3x (comps/art/v9/, made by comps/art/v9_bake.py): paper grain, deckled free edges and the
+     stand-in deck crops are in the pixels, so no filter or blend mode sits on a rotating face. Live shading is one gradient
+     layer per face, opacity only. Each seal half rides a copy of its fold and hides by backface-visibility past 90 degrees.
+     Seal: a photoreal wax seal the user made in the Copilot app (2026-11-11; generated, not a camera photograph), matted,
+     graded and cracked by comps/art/v9_seal_photo.py. Fallback: the procedural seal in comps/art/v9/fallback/ (same names).
+     The end is chained on transitionend of the bottom fold; will-change is removed there. Reduced motion or a weak phone:
+     the closed sheet fades out (200 ms), the open sheet fades in (300 ms), no rotation. Test switches: ?lang=en|es,
+     ?motion=reduce, ?sharp=1 (faces at 3x, see .face). -->
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+:root{
+  --paper:#F6EFDF; --ink:#3B2F25; --olive:#4F5F2E; --brown:#6B4F34; --twine:#B8946A; --shade:#E3E2D6; --warm-ink:#4A3B2E;
+  --script:'Allura', cursive;
+  --serif:'EB Garamond', Georgia, 'Times New Roman', serif;
+  --ease-out:cubic-bezier(.22,.8,.24,1); --ease-io:cubic-bezier(.45,.05,.25,1);
+  /* beat table (OPENING-ADVICE.md), ms from the click */
+  --t-lift:140ms; --d-lift:1000ms; --t-drop:820ms; --d-drop:860ms; /* fully open at 1680 ms */
+  --t-content:1650ms; --t-names:2450ms; --t-when:3500ms; /* opening line and pane; names write; date and place */
+  /* the sheet: Ht top fold, Hm middle, Hb bottom fold; P where the closed packet sits; D how far the sheet is carried down */
+  --W: min(calc(100vw - 32px), 400px);
+  --Hm: calc(var(--W) * 1.4); /* one tall folded sheet, from the width; a short phone scrolls */
+  --Ht: clamp(120px, calc(var(--W) * .42), 168px);
+  --Hb: calc(var(--Hm) - var(--Ht)); /* the two free edges meet under the seal */
+  --P: max(72px, calc(46vh - var(--Hm) / 2));
+  --D: max(0px, calc(var(--Ht) - var(--P) + 68px)); /* the open sheet starts 68 px down, clear of Skip */
+  /* seal: any asset that keeps the contract in comps/art/v9_bake.py (square whole, halves --hh of it, crack at the centre) */
+  --S: 100px; /* seal image box; the wax itself is about 80 px */
+  --hh: .63;  /* half image height over --S */
+  --k: 1;     /* face layout scale: 1 by default; ?sharp=1 sets 3 (see .face) */
+  --sy: calc(var(--Ht) * 2); /* the seal sits on the top fold's free edge */
+  color-scheme:light;
+}
+@supports (height:100svh){
+  :root{ --P: max(72px, calc(46svh - var(--Hm) / 2)); }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--shade)}
+body{margin:0;font-family:var(--serif);font-size:18px;line-height:1.5;color:var(--ink);background:var(--shade);overflow-x:clip;min-height:100vh}
+p{margin:0}
+button{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* Skip: first in focus order, visible until the sheet is fully open; mid-fold it jumps to the end */
+.skip{position:fixed;top:max(12px, env(safe-area-inset-top));right:12px;z-index:20;min-height:44px;padding:0 18px;border:1px solid var(--twine);border-radius:999px;
+  background:var(--paper);font-size:16px;letter-spacing:.04em;cursor:pointer}
+.skip[hidden]{display:none}
+/* prototype-only marker, top left, clear of the open sheet (which starts 68 px down) */
+.ph-tag{position:fixed;left:12px;top:max(12px, env(safe-area-inset-top));z-index:20;max-width:calc(100% - 130px);font-size:12px;line-height:1.25;color:var(--brown);
+  background:var(--paper);border:1px dashed var(--brown);border-radius:6px;padding:2px 7px}
+
+/* ---------- the sheet: its height never changes, so the tap causes no reflow ---------- */
+.sheet{position:relative;width:var(--W);margin:calc(var(--P) + var(--D) - var(--Ht)) auto 0;height:calc(var(--Ht) + var(--Hm) + var(--Hb))}
+.move{position:absolute;left:0;right:0;top:0;height:calc(var(--Ht) + var(--Hm) + var(--Hb));
+  transform:translateY(calc(var(--D) * -1));
+  transition:transform var(--d-lift) var(--ease-io) var(--t-lift),opacity 300ms var(--ease-out)}
+.move.fade-out{opacity:0;transition:opacity 200ms var(--ease-out)}
+/* the folds sit in their own box: a shorter perspective reads as paper, and the box clips them to the sheet's width,
+   so a fold coming toward the eye never pokes past the sides (round 2, finding 3); rotateX only */
+.folds{position:absolute;inset:0;perspective:1600px;perspective-origin:50% 50%;overflow-x:clip}
+.pnl{position:absolute;left:0;width:100%}
+.mid{top:var(--Ht);height:var(--Hm)}
+.mid:focus{outline:none}
+.tp{top:0;height:var(--Ht);transform-origin:50% 100%;transform-style:preserve-3d;
+  transform:rotateX(-180deg);transition:transform var(--d-lift) var(--ease-io) var(--t-lift)}
+.bt{top:calc(var(--Ht) + var(--Hm));height:var(--Hb);transform-origin:50% 0;transform-style:preserve-3d;
+  transform:rotateX(180deg);transition:transform var(--d-drop) var(--ease-io) var(--t-drop)}
+.is-open .move,.is-open .tp,.is-open .bt{transform:none}
+/* layers promoted before the tap, released once open */
+.sheet:not(.done) .move,.sheet:not(.done) .tp,.sheet:not(.done) .bt{will-change:transform}
+/* each face is laid out at --k times its size and scaled back by 1/--k. Chromium rasterises a layer that turns in perspective
+   at one texel per CSS px, so moving folds look pixelated on a DPR 3 phone. --k:3 fixes that (seen in round 2), but in
+   CPU-throttled emulation it cost 4 to 14 frames over 33 ms per run, so the default is 1 and ?sharp=1 sets 3 for a test on
+   a real phone. Every length inside a face is multiplied by --k. */
+.sharp{--k:3}
+.face{position:absolute;left:0;top:0;width:calc(100% * var(--k));height:calc(100% * var(--k));transform-origin:0 0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:scale(calc(1 / var(--k))) translateZ(.3px)}
+.face-out{transform:translateY(calc(100% / var(--k))) rotateX(180deg) scale(calc(1 / var(--k))) translateZ(.3px)}
+.paper{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+/* a crease is a soft valley, not a rule: 6 px, a faint shade on one side of the line, a faint light on the other */
+.crease{position:absolute;left:1%;right:1%;height:6px;margin-top:-3px;pointer-events:none;
+  background:linear-gradient(rgb(107 79 52 / 0),rgb(107 79 52 / .07) 45%,rgb(255 253 247 / .3) 58%,rgb(255 253 247 / 0))}
+.face .crease{height:calc(6px * var(--k));margin-top:calc(-3px * var(--k))}
+.instant,.instant *{transition:none !important;animation:none !important}
+.ride{pointer-events:none}
+
+/* resting shadows on the table: static box-shadows, the fold ones fade in as each fold lands (opacity only) */
+.ground{position:absolute;left:1px;right:1px;box-shadow:0 1px 1.5px rgb(59 47 37 / .13),0 6px 14px rgb(59 47 37 / .08)}
+.g-mid{top:var(--Ht);height:var(--Hm)}
+.g-top{top:3px;height:calc(var(--Ht) - 3px);opacity:0}
+.g-bot{top:calc(var(--Ht) + var(--Hm));height:calc(var(--Hb) - 3px);opacity:0}
+.is-open .g-top{opacity:1;transition:opacity 300ms var(--ease-out) calc(var(--t-lift) + var(--d-lift) * .7)}
+.is-open .g-bot{opacity:1;transition:opacity 250ms var(--ease-out) calc(var(--t-drop) + var(--d-drop) * .7)}
+
+/* a fold's free edge casts a thin shadow on the paper under it; the strip rides its fold and sits under the deckle */
+.cast{position:absolute;left:0;right:0;height:calc(10px * var(--k))}
+.tp .cast{top:calc(100% - 3px * var(--k));background:linear-gradient(rgb(59 47 37 / .17),rgb(59 47 37 / 0))}
+.bt .cast{bottom:calc(100% - 3px * var(--k));background:linear-gradient(rgb(59 47 37 / 0),rgb(59 47 37 / .12))}
+
+/* live shading: one gradient layer per face, opacity only (0, .14 at 50%, 0); hinge shadow on the middle (0, .2 at 40%, 0) */
+.shade{position:absolute;inset:0;opacity:0;pointer-events:none}
+.tp .face-in .shade{background:linear-gradient(to top,rgb(59 47 37),rgb(59 47 37 / .4))}
+.tp .face-out .shade{background:linear-gradient(to bottom,rgb(59 47 37),rgb(59 47 37 / .4))}
+.bt .face-in .shade{background:linear-gradient(to bottom,rgb(59 47 37),rgb(59 47 37 / .4))}
+.bt .face-out .shade{background:linear-gradient(to top,rgb(59 47 37),rgb(59 47 37 / .4))}
+@keyframes fold-shade{0%{opacity:0}50%{opacity:.14}100%{opacity:0}}
+@keyframes hinge{0%{opacity:0}40%{opacity:.2}100%{opacity:0}}
+.is-open .tp .shade{animation:fold-shade var(--d-lift) var(--ease-io) var(--t-lift) both}
+.is-open .bt .shade{animation:fold-shade var(--d-drop) var(--ease-io) var(--t-drop) both}
+.hinge{position:absolute;left:0;right:0;height:26px;opacity:0;pointer-events:none}
+.h-top{top:0;background:linear-gradient(rgb(59 47 37),rgb(59 47 37 / 0))}
+.h-bot{bottom:0;background:linear-gradient(rgb(59 47 37 / 0),rgb(59 47 37))}
+.is-open .h-top{animation:hinge var(--d-lift) var(--ease-io) var(--t-lift) both}
+.is-open .h-bot{animation:hinge var(--d-drop) var(--ease-io) var(--t-drop) both}
+/* a soft sheen crosses each face as it turns, so the fold reads as paper catching the window light, not a flat board */
+.gl{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.gl i{position:absolute;left:0;right:0;top:0;height:60%;opacity:0;transform:translateY(-100%);
+  background:linear-gradient(rgb(255 252 242 / 0),rgb(255 252 242 / .38) 50%,rgb(255 252 242 / 0))}
+@keyframes sheen{0%{opacity:0;transform:translateY(-100%)}40%{opacity:1}100%{opacity:0;transform:translateY(170%)}}
+.is-open .tp .gl i{animation:sheen var(--d-lift) var(--ease-io) var(--t-lift) both}
+.is-open .bt .gl i{animation:sheen var(--d-drop) var(--ease-io) var(--t-drop) both}
+
+/* blind emboss on the outer face of the top fold (plain strokes, no filter) */
+.emboss{position:absolute;left:58%;width:32%;top:14%;overflow:visible;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.emboss .hi{stroke:#FFFDF7;stroke-width:2.4;opacity:.9;transform:translate(-1.2px,-1.2px)}
+.emboss .lo{stroke:#3B2F25;stroke-width:2.4;opacity:.11;transform:translate(1.2px,1.6px)}
+
+/* twine across the packet at the seal; it passes under the wax, so the middle is left out */
+/* each strand ends .36 --S from the centre, just inside the wax rim, for any seal size */
+.closed-deco{position:absolute;left:0;right:0;top:calc(var(--sy) - 9px);height:18px;pointer-events:none}
+.twine{position:absolute;top:0;width:calc(51.5% - var(--S) * .36);height:18px;overflow:visible;fill:none;stroke:var(--twine);stroke-width:1.3;stroke-linecap:round}
+.tw-l{left:-1.5%}
+.tw-r{right:-1.5%}
+.twine .tw-sh{stroke:#3B2F25;stroke-opacity:.12;transform:translateY(1.2px)}
+.tw-l{transform-origin:0 50%}
+.tw-r{transform-origin:100% 50%}
+.crack .closed-deco{opacity:0;transition:opacity 360ms var(--ease-out) 60ms}
+/* at the crack the strands lose the bit that ran under the wax at once, so they never lie over the halves;
+   then, freed, each cut end slips out and drops a few px as it fades */
+.crack .tw-l{clip-path:inset(0 calc(var(--S) * .16) 0 0);transform:translateX(-4px) rotate(1.4deg);transition:transform 380ms var(--ease-out)}
+.crack .tw-r{clip-path:inset(0 0 0 calc(var(--S) * .16));transform:translateX(4px) rotate(-1.2deg);transition:transform 380ms var(--ease-out)}
+
+/* ---------- the seal ---------- */
+/* the button is the hit area and holds the whole seal until the click */
+.seal{position:absolute;left:50%;top:calc(var(--sy) - var(--S) / 2);translate:-50% 0;z-index:5;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:0 8px 4px;border:0;border-radius:14px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.seal:disabled{cursor:default;pointer-events:none}
+.wax{display:block;width:var(--S);height:var(--S);transition:transform 120ms var(--ease-out)}
+.seal.press .wax{transform:scale(.97)}
+.seal-label{font-style:italic;font-size:18px;line-height:1.2;color:var(--ink);padding:0 6px;margin-top:calc(var(--S) * -.05)}
+.crack .wax{opacity:0;transition:none}
+.crack .seal-label{opacity:0;transition:opacity 200ms var(--ease-out)}
+/* the halves, cut from the same image, sit exactly under it; the click swaps them in (the crack) and they part.
+   Every size comes from --S and --hh, so any seal that keeps the contract drops in. They live in faces, so every
+   length here is times --k. The upper half lifts 1 px and tips .4deg about the right end of the crack, a hairline wedge;
+   under it the lower half carries the dark inside of the break. */
+.half{--s:calc(var(--S) * var(--k));position:absolute;left:calc(50% - var(--s) / 2);width:var(--s);height:calc(var(--s) * var(--hh));display:block;opacity:0;transform:scale(.97)}
+.half-up{top:calc(100% - var(--s) / 2);transform-origin:50% calc(var(--s) / 2)}
+.half-lo{top:calc((var(--Ht) - var(--Hm) + var(--Hb)) * var(--k) + var(--s) * (.5 - var(--hh)));transform-origin:50% calc(var(--s) * (var(--hh) - .5))}
+.crack .half{opacity:1}
+/* the scale origin is the seal's centre (as the pressed whole); the tip pivots .38 --S to the right */
+.crack .half-up{transform:translate(calc(var(--s) * .38),calc(-1px * var(--k))) rotate(-.4deg) translateX(calc(var(--s) * -.38));transition:transform 180ms var(--ease-out)}
+.crack .half-lo{transform:none;transition:transform 180ms var(--ease-out)}
+
+/* ---------- the open sheet's content, in the r8b order (MOTION-NOTES.md) ---------- */
+/* nothing before 1.65 s (OPENING-ADVICE), so nothing shows cropped between the folds. The card is out of the
+   accessibility tree until then (visibility). The pane washes in until the very moment the pen starts at 2.45 s,
+   so it never stands empty; the names write letter by letter as in r8b; date, tile mark, place and village follow
+   from 3.5 s. Transitions, not animations, so Skip (.instant) lands every piece in its end state at once. */
+.js .card{visibility:hidden}
+.is-open .card{visibility:visible;transition:visibility 0s linear var(--t-content)}
+.js .kicker,.js .pane > img,.js .when > *{opacity:0}
+.js .when > *{transform:translateY(4px)}
+.is-open .kicker{opacity:1;transition:opacity 400ms var(--ease-out) var(--t-content)}
+.is-open .pane > img{opacity:1;transition:opacity 800ms var(--ease-io) var(--t-content)}
+.is-open .when > *{opacity:1;transform:none;transition:opacity 600ms var(--ease-out) calc(var(--t-when) + var(--w) * 1ms),transform 600ms var(--ease-out) calc(var(--t-when) + var(--w) * 1ms)}
+.js .pen .ch{opacity:0;transform:translateY(2px)}
+.is-open .pen .ch{opacity:1;transform:none;
+  transition:opacity 160ms ease-out calc(var(--t-names) + var(--i) * 85ms),transform 160ms ease-out calc(var(--t-names) + var(--i) * 85ms)}
+.card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 7% 18px;text-align:center;container-type:inline-size}
+.kicker{font-size:15px;font-style:italic;color:var(--brown);line-height:1.3}
+.pane{position:relative;width:80%;aspect-ratio:412/212;margin:14px 0 0;container-type:inline-size}
+.pane > img{position:absolute;inset:0;width:100%;height:100%}
+.names{position:absolute;left:9%;right:7%;top:12%;margin:0;font-family:var(--script);font-weight:400;color:var(--olive);font-size:19.5cqw;line-height:.92;text-align:left}
+.pen .l{display:block;white-space:nowrap}
+.pen .amp{padding-left:26%}
+.pen .amp.long{padding-left:17%}
+.names.long{font-size:17.5cqw}
+.pen .ch{display:inline-block}
+.pen .ch.after-t{margin-left:.13em}
+.when{margin-top:20px;display:flex;flex-direction:column;align-items:center}
+.date{font-size:19px;font-style:italic;line-height:1.2}
+.tile-ico{display:block;width:20px;height:20px;margin:8px 0 6px}
+.place{font-size:23px;line-height:1.15;letter-spacing:.01em;color:var(--warm-ink)}
+.village{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--brown);margin-top:3px;padding-left:.24em}
+.p-plaque{position:absolute;left:8%;bottom:11%;width:44%}
+.p-plaque svg{display:block;width:100%;height:auto}
+
+/* reduced motion: handled in script as a fade (closed out 200 ms, open in 300 ms, no rotation, every piece of content at
+   once). This net also holds if the script misses it: no fold turns, nothing slides, nothing sweeps; only fades remain. */
+@media (prefers-reduced-motion:reduce){
+  .wax,.tp,.bt,.half,.twine{transition:none}
+  .move{transition:opacity 300ms var(--ease-out)}
+  .shade,.hinge,.gl i{animation:none}
+  .js .when > *,.js .pen .ch{transform:none}
+}
+</style>
+</head>
+<body>
+
+<button type="button" class="skip" id="skip" data-i18n="skip">Saltar</button>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="sprig-line" viewBox="0 -8 384 240">
+      <path d="M16 204C96 196 214 132 338 34M61.5 198.4C64.8 213 92.8 227.2 112.8 227.2C103.9 212.1 77.9 193.7 61.5 198.4M98.9 177.5C114.8 171.1 122.3 136.7 117 117.8C102.4 132 91.7 162.9 98.9 177.5M145.6 164.6C150.5 177.1 179.2 187.8 195.2 184.5C184.4 170.9 160.3 159.4 145.6 164.6M188.4 133C200 125.7 206 97 200.4 81.9C188.2 94.7 180.6 120.6 188.4 133M240.8 109C247.2 119.8 271.9 125.3 287.1 120.4C275.4 110.3 253.2 101.6 240.8 109M286.6 68.1C295.4 60.3 294.6 36.1 289 22.5C282.3 36 279 59.6 286.6 68.1M341.1 31.5C354.3 33.9 373.5 14 378.1 -2.1C362.1 .9 342 16.9 341.1 31.5"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <div class="sheet" id="sheet">
+    <div class="move" id="move">
+      <div class="ground g-mid" aria-hidden="true"></div>
+      <div class="ground g-top" aria-hidden="true"></div>
+      <div class="ground g-bot" aria-hidden="true"></div>
+
+      <!-- the middle: the names panel, static -->
+      <section class="pnl mid" id="card" tabindex="-1" aria-label="Convite">
+        <img class="paper" src="art/v9/sheet-mid.webp" width="1200" height="1680" alt="">
+        <span class="crease" style="top:0" aria-hidden="true"></span>
+        <span class="hinge h-top" aria-hidden="true"></span>
+        <span class="hinge h-bot" aria-hidden="true"></span>
+        <div class="card">
+          <p class="kicker" data-i18n="kicker">TODO(user) · frase de abertura</p>
+          <div class="pane">
+            <img src="art/names-pane.svg" width="412" height="212" alt="">
+            <h1 class="names"><span class="vh"><span translate="no">Maya</span> <span data-i18n="join">e</span> <span translate="no">Tomás</span></span><span class="pen" aria-hidden="true"></span></h1>
+          </div>
+          <div class="when">
+            <p class="date" style="--w:0" data-i18n="date">10 de julho de TODO(user)</p>
+            <svg class="tile-ico" style="--w:150" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x=".5" y=".5" width="39" height="39" rx="1.5" fill="#F2EBDD" stroke="#DBD1BD"/>
+              <g fill="none" stroke="#4E6B8D" stroke-width="1.3"><path d="M1 10A9 9 0 0 0 10 1M30 1A9 9 0 0 0 39 10M39 30A9 9 0 0 0 30 39M10 39A9 9 0 0 0 1 30"/></g>
+              <g fill="#7F9BA8" opacity=".7"><ellipse cx="20" cy="12.5" rx="3" ry="6.2"/><ellipse cx="20" cy="27.5" rx="3" ry="6.2"/><ellipse cx="12.5" cy="20" rx="6.2" ry="3"/><ellipse cx="27.5" cy="20" rx="6.2" ry="3"/></g>
+              <circle cx="20" cy="20" r="2.4" fill="#4E6B8D"/>
+            </svg>
+            <p class="place" style="--w:250" lang="pt-PT" translate="no">Quinta do Grilo</p>
+            <p class="village" style="--w:400" lang="pt-PT" translate="no">Milharado</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="folds">
+      <!-- the bottom fold: land scene inside (stand-in crops baked into the paper) -->
+      <div class="pnl bt" id="bt" aria-hidden="true">
+        <div class="face face-in">
+          <img class="paper" src="art/v9/fold-bottom-in.webp" width="1200" height="1176" alt="">
+          <span class="crease" style="top:0"></span>
+          <!-- PLACEHOLDER plaque, as in r8b: a simple cut-tile cartouche, not traced from the user's photo -->
+          <div class="p-plaque">
+            <svg viewBox="0 0 300 150" focusable="false">
+              <defs><clipPath id="plq"><path d="M20 58C20 46 34 42 46 46C58 50 70 36 88 30C108 22 128 18 150 18C172 18 192 22 212 30C230 36 242 50 254 46C266 42 280 46 280 58V110C280 126 266 134 252 130C236 126 220 136 200 138C182 140 166 136 150 136C134 136 118 140 100 138C80 136 64 126 48 130C34 134 20 126 20 110Z"/></clipPath></defs>
+              <path d="M20 58C20 46 34 42 46 46C58 50 70 36 88 30C108 22 128 18 150 18C172 18 192 22 212 30C230 36 242 50 254 46C266 42 280 46 280 58V110C280 126 266 134 252 130C236 126 220 136 200 138C182 140 166 136 150 136C134 136 118 140 100 138C80 136 64 126 48 130C34 134 20 126 20 110Z" fill="#F2EBDD" stroke="#E2D8C4" stroke-width="6"/>
+              <path clip-path="url(#plq)" d="M0 60H300M0 100H300M60 0V150M110 0V150M160 0V150M210 0V150" stroke="#E2D8C4" stroke-width="1.4" fill="none"/>
+              <path d="M30 60C30 52 40 50 48 53C60 57 72 44 90 38C110 31 130 28 150 28C170 28 190 31 210 38C228 44 240 57 252 53C260 50 270 52 270 60V108C270 120 260 124 250 121C234 117 218 126 198 128C182 130 166 126 150 126C134 126 118 130 102 128C82 126 66 117 50 121C40 124 30 120 30 108Z" fill="none" stroke="#7F9BA8" stroke-width="7" stroke-opacity=".38"/>
+              <path d="M30 60C30 52 40 50 48 53C60 57 72 44 90 38C110 31 130 28 150 28C170 28 190 31 210 38C228 44 240 57 252 53C260 50 270 52 270 60V108C270 120 260 124 250 121C234 117 218 126 198 128C182 130 166 126 150 126C134 126 118 130 102 128C82 126 66 117 50 121C40 124 30 120 30 108Z" fill="none" stroke="#4E6B8D" stroke-width="1.5"/>
+              <text x="150" y="78" text-anchor="middle" font-family="'EB Garamond', serif" font-style="italic" font-size="30" fill="#4A3B2E" lang="pt-PT">Quinta</text>
+              <text x="150" y="109" text-anchor="middle" font-family="'EB Garamond', serif" font-style="italic" font-size="26" fill="#4A3B2E" lang="pt-PT">do Grilo</text>
+            </svg>
+          </div>
+          <span class="gl"><i></i></span>
+          <span class="shade"></span>
+        </div>
+        <div class="face face-out">
+          <span class="cast"></span>
+          <img class="paper" src="art/v9/fold-bottom-out.webp" width="1200" height="1176" alt="">
+          <span class="gl"><i></i></span>
+          <span class="shade"></span>
+        </div>
+      </div>
+
+      <!-- the top fold: the sky inside (stand-in crops baked in), the emboss outside -->
+      <div class="pnl tp" id="tp" aria-hidden="true">
+        <div class="face face-in">
+          <img class="paper" src="art/v9/fold-top-in.webp" width="1200" height="504" alt="">
+          <span class="gl"><i></i></span>
+          <span class="shade"></span>
+        </div>
+        <div class="face face-out">
+          <span class="cast"></span>
+          <img class="paper" src="art/v9/fold-top-out.webp" width="1200" height="504" alt="">
+          <svg class="emboss" viewBox="0 -8 384 240" focusable="false"><use class="lo" href="#sprig-line"/><use class="hi" href="#sprig-line"/></svg>
+          <span class="gl"><i></i></span>
+          <span class="shade"></span>
+        </div>
+      </div>
+
+      <!-- the seal halves ride copies of the two folds (same box, origin, transform and timing), drawn above both papers,
+           so wax that crosses the seam is never covered by the other fold's paper; the upper half lies over the lower -->
+      <div class="pnl bt ride" aria-hidden="true">
+        <div class="face face-out">
+          <img class="half half-lo" src="art/v9/seal-bottom.webp" width="600" height="378" alt="">
+        </div>
+      </div>
+      <div class="pnl tp ride" aria-hidden="true">
+        <div class="face face-out">
+          <img class="half half-up" src="art/v9/seal-top.webp" width="600" height="378" alt="">
+        </div>
+      </div>
+      </div>
+
+      <div class="closed-deco" aria-hidden="true">
+        <svg class="twine tw-l" viewBox="0 0 38 18" preserveAspectRatio="none" focusable="false">
+          <path class="tw-sh" d="M0 7.5C15 8 30 8.3 38 8.1"/>
+          <path d="M0 7.5C15 8 30 8.3 38 8.1"/>
+          <path d="M0 10.5C17 9.9 30 9.6 38 9.7" opacity=".8"/>
+        </svg>
+        <svg class="twine tw-r" viewBox="62 0 38 18" preserveAspectRatio="none" focusable="false">
+          <path class="tw-sh" d="M62 7.6C75 7.2 88 7.6 100 8.2"/>
+          <path d="M62 7.6C75 7.2 88 7.6 100 8.2"/>
+          <path d="M62 10.4C78 10.9 90 10.3 100 9.6" opacity=".8"/>
+        </svg>
+      </div>
+      <button type="button" class="seal" id="seal">
+        <img class="wax" src="art/v9/seal-whole.webp" width="600" height="600" alt="">
+        <span class="seal-label" data-i18n="seal">Toca para abrir</span>
+      </button>
+    </div>
+  </div>
+</main>
+
+<p class="ph-tag" aria-hidden="true">Prototype: fold art and plaque are stand-ins</p>
+
+<script>
+(function(){
+  var T = {
+    'pt-PT': {seal:'Toca para abrir', skip:'Saltar', kicker:'TODO(user) · frase de abertura', join:'e', date:'10 de julho de TODO(user)', card:'Convite'},
+    'en':    {seal:'Tap to open', skip:'Skip', kicker:'TODO(user) · opening line', join:'and', date:'10 July TODO(user)', card:'Invitation'},
+    'es':    {seal:'Toca para abrir', skip:'Saltar', kicker:'TODO(user) · frase de apertura', join:'y', date:'10 de julio de TODO(user)', card:'Invitación'}
+  };
+  var q = new URLSearchParams(location.search);
+  var code = q.get('lang') || 'pt-PT';
+  if (!T[code]) code = 'pt-PT';
+  var t = T[code];
+  document.documentElement.lang = code;
+  if (q.get('sharp') === '1') document.documentElement.classList.add('sharp');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = t[el.getAttribute('data-i18n')]; });
+  document.getElementById('card').setAttribute('aria-label', t.card);
+
+  /* the names as in r8b, split into letters for the pen (--i orders them); the o after the T steps out from under its top stroke */
+  (function(join){
+    var lines = ['Maya', join + ' Tomás'], i = 0, html = '';
+    lines.forEach(function(line, li){
+      html += '<span class="l' + (li ? ' amp' + (join.length > 1 ? ' long' : '') : '') + '">';
+      line.split('').forEach(function(c, k){
+        html += '<span class="ch' + (line[k - 1] === 'T' ? ' after-t' : '') + '" style="--i:' + (i++) + '">' + (c === ' ' ? '&nbsp;' : c) + '</span>';
+      });
+      html += '</span>';
+    });
+    document.querySelector('.pen').innerHTML = html;
+    if (join.length > 1) document.querySelector('.names').classList.add('long');
+  })(t.join);
+
+  var sheet = document.getElementById('sheet'), move = document.getElementById('move'), bt = document.getElementById('bt'),
+      seal = document.getElementById('seal'), skip = document.getElementById('skip'), card = document.getElementById('card');
+  var mq = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+  /* weak phone: few cores or little memory gets the fade, like reduced motion */
+  var weak = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) || (navigator.deviceMemory && navigator.deviceMemory <= 1);
+  function fadeOnly(){ return q.get('motion') === 'reduce' || weak || (mq && mq.matches); }
+  var state = 'closed', safety = 0;
+
+  /* press feedback (120 ms, scale .97) for touch, mouse and pen */
+  function unpress(){ seal.classList.remove('press'); }
+  seal.addEventListener('pointerdown', function(){ if (state === 'closed') seal.classList.add('press'); });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(e){ seal.addEventListener(e, unpress); });
+
+  function finish(){
+    if (state === 'open') return;
+    state = 'open';
+    clearTimeout(safety);
+    sheet.classList.add('done');        /* releases will-change */
+    skip.hidden = true;                 /* the folds end here (1680 ms); the names and the date still write on after it.
+                                           When the draw-in is attached, rebind Skip to the end of the whole sequence. */
+    card.focus({preventScroll:true});
+  }
+  function open(){
+    if (state !== 'closed') return;
+    state = 'opening';
+    seal.disabled = true; unpress();
+    if (fadeOnly()) {
+      /* closed sheet fades out (200 ms), then the open sheet fades in (300 ms); no rotation */
+      move.addEventListener('transitionend', function out(e){
+        if (e.target !== move || e.propertyName !== 'opacity') return;
+        move.removeEventListener('transitionend', out);
+        sheet.classList.add('instant', 'crack', 'is-open');
+        void move.offsetHeight;
+        sheet.classList.remove('instant');
+        move.addEventListener('transitionend', function inn(e2){
+          if (e2.target !== move || e2.propertyName !== 'opacity') return;
+          move.removeEventListener('transitionend', inn);
+          finish();
+        });
+        move.classList.remove('fade-out');
+      });
+      move.classList.add('fade-out');
+      safety = setTimeout(jump, 1500);
+      return;
+    }
+    /* one class starts every beat; the CSS delays are the beat table, so nothing drifts */
+    sheet.classList.add('crack', 'is-open');
+    safety = setTimeout(jump, 3000);    /* only if transitionend never comes (tab hidden) */
+  }
+  function jump(){
+    if (state === 'open') return;
+    state = 'opening';
+    seal.disabled = true; unpress();
+    move.classList.remove('fade-out');
+    sheet.classList.add('instant', 'crack', 'is-open');
+    finish();
+  }
+  /* the end is chained on the bottom fold's transitionend, not on a timer */
+  bt.addEventListener('transitionend', function(e){
+    if (e.target === bt && e.propertyName === 'transform' && sheet.classList.contains('is-open')) finish();
+  });
+  seal.addEventListener('click', open);
+  skip.addEventListener('click', jump);
+  /* decode every layer before anyone taps, so the first frame never waits on a decode */
+  window.addEventListener('load', function(){
+    sheet.querySelectorAll('img').forEach(function(im){ if (im.decode) im.decode().catch(function(){}); });
+  });
+})();
+</script>
+</body>
+</html>

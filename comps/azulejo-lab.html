@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Azulejo lab</title>
+<meta name="description" content="Quinta do Grilo plaque traced from the photo, names panel concepts and azulejo details, rendered two ways for comparison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --brown:#6B4F34; --olive:#4F5F2E;
+  --line:#D9CCB0; --cobalt:#2A426E; --azulejo:#7F9BA8;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.45 'EB Garamond',Georgia,serif;}
+main{max-width:520px;margin:0 auto;padding:20px 16px 64px}
+h1{font:500 15px/1.2 'EB Garamond',serif;letter-spacing:.14em;text-transform:uppercase;margin:4px 0 2px;color:var(--brown)}
+h2{font:500 13px/1.2 'EB Garamond',serif;letter-spacing:.14em;text-transform:uppercase;margin:44px 0 10px;color:var(--brown)}
+.sub{font-size:14px;color:var(--brown);margin:0 0 14px}
+nav.jump{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}
+nav.jump a{font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;min-height:32px;display:inline-flex;align-items:center}
+nav.jump a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--cobalt);outline-offset:2px}
+.bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#FBF7EE}
+.seg button{font:500 13px/1 'EB Garamond',serif;letter-spacing:.04em;color:var(--ink);background:transparent;border:0;padding:0 12px;min-height:36px;cursor:pointer;touch-action:manipulation}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:hover{background:#EFE6D2}.seg button[aria-pressed="true"]:hover{background:var(--ink)}
+.frame{margin:10px 0 4px}
+.cap{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--brown);margin:5px 2px 0;letter-spacing:.02em}
+.cap b{font-weight:500;color:var(--ink)}
+.scroller{overflow:auto;border-radius:6px;background:#EFE7D6;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;max-height:78vh}
+.inner{width:100%;position:relative}
+.inner>svg,.inner>canvas{display:block;width:100%;height:auto}
+.onion{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--brown);margin:6px 2px}
+.onion input{flex:1;accent-color:var(--cobalt)}
+.comp{margin:14px 0 26px}
+.comp svg{display:block;width:100%;height:auto}
+.label{font-size:13px;color:var(--brown);margin:6px 2px 0}
+.label b{color:var(--ink);font-weight:500}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{font-size:13.5px;color:var(--brown);margin:8px 2px}
+ul.refs{list-style:none;padding:0;margin:0}
+ul.refs li{padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+ul.refs a{color:var(--cobalt);text-underline-offset:2px}
+ul.refs span{display:block;color:var(--brown);font-size:13.5px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.paperbox{background:var(--paper);border-radius:6px}
+@media (prefers-reduced-motion:no-preference){ .fadein{animation:fi .5s ease-out both} @keyframes fi{from{opacity:0}to{opacity:1}} }
+</style>
+</head>
+<body>
+<main>
+  <h1>Azulejo lab</h1>
+  <p class="sub">Quinta do Grilo plaque, names in tiles, details. Hand-built, no stand-in font for the plaque.</p>
+  <nav class="jump" aria-label="Sections">
+    <a href="#plaque">Plaque</a><a href="#names">Names panel</a><a href="#details">Details</a><a href="#refs">References</a>
+  </nav>
+
+  <!-- ============ 1. PLAQUE ============ -->
+  <h2 id="plaque">1 · The plaque, against the photo</h2>
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Zoom">
+      <button type="button" data-zoom="1" aria-pressed="true">1×</button><button type="button" data-zoom="2" aria-pressed="false">2×</button><button type="button" data-zoom="3" aria-pressed="false">3×</button>
+    </div>
+    <div class="seg" role="group" aria-label="Mark above the Q">
+      <button type="button" data-mark="hat" aria-pressed="true">Hat</button><button type="button" data-mark="none" aria-pressed="false">No mark</button>
+    </div>
+    <div class="seg" role="group" aria-label="Ground">
+      <button type="button" data-bg="paper" aria-pressed="true">Paper</button><button type="button" data-bg="wall" aria-pressed="false">Wall</button>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="scroller" data-z><div class="inner" id="photoBox"></div></div>
+    <div class="cap"><span><b>Photo</b> · <span id="photoKind">native pixels</span></span>
+      <span class="seg" role="group" aria-label="Photo source"><button type="button" data-photo="native" aria-pressed="true">Native</button><button type="button" data-photo="sr" aria-pressed="false">4× upscale</button></span></div>
+  </div>
+  <div class="frame">
+    <div class="scroller" data-z><div class="inner" id="plaqueA"></div></div>
+    <div class="cap"><span><b>A</b> · vector strokes + SVG glaze filters</span><span id="kbA"></span></div>
+    <label class="onion"><span>Photo under A</span><input type="range" id="onion" min="0" max="100" value="0" aria-label="Photo overlay opacity on approach A"></label>
+  </div>
+  <div class="frame">
+    <div class="scroller" data-z><div class="inner" id="plaqueB"></div></div>
+    <div class="cap"><span><b>B</b> · canvas brush dabs + pigment grain</span><span id="kbB"></span></div>
+  </div>
+  <p class="note">Traced from photo pixels: lettering, the hat over the Q, cartouche outline, cut top, 10×4 tile grid. Rebuilt from azulejo convention (too blurred to read): leaf and shell detail, hatching, brush texture.</p>
+
+  <!-- ============ 2. NAMES PANEL ============ -->
+  <h2 id="names">2 · Names in tiles, quinta below</h2>
+  <div class="comp" id="c1"></div>
+  <div class="comp" id="c2"></div>
+  <div class="comp" id="c3"></div>
+  <div class="comp" id="c4"></div>
+
+  <!-- ============ 3. DETAILS ============ -->
+  <h2 id="details">3 · Details</h2>
+  <div class="comp" id="d-lining"></div>
+  <div class="comp" id="d-end"></div>
+  <div class="grid2">
+    <div class="comp" id="d-seal"></div>
+    <div class="comp" id="d-corner"></div>
+  </div>
+  <div class="comp" id="d-band"></div>
+
+  <!-- ============ 4. REFERENCES ============ -->
+  <h2 id="refs">4 · What I studied</h2>
+  <ul class="refs">
+    <li><a href="https://commons.wikimedia.org/wiki/File:Anjo_m%C3%BAsico_combras%C3%A3o_e_trombeta.jpg">Anjo músico com brasão (public domain, Commons)</a><span>Brushwork: dark cobalt contour, flat diluted wash, white glaze left as highlight, pooled ends, thin grout, painting shifting across tiles.</span></li>
+    <li><a href="https://artsandculture.google.com/asset/maritime-and-country-scene/iAFcmH80UVeFZw">Maritime and country scene, 1725–50 (MNAz)</a><span>A cut-out (recortado) top edge that follows the painted frame, as on the quinta plaque.</span></li>
+    <li><a href="https://www.proantic.com/en/1555673-18th-century-antique-portuguese-tile-mural-panel-depicting-a-blue-and-white-vase-surrou.html">18th-c. panel, vase with flowers (dealer)</a><span>Plants painted in the same blue as the frame; leaves as soft washes with a darker edge on one side only.</span></li>
+    <li><a href="https://www.proantic.com/en/1735873-18th-century-blue-and-white-portuguese-tile-depicting-a-foot-on-a-rocaille-ribbon.html">Tile with a rocaille ribbon (dealer)</a><span>How a C-scroll is built: one confident contour, a wash on the shadow side, a volute ending in a pooled dot.</span></li>
+    <li><a href="https://flic.kr/photos/vribeiro/54483281002">Painel de padrão, c. 1590–1620 (MNAz, photo)</a><span>Pattern tiles where four corners make one flower: the logic of the B3 lining.</span></li>
+    <li><a href="https://www.tclf.org/palacio-fronteira-gardens-lisbon-portugal">Palácio Fronteira gardens (TCLF)</a><span>Blue panels with real green in front: the plant frames the tile, never covers the words.</span></li>
+    <li><a href="https://suzannelovellinc.com/blog/portugals-blue-white-runneth-over/">Portugal's blue and white (designer blog)</a><span>Vines and pots against tiled walls: green and cobalt stay in separate layers, the green casts a soft shadow.</span></li>
+  </ul>
+  <p class="note">Links are references only. Nothing from them is copied; all drawing on this page is authored here.</p>
+</main>
+
+<!-- shared SVG filters and gradients -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- cobalt sinks into the glaze: wobbly brush edge, pigment grain, soft halo -->
+    <filter id="paintA" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="3" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="wob"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="8" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.0 1.28" result="grainA"/>
+      <feComposite in="wob" in2="grainA" operator="in" result="gran"/>
+      <feGaussianBlur in="gran" stdDeviation="0.7" result="soft"/>
+      <feComponentTransfer in="soft" result="halo"><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+      <feMerge><feMergeNode in="halo"/><feMergeNode in="gran"/></feMerge>
+    </filter>
+    <!-- lettering paint: same idea, less wobble so it stays crisp -->
+    <filter id="inkA" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="1" seed="5" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="wob"/>
+      <feGaussianBlur in="wob" stdDeviation="0.45" result="soft"/>
+      <feMerge><feMergeNode in="soft"/><feMergeNode in="wob"/></feMerge>
+    </filter>
+    <!-- glossy glaze: bevelled tile edges + slow ripples catch one light -->
+    <filter id="glazeA" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="bevel"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.009" numOctaves="2" seed="11" result="undul"/>
+      <feComposite in="bevel" in2="undul" operator="arithmetic" k1="0" k2="1" k3="0.45" k4="0" result="height"/>
+      <feSpecularLighting in="height" surfaceScale="5" specularConstant="0.75" specularExponent="28" lighting-color="#FFFDF7" result="spec">
+        <feDistantLight azimuth="225" elevation="42"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in"/>
+    </filter>
+    <filter id="spongeA" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="3" seed="17" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 2.6 -0.75" result="m"/>
+      <feComposite in="SourceGraphic" in2="m" operator="in" result="sp"/>
+      <feGaussianBlur in="sp" stdDeviation="0.6"/>
+    </filter>
+    <filter id="dropA" x="-5%" y="-5%" width="110%" height="115%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#3B2F25" flood-opacity="0.22"/>
+    </filter>
+    <!-- living plants in front of the tiles: soft wash edge + a faint shadow on the glaze -->
+    <filter id="overA" x="-10%" y="-10%" width="125%" height="130%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="21" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="2" xChannelSelector="R" yChannelSelector="G" result="wob"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="b"/>
+      <feOffset in="b" dx="3" dy="6" result="o"/>
+      <feFlood flood-color="#3B2F25" flood-opacity="0.16"/>
+      <feComposite in2="o" operator="in" result="sh"/>
+      <feMerge><feMergeNode in="sh"/><feMergeNode in="wob"/></feMerge>
+    </filter>
+    <linearGradient id="sheen0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".34" stop-color="#fff" stop-opacity="0"/><stop offset=".46" stop-color="#FFFDF6" stop-opacity=".2"/><stop offset=".58" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="sheen1" x1="0" y1=".2" x2="1" y2=".9"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset=".63" stop-color="#FFFDF6" stop-opacity=".16"/><stop offset=".76" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="sheen2" x1=".1" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#FFFDF6" stop-opacity=".14"/><stop offset=".36" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="sheen3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="liftShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2F25" stop-opacity=".30"/><stop offset=".22" stop-color="#3B2F25" stop-opacity=".08"/><stop offset=".5" stop-color="#3B2F25" stop-opacity="0"/></linearGradient>
+  </defs>
+</svg>
+
+<script>
+/* ==========================================================================
+   TRACE DATA. Everything traced from the photo lives here, in plaque units
+   (1 tile = 100). To re-trace from a sharper photo: drop it in references/,
+   crop the plaque, set REF below (crop box + where the plaque rectangle sits
+   in that crop), turn up "Photo under A" and move the points.
+   ========================================================================== */
+const REF = {
+  native: 'ref-crops/plaque-native.jpg',          // crop 115,700 → 750,1080 of references/quinta-do-grilo-sign.jpg
+  sr:     'ref-crops/plaque-sr4x-general-v3.jpg',  // same crop, Real-ESRGAN general x4v3: tracing aid only
+  // plaque rectangle in crop pixels: x 8→628, y 125→372  → 1000 × 400 units
+  x: -8 * 1.6129, y: 200 - 125 * 1.6129, w: 635 * 1.6129, h: 380 * 1.6129
+};
+const PW = 1000;                 // plaque width in units
+const C = {                      // palette: cobalt sampled from the sign, pulled toward the invitation's azulejo token
+  line:'#2F4569', pool:'#1F3254', mid:'#5D7594', wash:'#8FA3BA', pale:'#C3CFDB', sponge:'#A9B9CB',
+  ink:'#241D19', inkBand:'#4A3A31', glaze:['#F4EFE4','#F3EDE1','#F5F1E7','#F2ECDF','#F4EEE3','#F1EBDE'],
+  grout:'#DDD6C8', olive:'#4F5F2E', oliveDk:'#3E4B24', sage:'#9DAE82', sageDk:'#7F9264', stem:'#5C5235', fruit:'#5D6A39',
+  names:'#2A426E'
+};
+
+// ---------- small utils
+const NS='http://www.w3.org/2000/svg';
+function mk(tag,attrs,parent){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs){if(attrs[k]!=null)e.setAttribute(k,attrs[k]);}if(parent)parent.appendChild(e);return e;}
+function RNG(seed){let s=seed>>>0;return()=>{s=(s+0x6D2B79F5)>>>0;let t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
+const f1=n=>(Math.round(n*10)/10);
+const P=(x,y)=>f1(x)+','+f1(y);
+const ptsD=(pts,close)=>'M'+pts.map(p=>P(p[0],p[1])).join(' L')+(close?' Z':'');
+const smoothstep=x=>x<=0?0:x>=1?1:x*x*(3-2*x);
+const rad=d=>d*Math.PI/180;
+
+const SAMP=mk('svg',{width:0,height:0,style:'position:absolute;width:0;height:0;overflow:hidden','aria-hidden':'true'});document.body.appendChild(SAMP);
+const sCache=new Map();
+function sample(d,step=1.1){const k=d+'|'+step;if(sCache.has(k))return sCache.get(k);const p=mk('path',{d},SAMP);const L=p.getTotalLength();const n=Math.max(2,Math.ceil(L/step));const pts=new Array(n+1);for(let i=0;i<=n;i++){const q=p.getPointAtLength(L*i/n);pts[i]=[q.x,q.y];}p.remove();const r={pts,L};sCache.set(k,r);return r;}
+
+// ---------- stroke widths: brush (cobalt) and pointed pen (lettering)
+function widths(pts,st,rnd){
+  const n=pts.length,W=new Array(n),w=st.w;
+  if(st.mode==='pen'){
+    const hair=st.hair??Math.max(1.7,w*.26);
+    for(let i=0;i<n;i++){const a=pts[Math.max(0,i-3)],b=pts[Math.min(n-1,i+3)];const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;const down=Math.max(0,dy/l);W[i]=hair+(w-hair)*Math.pow(down,1.5);}
+    const S=new Array(n);const k=6;for(let i=0;i<n;i++){let s=0,c=0;for(let j=-k;j<=k;j++){const q=i+j;if(q>=0&&q<n){s+=W[q];c++;}}S[i]=s/c;}
+    for(let i=0;i<n;i++){const t=i/(n-1);S[i]*=0.55+0.45*Math.min(smoothstep(t/.05),smoothstep((1-t)/.06));}
+    return S;
+  }
+  const ta=st.ta??.07,tb=st.tb??.22,ph=rnd()*20,tip=st.tip??.16;
+  for(let i=0;i<n;i++){const t=i/(n-1);const a=smoothstep(t/ta);let b=smoothstep((1-t)/tb);if(st.end==='pool')b=.62+.38*b;const env=tip+(1-tip)*Math.min(a,b);
+    const wob=1+.11*Math.sin(i*.045+ph)+.06*Math.sin(i*.19+ph*1.7);W[i]=w*env*wob;}
+  return W;
+}
+function outline(pts,W){
+  const n=pts.length,L=[],R=[];
+  const tan=i=>{const a=pts[Math.max(0,i-1)],b=pts[Math.min(n-1,i+1)];const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;return[dx/l,dy/l];};
+  for(let i=0;i<n;i++){const t=tan(i),h=W[i]/2;L.push([pts[i][0]-t[1]*h,pts[i][1]+t[0]*h]);R.push([pts[i][0]+t[1]*h,pts[i][1]-t[0]*h]);}
+  const cap=(p,t,h,start)=>{const o=[];for(let k=1;k<6;k++){const a=Math.PI*k/6;const nx=-t[1],ny=t[0];const s=start?-1:1;o.push([p[0]+(nx*Math.cos(a)*(start?-1:1))*h*(start?-1:1)+t[0]*Math.sin(a)*h*s,p[1]+(ny*Math.cos(a))*h+t[1]*Math.sin(a)*h*s]);}return o;};
+  const te=tan(n-1),ts=tan(0);
+  const endCap=[];for(let k=1;k<6;k++){const a=Math.PI*k/6,h=W[n-1]/2;endCap.push([pts[n-1][0]+(-te[1])*Math.cos(a)*h+te[0]*Math.sin(a)*h,pts[n-1][1]+(te[0])*Math.cos(a)*h+te[1]*Math.sin(a)*h]);}
+  const stCap=[];for(let k=1;k<6;k++){const a=Math.PI*k/6,h=W[0]/2;stCap.push([pts[0][0]+(ts[1])*Math.cos(a)*h-ts[0]*Math.sin(a)*h,pts[0][1]+(-ts[0])*Math.cos(a)*h-ts[1]*Math.sin(a)*h]);}
+  return [...L,...endCap,...R.reverse(),...stCap];
+}
+
+// ---------- art generators (all output plain element lists shared by both renderers)
+function polyFromSpine(sp,wOut,wIn){const n=sp.length,A=[],B=[];for(let i=0;i<n;i++){const a=sp[Math.max(0,i-1)],b=sp[Math.min(n-1,i+1)];let dx=b[0]-a[0],dy=b[1]-a[1];const l=Math.hypot(dx,dy)||1;dx/=l;dy/=l;A.push([sp[i][0]-dy*wOut[i],sp[i][1]+dx*wOut[i]]);B.push([sp[i][0]+dy*wIn[i],sp[i][1]-dx*wIn[i]]);}return{A,B};}
+function spine(x,y,angDeg,len,bend,curl,side,N=40){const pts=[[x,y]];let th=rad(angDeg),px=x,py=y;const st=len/N;for(let i=1;i<=N;i++){const t=i/N;const k=side*(bend*Math.PI/N)+side*curl*Math.PI*2.2*Math.pow(Math.max(0,(t-.68)/.32),2)/N;th+=k;px+=Math.cos(th)*st;py+=Math.sin(th)*st;pts.push([px,py]);}return pts;}
+// acanthus leaf, the azulejo way: pale wash, mid wash on the shadow side, contour, midrib, a vein per lobe
+function acanthus(o){
+  const s=o.side||1,lob=o.lobes||4,w=o.w||16;
+  const sp=spine(o.x,o.y,o.ang,o.len,o.bend??.35,o.curl??.6,s);
+  const n=sp.length,wo=[],wi=[];
+  for(let i=0;i<n;i++){const t=i/(n-1);const env=Math.pow(Math.sin(Math.PI*Math.min(1,t*1.04+.02)),.75)*(1-.45*t);const l=.5+.5*Math.pow(Math.abs(Math.sin(lob*Math.PI*t)),.55);wo.push(w*env*l);wi.push(w*.5*env*(.75+.25*Math.pow(Math.abs(Math.sin((lob-1)*Math.PI*t+.6)),.6)));}
+  const {A,B}=polyFromSpine(sp,wo.map(v=>v*s),wi.map(v=>v*s));
+  const body=[...A,...B.slice().reverse()];
+  const shade=[...sp,...B.slice().reverse()];
+  const els=[
+    {t:'wash',d:ptsD(body,true),c:C.wash,o:.55},
+    {t:'wash',d:ptsD(shade,true),c:C.mid,o:.42,edge:.6},
+    {t:'line',d:ptsD(A),w:o.lw||2.2,c:C.line,tb:.35,ta:.1},
+    {t:'line',d:ptsD(B),w:(o.lw||2.2)*1.15,c:C.line,tb:.4,ta:.08,end:'pool',pool:true},
+    {t:'line',d:ptsD(sp.slice(1,Math.floor(n*.78))),w:(o.lw||2.2)*.65,c:C.mid,tb:.5,ta:.1}
+  ];
+  for(let k=0;k<lob-1;k++){const t=(k+.62)/lob;const i=Math.min(n-2,Math.floor(t*(n-1)));const j=Math.min(n-1,i+3);const a=sp[i],b=A[j];
+    els.push({t:'line',d:`M${P(a[0],a[1])} L${P(a[0]+(b[0]-a[0])*.72,a[1]+(b[1]-a[1])*.72)}`,w:1.25,c:C.line,tb:.6,ta:.2});}
+  const e=sp[n-1];els.push({t:'dot',x:e[0],y:e[1],r:(o.lw||2.2)*.95,c:C.pool,o:.75});
+  return els;
+}
+function volute(o){ // log spiral that ends in a pooled ball
+  const turns=o.turns??1.35,r0=o.r,re=o.re??o.r*.18,k=Math.log(r0/re)/(turns*2*Math.PI),dir=o.dir??1,a0=rad(o.a0??-90);
+  const pts=[];const N=90;for(let i=0;i<=N;i++){const th=turns*2*Math.PI*i/N;const r=r0*Math.exp(-k*th);pts.push([o.x+r*Math.cos(a0+dir*th),o.y+r*Math.sin(a0+dir*th)]);}
+  const out=[];for(let i=0;i<=N*.55;i++){const th=turns*2*Math.PI*i/N;const r=r0*Math.exp(-k*th)*.62;out.push([o.x+r*Math.cos(a0+dir*th),o.y+r*Math.sin(a0+dir*th)]);}
+  const e=pts[N];
+  return [{t:'wash',d:ptsD([...pts.slice(0,Math.floor(N*.55)+1),...out.reverse()],true),c:C.wash,o:.5,edge:.5},
+          {t:'line',d:ptsD(pts),w:o.w||3,c:C.line,ta:.05,tb:.15,end:'pool'},
+          {t:'dot',x:e[0],y:e[1],r:(o.w||3)*.95,c:C.pool,o:.85}];
+}
+function shell(o){ // rocaille shell: ribs from a hinge, scalloped lip, alternate gaps washed
+  const n=o.ribs||9,els=[],tips=[];for(let i=0;i<n;i++){const a=rad(o.a0+(o.a1-o.a0)*i/(n-1));tips.push([o.x+Math.cos(a)*o.r,o.y+Math.sin(a)*o.r,a]);}
+  let lip=`M${P(tips[0][0],tips[0][1])}`;for(let i=0;i<n-1;i++){const am=(tips[i][2]+tips[i+1][2])/2;lip+=` Q${P(o.x+Math.cos(am)*o.r*1.16,o.y+Math.sin(am)*o.r*1.16)} ${P(tips[i+1][0],tips[i+1][1])}`;}
+  els.push({t:'wash',d:lip+` L${P(o.x,o.y)} Z`,c:C.pale,o:.7,edge:.4});
+  for(let i=0;i<n-1;i+=2){const am=(tips[i][2]+tips[i+1][2])/2;els.push({t:'wash',d:`M${P(o.x,o.y)} L${P(tips[i][0],tips[i][1])} Q${P(o.x+Math.cos(am)*o.r*1.16,o.y+Math.sin(am)*o.r*1.16)} ${P(tips[i+1][0],tips[i+1][1])} Z`,c:C.mid,o:.38,edge:.3});}
+  els.push({t:'line',d:lip,w:o.w||2.4,c:C.line,ta:.04,tb:.08});
+  for(const t of tips){const h=.16;els.push({t:'line',d:`M${P(o.x+(t[0]-o.x)*h,o.y+(t[1]-o.y)*h)} L${P(t[0],t[1])}`,w:1.5,c:C.line,ta:.5,tb:.12,tip:.3});}
+  els.push({t:'dot',x:o.x,y:o.y,r:3.2,c:C.pool,o:.8});
+  return els;
+}
+function rosette(x,y,r,rot=0){ // four soft petals and a centre dot
+  const els=[];for(let k=0;k<4;k++){const a=rad(rot+90*k);const tip=[x+Math.cos(a)*r,y+Math.sin(a)*r];const n=[-Math.sin(a),Math.cos(a)];const w=r*.42;
+    const d=`M${P(x,y)} C${P(x+Math.cos(a)*r*.3+n[0]*w,y+Math.sin(a)*r*.3+n[1]*w)} ${P(tip[0]+n[0]*w*.6,tip[1]+n[1]*w*.6)} ${P(tip[0],tip[1])} C${P(tip[0]-n[0]*w*.6,tip[1]-n[1]*w*.6)} ${P(x+Math.cos(a)*r*.3-n[0]*w,y+Math.sin(a)*r*.3-n[1]*w)} ${P(x,y)} Z`;
+    els.push({t:'wash',d,c:C.wash,o:.6,edge:.8},{t:'line',d:`M${P(x+Math.cos(a)*r*.25,y+Math.sin(a)*r*.25)} L${P(tip[0]-Math.cos(a)*r*.12,tip[1]-Math.sin(a)*r*.12)}`,w:1.3,c:C.line,tb:.5,tip:.25});}
+  els.push({t:'dot',x,y,r:r*.18,c:C.line,o:.9});return els;
+}
+function blueLeaf(x,y,ang,len,w,side=1){ // small olive-shaped leaf painted in cobalt
+  const sp=spine(x,y,ang,len,.25,0,side,24);const n=sp.length,wo=[],wi=[];for(let i=0;i<n;i++){const t=i/(n-1);const e=Math.pow(Math.sin(Math.PI*t),.85)*(1-.25*t)*w;wo.push(e);wi.push(e);}
+  const {A,B}=polyFromSpine(sp,wo,wi);return[{t:'wash',d:ptsD([...A,...B.reverse()],true),c:C.wash,o:.62,edge:1},{t:'line',d:ptsD(A),w:1.4,c:C.line,ta:.15,tb:.5,tip:.2},{t:'line',d:ptsD(sp.slice(0,Math.floor(n*.7))),w:.9,c:C.mid,tb:.6}];
+}
+// mirror helpers (all generated paths use absolute "x,y" pairs)
+const mirD=(d,W=PW)=>d.replace(/(-?\d*\.?\d+),(-?\d*\.?\d+)/g,(m,x,y)=>P(W-(+x),+y));
+const mirEl=(e,W=PW)=>e.t==='dot'?{...e,x:W-e.x}:{...e,d:mirD(e.d,W)};
+const shift=(els,dx,dy)=>els.map(e=>e.t==='dot'?{...e,x:e.x+dx,y:e.y+dy}:{...e,d:e.d.replace(/(-?\d*\.?\d+),(-?\d*\.?\d+)/g,(m,x,y)=>P(+x+dx,+y+dy))});
+const xform=(els,s,dx,dy)=>els.map(e=>e.t==='dot'?{...e,x:e.x*s+dx,y:e.y*s+dy,r:e.r*s}:e.t==='text'?{...e,x:e.x*s+dx,y:e.y*s+dy,s:e.s*s}:{...e,w:e.w?e.w*s:e.w,d:e.d.replace(/(-?\d*\.?\d+),(-?\d*\.?\d+)/g,(m,x,y)=>P(+x*s+dx,+y*s+dy))});
+const swapXY=els=>els.map(e=>e.t==='dot'?{...e,x:e.y,y:e.x}:{...e,d:e.d.replace(/(-?\d*\.?\d+),(-?\d*\.?\d+)/g,(m,x,y)=>P(+y,+x))});
+const rotEls=(els,deg,cx,cy)=>{const a=rad(deg),c=Math.cos(a),s=Math.sin(a);const R=(x,y)=>[cx+(x-cx)*c-(y-cy)*s,cy+(x-cx)*s+(y-cy)*c];return els.map(e=>{if(e.t==='dot'){const p=R(e.x,e.y);return{...e,x:p[0],y:p[1]};}return{...e,d:e.d.replace(/(-?\d*\.?\d+),(-?\d*\.?\d+)/g,(m,x,y)=>{const p=R(+x,+y);return P(p[0],p[1]);})};});};
+
+/* ---------- THE QUINTA PLAQUE ---------- */
+// field (inner edge of the cartouche), left half, top centre → bottom centre. Traced from the photo.
+const FIELD_L=[[500,138,476,138,452,128,426,129],[426,129,402,130,386,141,366,139],[366,139,344,137,330,150,322,166],[322,166,312,186,290,184,270,176],[270,176,245,168,222,172,205,186],[205,186,190,198,175,206,158,206],[158,206,130,206,112,222,108,246],[108,246,105,262,92,272,82,284],[82,284,66,310,62,345,66,380],[66,380,70,415,82,440,98,458],[98,458,112,474,116,494,132,506],[132,506,150,520,175,522,198,530],[198,530,225,538,250,548,280,550],[280,550,310,552,330,540,352,540],[352,540,380,540,400,556,430,556],[430,556,455,556,475,548,500,548]];
+const FIELD_R=FIELD_L.map(s=>[PW-s[6],s[7],PW-s[4],s[5],PW-s[2],s[3],PW-s[0],s[1]]).reverse();
+const segsD=(segs,move=true)=>(move?`M${P(segs[0][0],segs[0][1])}`:'')+segs.map(s=>` C${P(s[2],s[3])} ${P(s[4],s[5])} ${P(s[6],s[7])}`).join('');
+const FIELD_D=segsD(FIELD_L)+segsD(FIELD_R,false)+' Z';
+// cut-out outline of the whole tile panel: rectangle + crest (tiles cut to the painting, as in the photo)
+const CUT_D='M0,600 L0,200 L64,200 C74,182 108,162 150,153 C196,145 222,126 258,101 C296,73 350,47 410,33 C450,23 478,15 500,15 C522,15 550,23 590,33 C650,47 704,73 742,101 C778,126 804,145 850,153 C892,162 926,182 936,200 L1000,200 L1000,600 Z';
+
+function cartoucheFrame(){
+  const {pts}=sample(FIELD_D,1.2);const n=pts.length-1; // closed
+  let A=0;for(let i=0;i<n;i++){A+=pts[i][0]*pts[i+1][1]-pts[i+1][0]*pts[i][1];}
+  const sg=A>0?1:-1;const nrm=[];for(let i=0;i<n;i++){const a=pts[(i-2+n)%n],b=pts[(i+2)%n];let dx=b[0]-a[0],dy=b[1]-a[1];const l=Math.hypot(dx,dy)||1;nrm.push([sg*dy/l,-sg*dx/l]);}
+  const off=(fn)=>{const o=[];for(let i=0;i<n;i++){const d=fn(i/n);o.push([pts[i][0]+nrm[i][0]*d,pts[i][1]+nrm[i][1]*d]);}const S=[];const k=4;for(let i=0;i<n;i++){let x=0,y=0;for(let j=-k;j<=k;j++){const q=(i+j+n)%n;x+=o[q][0];y+=o[q][1];}S.push([x/(2*k+1),y/(2*k+1)]);}return S;};
+  const bw=t=>22+3.5*Math.sin(t*Math.PI*2*9)+2.5*Math.sin(t*Math.PI*2*3+1);
+  const outer=off(bw),mid=off(t=>bw(t)*.42),inner=pts.slice(0,n);
+  const els=[{t:'sponge',d:CUT_D+' '+ptsD(outer,true),c:C.sponge,o:.55},
+             {t:'wash',d:ptsD([...outer,outer[0],...inner.slice().reverse(),inner[inner.length-1]],true),c:C.wash,o:.62,edge:.4},
+             {t:'wash',d:ptsD([...mid,mid[0],...inner.slice().reverse(),inner[inner.length-1]],true),c:C.mid,o:.55,edge:.3}];
+  // garland: small leaves sprouting outward along the band, as on the sign
+  for(let i=0,k=0;i<n;i+=30,k++){const p=outer[i];if(p[1]<175)continue;const nv=nrm[i];const a=Math.atan2(nv[1],nv[0])*180/Math.PI+(k%2?32:-32);els.push(...blueLeaf(p[0]-nv[0]*3,p[1]-nv[1]*3,a,15+(k%3)*3,4.6,k%2?1:-1));}
+  // inner contour: painted as six strokes per side, pigment pooling where they meet
+  const groups=[[0,1,2],[3,4,5],[6,7],[8,9,10],[11,12],[13,14,15]];
+  for(const g of groups){const segs=g.map(i=>FIELD_L[i]);els.push({t:'line',d:segsD(segs),w:7,c:C.line,ta:.05,tb:.1,end:'pool',tip:.45});
+    els.push(mirEl({t:'line',d:segsD(segs),w:6.7,c:C.line,ta:.05,tb:.1,end:'pool',tip:.45}));}
+  // outer contour: thinner, in ten strokes
+  const parts=10;for(let p=0;p<parts;p++){const a=Math.floor(p*n/parts),b=Math.min(n,Math.floor((p+1)*n/parts)+3);const seg=[];for(let i=a;i<b;i++)seg.push(outer[i%n]);els.push({t:'line',d:ptsD(seg),w:3.2,c:C.line,ta:.06,tb:.18,tip:.3});}
+  // shading strokes across the band, sparse, on the lower half only (light from upper left)
+  for(let i=0;i<n;i+=11){const p=inner[i];if(p[1]<300)continue;const o=outer[i];const m=[p[0]+(o[0]-p[0])*.15,p[1]+(o[1]-p[1])*.15],q=[p[0]+(o[0]-p[0])*.78,p[1]+(o[1]-p[1])*.78];els.push({t:'line',d:`M${P(m[0],m[1])} L${P(q[0],q[1])}`,w:1.4,c:C.line,o:.75,ta:.3,tb:.5,tip:.3});}
+  return els;
+}
+function plaqueOrnament(){
+  const L=[];
+  // crest: a dense band of acanthus, as in the photo
+  L.push(...acanthus({x:446,y:118,ang:194,len:128,w:25,bend:.42,curl:.55,side:1,lobes:4}));
+  L.push(...acanthus({x:438,y:100,ang:228,len:70,w:17,bend:.3,curl:.6,side:-1,lobes:3}));
+  L.push(...acanthus({x:392,y:84,ang:206,len:62,w:15,bend:.3,curl:.65,side:-1,lobes:3}));
+  L.push(...acanthus({x:356,y:136,ang:162,len:124,w:22,bend:-.35,curl:.55,side:-1,lobes:4}));
+  L.push(...acanthus({x:330,y:114,ang:197,len:70,w:16,bend:.3,curl:.6,side:1,lobes:3}));
+  L.push(...acanthus({x:276,y:120,ang:212,len:44,w:12,bend:.3,curl:.6,side:-1,lobes:3,lw:1.9}));
+  L.push(...volute({x:232,y:153,r:15,a0:-60,dir:-1,w:3}));
+  L.push(...acanthus({x:198,y:176,ang:192,len:46,w:12,bend:.3,curl:.5,side:1,lobes:3,lw:1.9}));
+  L.push(...acanthus({x:493,y:62,ang:-122,len:32,w:9,bend:.2,curl:.4,side:-1,lobes:2,lw:1.7}));
+  // upper-left curl
+  L.push(...volute({x:124,y:234,r:20,a0:200,dir:1,w:3.6}));
+  L.push(...acanthus({x:142,y:212,ang:202,len:62,w:15,bend:-.25,curl:.5,side:-1,lobes:3,lw:2}));
+  // lower-left cluster: dense, dark
+  L.push(...acanthus({x:122,y:500,ang:146,len:96,w:22,bend:.3,curl:.6,side:1,lobes:4}));
+  L.push(...acanthus({x:136,y:516,ang:106,len:70,w:16,bend:-.3,curl:.55,side:-1,lobes:3}));
+  L.push(...acanthus({x:110,y:488,ang:190,len:66,w:15,bend:-.3,curl:.6,side:-1,lobes:3}));
+  L.push(...acanthus({x:96,y:470,ang:222,len:40,w:10,bend:.3,curl:.6,side:1,lobes:2,lw:1.8}));
+  // bottom: a chain of C-scrolls running to the centre
+  L.push({t:'line',d:'M168,546 C196,586 244,594 272,574',w:4.2,c:C.line,ta:.05,tb:.12,tip:.4});
+  L.push(...volute({x:298,y:572,r:24,a0:180,dir:1,w:4}));
+  L.push({t:'wash',d:'M168,546 C196,586 244,594 272,574 C262,560 232,560 206,548 Z',c:C.mid,o:.45,edge:.4});
+  L.push({t:'line',d:'M322,560 C352,538 392,548 418,574 C434,590 462,594 486,582',w:4,c:C.line,ta:.06,tb:.14,tip:.4,end:'pool'});
+  L.push({t:'wash',d:'M322,560 C352,538 392,548 418,574 C434,590 462,594 486,582 C452,572 430,556 404,546 C380,538 350,542 322,560 Z',c:C.wash,o:.55,edge:.4});
+  L.push(...volute({x:404,y:566,r:12,a0:-30,dir:1,w:2.6}));
+  L.push(...acanthus({x:488,y:568,ang:176,len:44,w:11,bend:-.3,curl:.6,side:-1,lobes:3,lw:1.8}));
+  const R=L.map(e=>mirEl(e));
+  const centre=[...shell({x:500,y:124,r:70,a0:-160,a1:-20,ribs:11,w:3}),
+    ...acanthus({x:500,y:62,ang:-90,len:34,w:9,bend:0,curl:.35,side:1,lobes:2,lw:1.6}),
+    ...shell({x:500,y:548,r:34,a0:22,a1:158,ribs:7,w:2.1})];
+  // hand-painted, so the right half is never an exact mirror
+  return [...L,...shift(R,1.4,-0.8),...centre];
+}
+// lettering, traced by hand from the photo (pointed-pen model: weight on downstrokes)
+function plaqueLetters(withHat){
+  const I=C.ink,Q={mode:'pen',c:I,w:9,hair:2.5},S={mode:'pen',c:I,w:6.2,hair:2.1};
+  const L=[
+    // Q: bowl, teardrop, left loop that becomes the long tail and runs into the G
+    {t:'line',d:'M372,211 C340,208 300,236 298,281 C296,318 316,340 345,339 C381,338 404,306 404,264 C404,230 386,211 360,212',...Q},
+    {t:'dot',x:344,y:248,r:4.4,c:I},{t:'line',d:'M344,247 C345,240 349,234 355,229',...S,w:4},
+    {t:'line',d:'M318,338 C300,342 284,330 285,310 C286,294 300,288 314,292 C340,300 366,318 392,331 C410,340 428,348 446,354 C470,348 500,352 505,373 C509,392 490,405 474,401 C462,398 461,387 468,384',...Q},
+    // uinta
+    {t:'line',d:'M431,281 C433,276 436,274 438,275 L438,320 C438,331 446,335 455,331 C465,327 473,318 474,300',...Q},
+    {t:'line',d:'M474,274 L474,327 C474,331 477,333 482,331',...Q},
+    {t:'line',d:'M500,281 C502,276 504,274 506,275 L506,327 C506,331 509,333 513,331',...Q},{t:'dot',x:507,y:247,r:4.2,c:I},
+    {t:'line',d:'M537,281 C539,276 541,274 543,275 L543,333',...Q},
+    {t:'line',d:'M543,288 C548,277 558,273 566,274 C571,276 572,282 572,292 L572,327 C572,331 575,333 580,331',...Q},
+    {t:'line',d:'M618,246 L618,326 C618,332 624,334 630,330',...Q},
+    {t:'line',d:'M604,276 C614,274 626,274 636,274',...Q,hair:2.4},
+    {t:'line',d:'M686,284 C683,277 674,274 664,275 C653,277 649,292 650,306 C651,322 657,333 667,333 C677,333 684,322 686,310',...Q},
+    {t:'line',d:'M688,274 L688,326 C688,331 694,333 714,332',...Q},
+    // do
+    {t:'line',d:'M354,440 C349,431 336,430 332,441 C328,452 334,460 343,460 C350,460 354,452 354,446',...S},
+    {t:'line',d:'M354,461 L354,404 C354,392 349,385 343,386 C336,388 337,397 344,399',...S},
+    {t:'line',d:'M385,431 C376,431 372,442 373,449 C374,457 380,461 386,460 C393,458 396,448 394,440 C392,433 388,431 385,431 C390,432 395,434 399,437',...S},
+    // G: bowl and descender with its ball
+    {t:'line',d:'M450,358 C430,368 419,398 423,428 C427,458 450,474 474,471 C490,469 498,457 498,442',...Q},
+    {t:'line',d:'M498,436 C498,456 498,478 497,494 C496,508 482,513 470,508 C460,504 459,494 466,490',...Q},{t:'dot',x:466,y:492,r:4.6,c:I},
+    // rilo
+    {t:'line',d:'M527,424 L527,466',...Q},{t:'line',d:'M527,436 C524,426 517,421 512,424 C508,428 512,435 518,433',...Q,w:7},{t:'dot',x:514,y:428,r:5,c:I},{t:'line',d:'M528,430 C532,424 538,423 542,426',...S,w:4},
+    {t:'line',d:'M576,424 L576,462 C576,466 579,468 584,466',...Q},{t:'dot',x:576,y:399,r:4,c:I},
+    {t:'line',d:'M603,358 L603,462 C603,466 606,468 611,466',...Q},
+    {t:'line',d:'M603,362 C609,353 620,355 620,368 C620,382 611,391 603,395',...Q},
+    {t:'line',d:'M646,423 C631,423 622,436 622,447 C622,460 632,467 645,467 C660,467 670,456 670,443 C670,431 662,423 650,423 C659,425 667,430 674,436',...Q}
+  ];
+  if(withHat){
+    // the dark mark over the Q reads as a small top hat, tilted ~39°, brim resting on the Q
+    const T=(x,y)=>{const a=rad(-39),c=Math.cos(a),s=Math.sin(a);return P(338+x*c*1.08-y*1.06*s,214+x*1.08*s+y*1.06*c);};
+    L.push({t:'fill',d:`M${T(-15,-5)} C${T(-16,-30)} ${T(-17,-55)} ${T(-17,-76)} C${T(-8,-80)} ${T(8,-80)} ${T(17,-76)} C${T(17,-55)} ${T(16,-30)} ${T(15,-5)} Z`,c:I});
+    L.push({t:'fill',d:`M${T(-28,-3)} C${T(-30,-8)} ${T(-20,-8)} ${T(0,-8)} C${T(20,-8)} ${T(30,-8)} ${T(28,-3)} C${T(26,4)} ${T(-26,4)} ${T(-28,-3)} Z`,c:I});
+    L.push({t:'fill',d:`M${T(-15.5,-17)} L${T(15.5,-17)} L${T(15.2,-9)} L${T(-15.2,-9)} Z`,c:C.inkBand,o:.9});
+    L.push({t:'line',d:`M${T(10,-70)} L${T(10.5,-22)}`,w:2.2,c:'#6E6660',o:.55,ta:.2,tb:.3});
+  }
+  return L;
+}
+function plaqueArt(hat){return [...cartoucheFrame(),...plaqueOrnament(),...plaqueLetters(hat)];}
+function gridTiles(x0,y0,cols,rows,T,filter){const t=[];for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=x0+c*T,y=y0+r*T;if(!filter||filter(x,y,T))t.push({x,y,w:T,h:T});}return t;}
+const PLAQUE_TILES=gridTiles(0,0,10,6,100,(x,y)=>!(y===0&&(x<200||x>=800)));
+
+/* ---------- ENGINE A: SVG ---------- */
+let UID=0;
+function renderA(g,art,rnd){
+  for(const el of art){
+    if(el.t==='wash'){mk('path',{d:el.d,'fill-rule':el.rule||null,fill:el.c,'fill-opacity':el.o??.5,stroke:el.c,'stroke-opacity':(el.o??.5)*.7,'stroke-width':el.edge??1.2,'stroke-linejoin':'round'},g);}
+    else if(el.t==='sponge'){mk('path',{d:el.d,'fill-rule':'evenodd',fill:el.c,'fill-opacity':(el.o??.5)*.45},g);mk('path',{d:el.d,'fill-rule':'evenodd',fill:el.c,'fill-opacity':el.o??.5,filter:'url(#spongeA)'},g);}
+    else if(el.t==='line'){const {pts}=sample(el.d);const W=widths(pts,el,rnd);mk('path',{d:ptsD(outline(pts,W),true),fill:el.c,'fill-opacity':el.o??1},g);
+      if(el.end==='pool'||el.pool){const e=pts[pts.length-1];mk('circle',{cx:f1(e[0]),cy:f1(e[1]),r:f1(W[W.length-1]*.6+.5),fill:C.pool,opacity:.5},g);}
+      if(el.mode!=='pen'){const s=pts[0];mk('circle',{cx:f1(s[0]),cy:f1(s[1]),r:f1(W[0]*.55),fill:el.c,opacity:.35},g);}}
+    else if(el.t==='fill'){mk('path',{d:el.d,fill:el.c,'fill-opacity':el.o??1},g);}
+    else if(el.t==='dot'){mk('circle',{cx:f1(el.x),cy:f1(el.y),r:f1(el.r),fill:el.c,opacity:el.o??1},g);}
+    else if(el.t==='text'){const t=mk('text',{x:f1(el.x),y:f1(el.y),'font-family':el.font||'Allura, cursive','font-size':f1(el.s),fill:el.c,'text-anchor':el.anchor||'middle',stroke:el.c,'stroke-width':f1(el.s*.008),'paint-order':'stroke'},g);
+      if(el.parts){for(const p of el.parts){const ts=mk('tspan',p.s?{'font-size':f1(el.s*p.s),fill:p.c||el.c,stroke:p.c||el.c,dy:p.dy||0}:{},t);ts.textContent=p.txt;}}else t.textContent=el.txt;}
+  }
+}
+function glazeOverlays(g,tiles,gap,rnd,opts={}){
+  const shg=mk('g',{filter:'url(#glazeA)',opacity:opts.spec??.8},g);
+  for(const t of tiles)mk('rect',{x:t.x+gap/2,y:t.y+gap/2,width:t.w-gap,height:t.h-gap,rx:1.8,fill:'#fff'},shg);
+  const og=mk('g',{},g);const T=tiles[0]?tiles[0].w:100,k=T/100;
+  for(const t of tiles){const x0=t.x+gap/2,y0=t.y+gap/2,x1=t.x+t.w-gap/2,y1=t.y+t.h-gap/2;
+    mk('rect',{x:x0,y:y0,width:x1-x0,height:y1-y0,fill:`url(#sheen${Math.floor(rnd()*4)})`},og);
+    mk('path',{d:`M${P(x0+1,y1-2)} L${P(x0+1,y0+1)} L${P(x1-2,y0+1)}`,fill:'none',stroke:'#FFFFFF','stroke-opacity':.5,'stroke-width':1*k},og);
+    mk('path',{d:`M${P(x1-.9,y0+2)} L${P(x1-.9,y1-.9)} L${P(x0+2,y1-.9)}`,fill:'none',stroke:'#8F8572','stroke-opacity':.2,'stroke-width':1.1*k},og);
+    // crazing: a few hairlines that wander across the glaze
+    const nC=1+Math.floor(rnd()*3);for(let c=0;c<nC;c++){let x=x0+rnd()*(x1-x0),y=y0+rnd()*(y1-y0),a=rnd()*Math.PI*2;let d=`M${P(x,y)}`;const steps=4+Math.floor(rnd()*7);for(let s=0;s<steps;s++){a+=(rnd()-.5)*1.3;x=Math.min(x1,Math.max(x0,x+Math.cos(a)*(6+rnd()*9)*k));y=Math.min(y1,Math.max(y0,y+Math.sin(a)*(6+rnd()*9)*k));d+=` L${P(x,y)}`;}
+      mk('path',{d,fill:'none',stroke:'#8A8170','stroke-opacity':.16,'stroke-width':.38*k,'stroke-linejoin':'round'},og);}
+    const nP=Math.floor(rnd()*3);for(let p=0;p<nP;p++)mk('circle',{cx:f1(x0+4+rnd()*(x1-x0-8)),cy:f1(y0+4+rnd()*(y1-y0-8)),r:f1((.45+rnd()*.5)*k),fill:'#7F7565','fill-opacity':.32},og);
+  }
+}
+// build one tile panel: grout, glazed tiles, painting (shifted slightly per tile), glaze gloss, then living plants on top
+function panelA(parent,spec){
+  const id='p'+(UID++),rnd=RNG(spec.seed||7),gap=spec.gap??1.3;
+  const defs=mk('defs',{},parent);
+  const shapeD=spec.cut||`M0,0 L${spec.w},0 L${spec.w},${spec.h} L0,${spec.h} Z`;
+  const cp=mk('clipPath',{id:id+'c'},defs);mk('path',{d:shapeD},cp);
+  const paint=mk('g',{id:id+'p'},defs);renderA(paint,spec.art,rnd);
+  if(spec.ink){const ink=mk('g',{id:id+'i'},defs);renderA(ink,spec.ink,rnd);}
+  mk('path',{d:shapeD,fill:C.grout,filter:spec.shadow===false?null:'url(#dropA)'},parent);
+  const cg=mk('g',{'clip-path':`url(#${id}c)`},parent);
+  const tg=mk('g',{},cg);
+  spec.tiles.forEach((t,i)=>{t.col=C.glaze[Math.floor(rnd()*C.glaze.length)];t.jx=(rnd()-.5)*1.7;t.jy=(rnd()-.5)*1.7;t.rot=(rnd()-.5)*.3;
+    mk('rect',{x:t.x+gap/2,y:t.y+gap/2,width:t.w-gap,height:t.h-gap,rx:1.8,fill:t.col},tg);
+    const c=mk('clipPath',{id:`${id}t${i}`},defs);mk('rect',{x:t.x+gap/2,y:t.y+gap/2,width:t.w-gap,height:t.h-gap,rx:1.8},c);});
+  const layer=(ref,filter)=>{const pg=mk('g',{filter},cg);spec.tiles.forEach((t,i)=>{const gg=mk('g',{'clip-path':`url(#${id}t${i})`},pg);mk('use',{href:'#'+ref,transform:`translate(${f1(t.jx*10)/10} ${f1(t.jy*10)/10}) rotate(${t.rot.toFixed(3)} ${t.x+t.w/2} ${t.y+t.h/2})`},gg);});return pg;};
+  layer(id+'p','url(#paintA)');
+  if(spec.ink)layer(id+'i','url(#inkA)');
+  glazeOverlays(cg,spec.tiles,gap,rnd,{spec:spec.spec});
+  if(spec.cut)mk('path',{d:shapeD,fill:'none',stroke:'#B9AF9C','stroke-width':1.4,'stroke-opacity':.6},parent);
+  if(spec.over){const og=mk('g',{filter:'url(#overA)'},parent);renderA(og,spec.over,rnd);}
+  return id;
+}
+function plaqueSpec(hat,seed=7){return{w:1000,h:600,cut:CUT_D,tiles:PLAQUE_TILES.map(t=>({...t})),art:[...cartoucheFrame(),...plaqueOrnament()],ink:plaqueLetters(hat),seed};}
+
+/* ---------- ENGINE B: canvas brush ---------- */
+let NOISE=null;
+function noiseTile(){if(NOISE)return NOISE;const c=document.createElement('canvas');c.width=c.height=160;const x=c.getContext('2d');const r=RNG(99);for(let i=0;i<1500;i++){x.globalAlpha=.25+r()*.75;x.beginPath();x.arc(r()*160,r()*160,.4+r()*1.1,0,Math.PI*2);x.fill();}NOISE=c;return c;}
+function paintB(ctx,art,rnd,s){
+  for(const el of art){
+    if(el.t==='wash'){const p=new Path2D(el.d);ctx.globalAlpha=el.o??.5;ctx.fillStyle=el.c;ctx.fill(p);ctx.strokeStyle=el.c;ctx.lineJoin='round';ctx.globalAlpha=(el.o??.5)*.6;ctx.lineWidth=el.edge??1.2;ctx.stroke(p);ctx.globalAlpha=(el.o??.5)*.14;ctx.lineWidth=(el.edge??1.2)*3;ctx.stroke(p);}
+    else if(el.t==='line'){const {pts}=sample(el.d);const W=widths(pts,el,rnd);const n=pts.length;const base=(el.o??1)*(el.mode==='pen'?.42:.3);ctx.fillStyle=el.c;
+      let acc=0;for(let i=0;i<n;i++){const w=W[i];const sp=Math.max(.28,w*.14);if(i>0)acc+=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);if(i>0&&i<n-1&&acc<sp)continue;acc=0;const t=i/(n-1);
+        const pool=(el.end==='pool'||el.pool)?1+.9*smoothstep((t-.86)/.14):1;ctx.globalAlpha=Math.min(1,base*pool*(.85+rnd()*.3));ctx.beginPath();ctx.arc(pts[i][0]+(rnd()-.5)*.25,pts[i][1]+(rnd()-.5)*.25,Math.max(.35,w/2*(.96+rnd()*.08)),0,Math.PI*2);ctx.fill();}
+      if(el.end==='pool'||el.pool){const e=pts[n-1];ctx.globalAlpha=.45;ctx.fillStyle=C.pool;ctx.beginPath();ctx.arc(e[0],e[1],W[n-1]*.6+.5,0,Math.PI*2);ctx.fill();}}
+    else if(el.t==='sponge'){const p=new Path2D(el.d);ctx.save();ctx.clip(p,'evenodd');ctx.globalAlpha=(el.o??.5)*.45;ctx.fillStyle=el.c;ctx.fill(p,'evenodd');const bb=el.bb||[0,0,1000,600];for(let k=0;k<1400;k++){ctx.globalAlpha=(el.o??.5)*(.12+rnd()*.3);ctx.beginPath();ctx.arc(bb[0]+rnd()*bb[2],bb[1]+rnd()*bb[3],1.5+rnd()*5,0,Math.PI*2);ctx.fill();}ctx.restore();}
+    else if(el.t==='fill'){ctx.globalAlpha=(el.o??1)*.94;ctx.fillStyle=el.c;ctx.fill(new Path2D(el.d));}
+    else if(el.t==='dot'){ctx.globalAlpha=el.o??1;ctx.fillStyle=el.c;ctx.beginPath();ctx.arc(el.x,el.y,el.r,0,Math.PI*2);ctx.fill();}
+  }
+  ctx.globalAlpha=1;
+}
+function granulate(ctx,Wd,Ht,amount){const pat=ctx.createPattern(noiseTile(),'repeat');ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalCompositeOperation='destination-out';ctx.globalAlpha=amount;ctx.fillStyle=pat;ctx.fillRect(0,0,Wd,Ht);ctx.restore();}
+function renderB(canvas,spec,view,bg){
+  const ctx=canvas.getContext('2d'),Wd=canvas.width,Ht=canvas.height,s=Wd/view[2],rnd=RNG(spec.seed||7),gap=spec.gap??1.3;
+  const mkLayer=(art,amt)=>{const L=document.createElement('canvas');L.width=Wd;L.height=Ht;const c=L.getContext('2d');c.setTransform(s,0,0,s,-view[0]*s,-view[1]*s);paintB(c,art,rnd,s);granulate(c,Wd,Ht,amt);return L;};
+  const paint=mkLayer(spec.art,.3),ink=spec.ink?mkLayer(spec.ink,.12):null;
+  ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle=bg;ctx.fillRect(0,0,Wd,Ht);
+  ctx.setTransform(s,0,0,s,-view[0]*s,-view[1]*s);
+  const shape=new Path2D(spec.cut||`M0,0 L${spec.w},0 L${spec.w},${spec.h} L0,${spec.h} Z`);
+  ctx.save();ctx.shadowColor='rgba(59,47,37,.24)';ctx.shadowBlur=7*s;ctx.shadowOffsetY=3*s;ctx.fillStyle=C.grout;ctx.fill(shape);ctx.restore();
+  ctx.save();ctx.clip(shape);
+  for(const t of spec.tiles){const col=C.glaze[Math.floor(rnd()*C.glaze.length)],jx=(rnd()-.5)*1.7,jy=(rnd()-.5)*1.7;const x0=t.x+gap/2,y0=t.y+gap/2,x1=t.x+t.w-gap/2,y1=t.y+t.h-gap/2;
+    ctx.save();ctx.beginPath();ctx.roundRect(x0,y0,x1-x0,y1-y0,1.8);ctx.clip();ctx.fillStyle=col;ctx.fillRect(x0,y0,x1-x0,y1-y0);
+    // glaze body: edges a touch deeper where the glaze pooled
+    const rg=ctx.createRadialGradient((x0+x1)/2,(y0+y1)/2,(x1-x0)*.35,(x0+x1)/2,(y0+y1)/2,(x1-x0)*.75);rg.addColorStop(0,'rgba(0,0,0,0)');rg.addColorStop(1,'rgba(150,140,118,.10)');ctx.fillStyle=rg;ctx.fillRect(x0,y0,x1-x0,y1-y0);
+    ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(paint,jx*s,jy*s);if(ink)ctx.drawImage(ink,jx*s,jy*s);ctx.restore();
+    // gloss: one diagonal sheen per tile, each at its own angle, so it breaks at the grout
+    const a=rnd()*.5+.6,gx=Math.cos(a)*(x1-x0),gy=Math.sin(a)*(y1-y0);const lg=ctx.createLinearGradient(x0,y0,x0+gx,y0+gy);const c0=.25+rnd()*.35;
+    lg.addColorStop(0,'rgba(255,255,255,0)');lg.addColorStop(c0,'rgba(255,255,255,0)');lg.addColorStop(c0+.1,'rgba(255,253,246,.26)');lg.addColorStop(c0+.22,'rgba(255,255,255,0)');lg.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=lg;ctx.fillRect(x0,y0,x1-x0,y1-y0);
+    ctx.lineWidth=1;ctx.strokeStyle='rgba(255,255,255,.55)';ctx.beginPath();ctx.moveTo(x0+1,y1-2);ctx.lineTo(x0+1,y0+1);ctx.lineTo(x1-2,y0+1);ctx.stroke();
+    ctx.lineWidth=1.1;ctx.strokeStyle='rgba(143,133,114,.22)';ctx.beginPath();ctx.moveTo(x1-.9,y0+2);ctx.lineTo(x1-.9,y1-.9);ctx.lineTo(x0+2,y1-.9);ctx.stroke();
+    ctx.lineWidth=.38;ctx.strokeStyle='rgba(138,129,112,.18)';const nC=1+Math.floor(rnd()*3);for(let c=0;c<nC;c++){let x=x0+rnd()*(x1-x0),y=y0+rnd()*(y1-y0),an=rnd()*Math.PI*2;ctx.beginPath();ctx.moveTo(x,y);const st=4+Math.floor(rnd()*7);for(let k=0;k<st;k++){an+=(rnd()-.5)*1.3;x+=Math.cos(an)*(6+rnd()*9);y+=Math.sin(an)*(6+rnd()*9);ctx.lineTo(x,y);}ctx.stroke();}
+    ctx.fillStyle='rgba(127,117,101,.32)';const nP=Math.floor(rnd()*3);for(let p=0;p<nP;p++){ctx.beginPath();ctx.arc(x0+4+rnd()*(x1-x0-8),y0+4+rnd()*(y1-y0-8),.45+rnd()*.5,0,Math.PI*2);ctx.fill();}
+    ctx.restore();}
+  ctx.restore();
+  if(spec.cut){ctx.lineWidth=1.4;ctx.strokeStyle='rgba(185,175,156,.6)';ctx.stroke(shape);}
+}
+
+/* ---------- PLAQUE VIEWERS ---------- */
+const VIEW=[-12,0,1024,612];
+const STATE={zoom:1,hat:true,bg:'paper',photo:'native'};
+const BG={paper:'#F6EFDF',wall:'#D9BE62'};
+function svgRoot(parent,vb,label){const s=mk('svg',{viewBox:vb.join(' '),role:label?'img':null,'aria-label':label||null,'aria-hidden':label?null:'true'},parent);return s;}
+function drawPhoto(){const box=document.getElementById('photoBox');box.innerHTML='';const s=svgRoot(box,VIEW,'Photo of the Quinta do Grilo plaque');mk('rect',{x:VIEW[0],y:VIEW[1],width:VIEW[2],height:VIEW[3],fill:'#7a6f3c'},s);
+  mk('image',{href:STATE.photo==='sr'?REF.sr:REF.native,x:REF.x,y:REF.y,width:REF.w,height:REF.h,preserveAspectRatio:'none'},s);
+  document.getElementById('photoKind').textContent=STATE.photo==='sr'?'4× Real-ESRGAN, tracing aid':'native pixels (≈620 px wide)';}
+let photoUnder=null;
+function drawA(){const box=document.getElementById('plaqueA');box.innerHTML='';const s=svgRoot(box,VIEW,'Plaque, approach A: Quinta do Grilo');mk('rect',{x:VIEW[0],y:VIEW[1],width:VIEW[2],height:VIEW[3],fill:BG[STATE.bg]},s);
+  const g=mk('g',{},s);panelA(g,plaqueSpec(STATE.hat));
+  photoUnder=mk('image',{href:REF.native,x:REF.x,y:REF.y,width:REF.w,height:REF.h,preserveAspectRatio:'none',opacity:+document.getElementById('onion').value/100,'pointer-events':'none'},s);
+  const kb=new Blob([box.innerHTML]).size/1024;document.getElementById('kbA').textContent=`≈${Math.round(kb)} KB as SVG`;}
+function drawB(){const box=document.getElementById('plaqueB');box.innerHTML='';const cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label','Plaque, approach B: Quinta do Grilo');
+  const cssW=Math.max(300,box.clientWidth||360);const dpr=Math.min(3,window.devicePixelRatio||1);const px=Math.min(4096,Math.round(cssW*STATE.zoom*dpr));cv.width=px;cv.height=Math.round(px*VIEW[3]/VIEW[2]);box.appendChild(cv);
+  const sp=plaqueSpec(STATE.hat);sp.art=[...cartoucheFrame(),...plaqueOrnament()];renderB(cv,sp,VIEW,BG[STATE.bg]);
+  document.getElementById('kbB').textContent=`${cv.width}px canvas, 0 KB of image`;}
+function setZoom(){document.querySelectorAll('[data-z] .inner').forEach(el=>el.style.width=(STATE.zoom*100)+'%');}
+function bindSeg(attr,fn){document.querySelectorAll(`[data-${attr}]`).forEach(b=>b.addEventListener('click',()=>{const grp=b.parentElement;grp.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));fn(b.dataset[attr]);}));}
+bindSeg('zoom',v=>{STATE.zoom=+v;setZoom();drawB();});
+bindSeg('mark',v=>{STATE.hat=v==='hat';drawA();drawB();});
+bindSeg('bg',v=>{STATE.bg=v;drawA();drawB();});
+bindSeg('photo',v=>{STATE.photo=v;drawPhoto();});
+document.getElementById('onion').addEventListener('input',e=>{if(photoUnder)photoUnder.setAttribute('opacity',e.target.value/100);});
+</script>
+<script>
+/* ---------- OLIVE (living plant, drawn in front of the tiles) ---------- */
+function oliveLeaf(x,y,ang,len,w,side){const sp=spine(x,y,ang,len,.22*side,0,1,26);const n=sp.length,wo=[],wi=[];for(let i=0;i<n;i++){const t=i/(n-1);const e=Math.pow(Math.sin(Math.PI*Math.min(1,t*1.02)),.9)*(1-.3*t)*w;wo.push(e);wi.push(e*.92);}
+  const {A,B}=polyFromSpine(sp,wo,wi);const half=[...sp,...B.slice().reverse()];
+  return[{t:'wash',d:ptsD([...A,...B.slice().reverse()],true),c:C.sage,o:.78,edge:1},{t:'wash',d:ptsD(half,true),c:C.sageDk,o:.5,edge:.4},
+    {t:'line',d:ptsD(A.slice(2)),w:1.2,c:C.olive,o:.85,ta:.2,tb:.4,tip:.2},{t:'line',d:ptsD(sp.slice(1,Math.floor(n*.8))),w:.8,c:C.oliveDk,o:.55,tb:.5}];}
+function oliveBranch(d,leaves,fruits=[]){const {pts,L}=sample(d,2);const n=pts.length-1;const els=[{t:'line',d,w:3.4,c:C.stem,ta:.04,tb:.5,tip:.25}];
+  for(const lf of leaves){const i=Math.round(lf.t*n);const a=pts[Math.max(0,i-1)],b=pts[Math.min(n,i+1)];const ta=Math.atan2(b[1]-a[1],b[0]-a[0])*180/Math.PI;const p=pts[i];els.push({t:'line',d:`M${P(p[0],p[1])} L${P(p[0]+Math.cos(rad(ta+lf.side*lf.a))*4,p[1]+Math.sin(rad(ta+lf.side*lf.a))*4)}`,w:1.6,c:C.stem});els.push(...oliveLeaf(p[0],p[1],ta+lf.side*lf.a,lf.len,lf.w||9,lf.side));}
+  for(const f of fruits){const i=Math.round(f.t*n),p=pts[i];const x=p[0]+f.dx,y=p[1]+f.dy;els.push({t:'line',d:`M${P(p[0],p[1])} Q${P((p[0]+x)/2+3,(p[1]+y)/2)} ${P(x,y-7)}`,w:1.2,c:C.stem},{t:'dot',x,y,r:7.5,c:f.c||C.fruit,o:.9},{t:'dot',x:x-2.4,y:y-2.6,r:2,c:'#E9EED8',o:.55});}
+  return els;}
+
+/* ---------- NAMES PANEL ---------- */
+// 6×3 tiles. Double fillet, corner rosettes, a small shell top and bottom. Names painted in deep cobalt (9:1 on the glaze).
+function namesArt(T=100,cols=6,rows=3,shells=true){const Wd=cols*T,Ht=rows*T,o=16,i=30;const els=[];
+  els.push({t:'wash',d:`M${P(o,o)} L${P(Wd-o,o)} L${P(Wd-o,Ht-o)} L${P(o,Ht-o)} Z M${P(i,i)} L${P(i,Ht-i)} L${P(Wd-i,Ht-i)} L${P(Wd-i,i)} Z`,c:C.wash,o:.5,edge:.3});
+  const side=(a,b,w)=>({t:'line',d:`M${P(a[0],a[1])} L${P(b[0],b[1])}`,w,c:C.line,ta:.02,tb:.04,tip:.6,end:'pool'});
+  els.push(side([o-3,o],[Wd-o+2,o],3.1),side([Wd-o,o-2],[Wd-o,Ht-o+3],3.1),side([Wd-o+3,Ht-o],[o-2,Ht-o],3.1),side([o,Ht-o+2],[o,o-3],3.1));
+  els.push(side([i,i],[Wd-i,i],1.5),side([Wd-i,i],[Wd-i,Ht-i],1.5),side([Wd-i,Ht-i],[i,Ht-i],1.5),side([i,Ht-i],[i,i],1.5));
+  for(const [x,y,r] of [[23,23,0],[Wd-23,23,0],[Wd-23,Ht-23,0],[23,Ht-23,0]])els.push(...rosette(x,y,13,45));
+  if(shells){els.push(...shell({x:Wd/2,y:i+1,r:22,a0:28,a1:152,ribs:7,w:1.8}),...shell({x:Wd/2,y:Ht-i-1,r:22,a0:-152,a1:-28,ribs:7,w:1.8}));}
+  if(shells)els.push(...volute({x:Wd/2-34,y:i+11,r:9,a0:0,dir:1,w:1.8}),...volute({x:Wd/2+34,y:i+11,r:9,a0:180,dir:-1,w:1.8}));
+  return els;}
+function namesText(T=100,cols=6,rows=3){return[{t:'text',x:cols*T/2,y:rows*T/2+30,s:96,c:C.names,parts:[{txt:'Maya '},{txt:'e',s:.62,c:C.names},{txt:' Tomás'}]}];}
+function namesSpec(seed,over){return{w:600,h:300,tiles:gridTiles(0,0,6,3,100),art:namesArt(),ink:namesText(),seed,over};}
+
+// compositions are built only when they come near the screen, so first load stays light
+const lazyIO=('IntersectionObserver' in window)?new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){lazyIO.unobserve(e.target);e.target._build();}},{rootMargin:'600px 0px'}):null;
+function comp(id,vb,label,cap,build){const host=document.getElementById(id);host.style.aspectRatio=`${vb[2]} / ${vb[3]+28*vb[2]/360}`;
+  host._build=()=>{const t0=performance.now();host.style.aspectRatio='';const s=svgRoot(host,vb,label);build(s);s.classList.add('fadein');const p=document.createElement('p');p.className='label';p.innerHTML=cap;host.appendChild(p);host.dataset.ms=Math.round(performance.now()-t0);};
+  if(lazyIO)lazyIO.observe(host);else host._build();}
+function placed(svg,tx,ty,sc){return mk('g',{transform:`translate(${tx} ${ty}) scale(${sc})`},svg);}
+// C1 stacked
+comp('c1',[0,0,1000,1010],'Concept: names panel above, quinta plaque below, olive between','<b>C1 · Stacked.</b> Names lead; the plaque hangs below at 80% width; one olive branch ties them.',s=>{
+  mk('rect',{x:0,y:0,width:1000,height:1010,fill:BG.paper},s);
+  panelA(placed(s,60,40,880/600),namesSpec(31));
+  panelA(placed(s,140,520,720/1000),plaqueSpec(true,12));
+  const g=mk('g',{filter:'url(#overA)'},s);renderA(g,oliveBranch('M-10,520 C60,505 120,470 170,452 C230,430 280,440 320,470',[{t:.18,a:52,side:-1,len:58},{t:.3,a:48,side:1,len:52},{t:.44,a:55,side:-1,len:62},{t:.58,a:45,side:1,len:50},{t:.72,a:50,side:-1,len:56},{t:.86,a:40,side:1,len:46},{t:.99,a:20,side:1,len:40}],[{t:.5,dx:8,dy:26},{t:.62,dx:-4,dy:30,c:'#4B4334'}]),RNG(5));
+});
+// C2 offset
+comp('c2',[0,0,1000,900],'Concept: names panel to the left, plaque lower right, olive arching between','<b>C2 · Offset.</b> Names left and larger; plaque lower right; olive grows from the top corner down to it.',s=>{
+  mk('rect',{x:0,y:0,width:1000,height:900,fill:BG.paper},s);
+  panelA(placed(s,30,40,820/600),namesSpec(41));
+  panelA(placed(s,350,470,620/1000),plaqueSpec(true,14));
+  const g=mk('g',{filter:'url(#overA)'},s);renderA(g,oliveBranch('M1010,20 C950,40 905,90 880,160 C860,220 870,300 900,360 C920,400 930,440 925,480',[{t:.08,a:50,side:1,len:52},{t:.2,a:50,side:-1,len:58},{t:.33,a:48,side:1,len:60},{t:.47,a:52,side:-1,len:56},{t:.6,a:45,side:1,len:54},{t:.74,a:50,side:-1,len:50},{t:.88,a:42,side:1,len:44},{t:1,a:15,side:-1,len:38}],[{t:.4,dx:-24,dy:10},{t:.52,dx:22,dy:14,c:'#4B4334'}]),RNG(9));
+});
+// C3 one wall: the plaque painted into the same tile field, below the names
+comp('c3',[0,0,1000,1000],'Concept: one tile wall, names above and the quinta cartouche painted below','<b>C3 · One wall.</b> A single 6×5 panel: names on top, the quinta cartouche painted smaller underneath; a vine crosses the corner.',s=>{
+  mk('rect',{x:0,y:0,width:1000,height:1000,fill:BG.paper},s);
+  const T=100,cols=6,rows=5;const art=[...namesArt(T,cols,rows,false),...shell({x:300,y:31,r:22,a0:28,a1:152,ribs:7,w:1.8})];
+  const pq=[...cartoucheFrame(),...plaqueOrnament()];art.push(...xform(pq,.42,90,208));
+  const ink=[{t:'text',x:300,y:160,s:90,c:C.names,parts:[{txt:'Maya '},{txt:'e',s:.62},{txt:' Tomás'}]},...xform(plaqueLetters(true),.42,90,208)];
+  const sp={w:600,h:500,tiles:gridTiles(0,0,cols,rows,T),art,ink,seed:51};
+  panelA(placed(s,80,60,840/600),sp);
+  const g=mk('g',{filter:'url(#overA)'},s);renderA(g,oliveBranch('M40,960 C70,900 90,860 130,820 C170,780 220,770 260,790',[{t:.12,a:50,side:1,len:56},{t:.28,a:50,side:-1,len:60},{t:.44,a:46,side:1,len:58},{t:.6,a:50,side:-1,len:52},{t:.76,a:45,side:1,len:48},{t:.98,a:20,side:-1,len:40}],[{t:.5,dx:16,dy:24}]),RNG(13));
+});
+// C4 names only in tiles; the place set in type
+comp('c4',[0,0,1000,640],'Concept: only the names in tiles, the place in type below','<b>C4 · Names only.</b> The tiles hold the names; the quinta is set in type underneath. Calmest option.',s=>{
+  mk('rect',{x:0,y:0,width:1000,height:640,fill:BG.paper},s);
+  panelA(placed(s,100,40,800/600),namesSpec(61));
+  const g=mk('g',{filter:'url(#overA)'},s);renderA(g,oliveBranch('M930,470 C880,450 830,452 790,470 C760,484 740,500 724,520',[{t:.12,a:50,side:1,len:46},{t:.3,a:48,side:-1,len:52},{t:.48,a:50,side:1,len:50},{t:.66,a:46,side:-1,len:46},{t:.84,a:42,side:1,len:40}],[{t:.4,dx:-6,dy:24}]),RNG(17));
+  const t=mk('text',{x:500,y:560,'text-anchor':'middle','font-family':"'EB Garamond', serif",'font-size':34,'letter-spacing':'5',fill:'#3B2F25'},s);t.textContent='QUINTA DO GRILO · MILHARADO';
+});
+
+/* ---------- DETAILS ---------- */
+// pattern tile (padrão): four corners make one flower; an olive cross in the middle. Every tile painted again, never copied.
+function padraoTile(x,y,T,r){const j=()=>(r()-.5)*1.6;const els=[];
+  for(const [cx,cy,a] of [[x,y,45],[x+T,y,135],[x+T,y+T,225],[x,y+T,315]]){els.push({t:'wash',d:`M${P(cx,cy)} m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0`,c:C.wash,o:.55,edge:.6});
+    els.push(...blueLeaf(cx+Math.cos(rad(a))*8+j(),cy+Math.sin(rad(a))*8+j(),a+j()*2,24,6.5,1));
+    els.push({t:'line',d:`M${P(cx+Math.cos(rad(a-90))*15,cy+Math.sin(rad(a-90))*15)} A15,15 0 0,1 ${P(cx+Math.cos(rad(a+90))*15,cy+Math.sin(rad(a+90))*15)}`,w:1.6,c:C.line,ta:.1,tb:.15,tip:.4});}
+  const mx=x+T/2+j(),my=y+T/2+j();for(let k=0;k<4;k++){const a=k*90-90+j()*3;els.push(...blueLeaf(mx+Math.cos(rad(a))*7,my+Math.sin(rad(a))*7,a,22,5.5,k%2?1:-1));}
+  els.push({t:'line',d:`M${P(mx+6,my)} A6,6 0 1,1 ${P(mx+6,my-.1)}`,w:1.2,c:C.line,tip:.5},{t:'dot',x:mx,y:my,r:2.2,c:C.line,o:.9});
+  for(const a of [45,135,225,315])els.push({t:'dot',x:mx+Math.cos(rad(a))*17,y:my+Math.sin(rad(a))*17,r:1.7,c:C.line,o:.8});
+  return els;}
+comp('d-lining',[0,0,400,520],'B3: azulejo lining under the lifting top panel','<b>B3 · Lining under the lifting panel.</b> Pattern tiles; four corners meet as one flower, olive leaves in the middle.',s=>{
+  const r=RNG(71),tiles=gridTiles(0,0,4,5,100),art=[];for(const t of tiles)art.push(...padraoTile(t.x,t.y,100,r));
+  panelA(s,{w:400,h:500,tiles,art,seed:71,shadow:false});
+  mk('rect',{x:0,y:0,width:400,height:520,fill:'url(#liftShade)'},s);
+  mk('rect',{x:0,y:500,width:400,height:20,fill:BG.paper},s);
+});
+comp('d-end',[0,0,1000,640],'B4: the quinta plaque closing the invitation','<b>B4 · Closing plaque.</b> The quinta as the last thing on the page, with the village set beneath.',s=>{
+  mk('rect',{x:0,y:0,width:1000,height:640,fill:BG.paper},s);
+  mk('line',{x1:420,y1:28,x2:580,y2:28,stroke:'#B8946A','stroke-width':1.4},s);
+  panelA(placed(s,170,60,660/1000),plaqueSpec(true,23));
+  const t=mk('text',{x:500,y:540,'text-anchor':'middle','font-family':"'EB Garamond', serif",'font-size':32,'letter-spacing':'6',fill:'#6B4F34'},s);t.textContent='MILHARADO';
+});
+comp('d-seal',[-12,-12,124,138],'Tile under the wax seal','<b>Under the seal.</b> A ring of cobalt olive leaves leaves room for the wax.',s=>{
+  const r=RNG(81),T=100,els=[];for(const [cx,cy,a] of [[0,0,45],[T,0,135],[T,T,225],[0,T,315]]){els.push(...blueLeaf(cx+Math.cos(rad(a))*7,cy+Math.sin(rad(a))*7,a,20,5.5,1));els.push({t:'line',d:`M${P(cx+Math.cos(rad(a-90))*13,cy+Math.sin(rad(a-90))*13)} A13,13 0 0,1 ${P(cx+Math.cos(rad(a+90))*13,cy+Math.sin(rad(a+90))*13)}`,w:1.4,c:C.line,tip:.4});}
+  els.push({t:'line',d:'M50,15 A35,35 0 1,1 49.9,15',w:1.4,c:C.mid,tip:.5});
+  for(let k=0;k<14;k++){const a=k*360/14-90;const px=50+Math.cos(rad(a))*35,py=50+Math.sin(rad(a))*35;els.push(...blueLeaf(px,py,a+90+(k%2?-38:38)+(r()-.5)*6,13,3.6,k%2?1:-1));}
+  panelA(s,{w:100,h:100,tiles:[{x:0,y:0,w:100,h:100}],art:els,seed:81});
+  mk('circle',{cx:50,cy:50,r:21,fill:'none',stroke:'#9A4C32','stroke-width':.8,'stroke-dasharray':'2 2.5',opacity:.8},s);
+  const t=mk('text',{x:50,y:121,'text-anchor':'middle','font-family':"'EB Garamond', serif",'font-size':6.5,fill:'#6B4F34','letter-spacing':'.6'},s);t.textContent='seal sits here';
+});
+// band (cercadura): a running olive vine between two fillets; period = one tile, so it tiles without a seam
+function bandTile(x,y,T,r,vert){const els=[];const j=()=>(r()-.5)*1.2;
+  els.push({t:'wash',d:`M${P(x,y+7)} L${P(x+T,y+7)} L${P(x+T,y+16)} L${P(x,y+16)} Z`,c:C.wash,o:.6,edge:.3},{t:'wash',d:`M${P(x,y+T-16)} L${P(x+T,y+T-16)} L${P(x+T,y+T-7)} L${P(x,y+T-7)} Z`,c:C.wash,o:.6,edge:.3});
+  for(const yy of [7,16,T-16,T-7])els.push({t:'line',d:`M${P(x-1,y+yy+j()*.3)} L${P(x+T+1,y+yy+j()*.3)}`,w:yy===7||yy===T-7?2.2:1.2,c:C.line,ta:.02,tb:.03,tip:.7});
+  let d=`M${P(x,y+50)}`;for(let k=1;k<=20;k++){const xx=x+k*T/20;d+=` L${P(xx,y+50+13*Math.sin(2*Math.PI*k/20))}`;}els.push({t:'line',d,w:2.2,c:C.line,ta:.02,tb:.02,tip:.8});
+  els.push(...blueLeaf(x+25+j(),y+50-13,-35+j()*3,24,6,1),...blueLeaf(x+25+j(),y+50-13,-150+j()*3,20,5,-1));
+  els.push(...blueLeaf(x+75+j(),y+50+13,35+j()*3,24,6,-1),...blueLeaf(x+75+j(),y+50+13,150+j()*3,20,5,1));
+  els.push({t:'dot',x:x+50+j(),y:y+38,r:3.4,c:C.mid,o:.8},{t:'dot',x:x+50+j(),y:y+62,r:3.4,c:C.mid,o:.8});
+  return els;}
+comp('d-band',[0,0,400,112],'Azulejo tile band with a running olive vine','<b>Band.</b> A running olive vine between fillets; joins tile to tile without a seam.',s=>{
+  const r=RNG(91),tiles=gridTiles(0,0,4,1,100),art=[];for(const t of tiles)art.push(...bandTile(t.x,t.y,100,r));panelA(s,{w:400,h:100,tiles,art,seed:91});
+});
+comp('d-corner',[-12,-12,324,324],'Corner tile where the band turns','<b>Corner.</b> The band turns on a rosette tile.',s=>{
+  const r=RNG(95),art=[];art.push(...bandTile(100,0,100,r),...bandTile(200,0,100,r));
+  art.push(...swapXY([...bandTile(100,0,100,r),...bandTile(200,0,100,r)]));
+  // corner tile: fillets turn, the vine meets a rosette
+  for(const yy of [7,16]){art.push({t:'line',d:`M${P(101,yy)} L${P(yy,yy)} L${P(yy,101)}`,w:yy===7?2.2:1.2,c:C.line,ta:.02,tb:.03,tip:.7});}
+  art.push({t:'wash',d:`M${P(100,7)} L${P(7,7)} L${P(7,100)} L${P(16,100)} L${P(16,16)} L${P(100,16)} Z`,c:C.wash,o:.6,edge:.3});
+  art.push({t:'line',d:'M100,50 C80,50 62,50 56,50',w:2.2,c:C.line,tip:.8},{t:'line',d:'M50,100 C50,80 50,62 50,56',w:2.2,c:C.line,tip:.8});
+  art.push(...rosette(50,50,20,45),{t:'line',d:'M50,30 A20,20 0 1,1 49.9,30',w:1.3,c:C.mid,tip:.6});
+  const tiles=[{x:0,y:0,w:100,h:100},{x:100,y:0,w:100,h:100},{x:200,y:0,w:100,h:100},{x:0,y:100,w:100,h:100},{x:0,y:200,w:100,h:100}];
+  panelA(s,{w:300,h:300,cut:'M0,0 L300,0 L300,100 L100,100 L100,300 L0,300 Z',tiles,art,seed:95});
+});
+</script>
+<script>
+// plaque viewers last, so the page paints the light compositions first
+const T0=performance.now();drawPhoto();drawA();window.msA=Math.round(performance.now()-T0);const T1=performance.now();drawB();window.msB=Math.round(performance.now()-T1);setZoom();
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(drawB,250);});
+</script>
+</body>
+</html>

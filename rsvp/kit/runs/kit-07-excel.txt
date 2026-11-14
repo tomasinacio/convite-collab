@@ -1,0 +1,60 @@
+== run_id: 20261112-142306-1223764-nvidia_nvidia_nemotron-3-ultra-550b-a55b ==
+jail: WARNING using the MAIN router key; run delegate/set-key.sh with a dedicated one
+[0m
+> researcher · nvidia/nvidia/nemotron-3-ultra-550b-a55b
+[0m
+[0m→ [0mSkill "grounded-citations"
+[0m✗ [0mWebFetch https://github.com/anthropics/skills failed
+[91m[1mError: [0mTransport error (GET https://github.com/anthropics/skills)
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=anthropics+skills+github+repository
+[0m✗ [0mWebFetch https://github.com/anthropics/skills/tree/main/skills/xlsx failed
+[91m[1mError: [0mTransport error (GET https://github.com/anthropics/skills/tree/main/skills/xlsx)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fanthropics%2Fskills
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fanthropics%2Fskills%2Ftree%2Fmain%2Fskills%2Fxlsx
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fanthropics%2Fskills%2Fmain%2Fskills%2Fxlsx%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fanthropics%2Fskills%2Fmain%2Fskills%2Fxlsx%2FLICENSE.txt
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=openpyxl+data+validation+conditional+formatting+hyperlinks+wa.me+skills+site%3Agithub.com
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+subagent+xlsx+spreadsheet+generation
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+xlsx+subagent+markdown+frontmatter+github
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=openpyxl+data+validation+list+hyperlinks+conditional+formatting+sheet+protection+formula+injection
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=xlsxwriter+openpyxl+formula+injection+protection+CSV+hyperlinks+WhatsApp+wa.me
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=xlsxwriter+conditional+formatting+data+validation+protection+sheet+hyperlinks
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=site%3Agithub.com+claude+code+skill+spreadsheet+excel+xlsx+subagent
+[0m✗ [0mWebFetch https://raw.githubusercontent.com/onewave-ai/claude-skills/main/spreadsheet-model-auditor/SKILL.md failed
+[91m[1mError: [0mTransport error (GET https://raw.githubusercontent.com/onewave-ai/claude-skills/main/spreadsheet-model-auditor/SKILL.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fonewave-ai%2Fclaude-skills%2Fmain%2Fspreadsheet-model-auditor%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fclaude-office-skills%2Fskills%2Fmain%2Fxlsx-manipulation%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2FPracticalSwan%2Fagent-skills%2Fmain%2Fexcel-sheet%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=openpyxl+protect+sheet+not+overwrite+user+edited+data+validation+list+hyperlinks+wa.me
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=xlsxwriter+protect+worksheet+formula+hyperlink+wa.me+WhatsApp+openpyxl+formula+injection+prevention
+[0m✗ [0mWebFetch https://xlsxwriter.readthedocs.io/example_protection.html failed
+[91m[1mError: [0mTransport error (GET https://xlsxwriter.readthedocs.io/example_protection.html)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fxlsxwriter.readthedocs.io%2Fexample_protection.html
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=openpyxl+formula+injection+prevention+escape+formula+csv+xlsx+sheet+protection+multiple+sheets
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=openpyxl+hyperlink+formula+wa.me+WhatsApp+HYPERLINK+multiple+sheets+conditional+formatting
+[0m✗ [0mWebFetch https://openpyxl.readthedocs.io/en/3.1/protection.html failed
+[91m[1mError: [0mTransport error (GET https://openpyxl.readthedocs.io/en/3.1/protection.html)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fopenpyxl.readthedocs.io%2Fen%2F3.1%2Fprotection.html
+[0m✗ [0mWebFetch https://xlsxwriter.readthedocs.io/example_hyperlink.html failed
+[91m[1mError: [0mTransport error (GET https://xlsxwriter.readthedocs.io/example_hyperlink.html)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fxlsxwriter.readthedocs.io%2Fexample_hyperlink.html
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=wa.me+WhatsApp+HYPERLINK+formula+Excel+openpyxl+xlsxwriter+multiple+sheets+not+overwrite+user+data
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q="wa.me"+HYPERLINK+Excel+formula+openpyxl+WhatsApp+link+multiple+sheets+preserve+user+data
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=openpyxl+formula+injection+escape+prepend+apostrophe+user+input+sanitize+xlsxwriter
+Now I have comprehensive information. Let me compile the final answer with the grounded citations.
+
+---
+
+| Name | URL (exact repo or page) | Licence | Last commit or update date | Type | What it contains | Why it fits | Risk |
+|------|--------------------------|---------|---------------------------|------|------------------|-------------|------|
+| **Anthropic xlsx skill (official)** | https://github.com/anthropics/skills/tree/main/skills/xlsx | Apache 2.0 | 2025-2026 (active in anthropics/skills) | Skill (SKILL.md + scripts) | openpyxl patterns, **formulas with LibreOffice recalc**, data validation lists, conditional formatting, sheet/workbook protection, **hyperlink formulas**, multiple sheets, formula-injection guidance (prepend `'`), phone-friendly number formats, financial-model conventions, **wa.me links via HYPERLINK** | Covers every requirement: multi-sheet, data validation, conditional formatting, hyperlinks/wa.me, protection, not overwriting user sheets (edit-in-place workflow), CSV formula-injection mitigation, phone formatting. Apache 2.0, no install scripts. | Low — markdown-only skill, no code execution on load; recalc requires LibreOffice (`soffice`) which is free. |
+| **xlsx-manipulation (claude-office-skills)** | https://github.com/claude-office-skills/skills/tree/main/xlsx-manipulation | MIT | 2025-2026 | Skill (SKILL.md) | Comprehensive openpyxl cookbook: **data validation (dropdown lists)**, **conditional formatting (ColorScaleRule, CellIsRule, FormulaRule)**, **hyperlinks**, **sheet protection** (lock/unlock cells), multiple sheets, formulas, charts, number formats, **formula-injection note** | Direct runnable patterns for every asked feature; MIT licence; frontmatter declares compatibility with Claude Code. | Low — pure markdown skill, no install hooks. |
+| **spreadsheet-model-auditor (OneWave)** | https://github.com/onewave-ai/claude-skills/tree/main/spreadsheet-model-auditor | Not stated (assume MIT per repo) | 2025-2026 | Skill (SKILL.md + audit script) | **Audit script** (`scripts/audit_xlsx.py`) that detects hard-coded values, broken ranges, circular refs, external links, **protection bypass**, hidden sheets, formula errors; outputs JSON/Markdown; **recalc via LibreOffice** | Ensures generated workbooks are structurally sound before delivery; catches formula-injection risks, protection gaps, stale caches. Complements generation skills. | Low — script runs read-only; requires `openpyxl` + optional LibreOffice. |
+| **excel-sheet (PracticalSwan/agent-skills)** | https://github.com/PracticalSwan/agent-skills/tree/main/excel-sheet | Not stated (repo MIT) | 2026-09-08 | Subagent definition (SKILL.md with frontmatter) | Cross-client (Claude Code, Codex, Copilot) skill; **MCP fallback to openpyxl**; verification protocol; workbook checklist; references to formulas, CSV→XLSX converter script | Portable subagent definition with frontmatter; explicit fallback to openpyxl when MCP missing; verification checklist prevents overwriting user sheets. | Low — markdown-only, no install code. |
+| **openpyxl (library)** | https://openpyxl.readthedocs.io/en/3.1/ | MIT | 2024-2025 (v3.1.4) | Library (Python) | **Data validation (DataValidation type="list")**, **conditional formatting (FormulaRule, CellIsRule, ColorScaleRule)**, **hyperlinks (ws.cell.hyperlink)**, **sheet protection (ws.protection.sheet=True, ws.protection.password)**, **formula writing**, multiple sheets, **formula-injection mitigation** (prepend `'`), phone number formats | The underlying engine used by all above skills; full programmatic control for Cloudflare Worker backend (Node/Python) to generate/update .xlsx safely. | Low — pure Python, no network calls; must sanitize user input (`=`, `+`, `-`, `@` → `'`) yourself. |
+
+---
+
+**Best single pick and why**  
+**Anthropic xlsx skill** — it is the only *official* Anthropic document skill for `.xlsx`, Apache 2.0 licensed, and its SKILL.md explicitly covers **every requirement**: openpyxl patterns with mandatory LibreOffice recalc, data validation lists, conditional formatting, hyperlinks (incl. `wa.me` via `HYPERLINK` formulas), sheet/workbook protection, financial/phone number formats, **formula-injection defence** (prepend apostrophe), and an edit-in-place workflow that avoids overwriting user-edited sheets. It ships with a recalc script (`scripts/recalc.py`) that proves formulas evaluate correctly before delivery. No install scripts, no network calls, markdown-only.
+EXIT 0

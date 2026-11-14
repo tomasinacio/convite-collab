@@ -1,0 +1,5 @@
+# Research brief (generic, no personal details)
+
+You are a research agent. Use web search. Answer ONLY from pages you actually opened; never invent a page, URL, author or fact. If you cannot find something real, write NOT FOUND. Keep the whole answer under 600 words, as short bullet points with the exact page URL beside each point. Context: we make a hand-painted watercolor invitation web page in Portugal (olive branches, oranges, lavender, wheat, swallows, blue azulejo plaque, warm paper), phone first, free tools only. Question:
+
+Research how award-winning or well-regarded web pages animate ambient nature calmly: swaying branches in the wind (CSS transform rotate with transform-origin, easing and periods), falling and drifting leaves, flying insects along a path, entering from the sides, staggering. Include performance rules (transform and opacity only, will-change use, number of animated elements on phones, IntersectionObserver to start and stop), reduced motion handling and WCAG 2.3.3, and pause controls. Give 6 real references with URLs and 5 concrete CSS timing recipes (duration, easing, delay ranges).

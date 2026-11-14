@@ -1,0 +1,5 @@
+# Research brief (generic, no personal details)
+
+You are a research agent. Use web search. Answer ONLY from pages you actually opened; never invent a page, URL, author or fact. If you cannot find something real, write NOT FOUND. Keep the whole answer under 600 words, as short bullet points with the exact page URL beside each point. Context: we make a hand-painted watercolor invitation web page in Portugal (olive branches, oranges, lavender, wheat, swallows, blue azulejo plaque, warm paper), phone first, free tools only. Question:
+
+Research watercolor woodland and meadow illustration in the style of botanical and naturalist painting: how illustrators paint mushrooms, bees, tree trunks, mossy rocks and pebbles so a whole set looks like one hand. List 10 mushroom species that really grow in Portuguese and Iberian cork oak, pine and olive landscapes (common and Latin name, cap colour, stem, shape) that would suit a warm palette of ochre, olive green, terracotta and cobalt blue, plus colours and textures for bees, bark and stones. Give 6 real example pages (artists, stock sets, museum plates) with URLs.

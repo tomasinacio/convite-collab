@@ -1,0 +1,60 @@
+/* =============== v14 FRONT (lane A, task 11 of comps/V14-BRIEF.md): the closed letter, quiet and real ===============
+   Paste as one block right after the v13 sheet rules (after `.crack .half-lo{...}`), before THE WORLD. Same selectors,
+   ids, classes, positions and timings as v13; only the art, the seal size, the type and three pseudo-element layers change.
+   Assets: comps/art/v14/front/*.webp, baked by comps/art/v14_front.py (sources and licences: assets/LOG.md). */
+
+/* image slots: these override the v13 slots of the same name (the closed letter is the poster: it loads first) */
+:root{
+  --img-seal:url("DATA:art/v14/front/seal-whole.webp");          /* the user's Copilot seal, deeper wax, lifted relief and glints, 3-part shadow */
+  --img-seal-top:url("DATA:art/v14/front/seal-top.webp");        /* its upper half, cracked (v9 contract: .63 of the box) */
+  --img-seal-bottom:url("DATA:art/v14/front/seal-bottom.webp");  /* its lower half */
+  --img-closed-top:url("DATA:art/v14/front/closed-top.webp");    /* top flap outside: the sheet's own paper, fibres, deckle on the seam (cover) */
+  --img-closed-bottom:url("DATA:art/v14/front/closed-bottom.webp"); /* bottom flap outside: same paper, one light across both (cover) */
+  --img-closed-emboss:url("DATA:art/v14/front/closed-emboss.webp"); /* NEW: blind-embossed olive twig, bottom flap's lower right; plain: none */
+  --img-closed-deco:url("DATA:art/v14/front/closed-deco.webp");  /* two jute strands edge to edge, knot under the wax, whole sprig tucked in; none: closed-deco-nosprig.webp */
+  --img-linen:url("DATA:art/v14/front/linen.webp");              /* NEW: the table under the letter, seamless flax linen tile, 256 CSS px (3x) */
+  --linen:#CDC6B5;                                               /* the tile's mean, shown while it decodes */
+  --seal:calc(var(--W) * .44);   /* v13 100px (wax 80 px, 20 % of the sheet): now the wax is 34.5 % of the sheet, 125 px on a 393 px phone */
+}
+
+/* the surface the letter lies on: flax linen, one soft window light from the upper left, the corners falling off.
+   Fixed under the sheet (z 0, the world is z 1); hidden once the world has come up over it (2.5 s). Static: no animation. */
+.js .page::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(115% 65% at 15% 6%, rgb(255 250 236 / .34), rgb(255 250 236 / 0) 62%),
+    radial-gradient(150% 105% at 50% 42%, rgb(48 36 24 / 0) 52%, rgb(48 36 24 / .16) 100%),
+    var(--linen) var(--img-linen) 0 0 / 256px repeat}
+.js .page.opened::before{visibility:hidden;transition:visibility 0s linear 2.6s}
+
+/* the packet's contact shadow on the linen: a dark hairline where paper meets cloth, then two soft falls to the lower right.
+   Its own layer (will-change), faded out in 600 ms at the tap while the flaps lift (opacity only); the v13 .ground shadows stay. */
+.move::before{content:"";position:absolute;left:0;right:0;top:var(--Ht);height:var(--Hm);pointer-events:none;will-change:opacity;
+  box-shadow:0 .5px 1px rgb(48 34 22 / .34), 0 2px 4px -1px rgb(48 34 22 / .2), 2px 8px 14px -3px rgb(48 34 22 / .17),
+    5px 18px 30px -6px rgb(48 34 22 / .14), 10px 32px 60px -10px rgb(48 34 22 / .11)}
+.is-open .move::before{opacity:0;transition:opacity .6s linear .1s}
+
+/* the top flap's torn edge lies on the bottom flap: a softer, slightly deeper cast than v13 */
+.tp .cast{height:calc(14px * var(--k));background:linear-gradient(rgb(60 42 28 / .24),rgb(60 42 28 / .08) 32%,rgb(60 42 28 / 0))}
+
+/* full-bleed ready: the flap faces fill their boxes on any screen (cover). The top flap is anchored at its torn edge (on the
+   seam), the bottom flap at its top edge (under it); the extra paper is cropped. The emboss rides in the bottom flap's corner. */
+.tp:not(.ride) .face-out{background:var(--img-closed-top) 50% 100% / cover no-repeat}
+.bt:not(.ride) .face-out{background:var(--img-closed-emboss) 100% 100% / 66.67% auto no-repeat, var(--img-closed-bottom) 50% 0 / cover no-repeat}
+
+/* twine art is 1300 x 648 (3x of a 433 px sheet); the strands' centre line stays on the seam (--sy), edge to edge */
+.closed-deco{aspect-ratio:1300/648;top:calc(var(--sy) - var(--W) * .24923)}
+
+/* the hint: engraved-card small capitals, tracked, two hairlines; warm brown 8.3:1 on the paper (scripts/contrast.py) */
+.seal-label{display:flex;align-items:center;gap:.75em;white-space:nowrap;font-style:normal;font-weight:500;font-size:13px;line-height:1.3;
+  letter-spacing:.24em;text-transform:uppercase;color:#56412F;padding:0 0 0 .24em;margin-top:calc(var(--seal) * -.01)}
+.seal-label::before,.seal-label::after{content:"";flex:none;width:22px;height:1px;background:currentColor;opacity:.42}
+
+/* Skip: a small printed tab, not a default pill; same box (44 px tall), place, focus order and behaviour */
+.skip{padding:0 14px 0 17px;border:1px solid rgb(107 79 52 / .3);border-radius:3px;background:rgb(247 241 227 / .94);
+  font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--warm-ink);
+  box-shadow:0 1px 1.5px rgb(48 34 22 / .14),0 3px 8px -2px rgb(48 34 22 / .1)}
+
+@media (prefers-reduced-motion:reduce){
+  .move::before{transition-duration:1ms !important;transition-delay:0s !important}
+}
+/* ============================================ end v14 FRONT ============================================ */

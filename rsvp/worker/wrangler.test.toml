@@ -1,0 +1,19 @@
+# TEST copy of the Worker for shared test links (FAKE guests only). Not the real one: the real one uses wrangler.toml and the database `rsvp`.
+# Nothing here is a secret. Delete with: wrangler delete --config wrangler.test.toml; wrangler d1 delete rsvp-test
+name = "rsvp-test"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGIN = "https://convite-test.tominacio99.workers.dev"
+RSVP_CLOSES_AT = "2027-04-30T22:59:59.000Z"
+
+[observability]
+enabled = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rsvp-test"
+database_id = "39f7532a-10d1-4ec0-81ce-982ff8ad0a64"
+migrations_dir = "migrations"

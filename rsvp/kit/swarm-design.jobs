@@ -1,0 +1,7 @@
+# Design research swarm (2026-11-12). Format: name|agent|pool|brief. Generic questions only (privacy class P0).
+d1-azulejo-rodape|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/d1-azulejo-rodape.md
+d2-gift-iban|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/d2-gift-iban.md
+d3-woodland-motifs|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/d3-woodland-motifs.md
+d4-prompt-style-lock|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/d4-prompt-style-lock.md
+d5-ambient-nature-motion|researcher|nvidia|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/d5-ambient-nature-motion.md
+d6-page-coherence-audit|researcher|other|@/home/tomin/agent-config/projects/wedding-invite/rsvp/kit/briefs/d6-page-coherence-audit.md

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6EFDF">
+<title>Names section concepts</title>
+<meta name="description" content="Three live concepts for the names section of the invitation of Maya e Tomás: the paper around the names, with a little drawn and living detail. Same palette, type and context; each has a Replay button. DRAFT for the user to choose.">
+<!-- owner: Tomas | stage 1 (illustrated-reveal) | status: DRAFT, for the user to choose | 2026-11-10
+     The whole names section of the r5 tile (bit of hills above, the fold, names, the top of the villa below), three ways.
+     Allura + EB Garamond, r5 palette, art from comps/deck-crops (stand-ins). Ink lines draw with stroke-dashoffset (allowed);
+     everything else is transform or opacity. Reduced motion: each section shows its finished state, nothing moves.
+     Not applied to style-tile.html until the user picks. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --olive:#4F5F2E; --brown:#6B4F34; --twine:#B8946A; --shade:#E3E2D6;
+  --sage:#9DAE82; --blush:#E7C3B2; --terracotta:#9A4C32; --clay:#C98B6B;
+  --out:cubic-bezier(.22,.8,.24,1); --io:cubic-bezier(.45,.05,.25,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.55;color:var(--ink);background:var(--shade);overflow-x:clip}
+h1,h2{font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--olive);text-underline-offset:3px}
+button{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 40px}}
+.smallcaps{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+.top{padding:28px 0 24px;background:var(--paper)}
+.top h1{font-size:clamp(30px,6.4vw,44px);line-height:1.1;margin-top:6px}
+.top .lede{max-width:36em;margin-top:10px;font-size:17px;color:var(--brown)}
+
+.grid{display:grid;gap:56px;padding:40px 0 24px}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(3,1fr);column-gap:40px}}
+.concept h2{font-size:24px;line-height:1.2}
+.concept h2 .no{font-size:15px;letter-spacing:.14em;color:var(--brown);margin-right:8px}
+.concept .plain{font-size:17px;margin-top:6px;max-width:30em}
+.pill{min-height:44px;padding:0 18px;border:1px solid var(--twine);border-radius:999px;background:var(--paper);font-size:16px;letter-spacing:.04em;cursor:pointer;margin-top:14px}
+.pill:hover{background:var(--sand)}
+
+/* ---------- One names section, 340 x 500 units, in context ---------- */
+.scene{position:relative;width:min(100% - 8px,340px);aspect-ratio:340/500;margin-top:16px;container-type:inline-size;overflow:hidden}
+.paper-bg{position:absolute;inset:0;width:100%;height:100%}
+.paper-bg rect{fill:var(--paper);filter:url(#paper-soft)}
+.ctx{position:absolute;left:0;width:100%;height:auto;display:block;mix-blend-mode:multiply}
+.hills{top:-4%}
+.venue{top:72%}
+.crease{position:absolute;left:3%;right:3%;top:26%;height:1px;background:rgb(184 148 106 / .45)}
+.kicker{position:absolute;left:9%;top:30%;font-size:16px;font-style:italic;color:var(--brown)}
+.names{position:absolute;left:9%;top:34%;margin:0;font-family:'Allura',cursive;color:var(--olive);font-size:15cqw;line-height:.95}
+.names .l{display:block;white-space:nowrap}
+.names .amp{padding-left:14%}
+.meta{position:absolute;left:9%;font-size:17px;line-height:1.4}
+.m1{top:57%}.m2{top:61.8%}
+.ov{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ink{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.wash-leaf{fill:var(--sage);opacity:.5;stroke:none}
+
+/* ---------- Motion: only while .play is on (JS adds it unless reduced motion). Default = finished state. ---------- */
+@keyframes fade{from{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}}
+@keyframes draw{from{stroke-dashoffset:1.01}to{stroke-dashoffset:0}}
+.play .ink path[pathLength],.play path.ink[pathLength]{stroke-dasharray:1 2;animation:draw var(--t,.6s) var(--io) var(--d,0s) both}
+.play .f{animation:fade var(--t,.8s) ease-out var(--d,0s) both}
+.play .r{animation:rise var(--t,.9s) var(--out) var(--d,0s) both}
+
+/* 1 · written by hand: letters appear one after another like a pen; an ink sprig draws, its leaves take colour; one leaf drifts down */
+.c1 .ch{display:inline-block}
+.play.c1 .ch{animation:pen .16s ease-out calc(.35s + var(--i) * .085s) both}
+@keyframes pen{from{opacity:0;transform:translateY(2px)}}
+.c1 .fall{transform-box:fill-box;transform-origin:50% 50%}
+.play.c1 .fall{animation:fall 3.4s var(--io) 3.1s both}
+@keyframes fall{from{opacity:0;transform:translate(14px,-150px) rotate(-70deg)}12%{opacity:1}to{opacity:1;transform:none}}
+
+/* 2 · pigment bloom: a pale wash spreads behind the names (line first, then colour), then three petals settle */
+/* the wash is drawn in SVG (a displaced, softly edged pool of pigment), so it has no crop edges */
+.wash{position:absolute;left:18%;top:27%;width:84%;height:auto;overflow:visible;mix-blend-mode:multiply}
+.play .wash{animation:bloom 2.2s var(--out) .2s both}
+@keyframes bloom{from{opacity:0;transform:scale(.86)}}
+.petal{transform-box:fill-box;transform-origin:50% 50%}
+.petal .pw{opacity:.55}
+.play .petal{animation:settle 2.6s var(--out) var(--d) both}
+@keyframes settle{from{opacity:0;transform:translate(var(--sx),-120px) rotate(var(--sr))}15%{opacity:1}to{opacity:1;transform:none}}
+
+/* 3 · a branch grows: an ink olive branch draws along the bottom and up the right side, leaves take colour, one flower opens */
+.flower{position:absolute;left:79.5%;top:34%;width:19%;aspect-ratio:1;border-radius:50%;overflow:hidden;transform-origin:50% 90%;mix-blend-mode:multiply}
+.flower img{position:absolute;width:265%;left:-95%;top:-50%}
+.play .flower{animation:open 1.5s var(--out) 2.5s both,sway 3.2s ease-in-out 4.1s both}
+@keyframes open{from{opacity:0;transform:scale(.45) rotate(-28deg)}}
+@keyframes sway{0%,100%{transform:none}40%{transform:rotate(3deg)}75%{transform:rotate(-1.5deg)}}
+
+@media (prefers-reduced-motion:reduce){ .scene *, .scene{animation:none !important} }
+footer{padding:24px 0 48px;font-size:15px;color:var(--brown)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="paper-soft" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1 .8" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .23  0 0 0 0 .18  0 0 0 0 .14  0 0 0 .34 -.12" result="gc"/>
+      <feComposite in="gc" in2="SourceGraphic" operator="in" result="gm"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="gm"/></feMerge>
+    </filter>
+    <!-- watercolour pool: a displaced edge, a soft blur and a slightly darker rim, like pigment drying on paper -->
+    <filter id="wc" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="3" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="34" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.2" result="b"/>
+      <feMorphology in="d" operator="erode" radius="3" result="e"/>
+      <feComposite in="d" in2="e" operator="out" result="rim"/>
+      <feGaussianBlur in="rim" stdDeviation="1.4" result="rimb"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="rimb"/></feMerge>
+    </filter>
+    <filter id="wc2" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="22" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="1.8"/>
+    </filter>
+    <!-- olive sprig, as in the tile -->
+    <g id="sprig-leaves">
+      <path d="M61.5 198.4C64.8 213 92.8 227.2 112.8 227.2C103.9 212.1 77.9 193.7 61.5 198.4"/>
+      <path d="M98.9 177.5C114.8 171.1 122.3 136.7 117 117.8C102.4 132 91.7 162.9 98.9 177.5"/>
+      <path d="M145.6 164.6C150.5 177.1 179.2 187.8 195.2 184.5C184.4 170.9 160.3 159.4 145.6 164.6"/>
+      <path d="M188.4 133C200 125.7 206 97 200.4 81.9C188.2 94.7 180.6 120.6 188.4 133"/>
+      <path d="M240.8 109C247.2 119.8 271.9 125.3 287.1 120.4C275.4 110.3 253.2 101.6 240.8 109"/>
+      <path d="M286.6 68.1C295.4 60.3 294.6 36.1 289 22.5C282.3 36 279 59.6 286.6 68.1"/>
+      <path d="M341.1 31.5C354.3 33.9 373.5 14 378.1 -2.1C362.1 .9 342 16.9 341.1 31.5"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <p class="smallcaps">Stage 1 · the names section · for you to choose</p>
+    <h1>Three ways to bring the names to life</h1>
+    <p class="lede">The same piece of the invitation three times: the hills above, the fold, Maya e Tomás, the date and place, and the villa below. Each version adds a little drawn, living detail around the names, with bare paper kept around them. Tap Replay to watch one again. Opening line, date and place are still TODO(user).</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+
+    <!-- 1 -->
+    <section class="concept" aria-labelledby="h1c">
+      <h2 id="h1c"><span class="no">1</span>Written by hand</h2>
+      <p class="plain">The names appear letter by letter as if written with a pen. An ink olive sprig draws itself beside them, its leaves take colour, and one leaf drifts down.</p>
+      <div class="scene c1" lang="pt-PT">
+        <svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg>
+        <img class="ctx hills" src="deck-crops/hills.jpg" width="330" height="140" alt="">
+        <span class="crease" aria-hidden="true"></span>
+        <img class="ctx venue" src="deck-crops/venue.jpg" width="630" height="220" alt="">
+        <p class="kicker f" style="--d:.1s">TODO(user) · frase de abertura</p>
+        <p class="names"><span class="vh"><span translate="no">Maya</span> e <span translate="no">Tomás</span></span><span aria-hidden="true"><span class="l"><span class="ch" style="--i:0">M</span><span class="ch" style="--i:1">a</span><span class="ch" style="--i:2">y</span><span class="ch" style="--i:3">a</span></span><span class="l amp"><span class="ch" style="--i:5">e</span> <span class="ch" style="--i:7">T</span><span class="ch" style="--i:8">o</span><span class="ch" style="--i:9">m</span><span class="ch" style="--i:10">á</span><span class="ch" style="--i:11">s</span></span></span></p>
+        <p class="meta m1 r" style="--d:1.5s">TODO(user) · data</p>
+        <p class="meta m2 r" style="--d:1.62s">TODO(user) · lugar</p>
+        <svg class="ov" viewBox="0 0 340 500" aria-hidden="true" focusable="false">
+          <svg x="206" y="146" width="124" height="78" viewBox="0 -8 384 240" overflow="visible">
+            <g class="wash-leaf f" style="--d:2.7s;--t:1.2s"><use href="#sprig-leaves"/></g>
+            <g class="ink" style="stroke-width:4.4">
+              <path pathLength="1" style="--t:1s;--d:1.3s" d="M16 204C96 196 214 132 338 34"/>
+              <path pathLength="1" style="--t:.4s;--d:1.55s" d="M61.5 198.4C64.8 213 92.8 227.2 112.8 227.2C103.9 212.1 77.9 193.7 61.5 198.4"/>
+              <path pathLength="1" style="--t:.4s;--d:1.7s" d="M98.9 177.5C114.8 171.1 122.3 136.7 117 117.8C102.4 132 91.7 162.9 98.9 177.5"/>
+              <path pathLength="1" style="--t:.4s;--d:1.85s" d="M145.6 164.6C150.5 177.1 179.2 187.8 195.2 184.5C184.4 170.9 160.3 159.4 145.6 164.6"/>
+              <path pathLength="1" style="--t:.4s;--d:2s" d="M188.4 133C200 125.7 206 97 200.4 81.9C188.2 94.7 180.6 120.6 188.4 133"/>
+              <path pathLength="1" style="--t:.4s;--d:2.15s" d="M240.8 109C247.2 119.8 271.9 125.3 287.1 120.4C275.4 110.3 253.2 101.6 240.8 109"/>
+              <path pathLength="1" style="--t:.4s;--d:2.3s" d="M286.6 68.1C295.4 60.3 294.6 36.1 289 22.5C282.3 36 279 59.6 286.6 68.1"/>
+              <path pathLength="1" style="--t:.4s;--d:2.45s" d="M341.1 31.5C354.3 33.9 373.5 14 378.1 -2.1C362.1 .9 342 16.9 341.1 31.5"/>
+            </g>
+          </svg>
+          <g class="fall">
+            <path d="M258 330Q270 316 292 316Q278 334 258 330Z" fill="#9DAE82" opacity=".55"/>
+            <path d="M258 330Q270 316 292 316Q278 334 258 330ZM258 330Q274 324 290 317" class="ink" style="stroke-width:1.2"/>
+          </g>
+        </svg>
+      </div>
+      <button type="button" class="pill" data-replay>Replay</button>
+    </section>
+
+    <!-- 2 -->
+    <section class="concept" aria-labelledby="h2c">
+      <h2 id="h2c"><span class="no">2</span>Pigment bloom</h2>
+      <p class="plain">A pale blush wash spreads behind the names like pigment soaking into paper, then three petals float down and settle.</p>
+      <div class="scene c2" lang="pt-PT">
+        <svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg>
+        <img class="ctx hills" src="deck-crops/hills.jpg" width="330" height="140" alt="">
+        <span class="crease" aria-hidden="true"></span>
+        <img class="ctx venue" src="deck-crops/venue.jpg" width="630" height="220" alt="">
+        <svg class="wash" viewBox="0 0 280 200" aria-hidden="true" focusable="false">
+          <ellipse cx="150" cy="96" rx="112" ry="70" fill="#E7C3B2" opacity=".42" filter="url(#wc)"/>
+          <ellipse cx="206" cy="128" rx="46" ry="30" fill="#9DAE82" opacity=".22" filter="url(#wc2)"/>
+        </svg>
+        <p class="kicker f" style="--d:.9s">TODO(user) · frase de abertura</p>
+        <p class="names r" style="--d:1.1s;--t:1.2s"><span translate="no" class="l">Maya</span><span class="l amp">e <span translate="no">Tomás</span></span></p>
+        <p class="meta m1 r" style="--d:1.6s">TODO(user) · data</p>
+        <p class="meta m2 r" style="--d:1.72s">TODO(user) · lugar</p>
+        <svg class="ov" viewBox="0 0 340 500" aria-hidden="true" focusable="false">
+          <g class="petal" style="--d:2s;--sx:-30px;--sr:-120deg"><path class="pw" d="M286 186Q296 176 306 184Q300 196 286 186Z" fill="#E7C3B2"/><path class="ink" pathLength="1" style="stroke-width:1.1;--t:.5s;--d:inherit" d="M286 186Q296 176 306 184Q300 196 286 186Z"/></g>
+          <g class="petal" style="--d:2.35s;--sx:24px;--sr:140deg"><path class="pw" d="M252 276Q262 268 270 278Q260 286 252 276Z" fill="#C98B6B"/><path class="ink" pathLength="1" style="stroke-width:1.1;--t:.5s;--d:inherit" d="M252 276Q262 268 270 278Q260 286 252 276Z"/></g>
+          <g class="petal" style="--d:2.7s;--sx:-18px;--sr:-90deg"><path class="pw" d="M212 334Q220 326 230 332Q222 342 212 334Z" fill="#E7C3B2"/><path class="ink" pathLength="1" style="stroke-width:1.1;--t:.5s;--d:inherit" d="M212 334Q220 326 230 332Q222 342 212 334Z"/></g>
+        </svg>
+      </div>
+      <button type="button" class="pill" data-replay>Replay</button>
+    </section>
+
+    <!-- 3 -->
+    <section class="concept" aria-labelledby="h3c">
+      <h2 id="h3c"><span class="no">3</span>A branch grows</h2>
+      <p class="plain">The names appear first. Then an ink olive branch grows along the bottom and up the right side to frame them, its leaves take colour, and one flower opens at its tip.</p>
+      <div class="scene c3" lang="pt-PT">
+        <svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg>
+        <img class="ctx hills" src="deck-crops/hills.jpg" width="330" height="140" alt="">
+        <span class="crease" aria-hidden="true"></span>
+        <img class="ctx venue" src="deck-crops/venue.jpg" width="630" height="220" alt="">
+        <p class="kicker f" style="--d:.1s">TODO(user) · frase de abertura</p>
+        <p class="names r" style="--d:.25s;--t:1.1s"><span translate="no" class="l">Maya</span><span class="l amp">e <span translate="no">Tomás</span></span></p>
+        <p class="meta m1 r" style="--d:.6s">TODO(user) · data</p>
+        <p class="meta m2 r" style="--d:.7s">TODO(user) · lugar</p>
+        <svg class="ov" viewBox="0 0 340 500" aria-hidden="true" focusable="false">
+          <g class="wash-leaf">
+            <path class="f" style="--d:1.6s" d="M69.3 350.8Q76.7 347.4 76.9 337.9Q68.8 342.7 69.3 350.8"/>
+            <path class="f" style="--d:1.85s" d="M123.1 350.0Q122.9 358.2 131.2 362.7Q130.6 353.2 123.1 350.0"/>
+            <path class="f" style="--d:2.1s" d="M178.5 348.9Q185.8 345.4 185.9 335.9Q177.8 340.8 178.5 348.9"/>
+            <path class="f" style="--d:2.35s" d="M232.1 345.3Q232.6 353.4 241.3 357.0Q239.9 347.7 232.1 345.3"/>
+            <path class="f" style="--d:2.6s" d="M303.1 322.5Q305.8 314.8 299.2 308.0Q296.9 317.1 303.1 322.5"/>
+            <path class="f" style="--d:2.8s" d="M317.0 296.2Q324.8 298.7 331.4 291.9Q322.1 289.9 317.0 296.2"/>
+            <path class="f" style="--d:3s" d="M320.5 264.3Q317.1 256.9 307.6 256.6Q312.3 264.8 320.5 264.3"/>
+          </g>
+          <g class="ink">
+            <path pathLength="1" style="--t:2.2s;--d:.8s" d="M16 354C90 346 200 356 276 338C322 326 326 276 316 226"/>
+            <path pathLength="1" style="--t:.35s;--d:1.2s" d="M69.3 350.8Q76.7 347.4 76.9 337.9Q68.8 342.7 69.3 350.8"/>
+            <path pathLength="1" style="--t:.35s;--d:1.45s" d="M123.1 350.0Q122.9 358.2 131.2 362.7Q130.6 353.2 123.1 350.0"/>
+            <path pathLength="1" style="--t:.35s;--d:1.7s" d="M178.5 348.9Q185.8 345.4 185.9 335.9Q177.8 340.8 178.5 348.9"/>
+            <path pathLength="1" style="--t:.35s;--d:1.95s" d="M232.1 345.3Q232.6 353.4 241.3 357.0Q239.9 347.7 232.1 345.3"/>
+            <path pathLength="1" style="--t:.35s;--d:2.2s" d="M303.1 322.5Q305.8 314.8 299.2 308.0Q296.9 317.1 303.1 322.5"/>
+            <path pathLength="1" style="--t:.35s;--d:2.4s" d="M317.0 296.2Q324.8 298.7 331.4 291.9Q322.1 289.9 317.0 296.2"/>
+            <path pathLength="1" style="--t:.35s;--d:2.6s" d="M320.5 264.3Q317.1 256.9 307.6 256.6Q312.3 264.8 320.5 264.3"/>
+          </g>
+        </svg>
+        <div class="flower" aria-hidden="true"><img src="deck-crops/fl-a.jpg" width="164" height="138" alt=""></div>
+      </div>
+      <button type="button" class="pill" data-replay>Replay</button>
+    </section>
+
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>Art: stand-in crops from your deck (<code>comps/deck-crops/</code>). Ink lines draw stroke by stroke; everything else moves by transform and opacity. With reduced motion on, each section shows its finished state. Back to the <a href="style-tile.html">style tile</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play(scene){
+    if (reduce) return;
+    scene.classList.remove('play');
+    void scene.offsetWidth; /* restart the CSS animations */
+    scene.classList.add('play');
+  }
+  var scenes = document.querySelectorAll('.scene');
+  document.querySelectorAll('[data-replay]').forEach(function(b){
+    b.addEventListener('click', function(){ play(b.parentNode.querySelector('.scene')); });
+  });
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { play(e.target); io.unobserve(e.target); } });
+    }, {threshold:.5});
+    scenes.forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

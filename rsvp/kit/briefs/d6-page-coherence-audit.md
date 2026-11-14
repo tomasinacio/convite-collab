@@ -1,0 +1,5 @@
+# Research brief (generic, no personal details)
+
+You are a research agent. Use web search. Answer ONLY from pages you actually opened; never invent a page, URL, author or fact. If you cannot find something real, write NOT FOUND. Keep the whole answer under 600 words, as short bullet points with the exact page URL beside each point. Context: we make a hand-painted watercolor invitation web page in Portugal (olive branches, oranges, lavender, wheat, swallows, blue azulejo plaque, warm paper), phone first, free tools only. Question:
+
+Research free tools and scripts to audit one web page for coherence: finding repeated phrases or facts in the rendered text, extracting and comparing colours used against a palette, detecting background colour steps (seams) between sections, listing fonts and sizes per element role, checking spacing rhythm. Think Playwright scripts, getComputedStyle sampling, colour-extraction libraries, design-lint or CSS-stats tools, visual diff tools. Give 6 real tools or articles with URLs and licences, and a short outline of a Playwright script that does it.

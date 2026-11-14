@@ -1,0 +1,46 @@
+== run_id: 20261112-140822-1214549-nvidia_nvidia_nemotron-3-ultra-550b-a55b ==
+jail: WARNING using the MAIN router key; run delegate/set-key.sh with a dedicated one
+[0m
+> researcher · nvidia/nvidia/nemotron-3-ultra-550b-a55b
+[0m
+[0m→ [0mSkill "grounded-citations"
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skills+Cloudflare+Workers+D1+wrangler+2025+2026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://developers.cloudflare.com/agent-setup/claude-code
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+subagent+definition+Cloudflare+Workers+D1+AGENTS.md+CLAUDE.md+template+2025+2026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/centminmod/my-claude-code-setup/blob/master/CLAUDE-cloudflare.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Cloudflare+Workers+D1+subagent+definition+.claude+agents+markdown+2025+2026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://claudecowork.im/resources/cloudflare-workers-expert--subagent
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/Dlaby23/claude-agents-ultimate-collection
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/Dlaby23/claude-agents-ultimate-collection/tree/main/agents/infrastructure
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/Dlaby23/claude-agents-ultimate-collection/blob/main/agents/infrastructure/008_cloudflare-workers-expert.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=AGENTS.md+Cloudflare+Workers+template+D1+wrangler+2025+2026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/templates
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/templates/blob/main/AGENTS.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/templates/blob/main/CLAUDE.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/tree/main/skills
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/tree/main/skills/wrangler
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/blob/main/skills/wrangler/SKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/blob/main/skills/workers-development/SKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/blob/main/skills/workers-best-practices/SKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/tree/main/skills/agents-sdk
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/cloudflare/skills/blob/main/skills/agents-sdk/SKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Cloudflare+D1+skill+Claude+Code+2025+2026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://mcpmarket.com/tools/skills/cloudflare-d1-database
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=jezweb+claude-skills+cloudflare-d1+GitHub
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/jezweb/claude-skills
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/jezweb/claude-skills/tree/main/archive
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Cloudflare+Workers+Playwright+testing+skill+Claude+Code+2025+2026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://playwright.dev/agent-cli/skills
+Now I have enough information to compile the answer. Let me create the markdown table with the 5 best real candidates.
+
+| Name | URL (exact repo or page) | Licence | Last commit or update date | Type | What it contains | Why it fits | Risk |
+|------|--------------------------|---------|---------------------------|------|------------------|-------------|------|
+| cloudflare/skills (official) | https://github.com/cloudflare/skills | Apache-2.0 | Nov 4 2026 (8 days ago) | skill (19 skills) | **wrangler**, workers-development, workers-best-practices, agents-sdk, durable-objects, cf-cli, d1, kv, r2, web-perf, sandbox-* skills; + Cloudflare API MCP server | Official Cloudflare-maintained, covers all Workers/D1/wrangler tasks, auto-loads by trigger phrases, zero install scripts | None — markdown-only skills, no code execution on install |
+| cloudflare/templates AGENTS.md + CLAUDE.md | https://github.com/cloudflare/templates/blob/main/AGENTS.md + /CLAUDE.md | MIT | 1,037 commits (active) | guidance files | AGENTS.md (387 lines): template linting, testing patterns, PR review checklist; CLAUDE.md (230 lines): repo commands, template structure, deployment workflows, testing strategy | Official Cloudflare patterns for Workers projects; AGENTS.md includes D1 testing with vitest-pool-workers; CLAUDE.md documents wrangler.jsonc, bindings, compatibility dates | None — plain markdown files, copy into project |
+| centminmod/my-claude-code-setup CLAUDE-cloudflare.md | https://github.com/centminmod/my-claude-code-setup/blob/master/CLAUDE-cloudflare.md | (no licence shown) | 2026 (commits this year) | guidance file (CLAUDE.md template) | 1,082-line CLAUDE.md: project detection, wrangler config for D1/KV/R2/DO, full wrangler CLI reference (dev, deploy, d1 migrations, kv, r2, secrets, types, tail), Clerk auth patterns, TypeScript Env generation, platform constraints table, gotchas, pre-implementation checklist | Single-file comprehensive reference for your exact stack (Workers + D1 + wrangler + static HTML); includes all wrangler d1 commands, local/remote flags, migration workflow | None — markdown only; verify no licence if redistributing |
+| Dlaby23/claude-agents-ultimate-collection cloudflare-workers-expert | https://github.com/Dlaby23/claude-agents-ultimate-collection/blob/main/agents/infrastructure/008_cloudflare-workers-expert.md | (MIT implied by repo) | 2026 (16 commits) | subagent definition (.md with frontmatter) | Subagent with frontmatter (name, description, model=claude-sonnet-4-20250514); 558-line body: Workers/KV/DO/R2/D1 patterns, rate-limiter DO, WebSocket DO, R2 multipart, D1 batch transactions, HTMLRewriter, best practices checklist | Ready-to-use subagent for Workers/D1 tasks; includes D1 schema setup, prepared statements, batch transactions, KV caching pattern; installs to ~/.claude/agents/ | None — markdown-only subagent, no install scripts |
+| playwright-cli skills (official) | https://playwright.dev/agent-cli/skills | Apache-2.0 (Playwright) | 2026 (active) | skill (CLI + skill bundle) | playwright-cli install --skills → copies SKILL.md + refs to .claude/skills/playwright-cli/; covers test running, mocking, codegen, tracing, session management, storage state | You use Playwright for E2E; this skill teaches Claude to run/debug Playwright tests, generate tests, mock network — works alongside Workers local dev | Low — installs CLI binary via npx; skill itself is markdown |
+
+**Best single pick and why**: **cloudflare/skills** — it is the only official, actively maintained (Nov 2026) skill bundle covering wrangler, D1, Workers development, best practices, and agents-sdk in one plugin; installs via two slash commands, adds the Cloudflare API MCP server, and requires zero code execution or scripts. Pair it with the **cloudflare/templates AGENTS.md + CLAUDE.md** files copied into your project for project-specific guidance.
+EXIT 0

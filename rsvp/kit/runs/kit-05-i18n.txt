@@ -1,0 +1,80 @@
+== run_id: 20261112-141849-1220398-nvidia_nvidia_nemotron-3-ultra-550b-a55b ==
+jail: WARNING using the MAIN router key; run delegate/set-key.sh with a dedicated one
+[0m
+> researcher · nvidia/nvidia/nemotron-3-ultra-550b-a55b
+[0m
+[0m→ [0mSkill "grounded-citations"
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+localisation+i18n+pt-PT+translation+checker+markdown
+[0m✗ [0mWebFetch https://github.com/davila7/claude-code-templates/blob/main/cli-tool/components/skills/development/i18n-localization/SKILL.md failed
+[91m[1mError: [0mTransport error (GET https://github.com/davila7/claude-code-templates/blob/main/cli-tool/components/skills/development/i18n-localization/SKILL.md)
+[0m✗ [0mWebFetch https://raw.githubusercontent.com/davila7/claude-code-templates/main/cli-tool/components/skills/development/i18n-localization/SKILL.md failed
+[91m[1mError: [0mTransport error (GET https://raw.githubusercontent.com/davila7/claude-code-templates/main/cli-tool/components/skills/development/i18n-localization/SKILL.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdavila7%2Fclaude-code-templates%2Fmain%2Fcli-tool%2Fcomponents%2Fskills%2Fdevelopment%2Fi18n-localization%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+pt-PT+pt-BR+Portuguese+locale+gendered+language+ICU+plural+translation+review
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+subagent+definition+i18n+translation+quality+checker+ICU+plural+placeholder+markdown
+[0m✗ [0mWebFetch https://www.skillsdirectory.com/skills/iuliandita-i18n-localization failed
+[91m[1mError: [0mTransport error (GET https://www.skillsdirectory.com/skills/iuliandita-i18n-localization)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2FComfy-Org%2Fworkflow_templates%2Fmain%2F.claude%2Fskills%2Fmanaging-translations%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=pt-PT+vs+pt-BR+linting+gendered+language+checker+ICU+plural+translation+review+Claude+Code+skill+2025
+[0m✗ [0mWebFetch https://github.com/senshinji/claude-translation-skill failed
+[91m[1mError: [0mTransport error (GET https://github.com/senshinji/claude-translation-skill)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsenshinji%2Fclaude-translation-skill%2Fmain%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+i18n+key+extraction+placeholder+checker+missing+translation+ICU+plural+validation
+[0m✗ [0mWebFetch https://raw.githubusercontent.com/daymade/claude-code-skills/main/i18n-expert/SKILL.md failed
+[91m[1mError: [0mTransport error (GET https://raw.githubusercontent.com/daymade/claude-code-skills/main/i18n-expert/SKILL.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdaymade%2Fclaude-code-skills%2Fmain%2Fi18n-expert%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+subagent+i18n+translation+review+quality+checker+gendered+language+Portuguese
+[0m✗ [0mWebFetch https://github.com/jeffreytse/grimoire-core failed
+[91m[1mError: [0mTransport error (GET https://github.com/jeffreytse/grimoire-core)
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjeffreytse%2Fgrimoire-core%2Fmain%2Fskills%2Fdesign-translation-quality-review%2FSKILL.md failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjeffreytse%2Fgrimoire-core%2Fmain%2Fskills%2Fdesign-translation-quality-review%2FSKILL.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=design-translation-quality-review+SKILL.md+Claude+Code+jeffreytse
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+translation-qa+SKILL.md+placeholder+ICU+plural+missing+key+check
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Falirezarezvani%2Fclaude-skills%2Fmain%2Fskills%2Fi18n-localization%2FSKILL.md failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Falirezarezvani%2Fclaude-skills%2Fmain%2Fskills%2Fi18n-localization%2FSKILL.md)
+[0m✗ [0mWebFetch https://github.com/alirezarezvani/claude-skills/tree/main/skills/i18n-localization failed
+[91m[1mError: [0mTransport error (GET https://github.com/alirezarezvani/claude-skills/tree/main/skills/i18n-localization)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Ftessl.io%2Fregistry%2Fskills%2Fgithub%2Falirezarezvani%2Fclaude-skills%2Fi18n-localization
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=pt-PT+pt-BR+gendered+language+translation+linter+Claude+Code+skill+subagent
+[0m✗ [0mWebFetch https://vinidlidoo.github.io/blog/translation-with-claude-code failed
+[91m[1mError: [0mTransport error (GET https://vinidlidoo.github.io/blog/translation-with-claude-code)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fvinidlidoo.github.io%2Fblog%2Ftranslation-with-claude-code
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=vinidlidoo+translation+claude+code+skill+subagent+GitHub
+[0m✗ [0mWebFetch https://raw.githubusercontent.com/feiskyer/claude-code-settings/main/skills/translate/SKILL.md failed
+[91m[1mError: [0mTransport error (GET https://raw.githubusercontent.com/feiskyer/claude-code-settings/main/skills/translate/SKILL.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffeiskyer%2Fclaude-code-settings%2Fmain%2Fskills%2Ftranslate%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Portuguese+pt-PT+European+localization+linter+gendered+language+ICU+plural+Claude+Code
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=pt-PT+pt-BR+linting+rule+gendered+language+translation+quality+checker+script+open+source
+[0m✗ [0mWebFetch https://www.locize.com/blog/translation-qa-checks failed
+[91m[1mError: [0mTransport error (GET https://www.locize.com/blog/translation-qa-checks)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fwww.locize.com%2Fblog%2Ftranslation-qa-checks
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+subagent+Portuguese+European+pt-PT+translation+review+gendered+language+ICU+plural+checker
+[0m✗ [0mWebFetch https://github.com/deusyu/translate-book failed
+[91m[1mError: [0mTransport error (GET https://github.com/deusyu/translate-book)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdeusyu%2Ftranslate-book%2Fmain%2FSKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+subagent+pt-PT+European+Portuguese+localization+gendered+language+checker
+[0m✗ [0mWebFetch https://www.skillsdirectory.com/skills/brunomiguens-translating-portuguese failed
+[91m[1mError: [0mTransport error (GET https://www.skillsdirectory.com/skills/brunomiguens-translating-portuguese)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fwww.skillsdirectory.com%2Fskills%2Fbrunomiguens-translating-portuguese
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=BrunoMiguens+translating-products-skill+GitHub+Claude+Code
+[0m✗ [0mWebFetch https://github.com/BrunoMiguens/translating-products-skill failed
+[91m[1mError: [0mTransport error (GET https://github.com/BrunoMiguens/translating-products-skill)
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2FBrunoMiguens%2Ftranslating-products-skill%2Fmain%2FSKILL.md failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2FBrunoMiguens%2Ftranslating-products-skill%2Fmain%2FSKILL.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+skill+i18n+key+extraction+placeholder+ICU+plural+checker+script+markdown+2025
+[0m✗ [0mWebFetch https://www.productbuilder.net/pt/skills/internationalization failed
+[91m[1mError: [0mTransport error (GET https://www.productbuilder.net/pt/skills/internationalization)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fwww.productbuilder.net%2Fpt%2Fskills%2Finternationalization
+Now I have comprehensive findings. Let me compile the best candidates into the requested table format.
+
+| Name | URL (exact repo or page) | Licence | Last commit or update date | Type | What it contains | Why it fits | Risk |
+|------|-------------------------|---------|----------------------------|------|------------------|-------------|------|
+| alirezarezvani/claude-skills — i18n-localization | https://tessl.io/registry/skills/github/alirezarezvani/claude-skills/i18n-localization | MIT (repo-wide) | 3 hours ago (Nov 2026) | Skill (markdown + 3 stdlib Python scripts) | `locale_sync.py` (keys, placeholders, ICU syntax, CLDR plurals for 69 locales incl. pt-PT/pt-BR), `hardcoded_strings.py` (finds untranslated UI text, concatenation, locale-less formatting), `pseudo_localize.py` (generates en-XA/ar-XB pseudo-locales for layout testing); embedded CLDR 49 plural table; `references/plurals_and_messages.md` (ICU rules, placeholder shapes per locale) | Covers i18n key extraction, placeholder/ICU/plural validation, pt-PT vs pt-BR plural rules (CLDR: both have 2 forms but different CLDR names), missing-translation checks, and CI gate (`assets/i18n-gate.yml`). No network, no install scripts, stdlib-only. | Low: pure Python stdlib, no hooks or network; MIT licence clear |
+| BrunoMiguens/translating-products-skill — translating-portuguese | https://www.skillsdirectory.com/skills/brunomiguens-translating-portuguese | MIT (implied by Skills Directory) | Sep 22, 2026 | Skill (markdown only, no code) | Markdown-only skill with frontmatter; enforces pt-BR vs pt-PT regional grammar (vocabulary, spelling, `estar+gerúndio` vs `estar a+infinitivo`), pronoun/address consistency (`você`/`tu`), formality, product register; requires explicit locale; QA handoff contract for `reviewing-translations` | Only skill found that specifically codifies pt-PT vs pt-BR linguistic differences (gendered agreement, progressive forms, vocabulary, spelling) for product UI; no code to run on install; works as a Claude Code skill | Low: markdown only, no scripts, no network; verify repo licence before use |
+| senshinji/claude-translation-skill | https://github.com/senshinji/claude-translation-skill | MIT | 1 commit (appears 2025-2026) | Skill (markdown + reference schemas + test scripts) | Multi-agent pipeline: translator + term-researcher (web search) + reviewer (Opus) + typesetting; anti-fabrication rules (never invent copy, mark `[unclear in original]`, `[?原文?]` for term verification), terminology glossary JSON schema, review feedback schema with TODO-like markers; structure preservation for tables/lists | Implements translation review workflow that never invents copy (anti-fabrication checklist), keeps TODO markers for unwritten text, handles terminology verification via web search, and produces review feedback with severity levels — matches "translation review workflows that never invent copy and keep a TODO marker" | Medium: requires Agent Teams (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`), uses web search (network), spawns sub-agents; MIT licence clear |
+| daymade/claude-code-skills — i18n-expert | https://github.com/daymade/claude-code-skills/tree/main/i18n-expert | Not found (check repo) | Not found (check repo) | Skill (markdown + `scripts/i18n_audit.py`) | Audit workflow: extracts `t('key')` usage, compares against locale JSON, validates placeholders and plural rules (`_one`/`_other`), finds hardcoded strings via `rg`, enforces ICU MessageFormat for plurals, Intl for dates/numbers; `scripts/i18n_audit.py` (Python stdlib) | Directly addresses i18n key extraction, placeholder consistency, plural handling (ICU), missing-translation detection, and hardcoded-string finding — all via a single Python script; no network | Unknown: repo licence not confirmed; script is stdlib-only but verify before use |
+| vinidlidoo/blog translation system (sync-translations skill + translation-editor subagent) | https://vinidlidoo.github.io/blog/translation-with-claude-code | Not specified (personal blog) | Jan 14, 2026 | Skill + Subagent definition (markdown frontmatter) | `.claude/skills/sync-translations/SKILL.md` + `check-sync.sh` (git-diff-based sync detection), `.claude/agents/translation-editor.md` (subagent reviews translations for naturalness, idiom adaptation, terminology, voice), `.claude/translation-learnings/{fr.md,ja.md}` (accumulated terminology/style per locale) | Real working system for static markdown sites (like your HTML form): detects NEW/SYNC/ABORT states via git, drafts translations, spawns per-language review subagents with fresh context, accumulates learnings per locale — directly applicable to pt-PT/pt-BR/es/en static page | Low: pure markdown skills + shell script + subagent definitions; no install scripts, no network; but licence not explicit (personal project) |
+
+**Best single pick and why:**  
+**alirezarezvani/claude-skills — i18n-localization** — it is the only actively maintained (updated 3 hours ago), security-scanned (Grade A), MIT-licensed skill that bundles a complete mechanical QA pipeline: `locale_sync.py` validates keys, placeholders, ICU syntax, and CLDR plural categories for **both pt-PT and pt-BR** (using embedded CLDR 49), `hardcoded_strings.py` finds untranslated UI text in your static HTML, and `pseudo_localize.py` generates test locales for layout verification. All three scripts are stdlib-only Python with zero network calls, no install hooks, and exit codes for CI. It covers every mechanical requirement (extraction, placeholder/plural/ICU checks, missing keys, pt-PT vs pt-BR plural rules) and pairs with the **BrunoMiguens translating-portuguese** skill for the linguistic layer (gendered agreement, regional vocabulary, formality).
+EXIT 0

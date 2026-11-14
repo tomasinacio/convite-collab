@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6EFDF">
+<title>Type concepts: invitation</title>
+<meta name="description" content="Four whole-card type concepts for the invitation of Maya e Tomás on the open folded sheet: same palette, same layout, only the typefaces differ. In pt-PT, en and es, with a glyph test. DRAFT for the user to choose.">
+<!-- owner: Tomas | stage 1 (illustrated-reveal) | status: DRAFT, for the user to choose | 2026-11-10 | art matches style tile r4 (REDTEAM.md)
+     Fair comparison: every card has the same art, layout, colours and placeholder copy; only the two typefaces change.
+     Concepts 1, 3 and 4 are the DESIGN.md candidates (B, A, C). Concept 2 is new: no script, a different mood.
+     No invented copy: names are Maya e Tomás; opening line, date and place are TODO(user). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Lora:ital@0;1&family=Pinyon+Script&display=swap">
+<style>
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --olive:#4F5F2E; --brown:#6B4F34; --twine:#B8946A; --shade:#E3E2D6;
+  --sun: drop-shadow(1px 1.5px 1px rgb(59 47 37 / .16)) drop-shadow(4px 8px 8px rgb(59 47 37 / .10));
+  --sun-thin: drop-shadow(.6px 1px .6px rgb(59 47 37 / .18)) drop-shadow(2px 4px 3px rgb(59 47 37 / .08));
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .18 0 0 0 0 .14 0 0 0 .5 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.55;color:var(--ink);background:var(--shade);overflow-x:clip}
+h1,h2{font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--olive);text-underline-offset:3px}
+button{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 40px}}
+.smallcaps{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+
+.top{padding:28px 0 8px;background:var(--paper)}
+.top-in{padding-bottom:22px}
+.top h1{font-size:clamp(30px,6.4vw,44px);line-height:1.1;margin-top:6px}
+.top .lede{max-width:36em;margin-top:10px;font-size:17px;color:var(--brown)}
+.lang-wrap{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:18px}
+.lang{display:inline-flex;gap:2px;border:1px solid var(--twine);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{min-height:44px;min-width:52px;padding:0 14px;border:0;border-radius:999px;background:transparent;font-size:16px;letter-spacing:.06em;cursor:pointer}
+.lang button:hover{background:var(--sand)}
+.lang button[aria-pressed="true"]{background:var(--sand)}
+
+.grid{display:grid;gap:56px;padding:40px 0 24px}
+@media (min-width:860px){.grid{grid-template-columns:1fr 1fr;column-gap:64px}}
+.concept h2{font-size:24px;line-height:1.2}
+.concept h2 .no{font-size:15px;letter-spacing:.14em;color:var(--brown);margin-right:8px}
+.concept .fonts{font-size:15px;color:var(--brown);margin-top:2px}
+.concept .plain{font-size:17px;margin-top:8px;max-width:30em}
+.concept .rec{display:inline-block;margin-top:6px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive)}
+
+/* ---------- The open folded sheet (same as the style tile, flat, no motion) ---------- */
+.sheet-slot{width:min(100% - 32px,360px);margin-top:18px}
+.sheet{position:relative;aspect-ratio:100/150;container-type:inline-size}
+.panel{position:absolute;left:0;width:100%}
+.flap{top:0;height:40%;--k:60}
+.panel-low{top:40%;height:60%;--k:90}
+.paper-bg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.paper-bg rect{fill:var(--paper);filter:url(#paper-soft)}
+.panel-low > .paper-bg{filter:var(--sun)}
+.flap > .paper-bg{height:calc(100% + 2px);filter:drop-shadow(1px -1px 1px rgb(59 47 37 / .08))}
+.crease{position:absolute;left:3%;right:3%;top:0;height:1px;background:rgb(184 148 106 / .5)}
+.layer{position:absolute;inset:0}
+.sprig,.fruit{mix-blend-mode:multiply}
+.ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible;fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round;stroke-width:.4}
+.leaf{position:absolute;background:url(../assets/cutouts/olive-leaves.webp) no-repeat;
+  left:calc(var(--x) * 1% - var(--w) * var(--px) * 1%);bottom:calc(100% - var(--y) * 100% / var(--k));
+  width:calc(var(--w) * 1%);transform-origin:calc(var(--px) * 100%) 100%;rotate:calc(var(--r) - var(--lean, 0deg))}
+.l1{aspect-ratio:299/1292;background-size:406.02% 199.54%;background-position:50.383% .7%;--px:.49}
+.l3{aspect-ratio:294/892;background-size:412.93% 289.01%;background-position:.761% 14.057%;--px:.12;--lean:12deg}
+.l4{aspect-ratio:269/1200;background-size:451.3% 214.83%;background-position:1.905% 90.711%;--px:.64;--lean:2deg}
+.l5{aspect-ratio:270/936;background-size:449.63% 275.43%;background-position:91.525% 82.4%;--px:.73;--lean:-3.6deg}
+.l6{aspect-ratio:279/834;background-size:435.13% 309.11%;background-position:48.235% 100%;--px:.49}
+.lemon{position:absolute;height:auto;display:block}
+.lw{width:21%;right:10%;bottom:9%;rotate:-18deg}
+.card-text{position:absolute;left:9%;top:6%;right:30%}
+.kicker{font-family:var(--body);font-size:16px;font-style:italic;color:var(--brown)}
+.names{font-family:var(--names);font-style:var(--names-style,normal);font-weight:var(--names-weight,400);color:var(--olive);
+  font-size:var(--names-size);line-height:var(--names-lh,.95);margin:.14em 0 .2em;letter-spacing:var(--names-track,0)}
+.names > span{display:block;white-space:nowrap}
+.names .amp{padding-left:10%}
+.meta{font-family:var(--body);font-weight:var(--body-weight,400);font-size:var(--body-size,17px);line-height:1.4}
+
+/* glyph test under each card */
+.glyphs{margin-top:18px;padding-top:12px;border-top:1px solid rgb(184 148 106 / .6);max-width:360px}
+.glyphs .g-names{font-family:var(--names);font-style:var(--names-style,normal);font-weight:var(--names-weight,400);font-size:34px;line-height:1.3;color:var(--ink)}
+.glyphs .g-body{font-family:var(--body);font-weight:var(--body-weight,400);font-size:var(--body-size,17px);margin-top:4px}
+
+/* ---------- The concepts: only these variables differ ---------- */
+.c-allura   {--names:'Allura',cursive;--names-size:14cqw;--body:'EB Garamond',Georgia,serif;--body-size:17px}
+.c-garamond {--names:'EB Garamond',Georgia,serif;--names-style:italic;--names-size:11.5cqw;--names-lh:1.02;--body:'EB Garamond',Georgia,serif;--body-size:17px}
+.c-vibes    {--names:'Great Vibes',cursive;--names-size:12.5cqw;--body:'Lora',Georgia,serif;--body-size:16px}
+.c-pinyon   {--names:'Pinyon Script',cursive;--names-size:12cqw;--names-lh:1.05;--body:'Cormorant Garamond',Georgia,serif;--body-size:18.5px;--body-weight:500}
+
+footer{padding:24px 0 48px;font-size:15px;color:var(--brown)}
+footer p + p{margin-top:6px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="paper-soft" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.1 .8" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .23  0 0 0 0 .18  0 0 0 0 .14  0 0 0 .34 -.12" result="gc"/>
+      <feComposite in="gc" in2="d" operator="in" result="gm"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="gm"/></feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap top-in">
+    <p class="smallcaps">Stage 1 · type concepts · for you to choose</p>
+    <h1>Four ways to write Maya e Tomás</h1>
+    <p class="lede">The same card four times: same art, same colours, same layout, same placeholder text. Only the lettering changes, so you can compare fairly. Under each card is a test of the accented letters. Opening line, date and place are still TODO(user).</p>
+    <div class="lang-wrap">
+      <span class="smallcaps" id="lang-l">Show every card in</span>
+      <div class="lang" role="group" aria-labelledby="lang-l">
+        <button type="button" data-lang="pt-PT" lang="pt-PT" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid" id="grid">
+
+    <section class="concept c-allura" aria-labelledby="c1">
+      <h2 id="c1"><span class="no">1</span>Light handwriting</h2>
+      <p class="fonts">Allura with EB Garamond (DESIGN.md option B)</p>
+      <p class="plain">Relaxed, light handwriting with a classic book typeface: warm and countryside, still easy to read.</p>
+      <span class="rec">Recommended</span>
+    </section>
+
+    <section class="concept c-garamond" aria-labelledby="c2">
+      <h2 id="c2"><span class="no">2</span>No handwriting</h2>
+      <p class="fonts">EB Garamond italic with EB Garamond (new option)</p>
+      <p class="plain">The names in the italic of the same classic book typeface: the calmest and easiest to read, like a finely printed card.</p>
+    </section>
+
+    <section class="concept c-vibes" aria-labelledby="c3">
+      <h2 id="c3"><span class="no">3</span>Bold handwriting</h2>
+      <p class="fonts">Great Vibes with Lora (DESIGN.md option A)</p>
+      <p class="plain">Rounder, heavier handwriting: the clearest script on a small screen, but the one most often seen on wedding templates.</p>
+    </section>
+
+    <section class="concept c-pinyon" aria-labelledby="c4">
+      <h2 id="c4"><span class="no">4</span>Formal calligraphy</h2>
+      <p class="fonts">Pinyon Script with Cormorant Garamond (DESIGN.md option C)</p>
+      <p class="plain">Formal pen-and-ink calligraphy: the most ceremonial, more city than countryside; its thin strokes get faint on small phones.</p>
+    </section>
+
+  </div>
+</main>
+
+<!-- one card, cloned into every concept so the art and layout are identical -->
+<template id="card">
+  <div class="sheet-slot">
+    <div class="sheet" role="img">
+      <div class="panel panel-low">
+        <svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg>
+        <span class="crease" aria-hidden="true"></span>
+        <div class="layer sprig" aria-hidden="true"><span class="leaf l5" style="--x:80;--y:60;--w:6;--r:28deg"></span></div>
+        <div class="layer fruit" aria-hidden="true">
+          <img class="lemon lw" src="../assets/cutouts/lemon-whole.webp" width="980" height="1185" alt="" decoding="async">
+        </div>
+        <div class="card-text">
+          <p class="kicker" data-i18n="kicker">TODO(user) · frase de abertura</p>
+          <p class="names"><span translate="no">Maya</span><span class="amp"><span data-i18n="join" style="display:inline">e</span> <span translate="no" style="display:inline">Tomás</span></span></p>
+          <p class="meta" data-i18n="date">TODO(user) · data</p>
+          <p class="meta" data-i18n="place">TODO(user) · lugar</p>
+        </div>
+      </div>
+      <div class="panel flap" aria-hidden="true">
+        <svg class="paper-bg" focusable="false"><rect width="100%" height="100%"/></svg>
+        <svg class="ink" data-px="1.5" viewBox="0 0 100 60" preserveAspectRatio="none" focusable="false">
+          <path d="M7 10C17 13 27 21 37 33Q41 38 44 43"/>
+        </svg>
+        <div class="layer sprig">
+          <span class="leaf l4" style="--x:13;--y:12.4;--w:5.6;--r:62deg"></span>
+          <span class="leaf l6" style="--x:24.5;--y:18.5;--w:6.2;--r:150deg"></span>
+          <span class="leaf l3" style="--x:34.5;--y:30;--w:6.4;--r:70deg"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glyphs">
+    <p class="smallcaps">Accent test</p>
+    <p class="g-names" lang="pt-PT">ã ç ñ á é í ó ú ü</p>
+    <p class="g-body" lang="pt-PT">ã ç ñ á é í ó ú ü · Coração · Señorita · Pingüino</p>
+  </div>
+</template>
+
+<footer class="wrap">
+  <p>Watercolours: USDA Pomological Watercolor Collection, public domain (see <code>assets/LOG.md</code>). Fonts: Google Fonts, all with the Portuguese and Spanish accents.</p>
+  <p>Names: Maya e Tomás (Maya and Tomás, Maya y Tomás). Opening line, date and place: TODO(user). Back to the <a href="style-tile.html">style tile</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var T = {
+    'pt-PT': {kicker:'TODO(user) · frase de abertura', join:'e', date:'TODO(user) · data', place:'TODO(user) · lugar', card:'Cartão aberto: Maya e Tomás'},
+    'en':    {kicker:'TODO(user) · opening line', join:'and', date:'TODO(user) · date', place:'TODO(user) · place', card:'Open card: Maya and Tomás'},
+    'es':    {kicker:'TODO(user) · frase de apertura', join:'y', date:'TODO(user) · fecha', place:'TODO(user) · lugar', card:'Tarjeta abierta: Maya y Tomás'}
+  };
+  var tpl = document.getElementById('card');
+  document.querySelectorAll('.concept').forEach(function(sec, i){
+    var frag = tpl.content.cloneNode(true);
+    if (i > 1) frag.querySelectorAll('img').forEach(function(im){ im.loading = 'lazy'; });
+    sec.appendChild(frag);
+  });
+  function setLang(code){
+    var t = T[code];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = t[el.getAttribute('data-i18n')]; });
+    document.querySelectorAll('.sheet').forEach(function(el){ el.setAttribute('lang', code); el.setAttribute('aria-label', t.card); });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === code)); });
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  setLang('pt-PT');
+  /* keep the ink at 1.5 CSS px */
+  var inks = document.querySelectorAll('svg[data-px]');
+  function fit(){
+    inks.forEach(function(s){
+      var w = s.getBoundingClientRect().width, vb = s.viewBox.baseVal.width;
+      if (w && vb) s.style.strokeWidth = (1.5 * vb / w).toFixed(3);
+    });
+  }
+  fit();
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(fit); inks.forEach(function(s){ ro.observe(s); }); }
+})();
+</script>
+</body>
+</html>

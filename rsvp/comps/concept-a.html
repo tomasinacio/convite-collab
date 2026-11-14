@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>RSVP · concept A</title>
+<!-- Concept A, "Dolce Vita on our paper": the section that follows the finished face (after </main>).
+     Fonts and painted props are the face's own files (same URLs, already cached by the face): zero added image or font weight.
+     FAKE: every guest-facing sentence, the guest names, the time and the deadline are placeholders. See REPLACE-ME.md. -->
+<style>
+@font-face{font-family:'Allura';font-style:normal;font-weight:400;font-display:swap;src:url(../../build/convite-publish/fonts/allura-latin.03828cd0.woff2) format('woff2')}
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:400 600;font-display:swap;src:url(../../build/convite-publish/fonts/ebgaramond-latin.68fd4b24.woff2) format('woff2')}
+@font-face{font-family:'EB Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(../../build/convite-publish/fonts/ebgaramond-italic-latin.d145e5e4.woff2) format('woff2')}
+:root{
+  --paper:#F6EFDF;--sand:#E6D6B8;--ink:#3B2F25;--olive:#4F5F2E;--terracotta:#9A4C32;--brown:#6B4F34;
+  --twine:#B8946A;--sage:#9DAE82;--az-ink:#1B2556;--az-cobalt:#344680;--az-glaze:#F3EEE5;
+  --field:#FBF7EE;            /* input ground: ink 7.0:1, placeholder 5.2:1 */
+  --edge:#8A7358;             /* input and card edges: 3.9:1 on paper (non-text 3:1) */
+  --hint:#7A6450;             /* placeholders: 4.87:1 on paper, 5.21:1 on field */
+  --err-bg:#F3E3D6;           /* terracotta text 4.86:1 */
+  --script:'Allura',cursive;--serif:'EB Garamond',Georgia,'Times New Roman',serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper) url(../../build/convite-publish/img/00-img-paper.2a9ce16b.webp) center top/600px auto;color:var(--ink);font:400 1.125rem/1.55 var(--serif)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+:focus-visible{outline:3px solid var(--az-cobalt);outline-offset:3px;border-radius:6px}
+
+/* ---------- dev tool (not part of the design) ---------- */
+.dev{font:13px/1.3 system-ui,sans-serif;background:#222;color:#eee;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.dev b{color:#ffcf6b;letter-spacing:.04em}
+.dev select,.dev button{font:inherit;min-height:32px}
+.dev label{display:flex;gap:4px;align-items:center}
+.no-dev .dev{display:none}
+html.show-fake [data-fake]{outline:1.5px dashed #c0392b;outline-offset:2px;position:relative}
+html.show-fake [data-fake]::after{content:"FAKE";position:absolute;top:-.9em;right:-.2em;font:700 9px/1 system-ui,sans-serif;color:#fff;background:#c0392b;padding:2px 3px;border-radius:2px;letter-spacing:.05em}
+
+/* ---------- section ---------- */
+.rsvp{position:relative;max-width:36rem;margin:0 auto;padding:4.5rem 1.25rem 3rem;overflow:hidden}
+.prop{position:absolute;pointer-events:none;background:no-repeat center/contain}
+.prop.twig{width:9.5rem;height:6rem;left:-2.6rem;top:1.4rem;background-image:url(../../build/convite-publish/img/olive-twig-trailing.c8b5e078.webp);transform:rotate(-8deg)}
+.prop.swallow{width:3.2rem;height:2.4rem;right:1.4rem;top:2.6rem;background-image:url(../../build/convite-publish/img/swallow-below.ba03f227.webp);transform:scaleX(-1) rotate(6deg)}
+.prop.lav{width:4.6rem;height:9rem;right:-1.4rem;bottom:9.5rem;background-image:url(../../build/convite-publish/img/lavender.f51f48c4.webp);opacity:.95}
+.prop.leaf{width:1.6rem;height:1.6rem;left:.4rem;bottom:13rem;background-image:url(../../build/convite-publish/img/olive-leaf.250fab91.webp);transform:rotate(-30deg)}
+
+.head{text-align:center;position:relative}
+.kicker{margin:0;font-size:.8125rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brown);font-weight:500}
+.h-script{margin:.1em 0 0;font:400 clamp(3rem,15vw,4.25rem)/1.05 var(--script);color:var(--az-ink);font-weight:400}
+.rule{display:block;width:4rem;height:1px;margin:1.1rem auto;background:var(--twine)}
+.sub{margin:0;font-size:.875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--az-cobalt)}
+.lead{margin:1.6rem auto 0;max-width:28rem;text-align:center;color:var(--brown);font-size:1.1875rem;line-height:1.6}
+
+/* azulejo band: one row of cobalt tiles, our answer to the Dolce Vita ribbon */
+.band{height:22px;margin:2.75rem -1.25rem;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F3EEE5'/%3E%3Cg fill='%23344680'%3E%3Cpath d='M0 0h7a7 7 0 0 1-7 7zM40 0h-7a7 7 0 0 0 7 7zM0 40h7a7 7 0 0 0-7-7zM40 40h-7a7 7 0 0 1 7-7z'/%3E%3Cpath d='M20 6c3 5 3 9 0 12-3-3-3-7 0-12zM20 34c-3-5-3-9 0-12 3 3 3 7 0 12zM6 20c5-3 9-3 12 0-3 3-7 3-12 0zM34 20c-5 3-9 3-12 0 3-3 7-3 12 0z' opacity='.92'/%3E%3Ccircle cx='20' cy='20' r='2.2'/%3E%3C/g%3E%3Cpath d='M.5.5h39v39H.5z' fill='none' stroke='%23C9D0DE'/%3E%3C/svg%3E") repeat-x left center/22px 22px;opacity:.9}
+
+/* venue card (the reference "location" block, set as a quiet paper card) */
+.venue{margin-top:2.25rem;text-align:center;padding:2rem 1.25rem 1.5rem;border:1px solid rgba(138,115,88,.45);border-radius:14px;background:rgba(251,247,238,.6)}
+.tile{display:block;width:3.5rem;height:3.5rem;margin:0 auto 1rem;border-radius:4px;box-shadow:0 1px 0 rgba(59,47,37,.15)}
+.venue h3{margin:.35rem 0 .2rem;font:500 1.875rem/1.15 var(--serif);color:var(--ink)}
+.venue .time{margin:0;letter-spacing:.18em;color:var(--olive)}
+.venue address{font-style:normal;margin:.6rem 0 0;color:var(--brown)}
+.links{display:flex;flex-direction:column;align-items:center;gap:.25rem;margin-top:1rem}
+.tlink{display:inline-flex;align-items:center;gap:.55rem;min-height:48px;padding:0 .5rem;color:var(--az-cobalt);text-decoration:none;font:inherit;font-size:.875rem;letter-spacing:.22em;text-transform:uppercase;background:none;border:0;cursor:pointer}
+.tlink span{border-bottom:1px solid rgba(52,70,128,.45);padding-bottom:3px}
+.tlink svg{width:18px;height:18px;flex:none}
+
+/* ---------- panel and states ---------- */
+.panel{position:relative;margin-top:.5rem}
+.blk{display:none}
+[data-state=loading] .st-loading,[data-state=saved] .st-saved,[data-state=closed] .st-closed,[data-state=nolink] .st-nolink,[data-state=toomany] .st-nolink,[data-state=nojs] .st-nojs{display:block}
+[data-state=form] .st-form,[data-state=sending] .st-form,[data-state=error] .st-form,[data-state=network] .st-form,[data-state=conflict] .st-form{display:block}
+.enter{animation:enter .32s var(--ease) both}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}}
+
+.st-loading{text-align:center;padding:2.5rem 0;color:var(--brown)}
+.dots{display:inline-flex;gap:.4rem;margin-top:.8rem}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--az-cobalt);animation:pulse 1.2s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes pulse{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+
+.for{text-align:center;margin:0 0 1.5rem;color:var(--brown);font-size:1rem}
+.for strong{display:block;font:400 2.25rem/1.15 var(--script);color:var(--az-ink);margin-top:.15rem}
+
+.person{border:0;margin:0;padding:1.5rem 0;border-top:1px solid rgba(138,115,88,.35)}
+.person:first-of-type{border-top:0;padding-top:.5rem}
+.person legend{padding:0;font:500 1.375rem/1.2 var(--serif);color:var(--ink);float:left;width:100%;margin-bottom:.85rem}
+.person legend small{display:block;font-size:.8125rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brown);font-weight:400;margin-bottom:.2rem}
+.person>*:not(legend){clear:both}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.75rem,1fr));gap:.75rem}
+.choice{position:relative;display:flex;align-items:center;gap:.75rem;min-height:3.75rem;padding:.75rem 1rem;border:1px solid var(--edge);border-radius:12px;background:var(--field);cursor:pointer;transition:background-color .18s,border-color .18s}
+.choice input{position:absolute;opacity:0;width:1px;height:1px}
+.choice .dot{flex:none;width:1.375rem;height:1.375rem;border-radius:50%;border:1.5px solid var(--edge);display:grid;place-items:center;background:#fff}
+.choice .dot::after{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--olive);transform:scale(0);transition:transform .18s var(--ease)}
+.choice input:checked+.dot{border-color:var(--olive)}
+.choice input:checked+.dot::after{transform:scale(1)}
+.choice:has(input:checked){border-color:var(--olive);background:#EEF0E2;box-shadow:inset 0 0 0 1px var(--olive)}
+.choice:has(input:focus-visible){outline:3px solid var(--az-cobalt);outline-offset:3px}
+.choice .txt{line-height:1.25}
+.choice.no:has(input:checked){border-color:var(--brown);background:#F1E8DA;box-shadow:inset 0 0 0 1px var(--brown)}
+.choice.no input:checked+.dot{border-color:var(--brown)}.choice.no .dot::after{background:var(--brown)}
+
+.more{display:none;margin-top:1rem}
+.person.yes .more{display:block;animation:enter .28s var(--ease) both}
+.field{margin-top:1rem}
+.field label,.lbl{display:block;font-size:1rem;color:var(--ink);margin-bottom:.35rem}
+.field input[type=text],.field input[type=tel],.field textarea,.code-row input{display:block;width:100%;font:400 1rem/1.4 var(--serif);font-size:16px;color:var(--ink);background:var(--field);border:1px solid var(--edge);border-radius:10px;padding:.8rem .95rem;min-height:48px}
+.field textarea{min-height:7.5rem;resize:vertical}
+::placeholder{color:var(--hint);opacity:1}
+.note{margin:.35rem 0 0;font-size:.875rem;color:var(--brown);font-style:italic}
+.count{float:right;font-size:.8125rem;color:var(--brown);font-style:normal}
+.err{display:none;margin:.4rem 0 0;color:var(--terracotta);font-size:.9375rem}
+[aria-invalid=true]{border-color:var(--terracotta)!important;box-shadow:inset 0 0 0 1px var(--terracotta)}
+.person.bad .choice{border-color:var(--terracotta)}
+.person.bad .err.e-choice,.field.bad .err{display:block}
+
+.extras{display:none}
+.st-form[data-extras=on] .extras{display:block}
+.chk{display:flex;gap:.7rem;align-items:flex-start;min-height:48px;padding:.6rem 0;cursor:pointer}
+.chk input{width:1.375rem;height:1.375rem;margin:.1rem 0 0;accent-color:var(--olive);flex:none}
+.extras-tag{display:inline-block;font:600 11px/1 system-ui,sans-serif;letter-spacing:.06em;color:#fff;background:#6b6b6b;padding:3px 5px;border-radius:3px;margin-left:.4rem;vertical-align:middle}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.send{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;min-height:3.5rem;margin-top:2rem;border:0;border-radius:12px;background:var(--olive);color:var(--paper);font:500 1.1875rem/1 var(--serif);letter-spacing:.04em;cursor:pointer;transition:transform .12s var(--ease)}
+.send:active{transform:scale(.985)}
+.send svg{width:20px;height:20px}
+.spin{display:none;width:18px;height:18px;border-radius:50%;border:2px solid rgba(246,239,223,.35);border-top-color:var(--paper);animation:spin .8s linear infinite}
+[data-state=sending] .send{background:#5d6b40;cursor:progress}
+[data-state=sending] .send .spin{display:block}[data-state=sending] .send svg{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* notices: error summary, network, conflict */
+.notice{display:none;margin:0 0 1.5rem;padding:1rem 1.1rem;border-radius:12px;border:1px solid var(--edge);background:var(--field)}
+.notice h3{margin:0 0 .35rem;font:500 1.1875rem/1.3 var(--serif)}
+.notice p{margin:.2rem 0}
+.notice ul{margin:.4rem 0 0;padding-left:1.1rem}
+.notice a{color:var(--terracotta)}
+.notice .row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.n-error{border-color:var(--terracotta);background:var(--err-bg);color:var(--terracotta)}
+.n-error h3{color:var(--terracotta)}
+.n-error ul{list-style:none;padding:0}
+.n-error li a{display:block;padding:.45rem 0;min-height:44px}
+[data-state=error] .n-error,[data-state=network] .n-net,[data-state=conflict] .n-conf{display:block;animation:enter .28s var(--ease) both}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:0 1.25rem;border-radius:999px;border:1px solid var(--brown);background:transparent;color:var(--ink);font:inherit;font-size:1.0625rem;cursor:pointer;text-decoration:none}
+.btn.solid{background:var(--olive);border-color:var(--olive);color:var(--paper)}
+.saved-list{list-style:none;padding:0;margin:.6rem 0 0}
+.saved-list li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(138,115,88,.3)}
+.saved-list li span:last-child{color:var(--olive);font-style:italic;text-align:right}
+.saved-list li.not span:last-child{color:var(--brown)}
+.saved-list .diet{display:block;font-size:.875rem;color:var(--brown);font-style:italic}
+
+/* full-panel cards: saved, closed, no link, too many, no JS */
+.card{text-align:center;padding:2.25rem 1.25rem 2rem;border:1px solid rgba(138,115,88,.45);border-radius:14px;background:rgba(251,247,238,.7)}
+.card .tile{width:4.25rem;height:4.25rem}
+.st-saved .tile{animation:seal .5s var(--ease) both}
+@keyframes seal{from{opacity:0;transform:scale(.9) rotate(-6deg)}}
+.card h3{margin:0;font:400 2.75rem/1.1 var(--script);color:var(--az-ink)}
+.card h3.serif{font:500 1.5rem/1.25 var(--serif);color:var(--ink)}
+.card>p{margin:.6rem auto 0;max-width:26rem;color:var(--brown)}
+.card .saved-list{text-align:left;margin:1.25rem 0 0}
+.card .row{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.4rem}
+.code-row{margin:1.4rem auto 0;max-width:20rem;text-align:left}
+.code-row input{letter-spacing:.18em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.code-row .btn{width:100%;margin-top:.75rem}
+[data-state=nolink] .tm,[data-state=toomany] .nl{display:none}
+[data-state=toomany] .code-row input,[data-state=toomany] .code-row .btn{opacity:.55}
+
+.foot{text-align:center;margin-top:3.5rem}
+.foot .names{margin:0;font:400 2.5rem/1.1 var(--script);color:var(--az-ink)}
+.foot .date{margin:0;font-size:.875rem;letter-spacing:.32em;color:var(--brown)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
+  .dots i{opacity:.7}
+}
+</style>
+</head>
+<body>
+
+<!-- DEV TOOL: state switcher for the mock. Not part of the design; delete in production. -->
+<div class="dev" role="region" aria-label="Dev tool">
+  <b>DEV · mock only</b>
+  <label>State
+    <select id="dv-state">
+      <option value="loading">loading</option>
+      <option value="form" selected>form</option>
+      <option value="sending">sending</option>
+      <option value="saved">saved</option>
+      <option value="error">error summary + inline</option>
+      <option value="network">network error</option>
+      <option value="conflict">conflict</option>
+      <option value="closed">closed</option>
+      <option value="nolink">no or invalid link</option>
+      <option value="nojs">JavaScript off</option>
+      <option value="toomany">too many attempts</option>
+    </select></label>
+  <label>Lang
+    <select id="dv-lang"><option value="pt-PT">pt-PT</option><option value="en">en</option><option value="es">es</option></select></label>
+  <label><input type="checkbox" id="dv-extras"> extras</label>
+  <label><input type="checkbox" id="dv-fake"> show FAKE</label>
+</div>
+
+<section class="rsvp" id="rsvp" data-state="form" aria-labelledby="rsvp-h">
+  <i class="prop twig" aria-hidden="true"></i><i class="prop swallow" aria-hidden="true"></i>
+  <i class="prop lav" aria-hidden="true"></i><i class="prop leaf" aria-hidden="true"></i>
+
+  <header class="head">
+    <p class="kicker" data-i18n="kicker" data-fake>Confirmação</p>
+    <h2 class="h-script" id="rsvp-h" data-i18n="title" data-fake>Contamos convosco?</h2>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="sub" data-i18n="sub" data-fake>Respondam até 31 de maio de 2027</p>
+  </header>
+  <p class="lead" data-i18n="lead" data-fake>Guardámos um lugar para cada um de vós. Digam-nos quem vem; podem mudar a resposta até lá.</p>
+
+  <article class="venue" aria-labelledby="venue-h">
+    <svg class="tile" viewBox="0 0 40 40" aria-hidden="true"><use href="#az"/></svg>
+    <p class="kicker" data-i18n="locKicker" data-fake>A festa é na</p>
+    <h3 id="venue-h" lang="pt-PT" translate="no">Quinta do Grilo</h3>
+    <p class="time"><span data-i18n="date">10 de julho de 2027</span> · <span data-fake>16h00</span></p>
+    <address lang="pt-PT" translate="no">R. Vale de São Gião,<br>2665-382 Milharado</address>
+    <div class="links">
+      <a class="tlink" href="https://maps.app.goo.gl/7gWufo1vMswyDxfbA?g_st=ac" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span data-i18n="maps" data-fake>Abrir no mapa</span></a>
+      <button type="button" class="tlink" id="cal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v4M10 15h4"/></svg>
+        <span data-i18n="cal" data-fake>Juntar ao calendário</span></button>
+    </div>
+  </article>
+
+  <div class="band" aria-hidden="true"></div>
+
+  <div class="panel" id="panel">
+    <!-- loading -->
+    <div class="blk st-loading" aria-busy="true">
+      <p data-i18n="loading" data-fake>A abrir o vosso convite…</p>
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    </div>
+
+    <!-- form (also: sending, error, network, conflict) -->
+    <form class="blk st-form" id="form" novalidate data-extras="off">
+      <div class="notice n-error" id="errsum" tabindex="-1" role="alert" aria-labelledby="errsum-h">
+        <h3 id="errsum-h" data-i18n="errTitle" data-fake>Falta pouco. Corrijam isto:</h3>
+        <ul id="errlist"></ul>
+      </div>
+      <div class="notice n-net" id="netbox" tabindex="-1">
+        <h3 data-i18n="netTitle" data-fake>Não foi possível enviar.</h3>
+        <p data-i18n="netText" data-fake>A ligação falhou. Não se perdeu nada: as vossas respostas continuam aqui.</p>
+        <div class="row"><button type="button" class="btn solid" id="retry" data-i18n="retry" data-fake>Tentar de novo</button></div>
+      </div>
+      <div class="notice n-conf" id="confbox" tabindex="-1">
+        <h3 data-i18n="confTitle" data-fake>As respostas mudaram noutro telemóvel.</h3>
+        <p data-i18n="confText" data-fake>Esta é a resposta guardada agora. Querem ficar com ela ou enviar a vossa?</p>
+        <ul class="saved-list" id="conflist"></ul>
+        <div class="row">
+          <button type="button" class="btn" id="usesaved" data-i18n="useSaved" data-fake>Ficar com a guardada</button>
+          <button type="button" class="btn solid" id="sendmine" data-i18n="sendMine" data-fake>Enviar a minha</button>
+        </div>
+      </div>
+
+      <p class="for"><span data-i18n="formFor" data-fake>Convite para</span> <strong id="family" data-fake>Ana e Rui Teste</strong></p>
+      <div id="people"></div>
+
+      <div class="extras" id="extras">
+        <!-- optional extras: OFF by default (data-extras). Each one is a decision for the couple. -->
+        <fieldset class="person">
+          <legend><small data-i18n="extrasHead" data-fake>Só se precisarmos</small><span data-i18n="dinner" data-fake>Prato principal</span><span class="extras-tag">EXTRA</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="dinner" value="fish"><span class="dot"></span><span class="txt" data-i18n="fish" data-fake>Peixe</span></label>
+            <label class="choice"><input type="radio" name="dinner" value="veg"><span class="dot"></span><span class="txt" data-i18n="veg" data-fake>Vegetariano</span></label>
+          </div>
+          <div class="field"><label for="song"><span data-i18n="song" data-fake>Uma música que vos ponha a dançar</span><span class="extras-tag">EXTRA</span></label>
+            <input type="text" id="song" name="song" maxlength="120" autocomplete="off" data-i18n-ph="songPh" data-fake placeholder="ex.: Lisboa Menina e Moça"></div>
+          <label class="chk"><input type="checkbox" name="transport"><span><span data-i18n="transport" data-fake>Precisamos de transporte desde Lisboa</span><span class="extras-tag">EXTRA</span></span></label>
+          <label class="chk"><input type="checkbox" name="stay"><span><span data-i18n="stay" data-fake>Queremos ajuda com alojamento perto da quinta</span><span class="extras-tag">EXTRA</span></span></label>
+          <div class="field"><label for="phone"><span data-i18n="phone" data-fake>Telemóvel (opcional)</span><span class="extras-tag">EXTRA</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" data-fake placeholder="+351 912 000 000"></div>
+        </fieldset>
+      </div>
+
+      <div class="field" id="f-msg">
+        <label for="msg"><span data-i18n="msg" data-fake>Uma mensagem para nós (opcional)</span> <span class="count" id="msgcount" aria-hidden="true">0/600</span></label>
+        <textarea id="msg" name="message" maxlength="600" rows="4" data-i18n-ph="msgPh" data-fake placeholder="Escrevam-nos umas linhas…"></textarea>
+      </div>
+      <!-- honeypot: hidden from people and assistive tech; a bot that fills it is ignored server-side -->
+      <div class="hp" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+
+      <button type="submit" class="send" id="send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+        <span class="spin" aria-hidden="true"></span>
+        <span id="sendlbl" data-i18n="send" data-fake>Enviar resposta</span>
+      </button>
+    </form>
+
+    <!-- saved -->
+    <div class="blk st-saved" id="savedbox" tabindex="-1">
+      <div class="card">
+        <svg class="tile" viewBox="0 0 40 40" aria-hidden="true"><use href="#az"/></svg>
+        <h3 data-i18n="savedTitle" data-fake>Obrigado!</h3>
+        <p data-i18n="savedText" data-fake>Recebemos a vossa resposta. Até dia 10 de julho.</p>
+        <ul class="saved-list" id="savedlist"></ul>
+        <div class="row"><button type="button" class="btn" id="edit" data-i18n="edit" data-fake>Alterar respostas</button></div>
+      </div>
+    </div>
+
+    <!-- closed -->
+    <div class="blk st-closed">
+      <div class="card">
+        <svg class="tile" viewBox="0 0 40 40" aria-hidden="true"><use href="#az"/></svg>
+        <h3 class="serif" data-i18n="closedTitle" data-fake>As respostas já fecharam.</h3>
+        <p data-i18n="closedText" data-fake>Fechámos a 31 de maio. Para mudar alguma coisa, falem connosco no WhatsApp.</p>
+        <ul class="saved-list" id="closedlist"></ul>
+        <div class="row"><a class="btn solid" href="#whatsapp-TODO" data-i18n="wa" data-fake>Falar no WhatsApp</a></div>
+      </div>
+    </div>
+
+    <!-- no or invalid link, and too many attempts -->
+    <div class="blk st-nolink">
+      <div class="card">
+        <svg class="tile" viewBox="0 0 40 40" aria-hidden="true"><use href="#az"/></svg>
+        <h3 class="serif nl" data-i18n="nolinkTitle" data-fake>Não encontrámos o vosso convite.</h3>
+        <p class="nl" data-i18n="nolinkText" data-fake>Abram o link pessoal que vos enviámos no WhatsApp, ou escrevam o código que vem no fim dele.</p>
+        <h3 class="serif tm" data-i18n="tmTitle" data-fake>Demasiadas tentativas.</h3>
+        <p class="tm" data-i18n="tmText" data-fake>Por segurança, esperem uma hora e tentem de novo, ou abram o link do WhatsApp.</p>
+        <form class="code-row" id="codeform" novalidate>
+          <label class="lbl" for="code" data-i18n="code" data-fake>O vosso código</label>
+          <input type="text" id="code" name="code" maxlength="19" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="codehint" placeholder="XXXX XXXX XXXX XXXX">
+          <p class="note" id="codehint" data-i18n="codeHint" data-fake>16 letras e números, sem espaços.</p>
+          <button type="submit" class="btn solid" data-i18n="open" data-fake>Abrir</button>
+        </form>
+        <div class="row"><a class="btn" href="#whatsapp-TODO" data-i18n="wa" data-fake>Falar no WhatsApp</a></div>
+      </div>
+    </div>
+
+    <!-- JavaScript off: the same block the real <noscript> shows -->
+    <div class="blk st-nojs" id="nojs">
+      <div class="card">
+        <svg class="tile" viewBox="0 0 40 40" aria-hidden="true"><use href="#az"/></svg>
+        <h3 class="serif" data-i18n="nojsTitle" data-fake>Para responder aqui, esta página precisa de JavaScript.</h3>
+        <p data-i18n="nojsText" data-fake>Respondam-nos pelo WhatsApp, ou abram o link noutro navegador.</p>
+        <div class="row"><a class="btn solid" href="#whatsapp-TODO" data-i18n="wa" data-fake>Falar no WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="vh" id="live" role="status" aria-live="polite"></p>
+
+  <footer class="foot">
+    <p class="kicker" data-i18n="footLine" data-fake>Até breve</p>
+    <p class="names" translate="no">Maya <span data-i18n="join">e</span> Tomás</p>
+    <span class="rule" aria-hidden="true"></span>
+    <p class="date">10 · 07 · 2027</p>
+  </footer>
+</section>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="az" viewBox="0 0 40 40"><rect width="40" height="40" fill="#F3EEE5"/><g fill="#344680"><path d="M0 0h9a9 9 0 0 1-9 9zM40 0h-9a9 9 0 0 0 9 9zM0 40h9a9 9 0 0 0-9-9zM40 40h-9a9 9 0 0 1 9-9z"/><path d="M20 5c3.4 5.6 3.4 10 0 13.4-3.4-3.4-3.4-7.8 0-13.4zM20 35c-3.4-5.6-3.4-10 0-13.4 3.4 3.4 3.4 7.8 0 13.4zM5 20c5.6-3.4 10-3.4 13.4 0-3.4 3.4-7.8 3.4-13.4 0zM35 20c-5.6 3.4-10 3.4-13.4 0 3.4-3.4 7.8-3.4 13.4 0z" opacity=".92"/><circle cx="20" cy="20" r="2.4"/></g><g fill="#7F9BA8" opacity=".7"><circle cx="11" cy="11" r="1.6"/><circle cx="29" cy="11" r="1.6"/><circle cx="11" cy="29" r="1.6"/><circle cx="29" cy="29" r="1.6"/></g><path d="M.5.5h39v39H.5z" fill="none" stroke="#C9D0DE"/></symbol>
+</svg>
+
+<noscript><style>.dev,.st-form,.st-loading{display:none!important}.st-nojs{display:block!important}</style></noscript>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement, sec = document.getElementById('rsvp');
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* FAKE: all wording below is placeholder copy. The couple writes the real sentences (REPLACE-ME.md). */
+  var T = {
+    'pt-PT': { kicker:'Confirmação', title:'Contamos convosco?', sub:'Respondam até 31 de maio de 2027', lead:'Guardámos um lugar para cada um de vós. Digam-nos quem vem; podem mudar a resposta até lá.',
+      locKicker:'A festa é na', date:'10 de julho de 2027', maps:'Abrir no mapa', cal:'Juntar ao calendário', loading:'A abrir o vosso convite…',
+      formFor:'Convite para', who:'Convidado', extraSeat:'Lugar extra', extra:'Acompanhante', yes:'Vou', no:'Não posso ir',
+      diet:'Alergias ou restrições alimentares (opcional)', dietPh:'ex.: sem glúten, alergia a frutos secos', dietNote:'Só a cozinha vê isto; apagamos tudo depois do casamento.',
+      extraName:'Nome do acompanhante', msg:'Uma mensagem para nós (opcional)', msgPh:'Escrevam-nos umas linhas…', send:'Enviar resposta', sending:'A enviar…',
+      errTitle:'Falta pouco. Corrijam isto:', errChoose:'Escolham “Vou” ou “Não posso ir” para {n}.', errName:'Escrevam o nome do acompanhante.',
+      netTitle:'Não foi possível enviar.', netText:'A ligação falhou. Não se perdeu nada: as vossas respostas continuam aqui.', retry:'Tentar de novo',
+      confTitle:'As respostas mudaram noutro telemóvel.', confText:'Esta é a resposta guardada agora. Querem ficar com ela ou enviar a vossa?', useSaved:'Ficar com a guardada', sendMine:'Enviar a minha',
+      savedTitle:'Obrigado!', savedText:'Recebemos a vossa resposta. Até dia 10 de julho.', edit:'Alterar respostas', coming:'vem', notComing:'não vem',
+      closedTitle:'As respostas já fecharam.', closedText:'Fechámos a 31 de maio. Para mudar alguma coisa, falem connosco no WhatsApp.', wa:'Falar no WhatsApp',
+      nolinkTitle:'Não encontrámos o vosso convite.', nolinkText:'Abram o link pessoal que vos enviámos no WhatsApp, ou escrevam o código que vem no fim dele.',
+      tmTitle:'Demasiadas tentativas.', tmText:'Por segurança, esperem uma hora e tentem de novo, ou abram o link do WhatsApp.', code:'O vosso código', codeHint:'16 letras e números, sem espaços.', open:'Abrir',
+      nojsTitle:'Para responder aqui, esta página precisa de JavaScript.', nojsText:'Respondam-nos pelo WhatsApp, ou abram o link noutro navegador.',
+      footLine:'Até breve', join:'e', extrasHead:'Só se precisarmos', dinner:'Prato principal', fish:'Peixe', veg:'Vegetariano', song:'Uma música que vos ponha a dançar', songPh:'ex.: Lisboa Menina e Moça',
+      transport:'Precisamos de transporte desde Lisboa', stay:'Queremos ajuda com alojamento perto da quinta', phone:'Telemóvel (opcional)',
+      liveSending:'A enviar a resposta.', liveSaved:'Resposta guardada.', liveError:'Há campos por corrigir.', liveNet:'Falhou o envio. As respostas continuam no formulário.', liveConf:'As respostas mudaram noutro telemóvel.' },
+    en: { kicker:'Kindly reply', title:'Will you join us?', sub:'Please reply by 31 May 2027', lead:'We have kept a seat for each of you. Tell us who is coming; you can change your answer until then.',
+      locKicker:'We celebrate at', date:'10 July 2027', maps:'Open in Maps', cal:'Add to calendar', loading:'Opening your invitation…',
+      formFor:'Invitation for', who:'Guest', extraSeat:'Extra seat', extra:'Your guest', yes:'I’ll be there', no:'Can’t make it',
+      diet:'Allergies or dietary needs (optional)', dietPh:'e.g. gluten-free, nut allergy', dietNote:'Only the kitchen sees this; we delete it after the wedding.',
+      extraName:'Your guest’s name', msg:'A message for us (optional)', msgPh:'Write us a few lines…', send:'Send reply', sending:'Sending…',
+      errTitle:'Almost there. Please fix:', errChoose:'Choose “I’ll be there” or “Can’t make it” for {n}.', errName:'Write your guest’s name.',
+      netTitle:'We couldn’t send it.', netText:'The connection failed. Nothing is lost: your answers are still here.', retry:'Try again',
+      confTitle:'These answers changed on another phone.', confText:'This is the answer saved now. Keep it, or send yours?', useSaved:'Keep the saved one', sendMine:'Send mine',
+      savedTitle:'Thank you!', savedText:'We have your reply. See you on 10 July.', edit:'Change answers', coming:'coming', notComing:'not coming',
+      closedTitle:'Replies are closed.', closedText:'We closed on 31 May. To change anything, message us on WhatsApp.', wa:'Message us on WhatsApp',
+      nolinkTitle:'We couldn’t find your invitation.', nolinkText:'Open the personal link we sent you on WhatsApp, or type the code at the end of it.',
+      tmTitle:'Too many tries.', tmText:'For safety, wait an hour and try again, or open the WhatsApp link.', code:'Your code', codeHint:'16 letters and numbers, no spaces.', open:'Open',
+      nojsTitle:'To reply here, this page needs JavaScript.', nojsText:'Reply to us on WhatsApp, or open the link in another browser.',
+      footLine:'See you soon', join:'and', extrasHead:'Only if we need it', dinner:'Main course', fish:'Fish', veg:'Vegetarian', song:'A song that gets you dancing', songPh:'e.g. Lisboa Menina e Moça',
+      transport:'We need transport from Lisbon', stay:'We would like help with a place to stay', phone:'Mobile (optional)',
+      liveSending:'Sending your reply.', liveSaved:'Reply saved.', liveError:'Some fields need fixing.', liveNet:'Sending failed. Your answers are still in the form.', liveConf:'These answers changed on another phone.' },
+    es: { kicker:'Confirmación', title:'¿Nos acompañáis?', sub:'Responded antes del 31 de mayo de 2027', lead:'Hemos guardado un sitio para cada uno de vosotros. Decidnos quién viene; podéis cambiar la respuesta hasta entonces.',
+      locKicker:'Lo celebramos en', date:'10 de julio de 2027', maps:'Abrir en el mapa', cal:'Añadir al calendario', loading:'Abriendo vuestra invitación…',
+      formFor:'Invitación para', who:'Invitado', extraSeat:'Plaza extra', extra:'Acompañante', yes:'Allí estaré', no:'No podré ir',
+      diet:'Alergias o restricciones alimentarias (opcional)', dietPh:'p. ej.: sin gluten, alergia a frutos secos', dietNote:'Solo lo ve la cocina; lo borramos después de la boda.',
+      extraName:'Nombre del acompañante', msg:'Un mensaje para nosotros (opcional)', msgPh:'Escribidnos unas líneas…', send:'Enviar respuesta', sending:'Enviando…',
+      errTitle:'Casi listo. Corregid esto:', errChoose:'Elegid “Allí estaré” o “No podré ir” para {n}.', errName:'Escribid el nombre del acompañante.',
+      netTitle:'No se pudo enviar.', netText:'Falló la conexión. No se ha perdido nada: vuestras respuestas siguen aquí.', retry:'Reintentar',
+      confTitle:'Las respuestas cambiaron en otro teléfono.', confText:'Esta es la respuesta guardada ahora. ¿Os quedáis con ella o enviáis la vuestra?', useSaved:'Quedarme con la guardada', sendMine:'Enviar la mía',
+      savedTitle:'¡Gracias!', savedText:'Hemos recibido vuestra respuesta. Hasta el 10 de julio.', edit:'Cambiar respuestas', coming:'viene', notComing:'no viene',
+      closedTitle:'Las respuestas están cerradas.', closedText:'Cerramos el 31 de mayo. Para cambiar algo, escribidnos por WhatsApp.', wa:'Escribirnos por WhatsApp',
+      nolinkTitle:'No encontramos vuestra invitación.', nolinkText:'Abrid el enlace personal que os enviamos por WhatsApp, o escribid el código del final.',
+      tmTitle:'Demasiados intentos.', tmText:'Por seguridad, esperad una hora y volved a intentarlo, o abrid el enlace de WhatsApp.', code:'Vuestro código', codeHint:'16 letras y números, sin espacios.', open:'Abrir',
+      nojsTitle:'Para responder aquí, esta página necesita JavaScript.', nojsText:'Respondednos por WhatsApp, o abrid el enlace en otro navegador.',
+      footLine:'Hasta pronto', join:'y', extrasHead:'Solo si lo necesitamos', dinner:'Plato principal', fish:'Pescado', veg:'Vegetariano', song:'Una canción que os haga bailar', songPh:'p. ej.: Lisboa Menina e Moça',
+      transport:'Necesitamos transporte desde Lisboa', stay:'Queremos ayuda con alojamiento cerca de la quinta', phone:'Móvil (opcional)',
+      liveSending:'Enviando la respuesta.', liveSaved:'Respuesta guardada.', liveError:'Hay campos por corregir.', liveNet:'Falló el envío. Las respuestas siguen en el formulario.', liveConf:'Las respuestas cambiaron en otro teléfono.' }
+  };
+
+  /* FAKE: test household. In production this comes from POST /api/lookup (people, extra seats, saved answers, revision, open). */
+  var FAMILY = { label:'Ana e Rui Teste', people:[ { slot:0, name:'Ana Teste' }, { slot:1, name:'Rui Teste' }, { slot:2, name:'', is_extra:true } ] };
+  /* FAKE: the answer "saved on another phone", for the conflict and closed states */
+  var OTHER = { 0:{ attending:true, diet:'sem lactose' }, 1:{ attending:false }, 2:{ attending:false } };
+
+  var lang = 'pt-PT', state = 'form';
+  var t = function (k) { return (T[lang] && T[lang][k]) || T['pt-PT'][k] || k; };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); };
+
+  function renderPeople() {
+    var keep = collect();
+    var html = FAMILY.people.map(function (p) {
+      var id = 'p' + p.slot, ex = !!p.is_extra;
+      return '<fieldset class="person" id="' + id + '" data-slot="' + p.slot + '">' +
+        '<legend><small>' + esc(ex ? t('extraSeat') : t('who')) + '</small>' + (ex ? '<span>' + esc(t('extra')) + '</span>' : '<span data-fake>' + esc(p.name) + '</span>') + '</legend>' +
+        '<div class="choices">' +
+          '<label class="choice yes"><input type="radio" name="' + id + '-a" value="yes" aria-describedby="' + id + '-e"><span class="dot"></span><span class="txt" data-fake>' + esc(t('yes')) + '</span></label>' +
+          '<label class="choice no"><input type="radio" name="' + id + '-a" value="no" aria-describedby="' + id + '-e"><span class="dot"></span><span class="txt" data-fake>' + esc(t('no')) + '</span></label>' +
+        '</div>' +
+        '<p class="err e-choice" id="' + id + '-e" data-fake></p>' +
+        '<div class="more">' +
+          (ex ? '<div class="field" id="' + id + '-nf"><label for="' + id + '-n" data-fake>' + esc(t('extraName')) + '</label><input type="text" id="' + id + '-n" maxlength="80" autocomplete="off" aria-describedby="' + id + '-ne"><p class="err" id="' + id + '-ne" data-fake></p></div>' : '') +
+          '<div class="field"><label for="' + id + '-d" data-fake>' + esc(t('diet')) + '</label><input type="text" id="' + id + '-d" maxlength="200" autocomplete="off" placeholder="' + esc(t('dietPh')) + '" aria-describedby="' + id + '-dn"><p class="note" id="' + id + '-dn" data-fake>' + esc(t('dietNote')) + '</p></div>' +
+        '</div></fieldset>';
+    }).join('');
+    $('people').innerHTML = html;
+    apply(keep);
+  }
+
+  function collect() {
+    var out = {};
+    FAMILY.people.forEach(function (p) {
+      var id = 'p' + p.slot, r = document.querySelector('input[name="' + id + '-a"]:checked');
+      if (!$(id)) return;
+      out[p.slot] = { attending: r ? r.value === 'yes' : null, diet: ($(id + '-d') || {}).value || '', name: ($(id + '-n') || {}).value || '' };
+    });
+    return out;
+  }
+  function apply(a) {
+    FAMILY.people.forEach(function (p) {
+      var id = 'p' + p.slot, v = a[p.slot] || {};
+      document.querySelectorAll('input[name="' + id + '-a"]').forEach(function (r) { r.checked = v.attending === (r.value === 'yes') && v.attending != null; });
+      if ($(id + '-d')) $(id + '-d').value = v.diet || '';
+      if ($(id + '-n')) $(id + '-n').value = v.name || '';
+      $(id).classList.toggle('yes', v.attending === true);
+    });
+  }
+  function clearErrors() {
+    document.querySelectorAll('.person.bad,.field.bad').forEach(function (e) { e.classList.remove('bad'); });
+    document.querySelectorAll('[aria-invalid]').forEach(function (e) { e.removeAttribute('aria-invalid'); });
+    $('errlist').innerHTML = '';
+  }
+  function validate() {
+    clearErrors();
+    var a = collect(), errs = [];
+    FAMILY.people.forEach(function (p) {
+      var id = 'p' + p.slot, v = a[p.slot];
+      if (!p.is_extra && v.attending == null) {
+        var m = t('errChoose').replace('{n}', p.name);
+        $(id).classList.add('bad'); $(id + '-e').textContent = m;
+        document.querySelectorAll('input[name="' + id + '-a"]').forEach(function (r) { r.setAttribute('aria-invalid', 'true'); });
+        errs.push({ to: id, m: m });
+      }
+      if (p.is_extra && v.attending && !v.name.trim()) {
+        $(id + '-nf').classList.add('bad'); $(id + '-ne').textContent = t('errName'); $(id + '-n').setAttribute('aria-invalid', 'true');
+        errs.push({ to: id + '-n', m: t('errName') });
+      }
+    });
+    $('errlist').innerHTML = errs.map(function (e) { return '<li><a href="#' + e.to + '" data-fake>' + esc(e.m) + '</a></li>'; }).join('');
+    return errs;
+  }
+  function summary(a, list) {
+    $(list).innerHTML = FAMILY.people.filter(function (p) { return !p.is_extra || (a[p.slot] && a[p.slot].attending); }).map(function (p) {
+      var v = a[p.slot] || {}, nm = p.is_extra ? (v.name || t('extra')) : p.name;
+      return '<li class="' + (v.attending ? '' : 'not') + '"><span data-fake>' + esc(nm) + (v.attending && v.diet ? '<span class="diet">' + esc(v.diet) + '</span>' : '') + '</span><span data-fake>' + esc(v.attending ? t('coming') : t('notComing')) + '</span></li>';
+    }).join('');
+  }
+  function say(k) { $('live').textContent = ''; setTimeout(function () { $('live').textContent = t(k); }, 30); }
+  function focus(el) { if (el) el.focus({ preventScroll: false }); }
+
+  function setState(s, opts) {
+    opts = opts || {};
+    state = s; sec.dataset.state = s; $('dv-state').value = s;
+    sec.querySelectorAll('.blk').forEach(function (b) { b.classList.remove('enter'); });
+    var vis = [].find.call(sec.querySelectorAll('.blk'), function (b) { return getComputedStyle(b).display !== 'none'; });
+    if (vis && !reduce.matches) { void vis.offsetWidth; vis.classList.add('enter'); }
+    $('sendlbl').textContent = t(s === 'sending' ? 'sending' : 'send');
+    $('form').setAttribute('aria-busy', s === 'sending' ? 'true' : 'false');
+    $('send').setAttribute('aria-disabled', s === 'sending' ? 'true' : 'false');
+    if (s === 'error') { if (!opts.keep) apply({}); var e = validate(); if (!e.length) { apply({ 0:{ attending:true }, 2:{ attending:true } }); validate(); } say('liveError'); if (!opts.quiet) focus($('errsum')); }
+    else clearErrors();
+    if (s === 'form' && opts.prefill) apply(opts.prefill);
+    if (s === 'network') { if (!opts.keep) apply({ 0:{ attending:true, diet:'sem glúten' }, 1:{ attending:true }, 2:{ attending:false } }); say('liveNet'); if (!opts.quiet) focus($('netbox')); }
+    if (s === 'conflict') { if (!opts.keep) apply({ 0:{ attending:true }, 1:{ attending:true }, 2:{ attending:true, name:'Inês Teste' } }); summary(OTHER, 'conflist'); say('liveConf'); if (!opts.quiet) focus($('confbox')); }
+    if (s === 'saved') { var a = collect(); if (!Object.keys(a).some(function (k) { return a[k].attending != null; })) a = { 0:{ attending:true, diet:'sem glúten' }, 1:{ attending:true }, 2:{ attending:true, name:'Inês Teste' } }; summary(a, 'savedlist'); say('liveSaved'); if (!opts.quiet) focus($('savedbox')); }
+    if (s === 'closed') summary(OTHER, 'closedlist');
+    if (s === 'sending') say('liveSending');
+  }
+
+  function setLang(l) {
+    lang = l; sec.lang = l; root.lang = l; $('dv-lang').value = l;
+    document.querySelectorAll('[data-i18n]').forEach(function (e) { e.textContent = t(e.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (e) { e.placeholder = t(e.dataset.i18nPh); });
+    renderPeople(); setState(state, { keep: true, quiet: true });
+  }
+
+  /* events */
+  $('people').addEventListener('change', function (e) {
+    var f = e.target.closest('.person'); if (!f || e.target.type !== 'radio') return;
+    f.classList.toggle('yes', e.target.value === 'yes');
+    if (f.classList.contains('bad')) { f.classList.remove('bad'); f.querySelectorAll('[aria-invalid]').forEach(function (x) { x.removeAttribute('aria-invalid'); }); }
+    try { localStorage.setItem('rsvp-draft-FAKE', JSON.stringify(collect())); } catch (_) {}
+  });
+  $('msg').addEventListener('input', function () { $('msgcount').textContent = this.value.length + '/600'; });
+  $('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (state === 'sending') return;
+    if (validate().length) { setState('error', { keep: true }); return; }
+    setState('sending');
+    setTimeout(function () { setState('saved'); }, 1100); /* FAKE: the mock always succeeds; the dev switcher shows the other outcomes */
+  });
+  $('errlist').addEventListener('click', function (e) {
+    var a = e.target.closest('a'); if (!a) return; e.preventDefault();
+    var el = $(a.getAttribute('href').slice(1)); var inp = el && (el.matches('input') ? el : el.querySelector('input'));
+    if (inp) { inp.focus(); el.scrollIntoView({ block: 'center', behavior: reduce.matches ? 'auto' : 'smooth' }); }
+  });
+  $('retry').addEventListener('click', function () { setState('sending'); setTimeout(function () { setState('saved'); }, 1100); });
+  $('usesaved').addEventListener('click', function () { setState('form', { prefill: OTHER }); });
+  $('sendmine').addEventListener('click', function () { setState('sending'); setTimeout(function () { setState('saved'); }, 1100); });
+  $('edit').addEventListener('click', function () { setState('form'); focus(document.querySelector('#people input')); });
+  $('codeform').addEventListener('submit', function (e) { e.preventDefault(); if (state !== 'toomany') { setState('loading'); setTimeout(function () { setState('form'); }, 900); } });
+  $('cal').addEventListener('click', function () {
+    /* FAKE: start and end times are invented; the date and the place are real */
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//convite//rsvp//PT', 'BEGIN:VEVENT', 'UID:maya-tomas-20270710@convite', 'DTSTAMP:20261112T000000Z',
+      'DTSTART:20270710T150000Z', 'DTEND:20270711T000000Z', 'SUMMARY:Maya e Tomás', 'LOCATION:Quinta do Grilo\\, R. Vale de São Gião\\, 2665-382 Milharado',
+      'URL:https://maps.app.goo.gl/7gWufo1vMswyDxfbA', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'maya-tomas.ics'; a.click();
+  });
+
+  /* dev tool wiring */
+  $('dv-state').addEventListener('change', function () { setState(this.value); });
+  $('dv-lang').addEventListener('change', function () { setLang(this.value); });
+  $('dv-extras').addEventListener('change', function () { $('form').dataset.extras = this.checked ? 'on' : 'off'; });
+  $('dv-fake').addEventListener('change', function () { root.classList.toggle('show-fake', this.checked); });
+
+  /* URL params for captures: ?state=saved&lang=en&extras=1&fake=1&dev=0 */
+  var q = new URLSearchParams(location.search);
+  if (q.get('dev') === '0') root.classList.add('no-dev');
+  if (q.get('extras') === '1') { $('dv-extras').checked = true; $('form').dataset.extras = 'on'; }
+  if (q.get('fake') === '1') { $('dv-fake').checked = true; root.classList.add('show-fake'); }
+  setLang(q.get('lang') || 'pt-PT');
+  setState(q.get('state') || 'form', { quiet: true });
+})();
+</script>
+</body>
+</html>

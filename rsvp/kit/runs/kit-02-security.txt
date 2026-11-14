@@ -1,0 +1,48 @@
+== run_id: 20261112-140822-1214548-nvidia_nvidia_nemotron-3-ultra-550b-a55b ==
+jail: WARNING using the MAIN router key; run delegate/set-key.sh with a dedicated one
+[0m
+> researcher · nvidia/nvidia/nemotron-3-ultra-550b-a55b
+[0m
+[0m→ [0mSkill "grounded-citations"
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude%20Code%20skills%20security%20reviewer%20subagent%20OWASP%202025%202026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/agamm/claude-code-owasp
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://claudecowork.im/resources/security-reviewer--subagent
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/Yeachan-Heo/oh-my-claudecode
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/Yeachan-Heo/oh-my-claudecode/tree/main/agents
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://raw.githubusercontent.com/Yeachan-Heo/oh-my-claudecode/main/agents/security-reviewer.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude%20Code%20skill%20threat%20modeling%20subagent%202025%202026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/tiffanymwr15/Threat-Model-Skill-for-Claude-Code
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://raw.githubusercontent.com/tiffanymwr15/Threat-Model-Skill-for-Claude-Code/main/SKILL.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude%20Code%20skill%20security%20auditor%20OWASP%20checklist%202025%202026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://dev.to/afiqiqmal/claude-security-audit-a-claude-code-slash-command-for-owasp-top-102025-nist-csf-20-and-850-4mjn
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/afiqiqmal/claude-security-audit
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=semgrep%20rules%20JavaScript%20security%20OWASP%20Cloudflare%20Workers%202025%202026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://semgrep.dev/blog/2025/beyond-benchmarks-how-semgrep-redefines-javascript-security
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=eslint%20security%20plugin%20JavaScript%20Cloudflare%20Workers%202025%202026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://learn.secbyte.org/tools/eslint-plugin-security
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/eslint-community/eslint-plugin-security
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude%20Code%20subagent%20security-auditor%20OWASP%202025%202026
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://www.aitmpl.com/component/agent/security-auditor
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https://raw.githubusercontent.com/danielavila/claude-code-templates/main/agents/security/security-auditor.md failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https://raw.githubusercontent.com/danielavila/claude-code-templates/main/agents/security/security-auditor.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=danielavila%20claude-code-templates%20security-auditor
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/davila7/claude-code-templates/tree/main/agents/security failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https://github.com/davila7/claude-code-templates/tree/main/agents/security)
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=site:github.com%20davila7%20claude-code-templates%20security-auditor
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=security-auditor.md%20claude%20code%20subagent%20OWASP%202025
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/VoltAgent/awesome-claude-code-subagents/blob/main/categories/04-quality-security/security-auditor.md
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/VoltAgent/awesome-claude-code-subagents/blob/main/categories/04-quality-security/security-reviewer.md failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https://github.com/VoltAgent/awesome-claude-code-subagents/blob/main/categories/04-quality-security/security-reviewer.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://github.com/VoltAgent/awesome-claude-code-subagents/tree/main/categories/04-quality-security
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https://raw.githubusercontent.com/VoltAgent/awesome-claude-code-subagents/main/categories/04-quality-security/penetration-tester.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=security-reviewer%20subagent%20Claude%20Code%20OWASP%202025%202026
+| Name | URL (exact repo or page) | Licence | Last commit or update date | Type | What it contains | Why it fits | Risk |
+|------|--------------------------|---------|----------------------------|------|------------------|-------------|------|
+| **agamm/claude-code-owasp** | https://github.com/agamm/claude-code-owasp | MIT | 2025–2026 (active) | **Skill (SKILL.md)** | OWASP Top 10:2025, ASVS 5.0, Agentic AI Top 10 (2026), 20+ language quirks (JS/TS included), review-checklist.md (SSRF, CORS, JWTs, CSRF, file handling), config-and-supply-chain.md, finding-triage rubric, reporting format | Covers every category you listed (input validation, rate limiting, tokens, CORS, secrets, privacy) with 2025–2026 OWASP mappings; plain markdown skill, no install scripts | **Low** — no code runs on install; just copy `.claude/skills/owasp-security/` |
+| **Yeachan-Heo/oh-my-claudecode → security-reviewer subagent** | https://github.com/Yeachan-Heo/oh-my-claudecode/tree/main/agents/security-reviewer.md | MIT | 2026 (6,343 commits, active) | **Subagent definition (.md with frontmatter)** | Read-only agent: OWASP Top 10 checklist, secrets grep, dependency audit (npm audit, pip-audit), injection/auth/crypto/access-control/XSS/SSRF checks, severity × exploitability × blast-radius prioritization, secure code examples in same language | Purpose-built for HTTP API review; blocks Write/Edit; checks every endpoint, auth, input, DB, files, deps; outputs structured report with location, remediation, risk level | **Low** — markdown only; drop into `~/.claude/agents/security-reviewer.md` |
+| **tiffanymwr15/Threat-Model-Skill-for-Claude-Code** | https://github.com/tiffanymwr15/Threat-Model-Skill-for-Claude-Code | MIT | 2025–2026 (8 commits) | **Skill (SKILL.md)** | STRIDE (default), OWASP Top 10:2025, OWASP GenAI LLM Top 10 (2026), OWASP Agentic Top 10 (2026), MITRE ATT&CK/ATLAS; produces Mermaid data-flow diagram with trust-zone subgraphs, risk matrix, P1/P2/P3 mitigation roadmap | Gives you a full threat model for your Workers API (assets, entry points, trust boundaries, token/capability-link design, CORS, privacy) using current 2025–2026 frameworks | **Low** — plain skill folder; copy `.claude/skills/threat-model/` |
+| **afiqiqmal/claude-security-audit** | https://github.com/afiqiqmal/claude-security-audit | MIT | 2025–2026 (21 commits) | **Slash command + reference packs** | `/security-audit` command: 850+ checks mapped to OWASP Top 10:2025, CWE, NIST CSF 2.0, ASVS 5.0; framework-specific packs (Express, Next.js, FastAPI…); gray-box tests (RBAC, API probing, rate-limit verification, error differentials); diff mode for PRs; SARIF/JSON output; CI `--fail-on` gate | Runs locally, no external service; covers Workers-relevant checks (input validation, rate limiting, auth, secrets, CORS, supply chain); `--lite` keeps token use low | **Low** — installs via `curl … | bash` (review `install.sh` first); only writes markdown references |
+| **semgrep/semgrep-rules (Community Edition)** | https://github.com/semgrep/semgrep-rules | Semgrep Rules License (free for local/commercial use) | 2025–2026 (continuous) | **Static analysis rule packs** | 4,000+ rules; OWASP Top 10 mapped; engine-level dataflow for 50+ JS/TS frameworks (Express, NestJS, Hapi, Koa, Cloudflare Workers patterns); finds SQLi, path traversal, SSRF, XSS, secrets; runs via `semgrep scan --config=auto` locally | Best free local SAST for Workers/JS; catches nuanced server-side vulns benchmarks miss; `p/security-audit` and `p/owasp-top-ten` rulesets ready to use | **Low** — binary install (`brew install semgrep` or `pipx install semgrep`); no network calls unless you opt in |
+
+**Best single pick and why**: **agamm/claude-code-owasp** — it’s a single markdown-only **skill** that loads automatically when you review code, implements the current OWASP Top 10:2025 + ASVS 5.0 + Agentic 2026 standards, includes a ready-to-use review checklist covering CORS, CSRF, JWTs, SSRF, file handling, and supply-chain config, and requires zero install scripts or network calls. Pair it with **semgrep** (`semgrep scan --config=p/owasp-top-ten`) for a free local SAST pass on your Workers code.
+EXIT 0

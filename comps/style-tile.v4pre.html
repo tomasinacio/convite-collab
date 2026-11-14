@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6EFDF">
+<title>Style tile: invitation face</title>
+<meta name="description" content="Stage 1 style tile for the wedding invitation face of Maya e Tomás: palette, real watercolour arrangement, a sheet of handmade paper folded once and closed with a wax seal that opens upward, then the invitation continues down. Type candidates, ink line weight. DRAFT for user approval.">
+<!-- owner: Tomas | stage 1 (illustrated-reveal) | status: DRAFT r4 (red-team fixes, see REDTEAM.md), awaiting user approval | 2026-11-10
+     r3: the envelope is replaced by one sheet of handmade paper folded once across, closed with a wax seal (user's pick:
+     "Folded paper vertically with wax seal that is opened upon touch"). Opening: the top part lifts up on the fold, the
+     invitation continues downward. Soft paper grain by default (compare: grain-compare.html). Whole-card type concepts:
+     type-concepts.html. Kept from r2: names Maya e Tomás, date and place TODO(user), calm look.
+     r4 (REDTEAM.md): one small lemon inside the edge, no shadows on the art (it sits in the paper), plate leaves on a plain ink stem
+     (no outline leaves, one green family), no grain on the page grounds, no gap above the closed sheet (the paper grows downward),
+     one leaf under the seal, a larger opening line, Skip hides once the sheet is open.
+     Previous versions: style-tile.v1.html (r1), style-tile.v2.html (r2, envelope), style-tile.v3.html (r3). -->
+<!-- Draw-in note: the ink line uses stroke-dashoffset (the brief's "drawn in real time"); every other motion is transform or opacity. Open question for the user, not decided here. -->
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Lora:ital@0;1&family=Pinyon+Script&display=swap">
+<style>
+/* ---------- Tokens (DESIGN.md) ---------- */
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --olive:#4F5F2E; --terracotta:#9A4C32;
+  --brown:#6B4F34; --sage:#9DAE82; --twine:#B8946A; --clay:#C98B6B; --lemon:#EBDDA0; --azulejo:#7F9BA8;
+  /* derived ground only, never a text colour: limewash in shade = paper 84% + azulejo 16% */
+  --shade:#E3E2D6;
+  /* one light source from the top-left: short, soft, warm shadows falling down-right, tinted with ink, never grey */
+  --sun: drop-shadow(1px 1.5px 1px rgb(59 47 37 / .16)) drop-shadow(4px 8px 8px rgb(59 47 37 / .10));
+  --sun-thin: drop-shadow(.6px 1px .6px rgb(59 47 37 / .18)) drop-shadow(2px 4px 3px rgb(59 47 37 / .08));
+  /* paper grain: soft by default (fine cotton tooth, deckled edges). Visible handmade grain is #paper-hand. */
+  --pf:url(#paper-soft);
+  --script:'Allura', cursive;
+  --serif:'EB Garamond', Georgia, 'Times New Roman', serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .18 0 0 0 0 .14 0 0 0 .5 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --ease-out:cubic-bezier(.22,.8,.24,1);
+  --ease-io:cubic-bezier(.45,.05,.25,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--serif);font-size:19px;line-height:1.55;color:var(--ink);background:var(--paper);overflow-x:clip}
+img{max-width:100%}
+h1,h2,h3{font-weight:400;margin:0}
+p{margin:0}
+a{color:var(--olive);text-underline-offset:3px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.8em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 40px}}
+.smallcaps{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+button{font:inherit;color:inherit;touch-action:manipulation}
+h1,h2,h3{text-wrap:balance}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ---------- Header ---------- */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 32px;padding:28px 0 26px}
+.top h1{font-size:clamp(30px,6.4vw,46px);line-height:1.08;margin-top:6px}
+.top .lede{max-width:34em;margin-top:10px;font-size:17px;color:var(--brown)}
+.lang{display:inline-flex;gap:2px;border:1px solid var(--twine);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{min-height:44px;min-width:52px;padding:0 14px;border:0;border-radius:999px;background:transparent;font-size:16px;letter-spacing:.06em;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sand);color:var(--ink)}
+.lang-wrap{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+
+/* ---------- Stage (the face, on limewash in shade) ---------- */
+.stage{background:var(--shade);overflow:clip;padding:44px 0 60px}
+.stage-grid{display:grid;gap:64px}
+@media (min-width:900px){.stage-grid{grid-template-columns:minmax(0,380px) minmax(0,380px);justify-content:space-around;column-gap:72px}}
+.stage-label{font-size:15px;font-style:italic;color:var(--ink);margin-top:18px;max-width:30em}
+
+/* ---------- Leaf sprites cut from the one olive-leaves.webp plate ---------- */
+.leaf{position:absolute;background:url(../assets/cutouts/olive-leaves.webp) no-repeat;
+  left:calc(var(--x) * 1% - var(--w) * var(--px) * 1%);
+  bottom:calc(100% - var(--y) * 100% / var(--k));
+  width:calc(var(--w) * 1%);
+  transform-origin:calc(var(--px) * 100%) 100%;
+  rotate:calc(var(--r) - var(--lean, 0deg))}
+.l1{aspect-ratio:299/1292;background-size:406.02% 199.54%;background-position:50.383% .7%;--px:.49}
+.l3{aspect-ratio:294/892;background-size:412.93% 289.01%;background-position:.761% 14.057%;--px:.12;--lean:12deg}
+.l4{aspect-ratio:269/1200;background-size:451.3% 214.83%;background-position:1.905% 90.711%;--px:.64;--lean:2deg}
+.l5{aspect-ratio:270/936;background-size:449.63% 275.43%;background-position:91.525% 82.4%;--px:.73;--lean:-3.6deg}
+.l6{aspect-ratio:279/834;background-size:435.13% 309.11%;background-position:48.235% 100%;--px:.49}
+.layer{position:absolute;inset:0}
+/* the art is pigment on the paper: no drop shadows, multiplied into the paper tone */
+.panel .sprig,.panel .fruit{mix-blend-mode:multiply}
+.ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible;fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round;stroke-width:.4}
+.lemon{position:absolute;height:auto;display:block}
+
+/* ---------- The folded sheet ----------
+   One sheet of handmade paper, 100 x 150, folded once across at 40% of its height.
+   Closed: the top part (the flap) is folded DOWN over the lower part; the wax seal sits on the flap's edge.
+   Open: the flap swings UP on the fold line (rotateX about its bottom edge), the art draws in,
+   and in the build the lower part becomes the page that continues downward as the guest scrolls.
+   Nothing moves on the x axis. */
+.sheet-slot{width:min(100% - 24px,360px)}
+.sheet{position:relative;aspect-ratio:100/150;container-type:inline-size}
+/* closed, the folded sheet sits at the top of its box; as the flap swings up, the sheet moves down by the same 40%,
+   so the top edge stays put and the paper grows downward */
+.sheet-move{position:absolute;inset:0;perspective:1400px;perspective-origin:50% 40%;
+  transform:translateY(-40%);transition:transform 1100ms var(--ease-io) 200ms}
+.sheet.is-open .sheet-move{transform:none}
+.closed-note{position:absolute;left:0;right:0;top:64%;transition:opacity .3s ease-out}
+.sheet.is-open .closed-note{opacity:0;pointer-events:none}
+.panel{position:absolute;left:0;width:100%}
+.panel-low{top:40%;height:60%;--k:90}
+.panel-low:focus{outline:none}
+.flap{top:0;height:40%;--k:60;transform-origin:50% 100%;transform-style:preserve-3d;
+  transform:rotateX(-180deg);transition:transform 1100ms var(--ease-io) 200ms}
+.sheet.is-open .flap{transform:rotateX(0deg)}
+.face-in,.face-out{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face-out{transform:rotateX(180deg)}
+.paper-bg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.paper-bg rect{fill:var(--paper);filter:var(--pf)}
+.panel-low > .paper-bg{filter:var(--sun)}
+.face-in > .paper-bg{height:calc(100% + 2px);filter:drop-shadow(1px -1px 1px rgb(59 47 37 / .08))}
+.face-out > .paper-bg{filter:drop-shadow(0 1.5px 1.2px rgb(59 47 37 / .16)) drop-shadow(0 5px 6px rgb(59 47 37 / .07))}
+/* the fold: one fine twine crease, no gradient */
+.crease{position:absolute;left:3%;right:3%;top:0;height:1px;background:rgb(184 148 106 / .5)}
+.panel-low .lw{width:21%;right:10%;bottom:9%;rotate:-18deg}
+.card-text{position:absolute;left:9%;top:6%;right:30%}
+.card-text .kicker{font-size:16px;font-style:italic;color:var(--brown)}
+.names{font-family:var(--script);color:var(--olive);font-size:clamp(40px,14cqw,60px);line-height:.95;margin:.14em 0 .2em}
+.names > span{display:block;white-space:nowrap}
+.names .amp{padding-left:10%}
+.meta{font-size:17px;line-height:1.4}
+
+/* wax seal: the only saturated spot on the closed sheet, centred on the flap's edge */
+.seal{position:absolute;left:50%;top:80%;translate:-50% -40px;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:0 10px 4px;border:0;border-radius:14px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:opacity .35s ease-out,transform .35s ease-out}
+.seal-label{font-style:italic;font-size:18px;line-height:1.2;color:var(--ink)}
+.wax-wrap{position:relative;width:80px;height:80px;--k:100;filter:var(--sun)}
+.wax-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+/* a gentle invitation to tap: three slow breaths, then it rests (no loop past 5 s) */
+@keyframes breathe{0%,100%{transform:none}50%{transform:scale(1.02)}}
+.sheet:not(.is-open) .wax-wrap{animation:breathe 4s ease-in-out 1.5s 3}
+.sheet.is-open .seal{opacity:0;transform:scale(.96);pointer-events:none}
+.instant *,.instant{transition:none !important}
+
+/* reveal: art is hidden until the sheet opens, then washes settle and the ink draws (transform + opacity, ink by dashoffset) */
+@keyframes appear{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes draw{from{stroke-dashoffset:1.01}to{stroke-dashoffset:0}}
+.js .reveal .appear{opacity:0}
+.js .reveal.go .appear{animation:appear .9s var(--ease-out) var(--d,0s) both}
+.js .drawable path{stroke-dasharray:1 2;stroke-dashoffset:1.01}
+.js .go .drawable path,.js .drawable.go path{animation:draw var(--t,.8s) var(--ease-io) var(--d,0s) forwards}
+.js .reveal.done .appear{animation:none;opacity:1}
+.js .reveal.done .drawable path{animation:none;stroke-dashoffset:0}
+
+.ctl{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pill{min-height:44px;padding:0 18px;border:1px solid var(--twine);border-radius:999px;background:var(--paper);font-size:16px;letter-spacing:.04em;cursor:pointer}
+.pill[hidden]{display:none}
+.pill:hover,.lang button:hover{background:var(--sand)}
+
+/* ---------- Sections ---------- */
+.sec{padding-top:64px;padding-bottom:8px}
+.sec-head{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:baseline;margin-bottom:26px}
+.sec-head .num{font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;color:var(--brown);min-width:1.6em}
+.sec-head h2{font-size:clamp(26px,4.4vw,34px)}
+.sec-head p{grid-column:2;font-size:17px;color:var(--brown);max-width:36em;margin-top:6px}
+
+.decisions{list-style:none;margin:0;padding:0;display:grid;gap:22px 48px;counter-reset:d}
+@media (min-width:760px){.decisions{grid-template-columns:1fr 1fr}}
+.decisions li{counter-increment:d;padding-left:34px;position:relative;font-size:17px}
+.decisions li::before{content:counter(d);position:absolute;left:0;top:.1em;font-size:17px;color:var(--brown)}
+.decisions b{font-weight:500;display:block;font-size:19px}
+
+/* palette */
+.strip{display:flex;height:64px;border-radius:2px;overflow:hidden;box-shadow:0 1px 1px rgb(59 47 37 / .14)}
+.strip span{background:var(--c);flex:var(--g) 1 0}
+.strip-note{font-size:15px;font-style:italic;color:var(--brown);margin:8px 0 28px}
+.pal-grid{display:grid;gap:36px}
+@media (min-width:900px){.pal-grid{grid-template-columns:1.15fr 1fr;column-gap:64px}}
+.tokens{list-style:none;margin:0;padding:0}
+.tokens li{display:grid;grid-template-columns:34px 1fr auto;column-gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid rgb(184 148 106 / .5)}
+.tokens .sw{width:34px;height:34px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgb(59 47 37 / .14)}
+.tokens .nm{font-size:16px;line-height:1.3}
+.tokens .nm small{display:block;font-size:14px;color:var(--brown)}
+.tokens .cr{font-size:15px;text-align:right;line-height:1.3}
+.tokens .cr small{display:block;font-size:13px;color:var(--brown)}
+h3{font-size:21px;margin-bottom:12px}
+.pairs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pairs li{background:var(--bg);color:var(--fg);padding:10px 14px 9px;border-radius:3px;box-shadow:inset 0 0 0 1px rgb(59 47 37 / .1);font-size:16px;line-height:1.25}
+.pairs li b{font-weight:500;font-size:20px;display:block}
+.pairs-note{font-size:15px;color:var(--brown);margin-top:16px}
+
+/* type */
+.spec{display:grid;gap:6px 40px;padding:26px 0;border-top:1px solid rgb(184 148 106 / .6)}
+.spec:last-of-type{border-bottom:1px solid rgb(184 148 106 / .6)}
+@media (min-width:860px){.spec{grid-template-columns:200px 1fr 1fr;align-items:start}}
+.spec-tag{font-size:16px;line-height:1.35}
+.spec-tag b{font-weight:500;display:block;font-size:19px}
+.spec-tag .rec{display:inline-block;margin-top:8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive)}
+.spec-script .n{font-size:clamp(46px,11vw,58px);line-height:1.1;color:var(--olive);overflow-wrap:anywhere}
+.spec-script .d{font-size:36px;line-height:1.3;color:var(--ink);overflow-wrap:anywhere}
+.spec-serif .d{font-size:26px;line-height:1.3}
+.spec-serif .b{font-size:18px;line-height:1.55;margin-top:6px}
+.spec-serif .note{font-size:15px;color:var(--brown);margin-top:8px}
+.f-gv{font-family:'Great Vibes',cursive}.f-al{font-family:'Allura',cursive}.f-pi{font-family:'Pinyon Script',cursive}
+.f-lo{font-family:'Lora',Georgia,serif}.f-eb{font-family:'EB Garamond',Georgia,serif}.f-co{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+.f-co .b{font-size:19px}
+.more{font-size:17px;margin-top:22px}
+
+/* line */
+.line-grid{display:grid;gap:40px}
+@media (min-width:900px){.line-grid{grid-template-columns:320px 1fr;column-gap:64px;align-items:start}}
+.weights{list-style:none;margin:0;padding:0}
+.weights li{padding:10px 0 12px;border-bottom:1px solid rgb(184 148 106 / .5);font-size:15px;color:var(--brown)}
+.weights li.pick{color:var(--ink);font-size:16px}
+.weights svg{display:block;width:280px;max-width:100%;height:28px;fill:none;stroke:var(--ink);stroke-linecap:round}
+.branch-box{max-width:560px}
+.branch-box .ink{position:static;height:auto;display:block;stroke-width:1.5}
+.branch-cap{font-size:15px;font-style:italic;color:var(--brown);margin-top:10px}
+
+footer{padding:56px 0 48px;font-size:15px;color:var(--brown)}
+footer p + p{margin-top:6px}
+
+/* ---------- Reduced motion: the sheet opens at once, art fades in, nothing draws ---------- */
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .flap,.seal,.sheet-move{transition-duration:1ms !important;transition-delay:0s !important}
+  .sheet:not(.is-open) .wax-wrap{animation:none}
+  .js .reveal.go .appear{animation:fadein .6s ease-out both}
+  .js .drawable path{stroke-dasharray:none;stroke-dashoffset:0;animation:none !important}
+  .js .reveal:not(.go) .drawable{opacity:0}
+  .js .reveal.go .drawable{animation:fadein .6s ease-out both}
+}
+</style>
+</head>
+<body>
+
+<!-- Shared SVG definitions: two paper grains, wax gradient and seal -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- 1. soft, barely there: fine cotton tooth, gently deckled edges (the default) -->
+    <filter id="paper-soft" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.1 .8" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .23  0 0 0 0 .18  0 0 0 0 .14  0 0 0 .34 -.12" result="gc"/>
+      <feComposite in="gc" in2="d" operator="in" result="gm"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="gm"/></feMerge>
+    </filter>
+    <!-- 2. visible handmade grain: fibres, uneven tone, rougher deckle -->
+    <filter id="paper-hand" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="4" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".014" numOctaves="2" seed="5" result="m"/>
+      <feColorMatrix in="m" type="matrix" values="0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .25  .45 0 0 0 -.2" result="mc"/>
+      <feTurbulence type="turbulence" baseFrequency=".06 .13" numOctaves="1" seed="21" result="f"/>
+      <feColorMatrix in="f" type="matrix" values="0 0 0 0 .42  0 0 0 0 .33  0 0 0 0 .24  -16 0 0 0 .24" result="fc0"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="1" seed="31" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -2.6" result="sm"/>
+      <feComposite in="fc0" in2="sm" operator="in" result="fc"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9 .6" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .23  0 0 0 0 .18  0 0 0 0 .14  0 0 0 .46 -.16" result="gc"/>
+      <feMerge result="tex"><feMergeNode in="mc"/><feMergeNode in="fc"/><feMergeNode in="gc"/></feMerge>
+      <feComposite in="tex" in2="d" operator="in" result="tm"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="tm"/></feMerge>
+    </filter>
+    <radialGradient id="waxg" cx="38%" cy="34%" r="72%">
+      <stop offset="0" stop-color="#B46247"/><stop offset=".55" stop-color="#9A4C32"/><stop offset="1" stop-color="#86422A"/>
+    </radialGradient>
+    <symbol id="wax" viewBox="0 0 100 100">
+      <path fill="url(#waxg)" d="M92.9 50.0C92.5 53.3 93.4 56.7 92.5 59.7C91.7 62.7 89.2 65.3 87.8 68.2C86.4 71.1 86.0 74.7 84.1 77.2C82.3 79.8 78.9 80.8 76.7 83.5C74.5 86.2 73.6 91.2 70.9 93.4C68.2 95.6 64.2 96.7 60.7 96.8C57.2 96.8 53.3 95.0 50.0 94.0C46.7 93.0 43.8 91.8 40.7 90.9C37.6 90.0 34.3 89.9 31.4 88.7C28.5 87.4 25.7 85.5 23.3 83.5C20.8 81.5 18.6 79.1 16.6 76.6C14.6 74.1 13.3 71.3 11.4 68.6C9.6 65.8 6.2 63.2 5.5 60.2C4.9 57.1 7.0 53.3 7.6 50.0C8.2 46.7 8.8 44.0 9.0 40.6C9.2 37.3 7.9 33.4 8.7 30.1C9.4 26.8 11.3 23.5 13.4 20.8C15.5 18.1 18.3 15.6 21.2 13.9C24.2 12.2 28.0 12.2 31.1 10.7C34.2 9.3 36.7 6.3 39.8 5.4C43.0 4.5 46.6 5.2 50.0 5.3C53.4 5.4 56.8 5.2 60.1 5.9C63.3 6.5 66.7 7.8 69.6 9.4C72.4 11.0 75.2 13.2 77.4 15.6C79.7 18.0 81.2 21.0 83.0 23.7C84.8 26.3 86.6 28.8 88.5 31.5C90.4 34.2 93.8 36.8 94.5 39.8C95.2 42.9 93.2 46.7 92.9 50.0Z"/>
+      <circle cx="50" cy="51" r="33" fill="none" stroke="#C27658" stroke-width="1" opacity=".45"/>
+      <circle cx="50" cy="51" r="30" fill="#8C442D"/>
+      <path d="M22 51A28 28 0 0 1 78 51" fill="none" stroke="#5F2A19" stroke-width="2.4" opacity=".32"/>
+      <path d="M78 51A28 28 0 0 1 22 51" fill="none" stroke="#C98266" stroke-width="1.6" opacity=".55"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
+        <path transform="translate(.7 .8)" stroke="#C98266" opacity=".7" d="M33 67Q48 55 66 35M39.0 62.0Q37.2 55.5 31.0 53.0Q32.8 59.5 39.0 62.0M41.0 60.5Q44.4 65.0 50.0 64.0Q46.6 59.5 41.0 60.5M48.0 55.0Q47.0 48.3 41.0 45.0Q42.0 51.7 48.0 55.0M51.0 52.5Q55.3 56.7 61.0 55.0Q56.7 50.8 51.0 52.5M57.0 46.5Q57.2 40.4 52.0 37.0Q51.8 43.1 57.0 46.5M60.0 43.0Q64.2 46.5 69.0 44.0Q64.8 40.5 60.0 43.0M66.0 35.0Q70.7 31.7 70.0 26.0Q65.3 29.3 66.0 35.0"/>
+        <path stroke="#6B321F" d="M33 67Q48 55 66 35M39.0 62.0Q37.2 55.5 31.0 53.0Q32.8 59.5 39.0 62.0M41.0 60.5Q44.4 65.0 50.0 64.0Q46.6 59.5 41.0 60.5M48.0 55.0Q47.0 48.3 41.0 45.0Q42.0 51.7 48.0 55.0M51.0 52.5Q55.3 56.7 61.0 55.0Q56.7 50.8 51.0 52.5M57.0 46.5Q57.2 40.4 52.0 37.0Q51.8 43.1 57.0 46.5M60.0 43.0Q64.2 46.5 69.0 44.0Q64.8 40.5 60.0 43.0M66.0 35.0Q70.7 31.7 70.0 26.0Q65.3 29.3 66.0 35.0"/>
+      </g>
+      <ellipse cx="31" cy="24" rx="9" ry="3.6" fill="#F6EFDF" opacity=".2" transform="rotate(-32 31 24)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="wrap top">
+  <div>
+    <p class="smallcaps">Stage 1 · style tile · DRAFT r3 for your approval</p>
+    <h1>The invitation face</h1>
+    <p class="lede">Southern Italy and Portugal in summer: limewashed walls in shade, real olive and lemon watercolours, one sheet of handmade paper folded once and closed with a terracotta wax seal. It opens vertically: the top of the sheet lifts up, then the invitation continues down and the guest scrolls. Everything below is the proposed look, not the final art.</p>
+  </div>
+  <div class="lang-wrap">
+    <span class="smallcaps" id="lang-l">Invitation language</span>
+    <div class="lang" role="group" aria-labelledby="lang-l">
+      <button type="button" data-lang="pt-PT" lang="pt-PT" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="stage" aria-labelledby="face-h">
+  <div class="wrap">
+    <h2 id="face-h" class="vh">The face: closed folded sheet, then the open sheet</h2>
+    <div class="stage-grid">
+
+      <!-- A. Closed, live: tap the seal -->
+      <div>
+        <div class="ctl">
+          <span class="smallcaps">Closed · try it</span>
+          <button type="button" class="pill face" id="skip" lang="pt-PT" data-i18n="skip">Saltar</button>
+        </div>
+        <div class="sheet-slot">
+          <div class="sheet reveal" id="sheet-live">
+            <p class="stage-label closed-note">One sheet of handmade paper, folded once across: the top part is folded down and held by the wax seal, with a sprig tucked under it. The seal is a real button. Tap it: the seal lifts away, the top part swings up on the fold, and the paper grows downward as the art draws in. Nothing moves sideways.</p>
+            <div class="sheet-move">
+            <div class="panel panel-low face" id="card-live" tabindex="-1" role="group" aria-label="Convite (amostra)" lang="pt-PT">
+              <svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg>
+              <span class="crease" aria-hidden="true"></span>
+              <div class="layer sprig" aria-hidden="true"><span class="leaf l5 appear" style="--x:80;--y:60;--w:6;--r:28deg;--d:1.4s"></span></div>
+              <div class="layer fruit" aria-hidden="true">
+                <img class="lemon lw appear" style="--d:1.6s" src="../assets/cutouts/lemon-whole.webp" width="980" height="1185" alt="" decoding="async">
+              </div>
+              <div class="card-text">
+                <p class="kicker appear" style="--d:.9s" data-i18n="kicker">TODO(user) · frase de abertura</p>
+                <p class="names appear" style="--d:1.1s"><span translate="no">Maya</span><span class="amp"><span data-i18n="join" style="display:inline">e</span> <span translate="no" style="display:inline">Tomás</span></span></p>
+                <p class="meta appear" style="--d:1.3s" data-i18n="date">TODO(user) · data</p>
+                <p class="meta appear" style="--d:1.4s" data-i18n="place">TODO(user) · lugar</p>
+              </div>
+            </div>
+            <div class="panel flap" aria-hidden="true">
+              <div class="face-in">
+                <svg class="paper-bg" focusable="false"><rect width="100%" height="100%"/></svg>
+                <svg class="ink drawable" data-px="1.5" viewBox="0 0 100 60" preserveAspectRatio="none" focusable="false">
+                  <path pathLength="1" style="--t:1.4s;--d:0s" d="M7 10C17 13 27 21 37 33Q41 38 44 43"/>
+                </svg>
+                <div class="layer sprig">
+                  <span class="leaf l4 appear" style="--x:13;--y:12.4;--w:5.6;--r:62deg;--d:.35s"></span>
+                  <span class="leaf l6 appear" style="--x:24.5;--y:18.5;--w:6.2;--r:150deg;--d:.65s"></span>
+                  <span class="leaf l3 appear" style="--x:34.5;--y:30;--w:6.4;--r:70deg;--d:.95s"></span>
+                </div>
+              </div>
+              <div class="face-out">
+                <svg class="paper-bg" focusable="false"><rect width="100%" height="100%"/></svg>
+              </div>
+            </div>
+            <button type="button" class="seal face" id="seal" lang="pt-PT">
+              <span class="wax-wrap" aria-hidden="true">
+                <span class="leaf l4" style="--x:50;--y:52;--w:15;--r:58deg"></span>
+                <svg focusable="false"><use href="#wax" width="100%" height="100%"/></svg>
+              </span>
+              <span class="seal-label" data-i18n="seal">Toca para abrir</span>
+            </button>
+            </div>
+          </div>
+        </div>
+        <div class="ctl" style="margin-top:14px">
+          <button type="button" class="pill" id="replay" hidden>Fold it again (tile only)</button>
+        </div>
+      </div>
+
+      <!-- B. Open state, flat: the arrangement draws on load -->
+      <figure style="margin:0" aria-hidden="true">
+        <span class="smallcaps">Open state</span>
+        <div class="sheet-slot">
+          <div class="sheet reveal is-open instant" id="sheet-open">
+            <div class="sheet-move">
+            <div class="panel panel-low face" lang="pt-PT">
+              <svg class="paper-bg" focusable="false"><rect width="100%" height="100%"/></svg>
+              <span class="crease"></span>
+              <div class="layer sprig"><span class="leaf l5 appear" style="--x:80;--y:60;--w:6;--r:28deg;--d:1.4s"></span></div>
+              <div class="layer fruit">
+                <img class="lemon lw appear" style="--d:1.6s" src="../assets/cutouts/lemon-whole.webp" width="980" height="1185" alt="" decoding="async" loading="lazy">
+              </div>
+              <div class="card-text">
+                <p class="kicker appear" style="--d:.9s" data-i18n="kicker">TODO(user) · frase de abertura</p>
+                <p class="names appear" style="--d:1.1s"><span translate="no">Maya</span><span class="amp"><span data-i18n="join" style="display:inline">e</span> <span translate="no" style="display:inline">Tomás</span></span></p>
+                <p class="meta appear" style="--d:1.3s" data-i18n="date">TODO(user) · data</p>
+                <p class="meta appear" style="--d:1.4s" data-i18n="place">TODO(user) · lugar</p>
+              </div>
+            </div>
+            <div class="panel flap">
+              <div class="face-in">
+                <svg class="paper-bg" focusable="false"><rect width="100%" height="100%"/></svg>
+                <svg class="ink drawable" data-px="1.5" viewBox="0 0 100 60" preserveAspectRatio="none" focusable="false">
+                  <path pathLength="1" style="--t:1.4s;--d:0s" d="M7 10C17 13 27 21 37 33Q41 38 44 43"/>
+                </svg>
+                <div class="layer sprig">
+                  <span class="leaf l4 appear" style="--x:13;--y:12.4;--w:5.6;--r:62deg;--d:.35s"></span>
+                  <span class="leaf l6 appear" style="--x:24.5;--y:18.5;--w:6.2;--r:150deg;--d:.65s"></span>
+                  <span class="leaf l3 appear" style="--x:34.5;--y:30;--w:6.4;--r:70deg;--d:.95s"></span>
+                </div>
+              </div>
+              <div class="face-out"><svg class="paper-bg" focusable="false"><rect width="100%" height="100%"/></svg></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="stage-label">Open: the top part has swung up on its fold (the fine line is the crease) while the paper grew downward; the ink stem is drawn on it, and the names sit just below the fold. In the build the lower part becomes the page and continues downward, so the guest scrolls down to read on. No side opening, nothing slides sideways. Opening line, date and place stay TODO(user).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" aria-labelledby="dec-h">
+  <div class="sec-head"><span class="num" aria-hidden="true">i</span><h2 id="dec-h">What this tile decides</h2></div>
+  <ol class="decisions">
+    <li><b>Quiet, not contrasty.</b>Paper carries most of the face; colour lives only in small details (the leaves, one lemon, one wax seal). The art sits in the paper with no shadows; only the paper and the seal cast soft shadows. No gradients in the art, nothing tilted.</li>
+    <li><b>Real plates, drawn together with ink.</b>Watercolour comes only from public-domain USDA plates; the 1.5 px ink line is what ties them into one hand. The arrangement runs on a diagonal from the top-left corner.</li>
+    <li><b>A folded sheet, not an envelope.</b>One sheet of handmade ivory paper, folded once across, closed by a terracotta wax seal with a sprig under it. Terracotta appears in one place only: the wax.</li>
+    <li><b>Vertical opening only.</b>My reading of “folded vertically”: the fold runs across the sheet, the top part is folded down and sealed, and on a tap it lifts up on the fold. The invitation then continues downward as the page the guest scrolls. Tell me if you meant a different fold.</li>
+    <li><b>Soft paper grain.</b>Fine cotton tooth and gently deckled edges, barely there. The visible handmade grain is shown next to it in <a href="grain-compare.html">grain-compare.html</a>; your pick.</li>
+    <li><b>Two type voices.</b>A script for Maya e Tomás only (recommended: Allura, deep olive); EB Garamond for every word a guest must read, at 17 px or more. Whole-card concepts in <a href="type-concepts.html">type-concepts.html</a>.</li>
+  </ol>
+</section>
+
+<section class="sec wrap" aria-labelledby="pal-h">
+  <div class="sec-head"><span class="num" aria-hidden="true">ii</span><h2 id="pal-h">Palette</h2><p>Tokens from DESIGN.md, sized in the strip by how much of the face each one covers. Contrast measured with <code>scripts/contrast.py</code>.</p></div>
+  <div class="strip" aria-hidden="true">
+    <span style="--c:var(--paper);--g:44"></span><span style="--c:var(--sand);--g:6"></span><span style="--c:var(--sage);--g:9"></span><span style="--c:var(--lemon);--g:8"></span><span style="--c:var(--olive);--g:8"></span><span style="--c:var(--twine);--g:4"></span><span style="--c:var(--ink);--g:6"></span><span style="--c:var(--clay);--g:3"></span><span style="--c:var(--brown);--g:3"></span><span style="--c:var(--terracotta);--g:2"></span>
+  </div>
+  <p class="strip-note">Proportions are the point: paper carries the face, terracotta is a single spot.</p>
+  <div class="pal-grid">
+    <ul class="tokens">
+      <li><span class="sw" style="--c:var(--paper)"></span><span class="nm"><code>--paper</code> #F6EFDF<small>the folded sheet, both sides; page ground</small></span><span class="cr">ground</span></li>
+      <li><span class="sw" style="--c:var(--sand)"></span><span class="nm"><code>--sand</code> #E6D6B8<small>small grounds (selected language); no longer the envelope</small></span><span class="cr">ground<small>ink 9.06:1</small></span></li>
+      <li><span class="sw" style="--c:var(--ink)"></span><span class="nm"><code>--ink</code> #3B2F25<small>body text, ink lines</small></span><span class="cr">11.32:1<small>on paper</small></span></li>
+      <li><span class="sw" style="--c:var(--olive)"></span><span class="nm"><code>--olive</code> #4F5F2E<small>names, links</small></span><span class="cr">6.09:1<small>on paper</small></span></li>
+      <li><span class="sw" style="--c:var(--terracotta)"></span><span class="nm"><code>--terracotta</code> #9A4C32<small>wax seal only</small></span><span class="cr">5.31:1<small>on paper</small></span></li>
+      <li><span class="sw" style="--c:var(--brown)"></span><span class="nm"><code>--brown</code> #6B4F34<small>captions</small></span><span class="cr">6.56:1<small>on paper</small></span></li>
+      <li><span class="sw" style="--c:var(--sage)"></span><span class="nm"><code>--sage</code> #9DAE82<small>leaf washes</small></span><span class="cr">2.08:1<small>decoration only</small></span></li>
+      <li><span class="sw" style="--c:var(--twine)"></span><span class="nm"><code>--twine</code> #B8946A<small>the crease, rules, borders</small></span><span class="cr">2.45:1<small>decoration only</small></span></li>
+      <li><span class="sw" style="--c:var(--clay)"></span><span class="nm"><code>--clay</code> #C98B6B<small>blush wash, fruit</small></span><span class="cr">2.48:1<small>decoration only</small></span></li>
+      <li><span class="sw" style="--c:var(--lemon)"></span><span class="nm"><code>--lemon</code> #EBDDA0<small>wash highlights</small></span><span class="cr">1.19:1<small>decoration only</small></span></li>
+      <li><span class="sw" style="--c:var(--azulejo)"></span><span class="nm"><code>--azulejo</code> #7F9BA8<small>not on the face now (it was the envelope liner); only tints the page ground</small></span><span class="cr">2.56:1<small>decoration only</small></span></li>
+      <li><span class="sw" style="--c:var(--shade)"></span><span class="nm"><code>--shade</code> #E3E2D6<small>derived ground: paper 84% + azulejo 16%</small></span><span class="cr">ground<small>ink 9.95:1</small></span></li>
+    </ul>
+    <div>
+      <h3>Text pairs in use</h3>
+      <ul class="pairs">
+        <li style="--fg:var(--ink);--bg:var(--paper)"><b>11.32:1</b>ink on paper · seal label</li>
+        <li style="--fg:var(--ink);--bg:var(--shade)"><b>9.95:1</b>ink on shade · captions</li>
+        <li style="--fg:var(--olive);--bg:var(--paper)"><b>6.09:1</b>olive on paper · names</li>
+        <li style="--fg:var(--brown);--bg:var(--paper)"><b>6.56:1</b>brown on paper</li>
+        <li style="--fg:var(--brown);--bg:var(--shade)"><b>5.77:1</b>brown on shade · labels</li>
+        <li style="--fg:var(--ink);--bg:var(--sand)"><b>9.06:1</b>ink on sand · selected</li>
+        <li style="--fg:var(--terracotta);--bg:var(--paper)"><b>5.31:1</b>terracotta on paper</li>
+      </ul>
+      <p class="pairs-note">DESIGN.md lists brown at 5.25:1 "on paper"; that figure is brown on sand. On paper it is 6.56:1.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" aria-labelledby="type-h">
+  <div class="sec-head"><span class="num" aria-hidden="true">iii</span><h2 id="type-h">Type: three script candidates</h2><p>Script for the names only, in deep olive: each candidate sets Maya e Tomás, so you can see its á. Every word a guest must read is in the serif beside it. Choice: TODO(user).</p></div>
+
+  <div class="spec">
+    <p class="spec-tag"><b>A · Great Vibes</b>with Lora</p>
+    <div class="spec-script f-gv"><p class="n" lang="pt-PT" translate="no">Maya e Tomás</p><p class="d" lang="pt-PT">ã ç ñ á é í ó ú ü</p></div>
+    <div class="spec-serif f-lo"><p class="d">ã ç ñ á é í ó ú ü</p><p class="b">Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola</p><p class="note">Heaviest stroke, the easiest to read small. Also the most common script on template sites; Lora feels a little modern-bookish here.</p></div>
+  </div>
+  <div class="spec">
+    <p class="spec-tag"><b>B · Allura</b>with EB Garamond<br><span class="rec">Recommended</span></p>
+    <div class="spec-script f-al"><p class="n" lang="pt-PT" translate="no">Maya e Tomás</p><p class="d" lang="pt-PT">ã ç ñ á é í ó ú ü</p></div>
+    <div class="spec-serif f-eb"><p class="d">ã ç ñ á é í ó ú ü</p><p class="b">Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola</p><p class="note">A relaxed, light hand: reads as written, not engraved, which suits the countryside. Joins stay open at 34 px on a phone. EB Garamond has the cleanest accents of the three serifs.</p></div>
+  </div>
+  <div class="spec">
+    <p class="spec-tag"><b>C · Pinyon Script</b>with Cormorant Garamond</p>
+    <div class="spec-script f-pi"><p class="n" lang="pt-PT" translate="no">Maya e Tomás</p><p class="d" lang="pt-PT">ã ç ñ á é í ó ú ü</p></div>
+    <div class="spec-serif f-co"><p class="d">ã ç ñ á é í ó ú ü</p><p class="b">Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola</p><p class="note">Copperplate formality, more city than campestre. Hairlines thin out below 40 px on low-density Android screens; Cormorant needs 19 px at weight 500 to stay readable.</p></div>
+  </div>
+  <p class="more">To compare them on the real card, with one more option that uses no handwriting at all: <a href="type-concepts.html">type-concepts.html</a>.</p>
+</section>
+
+<section class="sec wrap" aria-labelledby="line-h">
+  <div class="sec-head"><span class="num" aria-hidden="true">iv</span><h2 id="line-h">Ink line</h2><p>One weight everywhere: 1.5 CSS px, ink #3B2F25, round caps and joins. Drawn with <code>stroke-dashoffset</code>, once; under reduced motion it is simply there.</p></div>
+  <div class="line-grid">
+    <ul class="weights">
+      <li>0.75 px · too faint at arm's length in sunlight
+        <svg viewBox="0 0 280 28" aria-hidden="true" focusable="false"><path stroke-width=".75" d="M4 18C60 6 110 24 160 14S250 8 276 16"/></svg></li>
+      <li class="pick"><b style="font-weight:500">1.5 px · the line</b> · reads as a fine nib on a phone
+        <svg viewBox="0 0 280 28" aria-hidden="true" focusable="false"><path stroke-width="1.5" d="M4 18C60 6 110 24 160 14S250 8 276 16"/></svg></li>
+      <li>3 px · reads as a felt marker, fights the watercolour
+        <svg viewBox="0 0 280 28" aria-hidden="true" focusable="false"><path stroke-width="3" d="M4 18C60 6 110 24 160 14S250 8 276 16"/></svg></li>
+    </ul>
+    <figure class="branch-box" style="margin:0">
+      <svg class="ink drawable" id="branch" data-px="1.5" viewBox="0 -8 384 240" aria-hidden="true" focusable="false">
+        <path pathLength="1" style="--t:1.6s;--d:0s" d="M16 204C96 196 214 132 338 34"/>
+        <path pathLength="1" style="--t:.12s;--d:.35s" d="M57.2 195.9L61.5 198.4"/>
+        <path pathLength="1" style="--t:.7s;--d:.45s" d="M61.5 198.4C64.8 213 92.8 227.2 112.8 227.2C103.9 212.1 77.9 193.7 61.5 198.4"/>
+        <path pathLength="1" style="--t:.4s;--d:.95s" d="M61.5 198.4Q86.6 213.4 106.9 223.4"/>
+        <path pathLength="1" style="--t:.12s;--d:.6s" d="M97.4 182.3L98.9 177.5"/>
+        <path pathLength="1" style="--t:.7s;--d:.7s" d="M98.9 177.5C114.8 171.1 122.3 136.7 117 117.8C102.4 132 91.7 162.9 98.9 177.5"/>
+        <path pathLength="1" style="--t:.4s;--d:1.2s" d="M98.9 177.5Q110.2 147.1 115.5 124.2"/>
+        <path pathLength="1" style="--t:.12s;--d:.85s" d="M140.9 162.8L145.6 164.6"/>
+        <path pathLength="1" style="--t:.7s;--d:.95s" d="M145.6 164.6C150.5 177.1 179.2 187.8 195.2 184.5C184.4 170.9 160.3 159.4 145.6 164.6"/>
+        <path pathLength="1" style="--t:.4s;--d:1.45s" d="M145.6 164.6Q170.9 176.5 190.3 182.3"/>
+        <path pathLength="1" style="--t:.12s;--d:1.1s" d="M187.3 137.9L188.4 133"/>
+        <path pathLength="1" style="--t:.7s;--d:1.2s" d="M188.4 133C200 125.7 206 97 200.4 81.9C188.2 94.7 180.6 120.6 188.4 133"/>
+        <path pathLength="1" style="--t:.4s;--d:1.7s" d="M188.4 133Q195.5 107.3 200.4 86.3"/>
+        <path pathLength="1" style="--t:.12s;--d:1.35s" d="M236 107.8L240.8 109"/>
+        <path pathLength="1" style="--t:.7s;--d:1.45s" d="M240.8 109C247.2 119.8 271.9 125.3 287.1 120.4C275.4 110.3 253.2 101.6 240.8 109"/>
+        <path pathLength="1" style="--t:.4s;--d:1.95s" d="M240.8 109Q262.6 115.1 283.1 119.5"/>
+        <path pathLength="1" style="--t:.12s;--d:1.6s" d="M286.4 73.1L286.6 68.1"/>
+        <path pathLength="1" style="--t:.7s;--d:1.7s" d="M286.6 68.1C295.4 60.3 294.6 36.1 289 22.5C282.3 36 279 59.6 286.6 68.1"/>
+        <path pathLength="1" style="--t:.4s;--d:2.2s" d="M286.6 68.1Q287.7 44.9 289.9 27.7"/>
+        <path pathLength="1" style="--t:.7s;--d:1.9s" d="M341.1 31.5C354.3 33.9 373.5 14 378.1 -2.1C362.1 .9 342 16.9 341.1 31.5"/>
+        <path pathLength="1" style="--t:.4s;--d:2.4s" d="M341.1 31.5Q360.1 16.6 374 0"/>
+        <path pathLength="1" style="--t:.3s;--d:2.5s" d="M128.2 168.9Q131.2 176.9 136.2 180.4"/>
+        <path pathLength="1" style="--t:.6s;--d:2.7s" d="M136 188.6A6 8.5 0 1 0 148 188.6A6 8.5 0 1 0 136 188.6"/>
+        <path pathLength="1" style="--t:.2s;--d:3.2s" d="M139 183.5Q140.5 181.2 143 181"/>
+        <path pathLength="1" style="--t:.3s;--d:2.65s" d="M201 129.8Q204 137.8 210.2 140.4"/>
+        <path pathLength="1" style="--t:.6s;--d:2.85s" d="M210.7 147.9A6 8.5 0 1 0 222.7 147.9A6 8.5 0 1 0 210.7 147.9"/>
+        <path pathLength="1" style="--t:.2s;--d:3.35s" d="M213.7 142.8Q215.2 140.5 217.7 140.3"/>
+      </svg>
+      <figcaption class="branch-cap">Outline only: stem first, then each leaf as petiole, edge, midrib, then two olives. About 3.5 s; in the build the washes bloom under it.</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Watercolours: USDA Pomological Watercolor Collection, public domain, cut out with <code>extract_asset.py</code> (see <code>assets/LOG.md</code>). Shown unfiltered, only rotated, scaled, cropped from the leaf plate and shadowed. Paper grain is drawn in SVG, no image.</p>
+  <p>Names: Maya e Tomás (Maya and Tomás, Maya y Tomás). Date, place and opening line: TODO(user).</p>
+</footer>
+
+<script>
+(function(){
+  /* ---- language ---- */
+  var T = {
+    'pt-PT': {seal:'Toca para abrir', skip:'Saltar', kicker:'TODO(user) · frase de abertura', join:'e', date:'TODO(user) · data', place:'TODO(user) · lugar', card:'Convite (amostra)'},
+    'en':    {seal:'Tap to open', skip:'Skip', kicker:'TODO(user) · opening line', join:'and', date:'TODO(user) · date', place:'TODO(user) · place', card:'Invitation (sample)'},
+    'es':    {seal:'Toca para abrir', skip:'Saltar', kicker:'TODO(user) · frase de apertura', join:'y', date:'TODO(user) · fecha', place:'TODO(user) · lugar', card:'Invitación (muestra)'}
+  };
+  function setLang(code){
+    var t = T[code];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ el.textContent = t[el.getAttribute('data-i18n')]; });
+    document.querySelectorAll('.face').forEach(function(el){ el.setAttribute('lang', code); });
+    document.getElementById('card-live').setAttribute('aria-label', t.card);
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === code)); });
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+
+  /* ---- the folded sheet ---- */
+  var sheet = document.getElementById('sheet-live'), seal = document.getElementById('seal'),
+      skip = document.getElementById('skip'), replay = document.getElementById('replay'),
+      card = document.getElementById('card-live'), timers = [];
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+  function open(instant){
+    if (sheet.classList.contains('is-open')) return;
+    if (instant) sheet.classList.add('instant', 'done');
+    sheet.classList.add('is-open');
+    seal.disabled = true;
+    replay.hidden = false;
+    skip.hidden = true;
+    /* the art starts as the flap passes upright, so the drawing follows the opening */
+    later(function(){ sheet.classList.add('go'); }, instant || reduce ? 0 : 900);
+    later(function(){ card.focus({preventScroll:true}); }, instant ? 0 : 1400);
+  }
+  function close(){
+    timers.forEach(clearTimeout); timers = [];
+    sheet.classList.add('instant');
+    sheet.classList.remove('is-open', 'go', 'done');
+    seal.disabled = false;
+    replay.hidden = true;
+    skip.hidden = false;
+    seal.focus();
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ sheet.classList.remove('instant'); }); });
+  }
+  seal.addEventListener('click', function(){ open(false); });
+  skip.addEventListener('click', function(){ open(true); });
+  replay.addEventListener('click', close);
+
+  /* ---- keep every ink line at 1.5 CSS px whatever the SVG scale ---- */
+  var inks = document.querySelectorAll('svg[data-px]');
+  function fit(){
+    inks.forEach(function(s){
+      var w = s.getBoundingClientRect().width, vb = s.viewBox.baseVal.width;
+      if (w && vb) s.style.strokeWidth = (parseFloat(s.getAttribute('data-px')) * vb / w).toFixed(3);
+    });
+  }
+  fit();
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(fit); inks.forEach(function(s){ ro.observe(s); }); }
+  else window.addEventListener('resize', fit);
+
+  /* ---- draw once: the open sheet on load, the branch when it first scrolls into view ---- */
+  var openSheet = document.getElementById('sheet-open');
+  requestAnimationFrame(function(){ openSheet.classList.add('go'); });
+  var branch = document.getElementById('branch');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { branch.classList.add('go'); io.disconnect(); } });
+    }, {threshold:.35});
+    io.observe(branch);
+  } else branch.classList.add('go');
+})();
+</script>
+</body>
+</html>

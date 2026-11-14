@@ -1,0 +1,9 @@
+name	rc	words	retried
+kit-01-cloudflare	0	569	
+kit-02-security	0	633	
+kit-03-testing	0	896	
+kit-04-accessibility	0	857	
+kit-05-i18n	0	872	
+kit-06-privacy-data	0	578	RETRIED nvidia/nvidia/nemotron-3-ultra-550b-a55b
+kit-07-excel	0	622	
+kit-08-subagent-collections	0	983	

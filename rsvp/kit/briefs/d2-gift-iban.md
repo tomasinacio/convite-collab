@@ -1,0 +1,5 @@
+# Research brief (generic, no personal details)
+
+You are a research agent. Use web search. Answer ONLY from pages you actually opened; never invent a page, URL, author or fact. If you cannot find something real, write NOT FOUND. Keep the whole answer under 600 words, as short bullet points with the exact page URL beside each point. Context: we make a hand-painted watercolor invitation web page in Portugal (olive branches, oranges, lavender, wheat, swallows, blue azulejo plaque, warm paper), phone first, free tools only. Question:
+
+Research how Portuguese (and Spanish and English) wedding invitation pages and wedding websites present a request for money gifts with an IBAN: the usual tone and exact kind of wording (pt-PT first), where it sits in the page, whether there is a copy button, MB Way, how couples word it politely, and etiquette. Give 6 real examples with URLs, then a list of 8 wording patterns in pt-PT with an English gloss, and 3 UX details (copy to clipboard feedback, spacing the IBAN in groups of four, accessibility).

@@ -1,0 +1,13 @@
+{
+  "_note": "The RSVP section is built into the site only when enabled is true. Until then the site is exactly the finished face. TODO(user): fill api and whatsapp, replace every FAKE wording (rsvp/comps/REPLACE-ME.md), then set enabled to true.",
+  "enabled": false,
+  "api": "TODO(user): the Worker address, for example https://rsvp.example.workers.dev (no slash at the end)",
+  "whatsapp": [
+    "https://wa.me/351918144501",
+    "https://wa.me/351912769186"
+  ],
+  "whatsapp_names": [
+    "Tomás",
+    "Maya"
+  ]
+}

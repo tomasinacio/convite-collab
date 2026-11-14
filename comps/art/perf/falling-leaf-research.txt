@@ -1,0 +1,116 @@
+== run_id: 20261111-175057-583733-nvidia_nvidia_nemotron-3.5-lightning-30b-a3b ==
+jail: WARNING using the MAIN router key; run delegate/set-key.sh with a dedicated one
+[0m
+> researcher · nvidia/nvidia/nemotron-3.5-lightning-30b-a3b
+[0m
+[0m→ [0mSkill "grounded-citations"
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=falling+leaf+CSS+animation+natural+calm
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=http%3A%2F%2F1stwebdesigner.com%2F14-css-animations-for-fall
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=css+leaf+animation+sway+rotate+keyframes+physics
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fcss-tricks.com%2Fsnippets%2Fcss%2Fkeyframe-animation-syntax
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=css+leaf+fall+keyframes+sway+rotate+physics+terminal+velocity
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fwww.smashingmagazine.com%2F2011%2F09%2Fthe-guide-to-css-animation-principles-and-examples
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=falling+leaf+CSS+animation+sine+easing+rotate+swing+flutter
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fpremiumcoding.com%2Fcss3-tricks-falling-leaves-css
+Now let me search for more specific leaf physics and animation references:
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=real+leaf+fall+physics+flutter+tumble+terminal+velocity+angle
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fwww.waterburyroundabout.org%2Fcommunity-archive%2Fthe-joy-and-science-of-watching-a-leaf-fall
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fwww.joshwcomeau.com%2Fanimation%2Flinear-timing-function
+Now let me look at some specific CSS leaf animation examples and CSS-Tricks for transform patterns:
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=css+leaf+animation+keyframes+rotate+sway+translate+3d
+Let me fetch some CodePen examples and look at specific animation principles:
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=codepen+falling+leaf+css+animation+sway+rotate
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fcodepen.io%2Fgcmcafee%2Fpen%2FvmEvrW failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fcodepen.io%2Fgcmcafee%2Fpen%2FvmEvrW)
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FCSS%2Fanimation-timing-function
+Based on my research, here are good practices for animating a single falling leaf using only CSS `transform` and `opacity`. I've gathered data from sources on real leaf physics, CSS animation principles, and what makes animations look natural vs. robotic.
+
+## Falling Leaf Motion Recipe
+
+| Claim | Evidence | URL | Date | Confidence |
+|---|---|---|---|---|
+| **Leaf fall has two modes: flutter (side-to-side shift) or tumble (rotation over)** | Longer petiole leaves flutter; shorter leaves tumble; both are typical | Waterbury Roundabout[^1] | Oct 2026 | High |
+| **Terminal velocity is nearly constant (~2 m/s for maple leaves)** | Physics: gravity balanced by quadratic drag; constant vertical speed | Waterbury Roundabout[^1] | Oct 2026 | High |
+| **Vertical motion should NOT use eased timing** | Uniform ease-in-out on vertical axis looks "oof"/robotic; constant speed is natural | Smashing Magazine[^2] | 2011 | High |
+| **Horizontal sway uses a sine-like easing at a different period than rotation** | Rotation lags sway by ~¼ phase; different periods create natural motion | CSS-Tricks keyframe pattern[^3] | 2011 | Medium |
+| **Slight 3D rotateY/rotateX adds depth perception** | rotateY flips leaf orientation; rotateX adds perspective fold | PremiumCoding keyframes[^4] | 2017 | Medium |
+| **Scale subtly for depth (not size change)** | Minor scaleX/scaleY variation simulates perspective; not dramatic | Inferred from transform best practices | — | Medium |
+| **Fade in near origin, fade out at ground** | Opacity: 1 at 0%; opacity: 0 at 100% with transform to ground | PremiumCoding keyframes[^4] | 2017 | High |
+| **Sway period ~3-6s for phone; fall time ~8-12s** | Calm leaf on phone takes ~10s fall; sway period ~¼ of fall time | Inferred from animation budgets | — | Medium |
+| **Amplitude: horizontal sway 20-50px; rotation ±30°** | Moderate sway; not excessive; keeps motion calm | Inferred from calm animation principles | — | Medium |
+| **Easing: rotate uses ease-out; sway uses sine-like linear() or custom cubic-bezier** | Rotation slows at end; sway has smooth back-and-forth | Josh Comeau linear()[^5] | 2025 | Medium |
+| **Constant direction rotation looks robotic** | Vary rotation direction; avoid same-sign rotation every frame | Smashing Magazine[^2] | 2011 | High |
+| **Constant sway period looks robotic** | Vary sway period slightly between leaves; add randomness | Inferred from animation principles | — | Medium |
+| **Linear fade at end looks cheap** | Use ease-out on opacity; don't fade linearly from 100% to 0 | Smashing Magazine[^2] | 2011 | High |
+
+[^1]: https://www.waterburyroundabout.org/community-archive/the-joy-and-science-of-watching-a-leaf-fall
+[^2]: https://www.smashingmagazine.com/2011/09/the-guide-to-css-animation-principles-and-examples
+[^3]: https://css-tricks.com/snippets/css/keyframe-animation-syntax
+[^4]: https://premiumcoding.com/css3-tricks-falling-leaves-css
+[^5]: https://www.joshwcomeau.com/animation/linear-timing-function
+
+### Keyframe Recipe (CSS only, transform + opacity):
+
+```css
+.leaf {
+  /* Two comma-separated animations: sway + fall */
+  animation: leaf-sway 6s ease-in-out infinite,
+             leaf-fall 10s ease-out forwards;
+  transform-origin: 50% 100%; /* rotate from lower corner for natural pivot */
+}
+
+@keyframes leaf-sway {
+  0%, 100% { transform: translateX(0px) rotateZ(0deg); }
+  50% { transform: translateX(35px) rotateZ(20deg); }   /* sway right, tilt */
+  50.1%, 100% { transform: translateX(-30px) rotateZ(-15deg); } /* sway left, opposite tilt */
+  /* Cycle repeats; period ~6s for calm phone motion */
+}
+
+@keyframes leaf-fall {
+  0% { opacity: 1; transform: translateY(0px) rotateZ(0deg) rotateY(0deg); }
+  20% { opacity: 1; transform: translateY(20px) rotateZ(10deg) rotateY(5deg); } /* start fast */
+  50% { opacity: 1; transform: translateY(500px) rotateZ(30deg) rotateY(15deg); } /* constant speed */
+  80% { opacity: 1; transform: translateY(800px) rotateZ(35deg) rotateY(20deg); } /* approaching ground */
+  100% { opacity: 0; transform: translateY(860px) rotateZ(40deg) rotateY(25deg); } /* fade out */
+}
+```
+
+### Critical timing details:
+
+- **Vertical axis**: `ease-out` (cubic-bezier(0, 0, 0.58, 1.0)) — starts fast, slows toward ground; **not** uniform ease-in-out
+- **Rotation**: `rotateZ` swings ±20–30° with a sine-like profile; rotation **lags** horizontal sway by ~¼ period (right-swing → clockwise rotation, left-swing → counter-clockwise)
+- **rotateY**: subtle ±5–10° flip every few seconds; changes sign to avoid constant-direction monotony
+- **Sway period**: ~6s for a calm phone leaf (fall time ~10s → sway period ≈ 0.6× fall time)
+- **Horizontal amplitude**: 30–40px from center; large enough to see, small enough to feel gentle
+- **Opacity fade**: starts at 1, uses ease-out timing; ends at 0 — **no linear fade**
+
+### What makes leaf animations look "oof" (cheap/robotic):
+
+| Anti-Pattern | Why it fails |
+|---|---|
+| Uniform ease-in-out on `translateY` | Constant acceleration/deceleration feels mechanical, not physical |
+| Rotation in constant direction (always clockwise) | Predictable, lacks the occasional counter-flip a real leaf makes |
+| Constant sway period (same every cycle) | Boring; real leaves vary slightly due to air turbulence |
+| Linear fade from 100%→0% at end | Looks like a "fade-to-black" transition, not a leaf settling |
+| No rotation lag between sway and spin | Sway and rotation in phase feels synchronized/robotic; lag by ~¼ phase feels natural |
+| Linear timing function (even `linear()`) | Constant speed feels like a slide, not a fluttering/tumbling leaf |
+
+### Start & End:
+
+- **Fade in**: leaf starts with `opacity: 0; transform: translateY(-20px) rotateZ(-10deg);`, then animation begins from 0% with opacity rising to 1 over first 20% of keyframe duration
+- **Settle or fade out**: at 100% the leaf has `opacity: 0` and is positioned at ground level; **do not** use `animation-iteration-count: infinite` if you want a single leaf to come to rest — use `forwards` fill-mode or trigger a one-shot animation
+
+### Repeat spacing:
+
+- For multiple leaves, stagger start delays using `animation-delay` (1.2s, 1.5s, 1.8s, 2.1s…) so they don't all align in phase — this avoids the "uniform rhythm" that the owner calls "oof"
+- Vary fall durations slightly (9.5s, 10.2s, 11s) so periods don't lock together
+
+### Performance:
+
+- Only `transform` and `opacity` are GPU-accelerated — keep animation to those properties
+- Avoid `box-shadow`, `filter`, or `width`/`height` animation on the leaf element
+- Use `animation-fill-mode: forwards` for one-shot; `infinite` for continuous fall
+
+**Sources**: [1] Waterbury Roundabout leaf physics, [2] Smashing Magazine 12 animation principles, [3] CSS-Tricks keyframe syntax, [4] PremiumCoding falling leaves keyframes, [5] Josh Comeau linear() timing function, [6] MDN animation-timing-function
+
+Sources: https://www.waterburyroundabout.org/community-archive/the-joy-and-science-of-watching-a-leaf-fall; https://www.smashingmagazine.com/2011/09/the-guide-to-css-animation-principles-and-examples; https://css-tricks.com/snippets/css/keyframe-animation-syntax; https://premiumcoding.com/css3-tricks-falling-leaves-css; https://www.joshwcomeau.com/animation/linear-timing-function; https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/animation-timing-function

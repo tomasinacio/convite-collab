@@ -1,0 +1,44 @@
+/* v14 lane C (2026-11-11): paste into comps/prototype.v14.src.html. Copy assets/inbox/v14/*.webp to comps/art/v14/ first.
+   Preview: comps/v14-lane-c-preview.html. Notes: comps/v14-lane-c.md. */
+
+/* ---- 1. :root image vars (replace the v12 dog lines and drop --img-bough, --img-lemon-a/b, --img-orange) ---- */
+  --img-citrus:url("DATA:art/v14/citrus-branch.webp");       /* orange branch, top right; cut end at the right edge */
+  --img-dog-tan:url("DATA:art/v14/dog-tan.webp");             /* LAZY v14: 760 px tall, 3x of 25u at 440 px */
+  --img-dog-collie:url("DATA:art/v14/dog-collie.webp");       /* LAZY */
+  --img-dog-golden:url("DATA:art/v14/dog-golden.webp");       /* LAZY */
+  --img-dog-merle:url("DATA:art/v14/dog-merle.webp");         /* LAZY 900 px tall, without its tail */
+  --img-dog-merle-tail:url("DATA:art/v14/dog-merle-tail.webp"); /* LAZY its tail, same box */
+
+/* ---- 2. the orange branch: markup in place of the .bough line:
+   <i class="art citrus go-art amb"><i class="in amb"></i></i>
+   The box carries the entrance (transform), the image the sway (rotate), both about the cut end. ---- */
+.citrus{left:calc(var(--u) * 54);top:calc(var(--u) * -3.5);width:calc(var(--u) * 48);aspect-ratio:760/537;
+  transform-origin:97.6% 5.2%;rotate:2deg}
+.citrus > .in{background-image:var(--img-citrus);transform-origin:97.6% 5.2%}
+.js .citrus{opacity:0}
+@keyframes corner16r{from{transform:translate(16px,-12px) rotate(2.5deg)}}   /* the olive's corner16, mirrored */
+.js .go .citrus{animation:fade 1.6s var(--ease-glaze) 3.95s both, corner16r 3s var(--ease-out) 3.95s both}
+.js .go .citrus > .in{animation:sw05 8s var(--ease-sine) -3.1s infinite alternate}   /* +-0.5deg, 8 s */
+.lite-motion.js .go .citrus{animation:fade .9s var(--ease-glaze) 3.85s both, corner16r 1.6s var(--ease-out) 3.85s both}
+/* reduced motion: .amb is already animation:none; add .citrus{opacity:1} if the fallback does not reveal .go-art */
+
+/* ---- 3. the dogs: one group on the plain paper under the gate (gate box ends at G + 93.3u) ---- */
+.dogs{top:calc(var(--G) + var(--u) * 92);height:calc(var(--u) * 50)}
+.dog::before{content:none}                                   /* no pale ellipse, no cast shadow */
+.d-tan{left:calc(var(--u) * 18);bottom:0;width:calc(var(--u) * 24);aspect-ratio:505/760;--sd:0s;z-index:3}
+.d-collie{left:calc(var(--u) * 30.5);bottom:calc(var(--u) * 6);width:calc(var(--u) * 23.5);aspect-ratio:496/760;--sd:.12s;z-index:1}
+.d-golden{left:calc(var(--u) * 43.5);bottom:calc(var(--u) * 4);width:calc(var(--u) * 25);aspect-ratio:434/760;--sd:.24s;z-index:2}
+.d-merle{left:calc(var(--u) * 57);bottom:calc(var(--u) * .5);width:calc(var(--u) * 25);aspect-ratio:611/900;--sd:.36s;z-index:4}
+.d-tail{transform-origin:84.7% 73.3%}
+/* the tie: rock-roses laid at the front paws (stand-in for the bouquet) and two rooted tufts; eager art, no new bytes.
+   markup, inside .dogs, first the tufts then the four dogs then the posy:
+   <i class="dog dg-tuft root-fade t-l"></i><i class="dog dg-tuft root-fade t-r"></i> ... <i class="dog dg-posy"></i> */
+.dg-posy{left:calc(var(--u) * 36);bottom:calc(var(--u) * -2.5);width:calc(var(--u) * 17);aspect-ratio:1064/1100;
+  background:var(--img-bloom) 0 0 / 100% 100% no-repeat;rotate:-62deg;--sd:.5s;z-index:5}
+.dg-tuft{z-index:0;--sd:.06s}
+.dg-tuft.t-l{left:calc(var(--u) * 13);bottom:calc(var(--u) * 1);width:calc(var(--u) * 12);aspect-ratio:567/850;background:var(--img-grass-b) 0 0 / 100% 100% no-repeat}
+.dg-tuft.t-r{left:calc(var(--u) * 73);bottom:calc(var(--u) * 2.5);width:calc(var(--u) * 10);aspect-ratio:468/700;background:var(--img-grass-a) 0 0 / 100% 100% no-repeat;scale:-1 1}
+
+/* ---- 4. the page grows 46u under the gate ---- */
+/* :root  --world-h:calc(var(--y0) + var(--u) * 372);   (v13: 326) */
+.foot{top:calc(var(--G) + var(--u) * 150)}                  /* = y0 + 308u (v13: y0 + 262u) */

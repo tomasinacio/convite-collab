@@ -1,0 +1,103 @@
+== run_id: 20261112-143438-1229580-nvidia_nvidia_nemotron-3-ultra-550b-a55b ==
+jail: WARNING using the MAIN router key; run delegate/set-key.sh with a dedicated one
+[0m
+> researcher · nvidia/nvidia/nemotron-3-ultra-550b-a55b
+[0m
+[0m→ [0mSkill "grounded-citations"
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Claude+Code+subagent+definitions+collection+YAML+frontmatter+AGENTS.md+SUBAGENTS.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2FVoltAgent%2Fawesome-claude-code-subagents%2Fblob%2Fmain%2FCLAUDE.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2FVoltAgent%2Fawesome-claude-code-subagents%2Ftree%2Fmain%2Fcategories
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2FVoltAgent%2Fawesome-claude-code-subagents%2Ftree%2Fmain%2Fcategories%2F04-quality-security
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2FVoltAgent%2Fawesome-claude-code-subagents%2Ftree%2Fmain%2Fcategories%2F01-core-development
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2FVoltAgent%2Fawesome-claude-code-subagents%2Ftree%2Fmain%2Fcategories%2F05-data-ai
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2FVoltAgent%2Fawesome-claude-code-subagents%2Ftree%2Fmain%2Fcategories%2F06-developer-experience
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=AGENTS.md+SUBAGENTS.md+Claude+Code+subagent+examples+collection
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=wshobson+claude+code+subagents+marketplace+GitHub
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fwshobson%2Fagents
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fwshobson%2Fagents%2Fblob%2Fmain%2FAGENTS.md
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fwshobson%2Fagents%2Fblob%2Fmain%2Fdocs%2Fagents.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=MCP+server+Cloudflare+Workers+SQLite+Playwright+GitHub
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fplaywright-mcp
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fmicrosoft%2Fplaywright-mcp
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=Cloudflare+Workers+MCP+server+GitHub+SQLite+D1+database+MCP
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Felizabethsiegle%2Fremote-mcp-server-authless-talk-to-db
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fmcp-server-cloudflare
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=SQLite+MCP+server+GitHub+local+MCP+playwright+sqlite+filesystem
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fpanasenco%2Fmcp-sqlite
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fpunkpeye%2Fawesome-mcp-servers
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fraw.githubusercontent.com%2Fpunkpeye%2Fawesome-mcp-servers%2Fmain%2FREADME.md
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=awesome-mcp-servers+databases+browser+automation+cloudflare+sqlite+playwright
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=awesome-mcp-servers+sqlite+playwright+browser+automation+databases+site:github.com
+[0m% [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fservers
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fservers%2Ftree%2Fmain%2Fsrc%2Fsqlite failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fservers%2Ftree%2Fmain%2Fsrc%2Fsqlite)
+[0m✗ [0mWebFetch http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fservers%2Fblob%2Fmain%2Fsrc%2Fsqlite%2FREADME.md failed
+[91m[1mError: [0mStatusCode: non 2xx status code (502 GET http://127.0.0.1:8790/fetch?url=https%3A%2F%2Fgithub.com%2Fmodelcontextprotocol%2Fservers%2Fblob%2Fmain%2Fsrc%2Fsqlite%2FREADME.md)
+[0m% [0mWebFetch http://127.0.0.1:8790/search?q=@modelcontextprotocol%2Fserver-sqlite+npm+GitHub
+Now I have enough data to provide a comprehensive answer. Let me compile the findings.
+
+## Curated Collections of Claude Code Subagent Definitions
+
+| Name | URL (exact repo) | Licence | Last commit/update | Type | What it contains | Why it fits | Risk |
+|------|------------------|---------|-------------------|------|------------------|-------------|------|
+| **VoltAgent/awesome-claude-code-subagents** | `https://github.com/VoltAgent/awesome-claude-code-subagents` | MIT | 2026 (active) | Subagent collection (Markdown + YAML frontmatter) | 154+ agents across 10 categories; pure .md files with frontmatter; no install scripts | Has every role you need: `backend-developer`, `api-designer`, `security-auditor`, `qa-expert`, `accessibility-tester`, `database-admin`, `code-reviewer`, `documentation-engineer`; clean structure; zero-code install | None — markdown only, no hooks, no network calls |
+| **wshobson/agents** | `https://github.com/wshobson/agents` | MIT | 2026 (638 commits, active) | Multi-harness plugin (agents, skills, commands) | 202 agents, 185 skills, 105 commands; includes AGENTS.md + CLAUDE.md; cross-tool generators | Covers all requested roles: `backend-architect`, `api-designer` (via `graphql-architect`), `security-auditor`, `test-automator`, `accessibility-expert`, `database-admin`, `code-reviewer`, `documentation-engineer`; AGENTS.md is canonical context file | Low — MIT, no install scripts for markdown skills; generators run at build time only |
+| **KJKMALLA/claude-code-subagents** | `https://github.com/KJKMALLA/claude-code-subagents` | MIT | 2025 (see DEV.to article) | Subagent collection | 35+ production-ready agents | Mentions automation, code review, debugging agents; smaller but curated | Need to verify current state; may be less maintained |
+| **zhsama/claude-sub-agent** | `https://github.com/zhsama/claude-sub-agent` | Unknown | 2025 | Workflow system using subagents | Phased development workflow agents | Different paradigm — phase-based rather than role-based | Licence unclear; check before use |
+| **lst97/claude-code-sub-agents** | `https://github.com/lst97/claude-code-sub-agents` | Unknown | 2025 | 35 specialized subagents | Domain-specific expertise agents | Listed in DEV.to roundup | Licence unclear; check before use |
+
+### Best 5 Individual Agents per Collection (for your context)
+
+**VoltAgent/awesome-claude-code-subagents:**
+1. `backend-developer` — Server-side expert for scalable APIs (Node.js, Python, databases, auth)
+2. `api-designer` — REST/GraphQL API architect (versioning, docs, developer-friendly)
+3. `security-auditor` — Vulnerability assessment, OWASP compliance, remediation
+4. `qa-expert` / `test-automator` — Test strategy + automation frameworks (CI/CD, coverage)
+5. `accessibility-tester` — WCAG, screen-reader, inclusive design
+6. `database-admin` / `database-optimizer` — Operations, backup, replication, query tuning
+7. `code-reviewer` / `surgeon-reviewer` — Quality guardian + zero-noise review with SHIP verdict
+8. `documentation-engineer` — API docs, tutorials, developer guides
+
+**wshobson/agents:**
+1. `backend-architect` — RESTful API design, microservice boundaries, database schemas (Opus)
+2. `graphql-architect` — GraphQL schemas, resolvers, federation (Opus)
+3. `security-auditor` — Vulnerability assessment, OWASP compliance (Opus)
+4. `test-automator` — Comprehensive test suite creation (unit, integration, e2e) (Sonnet)
+5. `accessibility-expert` — WCAG compliance, accessibility audits (Opus)
+6. `database-admin` — Database operations, backup, replication, monitoring (Sonnet)
+7. `database-optimizer` — Query optimization, index design (Inherit)
+8. `code-reviewer` — Code review with security focus, production reliability (Opus)
+9. `documentation-engineer` / `api-documenter` / `tutorial-engineer` — Technical docs, OpenAPI, tutorials
+
+---
+
+## AGENTS.md / SUBAGENTS.md Examples
+
+| Collection | File | What it demonstrates |
+|------------|------|----------------------|
+| **wshobson/agents** | `AGENTS.md` (canonical) + `CLAUDE.md` (symlink) | Lean context file (~84 lines) mapping to 202 agents, 185 skills, 105 commands; references `docs/agents.md` for detail; follows OpenAI harness-engineering practice |
+| **VoltAgent/awesome-claude-code-subagents** | `CLAUDE.md` (root) | Project guidance for Claude Code; explains subagent file format, storage paths (.claude/agents vs ~/.claude/agents), category structure, contributing workflow |
+| **modelcontextprotocol/servers** | `AGENTS.md` | Reference server repo; shows AGENTS.md as map to src/ servers (SQLite, Filesystem, Git, etc.) |
+
+---
+
+## Top 5 MCP Servers for Your Stack (Cloudflare Workers, SQLite/D1, Playwright)
+
+| Name | URL | Licence | What it can access | Credentials needed? | Notes |
+|------|-----|---------|-------------------|---------------------|-------|
+| **microsoft/playwright-mcp** | `https://github.com/microsoft/playwright-mcp` | Apache-2.0 | Local browser automation (Chromium/Firefox/WebKit); accessibility snapshots, click, type, navigate, screenshots, PDF, network logs, console, test generation | No (runs locally via `npx @playwright/mcp@latest`) | 39.6k stars; official; supports stdio + SSE; `--isolated` for clean profiles; `--allowed-hosts` for host restrictions |
+| **cloudflare/mcp-server-cloudflare** | `https://github.com/cloudflare/mcp-server-cloudflare` | Apache-2.0 | Cloudflare APIs: Workers, D1, KV, R2, Pages, Browser Rendering, Containers, DNS, Analytics, Radar, etc. via domain-specific servers (bindings.mcp.cloudflare.com, browser.mcp.cloudflare.com, etc.) | Yes — Cloudflare API token with appropriate scopes | 4.5k stars; official; 12+ domain-specific servers; stateless Streamable HTTP at `/mcp`; OAuth supported |
+| **panasenco/mcp-sqlite** | `https://github.com/panasenco/mcp-sqlite` | Apache-2.0 | Local SQLite files; schema catalog (`sqlite_get_catalog`), arbitrary SQL (`sqlite_execute`), canned queries from Datasette-compatible YAML/JSON metadata | No (local file path only) | 28 stars; Python/uvx; Datasette-compatible metadata; hides tables but not a security boundary |
+| **modelcontextprotocol/servers (SQLite)** | `https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite` | MIT / Apache-2.0 | Local SQLite databases; read-only by default; schema inspection, query execution | No (local file path) | Reference implementation; Python/uvx; 91.9k stars repo; educational, not production-hardened |
+| **cloudflare/playwright-mcp** | `https://github.com/cloudflare/playwright-mcp` | Apache-2.0 | Cloudflare Browser Rendering (remote browser on Workers); same tools as Playwright MCP but deployed on Cloudflare | Yes — Cloudflare account + Workers deployment | **ARCHIVED Oct 12, 2026** — read-only; use `cloudflare/mcp-server-cloudflare`'s Browser Run server instead |
+
+### Flags
+- **cloudflare/mcp-server-cloudflare** and **cloudflare/playwright-mcp** require Cloudflare API tokens / Workers deployment (credentials).
+- **panasenco/mcp-sqlite** and **modelcontextprotocol SQLite** are local-only; no network calls, no credentials.
+- **microsoft/playwright-mcp** runs entirely locally; `--allowed-hosts` / `--blocked-origins` can restrict navigation but are not security boundaries.
+
+---
+
+**Best single pick and why:**  
+**VoltAgent/awesome-claude-code-subagents** for subagents — it’s a pure, actively maintained markdown-only collection with every role you named, zero install risk, and a clear contributing model. For MCP, **microsoft/playwright-mcp** + **cloudflare/mcp-server-cloudflare** (Browser Run + Workers Bindings servers) cover Playwright and Cloudflare/D1 natively with official support.
+EXIT 0

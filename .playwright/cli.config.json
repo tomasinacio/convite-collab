@@ -1,0 +1,6 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "launchOptions": { "executablePath": "/home/tomin/.cache/ms-playwright/chromium-1252/chrome-linux64/chrome", "headless": true }
+  }
+}

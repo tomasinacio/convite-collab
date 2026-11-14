@@ -1,0 +1,23 @@
+# RSVP Worker. Nothing here is a secret. Deploy steps: rsvp/README.md.
+name = "rsvp"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+# The invitation's address, scheme and host only. Any other origin is refused.
+ALLOWED_ORIGIN = "https://tomasinacio.github.io"
+# Closing time (UTC, with milliseconds): 30 April 2027, 23:59:59 in Lisbon summer time. The user chose the date on 2026-11-12.
+RSVP_CLOSES_AT = "2027-04-30T22:59:59.000Z"
+
+# Logs off: the Worker must never record names, codes or answers.
+[observability]
+enabled = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rsvp"
+database_id = "TODO(user): printed by the create command in rsvp/README.md"
+migrations_dir = "migrations"
+
+# ADMIN_SECRET is set with `wrangler secret put ADMIN_SECRET` by the user and never written to a file.

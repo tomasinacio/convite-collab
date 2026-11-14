@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v14 lane C preview</title>
+<!-- lane C preview (2026-11-11): the orange branch top right beside the v13 olive, and the four dogs as one group on
+     plain paper below the gate. Not the page: lane B merges the CSS from comps/v14-lane-c.md into prototype.v14. -->
+<style>
+:root{--u:calc(min(100vw, 440px) / 100);--S:659px;--paper:#F6EFDF;--ink:#3B2F25;--brown:#6B4F34;
+  --ease-out:cubic-bezier(.23,1,.32,1);--ease-glaze:cubic-bezier(.33,.1,.5,1);--ease-sine:cubic-bezier(.37,0,.63,1);
+  --panel-top:calc(var(--S) * .41)}
+html,body{margin:0;background:var(--paper) url("art/v10/src/00-img-paper.webp") 0 0 / 341px repeat;color:var(--ink);
+  font-family:Georgia, serif;overflow-x:clip}
+.stage{position:relative;width:calc(var(--u) * 100);margin:0 auto}
+.art{position:absolute;display:block;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.in{position:absolute;inset:0;display:block;background-size:100% 100%;background-repeat:no-repeat}
+.root-fade{-webkit-mask-image:linear-gradient(to top, transparent, #000 22%);mask-image:linear-gradient(to top, transparent, #000 22%)}
+/* screen 1, as v13 places it (sky, olive, twig, panel, cloud, the two still swallows) */
+.top{height:calc(var(--panel-top) + var(--u) * 54);overflow:hidden}
+.sky{left:calc(var(--u) * -8);top:calc(var(--u) * -3);width:calc(var(--u) * 116);aspect-ratio:1100/733;background-image:url("art/v10/src/05-img-sky.webp")}
+.c2{left:calc(var(--u) * 74);top:calc(var(--panel-top) - var(--u) * 22);width:calc(var(--u) * 56);aspect-ratio:600/283;opacity:.6;background-image:url("art/v13/cloud-round.webp")}
+.olive{left:calc(var(--u) * -7);top:calc(var(--u) * -3);width:calc(var(--u) * 58);aspect-ratio:1100/1098;transform-origin:0 0}
+.olive > .in{background-image:url("art/v10/src/07-img-olive.webp");transform-origin:35% 30%}
+.olive-b{left:calc(var(--u) * .5);top:calc(var(--u) * -2);width:calc(var(--u) * 12);aspect-ratio:102/360;background-image:url("art/v13/olive-twig-trailing.webp")}
+.bird{aspect-ratio:1100/799;background-image:url("art/v10/src/08-img-swallow.webp")}
+.bird.t1{left:calc(var(--u) * 44);top:calc(var(--S) * .17);width:calc(var(--u) * 8.5);rotate:-6deg}
+.bird.t2{left:calc(var(--u) * 55);top:calc(var(--S) * .23);width:calc(var(--u) * 5);rotate:10deg;background-image:url("art/v13/swallow-below.webp");aspect-ratio:195/200}
+.panel{left:calc(var(--u) * 11);top:var(--panel-top);width:calc(var(--u) * 78);aspect-ratio:1100/711;background-image:url("art/v10/src/09-img-names-panel.webp")}
+.kicker{position:absolute;left:0;right:0;top:calc(var(--panel-top) - var(--u) * 10);margin:0;text-align:center;font-style:italic;font-size:15px}
+
+/* ===== lane C snippet 1: the orange branch, top right (paste into prototype.v14) ===== */
+.citrus{left:calc(var(--u) * 54);top:calc(var(--u) * -3.5);width:calc(var(--u) * 48);aspect-ratio:760/537;
+  transform-origin:97.6% 5.2%;rotate:2deg}
+.citrus > .in{background-image:url("../assets/inbox/v14/citrus-branch.webp");transform-origin:97.6% 5.2%}
+@keyframes corner16r{from{transform:translate(16px,-12px) rotate(2.5deg)}}
+@keyframes sw05{from{rotate:-.5deg}to{rotate:.5deg}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.go .citrus{animation:fade 1.6s var(--ease-glaze) .2s both, corner16r 3s var(--ease-out) .2s both}
+.go .citrus > .in{animation:sw05 8s var(--ease-sine) -3.1s infinite alternate}
+
+/* screen 3, the foot of the gate as v13 draws it (the gate box hangs from --G; here G sits 45u above the frame) */
+.low{--G:calc(var(--u) * -45);height:calc(var(--u) * 172);overflow:hidden}
+.gate-box{position:absolute;left:calc(var(--u) * -20);top:var(--G);width:calc(var(--u) * 140);aspect-ratio:1100/733;
+  background:url("art/v10/src/15-img-gate.webp") 0 0 / 100% 100% no-repeat;
+  -webkit-mask-image:linear-gradient(transparent, #000 13%);mask-image:linear-gradient(transparent, #000 13%)}
+.foot{position:absolute;left:0;right:0;top:calc(var(--G) + var(--u) * 150);display:flex;flex-direction:column;align-items:center;text-align:center}
+.foot p{margin:0}.foot .village{font-size:13px;letter-spacing:.3em;text-transform:uppercase}.foot .date{font-size:17px;margin-top:4px;font-style:italic}
+
+/* ===== lane C snippet 2: the dogs as one group on the plain paper below the gate ===== */
+.dogs{position:absolute;left:0;right:0;top:calc(var(--G) + var(--u) * 92);height:calc(var(--u) * 50);pointer-events:none}
+.dog{position:absolute;opacity:1;transform-origin:50% 100%}
+.dog i{position:absolute;inset:0;display:block;background:0 0 / 100% 100% no-repeat}
+.dog::before{content:none}                         /* v13's pale ellipse: gone, no cast shadow */
+.d-tan{left:calc(var(--u) * 18);bottom:0;width:calc(var(--u) * 24);aspect-ratio:505/760;z-index:3}
+.d-collie{left:calc(var(--u) * 30.5);bottom:calc(var(--u) * 6);width:calc(var(--u) * 23.5);aspect-ratio:496/760;z-index:1}
+.d-golden{left:calc(var(--u) * 43.5);bottom:calc(var(--u) * 4);width:calc(var(--u) * 25);aspect-ratio:434/760;z-index:2}
+.d-merle{left:calc(var(--u) * 57);bottom:calc(var(--u) * .5);width:calc(var(--u) * 25);aspect-ratio:611/900;z-index:4}
+.dog .d-tan-i{background-image:url("../assets/inbox/v14/dog-tan.webp")}
+.dog .d-collie-i{background-image:url("../assets/inbox/v14/dog-collie.webp")}
+.dog .d-golden-i{background-image:url("../assets/inbox/v14/dog-golden.webp")}
+.dog .d-merle-i{background-image:url("../assets/inbox/v14/dog-merle.webp")}
+.dog .d-tail{background-image:url("../assets/inbox/v14/dog-merle-tail.webp")}
+.d-tail{transform-origin:84.7% 73.3%}
+/* the tie: a small posy of rock-roses laid at the front paws (stand-in until the bouquet art comes) and two rooted tufts */
+.posy{left:calc(var(--u) * 36);bottom:calc(var(--u) * -2.5);width:calc(var(--u) * 17);aspect-ratio:1064/1100;
+  background-image:url("art/v10/src/12-img-bloom.webp");rotate:-62deg;z-index:5}
+.tuft{z-index:0;transform-origin:50% 100%}
+.tuft.t-l{left:calc(var(--u) * 13);bottom:calc(var(--u) * 1);width:calc(var(--u) * 12);aspect-ratio:567/850;background-image:url("art/v12/grass-b-2x.webp")}
+.tuft.t-r{left:calc(var(--u) * 73);bottom:calc(var(--u) * 2.5);width:calc(var(--u) * 10);aspect-ratio:468/700;background-image:url("art/v12/grass-a-2x.webp");scale:-1 1}
+@keyframes breath{from{scale:1}to{scale:1.016}}
+@keyframes tail{from{rotate:-4deg}to{rotate:4deg}}
+.go .d-tan{animation:breath 1.3s var(--ease-sine) -.4s infinite alternate}
+.go .d-merle{animation:breath 1.45s var(--ease-sine) -1.1s infinite alternate}
+.go .d-collie{animation:breath 1.65s var(--ease-sine) -2s infinite alternate}
+.go .d-golden{animation:breath 1.85s var(--ease-sine) -.7s infinite alternate}
+.go .d-tail{animation:tail 1.55s var(--ease-sine) -.9s infinite alternate}
+@media (prefers-reduced-motion:reduce){.citrus,.citrus > .in,.dog,.d-tail{animation:none !important}}
+</style>
+</head>
+<body class="go">
+<div class="stage top">
+  <i class="art sky"></i>
+  <i class="art c2"></i>
+  <i class="art olive-b"></i>
+  <i class="art olive"><i class="in"></i></i>
+  <i class="art bird t1"></i><i class="art bird t2"></i>
+  <i class="art citrus"><i class="in"></i></i>
+  <p class="kicker">TODO(user) · frase de abertura</p>
+  <i class="art panel"></i>
+</div>
+<div class="stage low">
+  <i class="gate-box"></i>
+  <div class="dogs" id="dogs" aria-hidden="true">
+    <i class="art tuft root-fade t-l"></i><i class="art tuft root-fade t-r"></i>
+    <span class="dog d-tan"><i class="d-tan-i"></i></span>
+    <span class="dog d-collie"><i class="d-collie-i"></i></span>
+    <span class="dog d-merle"><i class="d-merle-i"></i><i class="d-tail"></i></span>
+    <span class="dog d-golden"><i class="d-golden-i"></i></span>
+    <i class="art posy"></i>
+  </div>
+  <div class="foot">
+    <p class="village" lang="pt-PT" translate="no">Milharado</p>
+    <p class="date">10 de julho de 2027</p>
+  </div>
+</div>
+</body>
+</html>

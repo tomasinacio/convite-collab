@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-PT" class="js warm">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#CDC6B5">
+<title>Closed letter preview</title>
+<link rel="icon" href="data:,">
+<!-- v14 lane A preview: the closed front page only (task 11). Generated from prototype.v13.src.html (sheet rules and markup,
+     unchanged) plus comps/v14-front.css. Query: ?v13=1 shows the v13 front for comparison, ?emboss=0 the plain bottom flap,
+     ?sprig=0 the twine without the sprig, ?fit=card the v13 card geometry (default: full-bleed), ?open=1 opens on load. Tap the seal to run the v13 opening over the new art. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --img-paper:url("art/v10/src/00-img-paper.webp");
+  --img-closed-top:url("art/v10/src/01-img-closed-top.webp");
+  --img-closed-bottom:url("art/v10/fold-bottom-out.webp");
+  --img-closed-deco:url("art/v10/src/03-img-closed-deco.webp");
+  --img-seal:url("art/v9/seal-whole.webp");
+  --img-seal-top:url("art/v9/seal-top.webp");
+  --img-seal-bottom:url("art/v9/seal-bottom.webp");
+  --img-sky:url("art/v10/src/05-img-sky.webp");
+  --img-sky-b:url("art/v10/src/06-img-sky-b.webp");
+}
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --olive:#4F5F2E; --terracotta:#9A4C32;
+  --brown:#6B4F34; --twine:#B8946A; --clay:#C98B6B; --lemon:#EBDDA0;
+  --shade:#E3E2D6; --warm-ink:#4A3B2E;
+  /* azulejo tokens, sampled from the user's 7 examples (AZ tokens); tile art only */
+  --az-ink:#1B2556; --az-cobalt:#344680; --az-glaze:#F3EEE5;
+  --script:'Allura', cursive;
+  --serif:'EB Garamond', Georgia, 'Times New Roman', serif;
+  /* one curve family [AN][EM]: ease-out for entrances, the house ease-in-out for hinges and on-screen travel (CC 1.8),
+     a near-linear glaze for light and pigment (CC 4.8: light and opacity changes take linear) */
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-fold:cubic-bezier(.77,0,.175,1); --ease-glaze:cubic-bezier(.33,.1,.5,1);
+  --ease-sine:cubic-bezier(.37,0,.63,1);   /* v13: every ambient loop, infinite alternate (easeInOutSine) */
+  /* brown shadows, one light top left, 1:2 offsets (CC 1.5, 1.6, 6.4) */
+  --lie:0 1px 1.5px rgb(107 79 52 / .2), 1px 2px 4px rgb(107 79 52 / .07), 2px 4px 8px rgb(107 79 52 / .06), 4px 8px 16px rgb(107 79 52 / .06), 8px 16px 32px rgb(107 79 52 / .05);
+  /* sheet geometry (opening round 2): S one screen; W sheet width; one tall sheet from the width: Hm middle, Ht top flap,
+     Hb bottom flap, whose free edges meet under the seal; P where the closed packet sits (centred); top where the open
+     sheet sits (68 px down, clear of Skip); D slides the closed packet to P */
+  --S:100vh;
+  --W:min(calc(100vw - 32px), 400px);
+  --Hm:calc(var(--W) * 1.4);
+  --Ht:clamp(120px, calc(var(--W) * .42), 168px);
+  --Hb:calc(var(--Hm) - var(--Ht));
+  --P:max(72px, calc((var(--S) - var(--Hm)) / 2));
+  --top:max(68px, calc(var(--P) - var(--Ht)));
+  --D:calc(var(--P) - var(--Ht) - var(--top));
+  --sy:calc(var(--Ht) * 2);   /* the seal sits on the top flap's free edge */
+  --seal:100px;               /* seal image box (the wax is about 80 px); any seal that keeps the v9_bake.py contract fits */
+  --hh:.63;                   /* seal half height over --seal */
+  --k:1;                      /* face layout scale; ?sharp=1 sets 3 (see .face) */
+  /* opening beats, ms from the tap: press and crack snappy, the two fold turns calm, top first then bottom */
+  /* the bottom flap starts as the top one passes upright, so the lower seal half is never left alone on bare paper */
+  --t-lift:160ms; --d-lift:1300ms; --t-drop:840ms; --d-drop:1360ms;   /* fully open at 2.2 s */
+  --ease-io:cubic-bezier(.45,.05,.25,1);   /* the v9 fold curve */
+  /* world geometry: u = 1% of the painted column (phone width, capped at 440 px); y0 = the names panel's bottom edge.
+     Screen 1 hangs from S; everything below hangs from y0 in u, so every overlap holds on every phone. */
+  --u:calc(min(100vw, 440px) / 100);
+  --panel-top:calc(var(--S) * .41);
+  --y0:calc(var(--panel-top) + var(--u) * 50.42);
+  --world-h:calc(var(--y0) + var(--u) * 326);   /* v12: +34u for the dogs; v13: the lower page 18u tighter, the foot 32u closer */
+  --G:calc(var(--y0) + var(--u) * 158);         /* v13: the gate-box top (was y0 + 176u) */
+  color-scheme:light;
+}
+@supports (height:100svh){ :root{ --S:100svh; } }
+html{-webkit-text-size-adjust:100%;background:var(--shade)}
+body{margin:0;font-family:var(--serif);font-size:18px;line-height:1.5;color:var(--ink);background:var(--shade);overflow-x:clip}
+p{margin:0}
+button{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.paper{background:var(--paper) var(--img-paper) 0 0 / 341px repeat}
+
+/* Skip: first in focus order, visible from load to the end of the reveal (10 s); [WG] motion over 5 s needs a stop */
+.skip{position:fixed;top:max(12px, env(safe-area-inset-top));right:12px;z-index:30;min-height:44px;padding:0 18px;border:1px solid var(--twine);border-radius:999px;
+  background:var(--paper);font-size:16px;letter-spacing:.04em;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.skip.out{opacity:0;pointer-events:none}
+.skip[hidden],html:not(.js) .skip{display:none}
+/* hover is colour only and only on real pointers; press is a 160 ms scale .97 [EM][WG] */
+@media (hover:hover) and (pointer:fine){.skip:hover,.again:hover{background:var(--sand)}}
+.skip,.again{transition:opacity .2s linear, scale .16s var(--ease-out)}
+.skip:active,.again:active{scale:.97}
+
+/* ---------- page: one screen while closed, then the painted world ---------- */
+.page{position:relative;display:flow-root} /* flow-root: the sheet's top margin must not pull the world down */
+.js .page:not(.opened){height:var(--S);overflow:hidden}
+.page.opened{min-height:var(--world-h)}
+/* no script: no letter to open, the finished painted page shows at rest */
+html:not(.js) .sheet{display:none}
+html:not(.js) .page{min-height:var(--world-h)}
+
+/* =============== THE SHEET (opening round 2, from prototype.v9.html): closed letter, wax seal, two vertical folds =============== */
+/* ms from the tap: 0-100 press; 0 the whole seal swaps to two halves (the crack), they part 1 px in 180 ms; 60-420 twine ends
+   slip and drop as the twine and label fade; 160-1460 top flap lifts with the sheet sliding to its open place; 840-2200 bottom
+   flap drops; fully open at 2.2 s. Hand-over (v11): the world comes up 1.7-2.5 s, while the bottom flap is about 70% down,
+   and the sheet dissolves 2.2-2.9 s. */
+.sheet{position:relative;z-index:2;width:var(--W);margin:var(--top) auto 0;height:calc(var(--Ht) + var(--Hm) + var(--Hb))}
+.sheet.is-open{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .7s linear 2.2s, visibility 0s linear 2.9s}
+.move{position:absolute;left:0;right:0;top:0;height:100%;transform:translateY(var(--D));transition:transform var(--d-lift) var(--ease-io) var(--t-lift)}
+.is-open .move{transform:none}
+/* the folds sit in their own box: 1600 px perspective reads as paper, and the box clips them to the sheet's width */
+.folds{position:absolute;inset:0;perspective:1600px;perspective-origin:50% 50%;overflow-x:clip}
+.pnl{position:absolute;left:0;width:100%}
+/* paper faces seen at the hand-over carry the world's paper tile in the world's phase, so the dissolve shows no step */
+.mid{top:var(--Ht);height:var(--Hm);background-position:calc((var(--W) - 100vw) / 2) calc((var(--top) + var(--Ht)) * -1)}
+.tp{top:0;height:var(--Ht);transform-origin:50% 100%;transform-style:preserve-3d;transform:rotateX(-180deg);transition:transform var(--d-lift) var(--ease-io) var(--t-lift)}
+.bt{top:calc(var(--Ht) + var(--Hm));height:var(--Hb);transform-origin:50% 0;transform-style:preserve-3d;transform:rotateX(180deg);
+  transition:transform var(--d-drop) var(--ease-io) var(--t-drop)}
+.is-open .tp,.is-open .bt{transform:none}
+.move,.tp,.bt{will-change:transform}
+/* each face is laid out at --k times its size and scaled back. Chromium rasterises a layer turning in perspective at one texel
+   per CSS px (pixelated while it moves on a DPR 3 phone); --k:3 fixes that but cost frames in CPU-throttled emulation, so 1
+   is the default and ?sharp=1 tries 3 on a real phone. Lengths inside a face are times --k. */
+.sharp{--k:3}
+.face{position:absolute;left:0;top:0;width:calc(100% * var(--k));height:calc(100% * var(--k));transform-origin:0 0;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:scale(calc(1 / var(--k))) translateZ(.3px)}
+.face-out{transform:translateY(calc(100% / var(--k))) rotateX(180deg) scale(calc(1 / var(--k))) translateZ(.3px)}
+.tp .face-in{background-position:calc((var(--W) - 100vw) / 2 * var(--k)) calc(var(--top) * -1 * var(--k))}
+.bt .face-in{background-position:calc((var(--W) - 100vw) / 2 * var(--k)) calc((var(--top) + var(--Ht) + var(--Hm)) * -1 * var(--k))}
+.tp:not(.ride) .face-out{background:var(--img-closed-top) 0 0 / 100% 100% no-repeat}
+.bt:not(.ride) .face-out{background:var(--img-closed-bottom) 0 0 / 100% 100% no-repeat}
+.face.paper{background-size:calc(341px * var(--k))}
+.instant,.instant *{transition:none !important}
+.ride{pointer-events:none}
+/* a crease is a soft valley, not a rule */
+.crease{position:absolute;left:1%;right:1%;top:0;height:6px;margin-top:-3px;pointer-events:none;
+  background:linear-gradient(rgb(107 79 52 / 0),rgb(107 79 52 / .07) 45%,rgb(255 253 247 / .3) 58%,rgb(255 253 247 / 0))}
+.face .crease{height:calc(6px * var(--k));margin-top:calc(-3px * var(--k))}
+/* the flap's sky is the world sky, cut to the flap: same file, same size, same offset, so the hand-over is seamless.
+   The open flap sits at (sheet left, --top) on the page; the world's sky at (stage left - 8u, -3u). */
+/* v11: it also carries the world's wash and its second, paler cloud run (.sky-b at .2), in the world's own geometry, so the
+   two skies match when the world comes up around the sheet */
+.flap-sky{--wx:calc((var(--W) - 100vw) / 2 * var(--k));--wy:calc(var(--top) * -1 * var(--k));position:absolute;inset:0;overflow:hidden;
+  background:
+    var(--img-sky) calc(((var(--W) - var(--u) * 100) / 2 - var(--u) * 8) * var(--k)) calc((var(--top) * -1 - var(--u) * 3) * var(--k)) / calc(var(--u) * 116 * var(--k)) auto no-repeat,
+    radial-gradient(90% 45% at 0% 0%, rgb(235 221 160 / .22), rgb(235 221 160 / 0) 70%) var(--wx) var(--wy) / calc(100vw * var(--k)) calc(var(--world-h) * var(--k)) no-repeat,
+    linear-gradient(rgb(151 170 189 / .10), rgb(151 170 189 / 0) calc(var(--S) * .55 * var(--k)), rgb(230 214 184 / 0) 50%, rgb(230 214 184 / .2)) var(--wx) var(--wy) / calc(100vw * var(--k)) calc(var(--world-h) * var(--k)) no-repeat}
+.flap-sky i{position:absolute;left:calc(((var(--W) - var(--u) * 100) / 2 - var(--u) * 14) * var(--k));top:calc((var(--top) * -1 - var(--u) * 8) * var(--k));
+  width:calc(var(--u) * 124 * var(--k));aspect-ratio:1100/733;background:var(--img-sky-b) 0 0 / 100% 100% no-repeat;transform:scaleX(-1);opacity:.2}
+
+/* resting shadows on the table, one light top left: static, the fold ones fade in as each flap lands (opacity only) */
+.ground{position:absolute;left:0;right:0;box-shadow:var(--lie)}
+.g-mid{top:var(--Ht);height:var(--Hm)}
+.g-top{top:3px;height:calc(var(--Ht) - 3px);opacity:0}
+.g-bot{top:calc(var(--Ht) + var(--Hm));height:calc(var(--Hb) - 3px);opacity:0}
+.is-open .g-top{opacity:1;transition:opacity 300ms var(--ease-out) calc(var(--t-lift) + var(--d-lift) * .7)}
+.is-open .g-bot{opacity:1;transition:opacity 250ms var(--ease-out) calc(var(--t-drop) + var(--d-drop) * .7)}
+/* a flap's free edge casts a thin shadow on the paper under it */
+.cast{position:absolute;left:0;right:0;height:calc(10px * var(--k))}
+.tp .cast{top:calc(100% - 1px * var(--k));background:linear-gradient(rgb(107 79 52 / .2),rgb(107 79 52 / 0))}
+.bt .cast{bottom:calc(100% - 3px * var(--k));background:linear-gradient(rgb(107 79 52 / 0),rgb(107 79 52 / .14))}
+/* live shading: one gradient layer per face, opacity only; hinge shadow on the middle */
+.shade{position:absolute;inset:0;opacity:0;pointer-events:none}
+.tp .face-in .shade{background:linear-gradient(to top,rgb(59 47 37),rgb(59 47 37 / .4))}
+.tp .face-out .shade{background:linear-gradient(to bottom,rgb(59 47 37),rgb(59 47 37 / .4))}
+.bt .face-in .shade{background:linear-gradient(to bottom,rgb(59 47 37),rgb(59 47 37 / .4))}
+.bt .face-out .shade{background:linear-gradient(to top,rgb(59 47 37),rgb(59 47 37 / .4))}
+@keyframes fold-shade{0%{opacity:0}50%{opacity:.14}100%{opacity:0}}
+@keyframes hinge{0%{opacity:0}40%{opacity:.2}100%{opacity:0}}
+.is-open .tp .shade{animation:fold-shade var(--d-lift) var(--ease-io) var(--t-lift) both}
+.is-open .bt .shade{animation:fold-shade var(--d-drop) var(--ease-io) var(--t-drop) both}
+.hinge{position:absolute;left:0;right:0;height:26px;opacity:0;pointer-events:none}
+.h-top{top:0;background:linear-gradient(rgb(59 47 37),rgb(59 47 37 / 0))}
+.h-bot{bottom:0;background:linear-gradient(rgb(59 47 37 / 0),rgb(59 47 37))}
+.is-open .h-top{animation:hinge var(--d-lift) var(--ease-io) var(--t-lift) both}
+.is-open .h-bot{animation:hinge var(--d-drop) var(--ease-io) var(--t-drop) both}
+/* a soft sheen crosses each face as it turns: paper catching the window light, not a flat board */
+.gl{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.gl i{position:absolute;left:0;right:0;top:0;height:60%;opacity:0;transform:translateY(-100%);
+  background:linear-gradient(rgb(255 252 242 / 0),rgb(255 252 242 / .38) 50%,rgb(255 252 242 / 0))}
+@keyframes sheen{0%{opacity:0;transform:translateY(-100%)}40%{opacity:1}100%{opacity:0;transform:translateY(170%)}}
+.is-open .tp .gl i{animation:sheen var(--d-lift) var(--ease-io) var(--t-lift) both}
+.is-open .bt .gl i{animation:sheen var(--d-drop) var(--ease-io) var(--t-drop) both}
+
+/* the user's twine and pressed sprig (P3), in two halves: at the crack each loses the part under the wax at once (so nothing
+   lies over the halves), then its cut end slips out and drops a few px as it fades */
+.closed-deco{position:absolute;left:0;width:100%;aspect-ratio:1083/540;top:calc(var(--sy) - var(--W) * .2493);pointer-events:none}
+.deco{position:absolute;inset:0;background:var(--img-closed-deco) 0 0 / 100% 100% no-repeat}
+.deco-l{clip-path:inset(0 50% 0 0);transform-origin:0 50%}
+.deco-r{clip-path:inset(0 0 0 50%);transform-origin:100% 50%}
+.crack .deco{opacity:0;transition:opacity .36s var(--ease-out) .06s,transform .38s var(--ease-out)}
+.crack .deco-l{clip-path:inset(0 calc(50% + var(--seal) * .52) 0 0);transform:translateX(-4px) rotate(1.4deg)}
+.crack .deco-r{clip-path:inset(0 0 0 calc(50% + var(--seal) * .52));transform:translateX(4px) rotate(-1.2deg)}
+/* idle light: one pre-rendered band, <= .12 alpha, 3 s, every 7 s, from 2.5 s; gone on touch (CC 6.8) [CH] attention loop */
+.light{position:absolute;left:0;right:0;top:var(--Ht);height:var(--Hm);overflow:hidden;pointer-events:none;z-index:6}
+.light i{position:absolute;top:0;bottom:0;left:0;width:55%;opacity:0;
+  background:linear-gradient(105deg, rgb(255 251 240 / 0) 20%, rgb(255 251 240 / .12) 50%, rgb(255 251 240 / 0) 80%)}
+.light.on i{animation:sweep 7s linear infinite}
+@keyframes sweep{0%{opacity:1;transform:translateX(-100%)}43%{opacity:1;transform:translateX(190%)}43.1%,100%{opacity:0;transform:translateX(190%)}}
+.is-open .light{display:none}
+/* the seal: the only call to act, a real button, 44 px+ target, label below, no pulse (CC 6.10); press scale .97 in 100 ms [EM] */
+.seal{position:absolute;left:50%;top:calc(var(--sy) - var(--seal) / 2);translate:-50% 0;z-index:5;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:0 10px 4px;border:0;border-radius:14px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.seal:disabled{cursor:default;pointer-events:none}
+.wax{display:block;width:var(--seal);height:var(--seal);background:var(--img-seal) 0 0 / 100% 100% no-repeat;transition:scale .1s var(--ease-out)}
+.seal:active .wax,.pressed .wax{scale:.97}
+.seal-label{font-style:italic;font-size:18px;line-height:1.2;color:var(--ink);padding:0 6px;margin-top:calc(var(--seal) * -.05)}
+.crack .wax{opacity:0}
+.crack .seal-label{opacity:0;transition:opacity 200ms var(--ease-out)}
+/* the halves, cut from the same photo, sit exactly under it; the tap swaps them in (the crack) and they part. They ride
+   copies of the two flaps drawn above both papers, so wax that crosses the seam is never covered by the other flap.
+   The upper half lifts 1 px and tips .4deg about the right end of the break; under it the lower half carries the dark
+   inside of the break, so the hairline gap never shows paper. */
+.half{--s:calc(var(--seal) * var(--k));position:absolute;left:calc(50% - var(--s) / 2);width:var(--s);height:calc(var(--s) * var(--hh));display:block;
+  opacity:0;transform:scale(.97);background:0 0 / 100% 100% no-repeat}
+.half-up{background-image:var(--img-seal-top);top:calc(100% - var(--s) / 2);transform-origin:50% calc(var(--s) / 2)}
+.half-lo{background-image:var(--img-seal-bottom);top:calc((var(--Ht) - var(--Hm) + var(--Hb)) * var(--k) + var(--s) * (.5 - var(--hh)));
+  transform-origin:50% calc(var(--s) * (var(--hh) - .5))}
+.crack .half{opacity:1}
+.crack .half-up{transform:translate(calc(var(--s) * .38),calc(-1px * var(--k))) rotate(-.4deg) translateX(calc(var(--s) * -.38));transition:transform 180ms var(--ease-out)}
+.crack .half-lo{transform:none;transition:transform 180ms var(--ease-out)}
+@media (prefers-reduced-motion:reduce){
+  .move,.tp,.bt,.seal,.wax,.deco,.half,.g-top,.g-bot{transition-duration:1ms !important;transition-delay:0s !important}
+  .shade,.hinge,.gl i{animation:none !important}
+  .sheet.is-open{transition-duration:.2s !important;transition-delay:0s !important}
+  .light{display:none}
+}
+</style>
+<style id="v14">
+/* =============== v14 FRONT (lane A, task 11 of comps/V14-BRIEF.md): the closed letter, quiet and real ===============
+   Paste as one block right after the v13 sheet rules (after `.crack .half-lo{...}`), before THE WORLD. Same selectors,
+   ids, classes, positions and timings as v13; only the art, the seal size, the type and three pseudo-element layers change.
+   Assets: comps/art/v14/front/*.webp, baked by comps/art/v14_front.py (sources and licences: assets/LOG.md). */
+
+/* image slots: these override the v13 slots of the same name (the closed letter is the poster: it loads first) */
+:root{
+  --img-seal:url("art/v14/front/seal-whole.webp");          /* the user's Copilot seal, deeper wax, lifted relief and glints, 3-part shadow */
+  --img-seal-top:url("art/v14/front/seal-top.webp");        /* its upper half, cracked (v9 contract: .63 of the box) */
+  --img-seal-bottom:url("art/v14/front/seal-bottom.webp");  /* its lower half */
+  --img-closed-top:url("art/v14/front/closed-top.webp");    /* top flap outside: the sheet's own paper, fibres, deckle on the seam (cover) */
+  --img-closed-bottom:url("art/v14/front/closed-bottom.webp"); /* bottom flap outside: same paper, one light across both (cover) */
+  --img-closed-emboss:url("art/v14/front/closed-emboss.webp"); /* NEW: blind-embossed olive twig, bottom flap's lower right; plain: none */
+  --img-closed-deco:url("art/v14/front/closed-deco.webp");  /* two jute strands edge to edge, knot under the wax, whole sprig tucked in; none: closed-deco-nosprig.webp */
+  --img-linen:url("art/v14/front/linen.webp");              /* NEW: the table under the letter, seamless flax linen tile, 256 CSS px (3x) */
+  --linen:#CDC6B5;                                               /* the tile's mean, shown while it decodes */
+  --seal:calc(var(--W) * .44);   /* v13 100px (wax 80 px, 20 % of the sheet): now the wax is 34.5 % of the sheet, 125 px on a 393 px phone */
+}
+
+/* the surface the letter lies on: flax linen, one soft window light from the upper left, the corners falling off.
+   Fixed under the sheet (z 0, the world is z 1); hidden once the world has come up over it (2.5 s). Static: no animation. */
+.js .page::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(115% 65% at 15% 6%, rgb(255 250 236 / .34), rgb(255 250 236 / 0) 62%),
+    radial-gradient(150% 105% at 50% 42%, rgb(48 36 24 / 0) 52%, rgb(48 36 24 / .16) 100%),
+    var(--linen) var(--img-linen) 0 0 / 256px repeat}
+.js .page.opened::before{visibility:hidden;transition:visibility 0s linear 2.6s}
+
+/* the packet's contact shadow on the linen: a dark hairline where paper meets cloth, then two soft falls to the lower right.
+   Its own layer (will-change), faded out in 600 ms at the tap while the flaps lift (opacity only); the v13 .ground shadows stay. */
+.move::before{content:"";position:absolute;left:0;right:0;top:var(--Ht);height:var(--Hm);pointer-events:none;will-change:opacity;
+  box-shadow:0 .5px 1px rgb(48 34 22 / .34), 0 2px 4px -1px rgb(48 34 22 / .2), 2px 8px 14px -3px rgb(48 34 22 / .17),
+    5px 18px 30px -6px rgb(48 34 22 / .14), 10px 32px 60px -10px rgb(48 34 22 / .11)}
+.is-open .move::before{opacity:0;transition:opacity .6s linear .1s}
+
+/* the top flap's torn edge lies on the bottom flap: a softer, slightly deeper cast than v13 */
+.tp .cast{height:calc(14px * var(--k));background:linear-gradient(rgb(60 42 28 / .24),rgb(60 42 28 / .08) 32%,rgb(60 42 28 / 0))}
+
+/* full-bleed ready: the flap faces fill their boxes on any screen (cover). The top flap is anchored at its torn edge (on the
+   seam), the bottom flap at its top edge (under it); the extra paper is cropped. The emboss rides in the bottom flap's corner. */
+.tp:not(.ride) .face-out{background:var(--img-closed-top) 50% 100% / cover no-repeat}
+.bt:not(.ride) .face-out{background:var(--img-closed-emboss) 100% 100% / 66.67% auto no-repeat, var(--img-closed-bottom) 50% 0 / cover no-repeat}
+
+/* twine art is 1300 x 648 (3x of a 433 px sheet); the strands' centre line stays on the seam (--sy), edge to edge */
+.closed-deco{aspect-ratio:1300/648;top:calc(var(--sy) - var(--W) * .24923)}
+
+/* the hint: engraved-card small capitals, tracked, two hairlines; warm brown 8.3:1 on the paper (scripts/contrast.py) */
+.seal-label{display:flex;align-items:center;gap:.75em;white-space:nowrap;font-style:normal;font-weight:500;font-size:13px;line-height:1.3;
+  letter-spacing:.24em;text-transform:uppercase;color:#56412F;padding:0 0 0 .24em;margin-top:calc(var(--seal) * -.01)}
+.seal-label::before,.seal-label::after{content:"";flex:none;width:22px;height:1px;background:currentColor;opacity:.42}
+
+/* Skip: a small printed tab, not a default pill; same box (44 px tall), place, focus order and behaviour */
+.skip{padding:0 14px 0 17px;border:1px solid rgb(107 79 52 / .3);border-radius:3px;background:rgb(247 241 227 / .94);
+  font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--warm-ink);
+  box-shadow:0 1px 1.5px rgb(48 34 22 / .14),0 3px 8px -2px rgb(48 34 22 / .1)}
+
+@media (prefers-reduced-motion:reduce){
+  .move::before{transition-duration:1ms !important;transition-delay:0s !important}
+}
+/* ============================================ end v14 FRONT ============================================ */
+
+</style>
+<style>
+.emb0{--img-closed-emboss:none}
+/* preview only: the full-bleed closed sheet the open-page lane is moving to (seam 37 % down); ?fit=card shows the v13 card */
+html.fb{--W:100vw;--Hm:var(--S);--Ht:calc(var(--S) * .37);--P:0px;--top:calc(var(--Ht) * -1);--D:0px}
+.spr0{--img-closed-deco:url("art/v14/front/closed-deco-nosprig.webp")}
+</style>
+<script>
+(function(h){ var q = new URLSearchParams(location.search);
+  if (q.get('v13') === '1') { var v = document.getElementById('v14'); v.parentNode.removeChild(v); h.classList.add('v13'); }
+  if (q.get('emboss') === '0') h.classList.add('emb0');
+  if (q.get('sprig') === '0') h.classList.add('spr0');
+  if (q.get('fit') !== 'card') h.classList.add('fb');
+})(document.documentElement);
+</script>
+</head>
+<body>
+<button type="button" class="skip" id="skip" data-i18n="skip">Saltar</button>
+<main class="page" id="page">
+  <div class="sheet" id="sheet">
+    <div class="move">
+      <div class="ground g-mid" aria-hidden="true"></div>
+      <div class="ground g-top" aria-hidden="true"></div>
+      <div class="ground g-bot" aria-hidden="true"></div>
+      <div class="pnl mid paper" aria-hidden="true"><span class="crease"></span><span class="hinge h-top"></span><span class="hinge h-bot"></span></div>
+      <div class="folds">
+        <div class="pnl bt" id="bt" aria-hidden="true">
+          <div class="face face-in paper"><span class="crease"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+          <div class="face face-out"><span class="cast"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+        </div>
+        <div class="pnl tp" aria-hidden="true">
+          <div class="face face-in paper"><div class="flap-sky"><i></i></div><span class="gl"><i></i></span><span class="shade"></span></div>
+          <div class="face face-out"><span class="cast"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+        </div>
+        <!-- the seal halves ride copies of the two flaps (same box, origin, transform and timing), above both papers -->
+        <div class="pnl bt ride" aria-hidden="true"><div class="face face-out"><i class="half half-lo"></i></div></div>
+        <div class="pnl tp ride" aria-hidden="true"><div class="face face-out"><i class="half half-up"></i></div></div>
+      </div>
+      <div class="closed-deco" aria-hidden="true"><i class="deco deco-l"></i><i class="deco deco-r"></i></div>
+      <div class="light" id="light" aria-hidden="true"><i></i></div>
+      <button type="button" class="seal" id="seal">
+        <span class="wax" aria-hidden="true"></span>
+        <span class="seal-label" data-i18n="seal">Toca para abrir</span>
+      </button>
+    </div>
+  </div>
+  </div>
+</main>
+<script>
+(function(){
+  var h = document.documentElement, $ = function(s){ return document.querySelector(s); };
+  var sheet = $('#sheet'), page = $('#page'), seal = $('#seal'), light = $('#light'), skip = $('#skip');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lightT = reduce ? 0 : setTimeout(function(){ light.classList.add('on'); }, 2500);
+  function open(instant){
+    if (sheet.classList.contains('is-open')) return;
+    clearTimeout(lightT); light.classList.remove('on');
+    if (instant || reduce) sheet.classList.add('instant');
+    page.classList.add('opened', 'go'); sheet.classList.add('is-open', 'crack'); seal.disabled = true;
+  }
+  seal.addEventListener('pointerdown', function(){ seal.classList.add('pressed'); });
+  seal.addEventListener('click', function(){ open(false); });
+  skip.addEventListener('click', function(){ open(true); });
+  if (new URLSearchParams(location.search).get('open') === '1') open(false);
+  window.__open = open;
+})();
+</script>
+</body>
+</html>

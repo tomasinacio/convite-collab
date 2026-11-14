@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#E3E2D6">
+<title>Paper grain compare</title>
+<meta name="description" content="The closed folded sheet with its wax seal in two paper grains, side by side: soft and barely there, or visible handmade grain. DRAFT for the user to choose.">
+<!-- owner: Tomas | stage 1 (illustrated-reveal) | status: DRAFT, for the user to choose | 2026-11-10 | r4: flat page grounds and one leaf under the seal (REDTEAM.md); the two paper filters are unchanged
+     Same sheet, seal, light and size; only the paper filter differs (#paper-soft vs #paper-hand, both drawn in SVG, no image). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --olive:#4F5F2E; --brown:#6B4F34; --twine:#B8946A; --shade:#E3E2D6;
+  --sun: drop-shadow(1px 1.5px 1px rgb(59 47 37 / .16)) drop-shadow(4px 8px 8px rgb(59 47 37 / .10));
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .18 0 0 0 0 .14 0 0 0 .5 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.55;color:var(--ink);background:var(--shade);overflow-x:clip}
+h1,h2{font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--olive);text-underline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 40px}}
+.smallcaps{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+.top{padding:28px 0 22px;background:var(--paper)}
+.top h1{font-size:clamp(30px,6.4vw,44px);line-height:1.1;margin-top:6px}
+.top .lede{max-width:36em;margin-top:10px;font-size:17px;color:var(--brown)}
+
+.pair{display:grid;gap:56px;padding:40px 0 24px}
+@media (min-width:860px){.pair{grid-template-columns:1fr 1fr;column-gap:64px}}
+.opt h2{font-size:24px;line-height:1.2}
+.opt h2 .no{font-size:15px;letter-spacing:.14em;color:var(--brown);margin-right:8px}
+.opt .plain{font-size:17px;margin-top:6px;max-width:30em}
+.opt .rec{display:inline-block;margin-top:6px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--olive)}
+
+/* the closed folded sheet: the lower part of the sheet with the top part folded down over it (60 of its 90 units) */
+.closed{position:relative;width:min(100% - 24px,360px);aspect-ratio:100/90;margin-top:20px}
+.paper-bg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.paper-bg rect{fill:var(--paper);filter:var(--pf)}
+.base > .paper-bg{filter:var(--sun)}
+.base,.fold{position:absolute;left:0;width:100%}
+.base{top:0;height:100%}
+.fold{top:0;height:66.667%}
+.fold > .paper-bg{filter:drop-shadow(0 1.5px 1.2px rgb(59 47 37 / .16)) drop-shadow(0 5px 6px rgb(59 47 37 / .07))}
+.seal{position:absolute;left:50%;top:66.667%;translate:-50% -40px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.wax{position:relative;display:block;width:80px;height:80px;--k:100;filter:var(--sun)}
+.wax svg{position:absolute;inset:0;width:100%;height:100%}
+.leaf{position:absolute;background:url(../assets/cutouts/olive-leaves.webp) no-repeat;
+  left:calc(var(--x) * 1% - var(--w) * var(--px) * 1%);bottom:calc(100% - var(--y) * 100% / var(--k));
+  width:calc(var(--w) * 1%);transform-origin:calc(var(--px) * 100%) 100%;rotate:calc(var(--r) - var(--lean, 0deg))}
+.l1{aspect-ratio:299/1292;background-size:406.02% 199.54%;background-position:50.383% .7%;--px:.49}
+.l4{aspect-ratio:269/1200;background-size:451.3% 214.83%;background-position:1.905% 90.711%;--px:.64;--lean:2deg}
+.seal-label{font-style:italic;font-size:18px;line-height:1.2;color:var(--ink)}
+.soft{--pf:url(#paper-soft)}
+.hand{--pf:url(#paper-hand)}
+
+/* close-up: the same paper three times larger, at the corner */
+.zoom{position:relative;width:min(100% - 24px,360px);height:150px;margin-top:18px;overflow:hidden;background:var(--shade);border-radius:2px;box-shadow:inset 0 0 0 1px rgb(59 47 37 / .08)}
+.zoom svg{position:absolute;left:0;top:0;width:200px;height:120px;overflow:visible;transform:scale(3);transform-origin:0 0}
+.zoom rect{fill:var(--paper);filter:var(--pf)}
+.zoom-cap{font-size:15px;color:var(--brown);margin-top:6px}
+
+footer{padding:24px 0 48px;font-size:15px;color:var(--brown)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="paper-soft" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.1 .8" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .23  0 0 0 0 .18  0 0 0 0 .14  0 0 0 .34 -.12" result="gc"/>
+      <feComposite in="gc" in2="d" operator="in" result="gm"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="gm"/></feMerge>
+    </filter>
+    <filter id="paper-hand" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="4" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".014" numOctaves="2" seed="5" result="m"/>
+      <feColorMatrix in="m" type="matrix" values="0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .25  .45 0 0 0 -.2" result="mc"/>
+      <feTurbulence type="turbulence" baseFrequency=".06 .13" numOctaves="1" seed="21" result="f"/>
+      <feColorMatrix in="f" type="matrix" values="0 0 0 0 .42  0 0 0 0 .33  0 0 0 0 .24  -16 0 0 0 .24" result="fc0"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="1" seed="31" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -2.6" result="sm"/>
+      <feComposite in="fc0" in2="sm" operator="in" result="fc"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9 .6" numOctaves="2" seed="3" result="g"/>
+      <feColorMatrix in="g" type="matrix" values="0 0 0 0 .23  0 0 0 0 .18  0 0 0 0 .14  0 0 0 .46 -.16" result="gc"/>
+      <feMerge result="tex"><feMergeNode in="mc"/><feMergeNode in="fc"/><feMergeNode in="gc"/></feMerge>
+      <feComposite in="tex" in2="d" operator="in" result="tm"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="tm"/></feMerge>
+    </filter>
+    <radialGradient id="waxg" cx="38%" cy="34%" r="72%">
+      <stop offset="0" stop-color="#B46247"/><stop offset=".55" stop-color="#9A4C32"/><stop offset="1" stop-color="#86422A"/>
+    </radialGradient>
+    <symbol id="wax" viewBox="0 0 100 100">
+      <path fill="url(#waxg)" d="M92.9 50.0C92.5 53.3 93.4 56.7 92.5 59.7C91.7 62.7 89.2 65.3 87.8 68.2C86.4 71.1 86.0 74.7 84.1 77.2C82.3 79.8 78.9 80.8 76.7 83.5C74.5 86.2 73.6 91.2 70.9 93.4C68.2 95.6 64.2 96.7 60.7 96.8C57.2 96.8 53.3 95.0 50.0 94.0C46.7 93.0 43.8 91.8 40.7 90.9C37.6 90.0 34.3 89.9 31.4 88.7C28.5 87.4 25.7 85.5 23.3 83.5C20.8 81.5 18.6 79.1 16.6 76.6C14.6 74.1 13.3 71.3 11.4 68.6C9.6 65.8 6.2 63.2 5.5 60.2C4.9 57.1 7.0 53.3 7.6 50.0C8.2 46.7 8.8 44.0 9.0 40.6C9.2 37.3 7.9 33.4 8.7 30.1C9.4 26.8 11.3 23.5 13.4 20.8C15.5 18.1 18.3 15.6 21.2 13.9C24.2 12.2 28.0 12.2 31.1 10.7C34.2 9.3 36.7 6.3 39.8 5.4C43.0 4.5 46.6 5.2 50.0 5.3C53.4 5.4 56.8 5.2 60.1 5.9C63.3 6.5 66.7 7.8 69.6 9.4C72.4 11.0 75.2 13.2 77.4 15.6C79.7 18.0 81.2 21.0 83.0 23.7C84.8 26.3 86.6 28.8 88.5 31.5C90.4 34.2 93.8 36.8 94.5 39.8C95.2 42.9 93.2 46.7 92.9 50.0Z"/>
+      <circle cx="50" cy="51" r="33" fill="none" stroke="#C27658" stroke-width="1" opacity=".45"/>
+      <circle cx="50" cy="51" r="30" fill="#8C442D"/>
+      <path d="M22 51A28 28 0 0 1 78 51" fill="none" stroke="#5F2A19" stroke-width="2.4" opacity=".32"/>
+      <path d="M78 51A28 28 0 0 1 22 51" fill="none" stroke="#C98266" stroke-width="1.6" opacity=".55"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3">
+        <path transform="translate(.7 .8)" stroke="#C98266" opacity=".7" d="M33 67Q48 55 66 35M39.0 62.0Q37.2 55.5 31.0 53.0Q32.8 59.5 39.0 62.0M41.0 60.5Q44.4 65.0 50.0 64.0Q46.6 59.5 41.0 60.5M48.0 55.0Q47.0 48.3 41.0 45.0Q42.0 51.7 48.0 55.0M51.0 52.5Q55.3 56.7 61.0 55.0Q56.7 50.8 51.0 52.5M57.0 46.5Q57.2 40.4 52.0 37.0Q51.8 43.1 57.0 46.5M60.0 43.0Q64.2 46.5 69.0 44.0Q64.8 40.5 60.0 43.0M66.0 35.0Q70.7 31.7 70.0 26.0Q65.3 29.3 66.0 35.0"/>
+        <path stroke="#6B321F" d="M33 67Q48 55 66 35M39.0 62.0Q37.2 55.5 31.0 53.0Q32.8 59.5 39.0 62.0M41.0 60.5Q44.4 65.0 50.0 64.0Q46.6 59.5 41.0 60.5M48.0 55.0Q47.0 48.3 41.0 45.0Q42.0 51.7 48.0 55.0M51.0 52.5Q55.3 56.7 61.0 55.0Q56.7 50.8 51.0 52.5M57.0 46.5Q57.2 40.4 52.0 37.0Q51.8 43.1 57.0 46.5M60.0 43.0Q64.2 46.5 69.0 44.0Q64.8 40.5 60.0 43.0M66.0 35.0Q70.7 31.7 70.0 26.0Q65.3 29.3 66.0 35.0"/>
+      </g>
+      <ellipse cx="31" cy="24" rx="9" ry="3.6" fill="#F6EFDF" opacity=".2" transform="rotate(-32 31 24)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <p class="smallcaps">Stage 1 · paper grain · for you to choose</p>
+    <h1>Two papers for the folded sheet</h1>
+    <p class="lede">The closed invitation twice: same size, same seal, same light. Only the paper changes. Below each one is a close-up of its top-left corner at three times the size, so you can see the texture on a phone.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="pair">
+    <section class="opt soft" aria-labelledby="g1">
+      <h2 id="g1"><span class="no">1</span>Soft, barely there</h2>
+      <p class="plain">Smooth cotton paper with a fine tooth you sense more than see, and gently torn edges. Quiet and clean; the seal and the drawings do the talking.</p>
+      <span class="rec">Recommended · used in the style tile</span>
+      <div class="closed" role="img" aria-label="Closed folded sheet with a wax seal, soft paper">
+        <div class="base"><svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg></div>
+        <div class="fold"><svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg></div>
+        <div class="seal" aria-hidden="true"><span class="wax"><span class="leaf l4" style="--x:50;--y:52;--w:15;--r:58deg"></span><svg focusable="false"><use href="#wax" width="100%" height="100%"/></svg></span><span class="seal-label" lang="pt-PT">Toca para abrir</span></div>
+      </div>
+      <div class="zoom" aria-hidden="true"><svg focusable="false"><rect x="10" y="10" width="300" height="200"/></svg></div>
+      <p class="zoom-cap">Close-up, three times larger.</p>
+    </section>
+
+    <section class="opt hand" aria-labelledby="g2">
+      <h2 id="g2"><span class="no">2</span>Visible handmade grain</h2>
+      <p class="plain">Rougher handmade paper: you can see fibres, slightly uneven colour and more ragged torn edges. More rustic and tactile, a little busier.</p>
+      <div class="closed" role="img" aria-label="Closed folded sheet with a wax seal, visible handmade paper">
+        <div class="base"><svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg></div>
+        <div class="fold"><svg class="paper-bg" aria-hidden="true" focusable="false"><rect width="100%" height="100%"/></svg></div>
+        <div class="seal" aria-hidden="true"><span class="wax"><span class="leaf l4" style="--x:50;--y:52;--w:15;--r:58deg"></span><svg focusable="false"><use href="#wax" width="100%" height="100%"/></svg></span><span class="seal-label" lang="pt-PT">Toca para abrir</span></div>
+      </div>
+      <div class="zoom" aria-hidden="true"><svg focusable="false"><rect x="10" y="10" width="300" height="200"/></svg></div>
+      <p class="zoom-cap">Close-up, three times larger.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>Both papers are drawn in SVG (no image, no download). The seal label is the one from DESIGN.md. Back to the <a href="style-tile.html">style tile</a>.</p>
+</footer>
+</body>
+</html>

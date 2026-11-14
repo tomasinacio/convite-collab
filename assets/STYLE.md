@@ -1,0 +1,3 @@
+# Style lock
+
+Loose botanical watercolour of the subject below. Warm cotton paper, soft muted Mediterranean palette of olive, sage, straw, dusty terracotta and faded lemon, restrained saturation. Translucent layered washes with soft wet edges, colour that fades out rather than stopping at a line, white of the paper for highlights, light from the upper left. Only a few thin broken dark-brown ink lines, in places, never a closed outline around a shape. Few details: no hatching, no stippling, no texture strokes, no soil or crumbs, no gloss, no 3D modelling; a natural slightly asymmetric pose, not a catalogue plate. One element, isolated with wide margins. Plain flat off-white background, no ground, no shadow, no people, no text, no frame. High resolution.

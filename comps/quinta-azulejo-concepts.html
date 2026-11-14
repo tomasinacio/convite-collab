@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6EFDF">
+<title>Quinta and azulejo concepts</title>
+<meta name="description" content="Live concepts for the invitation of Maya e Tomás: the Quinta do Grilo azulejo plaque drawn in vector, blue azulejo details, monograms and the date and place. DRAFT for the user to choose.">
+<!-- owner: Tomas | stage 1 (illustrated-reveal) | status: DRAFT, for the user to choose | 2026-11-10
+     The plaque is the venue's own sign, photographed by the couple (references/quinta-do-grilo-sign.jpg), redrawn for their own invitation.
+     Lettering uses Princess Sofia, the closest Google font to the hand-lettered sign; a sharper photo would let stage 3 trace it exactly.
+     Blue is decoration only (--cobalt, --azul, --azul-pale); words use ink, olive, brown on paper. Ink and blue lines draw with stroke-dashoffset
+     (allowed for ink lines); everything else is transform or opacity. Reduced motion: every demo shows its finished state. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Princess+Sofia&display=swap">
+<style>
+:root{
+  --paper:#F6EFDF; --sand:#E6D6B8; --ink:#3B2F25; --olive:#4F5F2E; --brown:#6B4F34; --twine:#B8946A; --shade:#E3E2D6;
+  --sage:#9DAE82; --terracotta:#9A4C32;
+  /* azulejo blues, decoration only */
+  --cobalt:#34518C; --azul:#7F9BA8; --azul-pale:#C6D4DB; --tile:#ECEBE4; --sign:#2B2522;
+  --out:cubic-bezier(.22,.8,.24,1); --io:cubic-bezier(.45,.05,.25,1);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.5;color:var(--ink);background:var(--shade);overflow-x:clip}
+h1,h2,h3{font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--olive);text-underline-offset:3px}
+button{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 40px}}
+.smallcaps{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+.top{padding:24px 0 18px;background:var(--paper)}
+.top h1{font-size:clamp(28px,6.4vw,40px);line-height:1.1;margin-top:4px}
+.sec{padding:34px 0 8px}
+.sec > h2{font-size:24px;display:flex;gap:10px;align-items:baseline}
+.sec > h2 .no{font-size:14px;letter-spacing:.14em;color:var(--brown)}
+.note{font-size:15px;color:var(--brown);margin-top:4px}
+.row{display:grid;gap:22px;margin-top:16px}
+@media (min-width:860px){.row{grid-template-columns:repeat(2,minmax(0,1fr))}.row.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.demo{background:var(--paper);border-radius:3px;padding:14px;box-shadow:0 1px 2px rgb(59 47 37 / .08)}
+.demo .lab{font-size:15px;color:var(--ink);font-style:italic;margin-bottom:8px}
+.demo .lab b{font-style:normal;font-weight:500;margin-right:6px}
+.pill{min-height:44px;padding:0 16px;border:1px solid var(--twine);border-radius:999px;background:var(--paper);font-size:15px;letter-spacing:.04em;cursor:pointer;margin-top:10px}
+.pill:hover{background:var(--sand)}
+svg.fig{display:block;width:100%;height:auto;overflow:visible}
+.photo{display:block;width:100%;height:auto;border-radius:2px}
+.lang{display:inline-flex;gap:2px;border:1px solid var(--twine);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{min-height:44px;min-width:52px;padding:0 14px;border:0;border-radius:999px;background:transparent;font-size:16px;letter-spacing:.06em;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sand)}
+
+/* ---------- the plaque ---------- */
+.pq-l{font-family:'Princess Sofia',cursive;fill:var(--sign);stroke:var(--sign);stroke-width:2.2;stroke-linejoin:round;paint-order:stroke}
+.pq-frame path,.pq-crest path.ln{fill:none;stroke:var(--cobalt);stroke-linecap:round;stroke-linejoin:round}
+.pq-frame .main{stroke-width:6.5}
+.pq-frame .thin{stroke-width:2}
+.pq-frame .curl{stroke-width:4}
+.pq-crest path.ln{stroke-width:3.2}
+.pq-fill{fill:#5B73A6;opacity:.7}
+.pq-leaf{fill:#5B73A6;opacity:.75;stroke:var(--cobalt);stroke-width:1.2}
+.pq-dot{fill:var(--cobalt)}
+
+/* ---------- motion: only under .play (JS adds it unless reduced motion). Default = finished state. ---------- */
+@keyframes draw{from{stroke-dashoffset:1.01}to{stroke-dashoffset:0}}
+@keyframes fade{from{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}}
+.play [pathLength]{stroke-dasharray:1 2;animation:draw var(--t,.8s) var(--io) var(--d,0s) both}
+.play .f{animation:fade var(--t,.8s) ease-out var(--d,0s) both}
+.play .r{animation:rise var(--t,.8s) var(--out) var(--d,0s) both}
+.play .p{transform-box:fill-box;transform-origin:50% 50%;animation:pop var(--t,.5s) var(--out) var(--d,0s) both}
+.play .ch{animation:fade .22s ease-out calc(var(--d0,3s) + var(--i) * .07s) both}
+
+/* mini sheets for the azulejo demos */
+.sheet{position:relative;width:100%;max-width:300px;aspect-ratio:300/360;margin:0 auto;container-type:inline-size;overflow:hidden}
+.sheet .paper{position:absolute;inset:0;background:var(--paper);box-shadow:0 1px 1px rgb(59 47 37 / .12),2px 6px 12px -6px rgb(59 47 37 / .2)}
+.sheet .crease{position:absolute;left:4%;right:4%;top:40%;height:1px;background:rgb(184 148 106 / .5)}
+.sheet .nm{position:absolute;left:0;right:0;top:46%;text-align:center;font-family:'Allura',cursive;color:var(--olive);font-size:15cqw;line-height:1}
+.sheet .dt{position:absolute;left:0;right:0;top:66%;text-align:center;font-size:15px}
+.sheet svg.over{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* B3: lining under the top panel */
+.flapbox{position:absolute;left:0;top:0;width:100%;height:40%;perspective:900px}
+.flap{position:absolute;inset:0;transform-origin:50% 100%;transform-style:preserve-3d}
+.flap .fi,.flap .fo{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flap .fo{transform:rotateX(180deg);background:var(--paper);box-shadow:0 2px 3px rgb(59 47 37 / .14)}
+.flap .fi{background:var(--paper)}
+.play .flap{animation:lift 1.3s var(--io) .3s both}
+@keyframes lift{from{transform:rotateX(-180deg)}to{transform:none}}
+/* B5: the seal drops onto the tile */
+.play .seal-drop{animation:sealin .7s var(--out) 1.2s both}
+@keyframes sealin{from{opacity:0;transform:translateY(-14px) scale(1.08)}}
+
+@media (prefers-reduced-motion:reduce){ .play *, .play{animation:none !important} }
+footer{padding:28px 0 48px;font-size:14px;color:var(--brown)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- one azulejo tile: corner quarter-circles, a four-petal rosette, a centre dot (cobalt line, pale-blue wash) -->
+    <symbol id="tile" viewBox="0 0 40 40">
+      <rect width="40" height="40" fill="#ECEBE4"/>
+      <g fill="none" stroke="#34518C" stroke-width="1.4">
+        <path d="M0 10A10 10 0 0 0 10 0M30 0A10 10 0 0 0 40 10M40 30A10 10 0 0 0 30 40M10 40A10 10 0 0 0 0 30"/>
+      </g>
+      <g fill="#7F9BA8" opacity=".75"><ellipse cx="20" cy="12.5" rx="3.2" ry="6.5"/><ellipse cx="20" cy="27.5" rx="3.2" ry="6.5"/><ellipse cx="12.5" cy="20" rx="6.5" ry="3.2"/><ellipse cx="27.5" cy="20" rx="6.5" ry="3.2"/></g>
+      <circle cx="20" cy="20" r="2.6" fill="#34518C"/>
+    </symbol>
+    <pattern id="tiles" width="20" height="20" patternUnits="userSpaceOnUse"><use href="#tile" width="20" height="20"/></pattern>
+    <pattern id="tiles-pale" width="24" height="24" patternUnits="userSpaceOnUse">
+      <g opacity=".38"><use href="#tile" width="24" height="24"/></g>
+    </pattern>
+    <radialGradient id="waxg" cx="38%" cy="34%" r="72%"><stop offset="0" stop-color="#B46247"/><stop offset=".55" stop-color="#9A4C32"/><stop offset="1" stop-color="#86422A"/></radialGradient>
+    <symbol id="wax" viewBox="0 0 100 100">
+      <path fill="url(#waxg)" d="M92.9 50C92.5 53.3 93.4 56.7 92.5 59.7C91.7 62.7 89.2 65.3 87.8 68.2C86.4 71.1 86 74.7 84.1 77.2C82.3 79.8 78.9 80.8 76.7 83.5C74.5 86.2 73.6 91.2 70.9 93.4C68.2 95.6 64.2 96.7 60.7 96.8C57.2 96.8 53.3 95 50 94C46.7 93 43.8 91.8 40.7 90.9C37.6 90 34.3 89.9 31.4 88.7C28.5 87.4 25.7 85.5 23.3 83.5C20.8 81.5 18.6 79.1 16.6 76.6C14.6 74.1 13.3 71.3 11.4 68.6C9.6 65.8 6.2 63.2 5.5 60.2C4.9 57.1 7 53.3 7.6 50C8.2 46.7 8.8 44 9 40.6C9.2 37.3 7.9 33.4 8.7 30.1C9.4 26.8 11.3 23.5 13.4 20.8C15.5 18.1 18.3 15.6 21.2 13.9C24.2 12.2 28 12.2 31.1 10.7C34.2 9.3 36.7 6.3 39.8 5.4C43 4.5 46.6 5.2 50 5.3C53.4 5.4 56.8 5.2 60.1 5.9C63.3 6.5 66.7 7.8 69.6 9.4C72.4 11 75.2 13.2 77.4 15.6C79.7 18 81.2 21 83 23.7C84.8 26.3 86.6 28.8 88.5 31.5C90.4 34.2 93.8 36.8 94.5 39.8C95.2 42.9 93.2 46.7 92.9 50Z"/>
+      <circle cx="50" cy="51" r="30" fill="#8C442D"/>
+      <path d="M33 67Q48 55 66 35M41 60.5Q44.4 65 50 64Q46.6 59.5 41 60.5M51 52.5Q55.3 56.7 61 55Q56.7 50.8 51 52.5M57 46.5Q57.2 40.4 52 37Q51.8 43.1 57 46.5" fill="none" stroke="#6B321F" stroke-width="1.3" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- The plaque, drawn once and cloned where needed (viewBox in the photo crop's pixels, 650 x 400) -->
+<template id="plaque">
+  <svg class="fig plaque" viewBox="0 0 650 400" role="img" aria-label="Quinta do Grilo">
+    <defs>
+      <clipPath id="pq-clip"><path d="M18 132H140C156 96 182 60 222 30H428C468 60 494 96 510 132H632V384H18Z"/></clipPath>
+    </defs>
+    <g class="pq-ground f" style="--d:2.2s;--t:1s">
+      <path d="M18 132H140C156 96 182 60 222 30H428C468 60 494 96 510 132H632V384H18Z" fill="#ECEBE4"/>
+      <g clip-path="url(#pq-clip)" stroke="#C3C7CC" stroke-width=".9" fill="none">
+        <path d="M86 20V390M154 20V390M222 20V390M290 20V390M358 20V390M426 20V390M494 20V390M562 20V390M10 64H640M10 132H640M10 200H640M10 268H640M10 336H640"/>
+      </g>
+    </g>
+    <g class="pq-frame">
+      <g id="pq-half">
+        <path class="main" pathLength="1" style="--t:1.6s;--d:.1s" d="M325 98H210C176 98 142 112 120 138C100 160 74 172 72 206C70 246 60 284 80 314C94 336 124 344 146 334C168 324 190 340 214 344C244 348 262 330 286 332C304 334 316 346 325 346"/>
+        <path class="thin" pathLength="1" style="--t:1.6s;--d:.3s" d="M325 110H214C184 110 154 122 134 146C116 166 92 178 90 208C88 246 80 280 96 304C108 322 130 328 148 320C170 312 192 326 216 330C244 334 262 318 286 320C304 322 316 332 325 334"/>
+        <path class="curl" pathLength="1" style="--t:.6s;--d:1.2s" d="M72 206C64 228 88 242 102 228C114 214 98 196 86 205"/>
+        <path class="curl" pathLength="1" style="--t:.6s;--d:1.4s" d="M180 346C196 362 222 364 236 352C246 342 238 328 226 333"/>
+        <path class="curl" pathLength="1" style="--t:.6s;--d:1.5s" d="M86 318C68 330 66 352 82 364M98 332C94 350 106 364 124 364"/>
+        <circle class="pq-fill f" style="--d:1.9s" cx="112" cy="346" r="9"/>
+        <circle class="pq-dot f" style="--d:1.9s" cx="112" cy="346" r="3.4"/>
+        <g class="pq-crest">
+          <path class="ln" pathLength="1" style="--t:.9s;--d:.9s" d="M325 96C300 96 274 86 266 66C260 50 274 38 288 44C300 50 294 64 284 62"/>
+          <path class="ln" pathLength="1" style="--t:.9s;--d:1.05s" d="M282 97C254 99 230 89 224 71C219 55 234 47 242 57"/>
+          <path class="ln" pathLength="1" style="--t:.7s;--d:1.2s" d="M236 98C220 100 206 96 196 88C188 80 192 70 202 72"/>
+          <path class="pq-fill f" style="--d:1.9s" d="M302 76Q288 58 302 40Q314 58 302 76Z"/>
+          <path class="pq-fill f" style="--d:1.95s" d="M256 86Q240 74 250 56Q262 72 256 86Z"/>
+          <path class="ln" pathLength="1" style="--t:.5s;--d:1.25s" d="M306 98C296 86 298 72 310 66"/>
+          <path class="ln" pathLength="1" style="--t:.5s;--d:1.3s" d="M262 99C246 94 238 80 248 70"/>
+          <path class="ln" pathLength="1" style="--t:.5s;--d:1.35s" d="M214 98C200 92 190 80 182 82C172 84 172 96 182 98"/>
+          <path class="pq-leaf f" style="--d:2s" d="M280 76Q266 70 270 56Q284 62 280 76Z"/>
+          <path class="pq-leaf f" style="--d:2.05s" d="M232 88Q218 84 220 70Q234 74 232 88Z"/>
+          <path class="pq-leaf f" style="--d:2.1s" d="M204 90Q192 86 192 76Q204 78 204 90Z"/>
+          <circle class="pq-dot f" style="--d:2.1s" cx="290" cy="86" r="3"/>
+          <circle class="pq-dot f" style="--d:2.1s" cx="246" cy="66" r="2.6"/>
+        </g>
+        <g class="pq-shoulder">
+          <path class="pq-leaf f" style="--d:2s" d="M160 112Q150 98 160 88Q170 100 160 112Z"/>
+          <path class="pq-leaf f" style="--d:2.05s" d="M128 132Q114 124 118 110Q132 118 128 132Z"/>
+          <path class="pq-leaf f" style="--d:2.1s" d="M96 170Q82 166 82 152Q96 156 96 170Z"/>
+          <path class="pq-leaf f" style="--d:2.15s" d="M70 290Q56 286 56 272Q70 276 70 290Z"/>
+          <path class="pq-leaf f" style="--d:2.2s" d="M132 352Q126 366 112 368Q118 354 132 352Z"/>
+          <path class="pq-leaf f" style="--d:2.2s" d="M70 338Q58 330 60 318Q72 326 70 338Z"/>
+          <path class="pq-leaf f" style="--d:2.25s" d="M262 346Q254 358 240 358Q246 346 262 346Z"/>
+        </g>
+      </g>
+      <use href="#pq-half" transform="matrix(-1 0 0 1 650 0)"/>
+      <g class="pq-crest">
+        <circle class="pq-fill f" style="--d:1.9s" cx="325" cy="58" r="14"/>
+        <path class="ln" pathLength="1" style="--t:.8s;--d:.8s" d="M325 34C336 40 343 50 341 60C339 72 330 80 325 82C320 80 311 72 309 60C307 50 314 40 325 34Z"/>
+        <circle class="pq-dot f" style="--d:2s" cx="325" cy="58" r="5"/>
+      </g>
+    </g>
+    <g class="pq-text">
+      <g class="pq-mark f" style="--d:2.9s" transform="translate(203 120) rotate(-34)"><rect x="-9" y="-15" width="18" height="26" rx="3" fill="#2B2522"/><rect x="-13" y="9" width="26" height="5" rx="2" fill="#2B2522"/></g>
+      <text class="pq-l split" x="186" y="224" font-size="104" style="--d0:3.1s">Quinta</text>
+      <text class="pq-l split" x="196" y="300" font-size="48" style="--d0:3.6s">do</text>
+      <text class="pq-l split" x="276" y="306" font-size="104" style="--d0:3.75s">Grilo</text>
+    </g>
+  </svg>
+</template>
+
+<header class="top">
+  <div class="wrap">
+    <p class="smallcaps">Stage 1 · quinta, azulejo, monogram, date · for you to choose</p>
+    <h1>Quinta do Grilo, in blue and ink</h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- A. THE PLAQUE -->
+  <section class="sec" aria-labelledby="a-h">
+    <h2 id="a-h"><span class="no">A</span>The plaque</h2>
+    <p class="note">The quinta's own sign, photographed by you, redrawn for your invitation.</p>
+    <div class="row">
+      <div class="demo"><p class="lab"><b>Your photo</b>(enlarged crop)</p><img class="photo" src="ref-crops/quinta-plaque.jpg" width="650" height="400" alt="Your photo of the Quinta do Grilo azulejo sign"></div>
+      <div class="demo"><p class="lab"><b>Redrawn</b>vector, sharp at any size</p><div class="slot" data-plaque></div></div>
+    </div>
+    <div class="row">
+      <div class="demo"><p class="lab"><b>Drawing itself in</b>blue lines, then the tiles, then the lettering</p><div class="slot play-me" data-plaque></div><button type="button" class="pill" data-replay>Replay</button></div>
+    </div>
+  </section>
+
+  <!-- B. AZULEJO DETAILS -->
+  <section class="sec" aria-labelledby="b-h">
+    <h2 id="b-h"><span class="no">B</span>Azulejo details</h2>
+    <div class="row three">
+
+      <div class="demo"><p class="lab"><b>1</b>A tile band along the fold</p>
+        <div class="sheet play-me" lang="pt-PT">
+          <div class="paper"></div>
+          <svg class="over" viewBox="0 0 300 360" aria-hidden="true" focusable="false">
+            <g id="band"></g>
+          </svg>
+          <p class="nm r" style="--d:1.4s" translate="no">Maya e Tomás</p>
+          <p class="dt r" style="--d:1.7s">10 de julho</p>
+        </div>
+        <button type="button" class="pill" data-replay>Replay</button></div>
+
+      <div class="demo"><p class="lab"><b>2</b>Corner tiles on the open sheet</p>
+        <div class="sheet play-me" lang="pt-PT">
+          <div class="paper"></div><span class="crease"></span>
+          <svg class="over" viewBox="0 0 300 360" aria-hidden="true" focusable="false">
+            <g id="corners" fill="none" stroke="#34518C" stroke-width="1.6" stroke-linecap="round"></g>
+          </svg>
+          <p class="nm r" style="--d:.2s" translate="no">Maya e Tomás</p>
+          <p class="dt r" style="--d:.4s">10 de julho</p>
+        </div>
+        <button type="button" class="pill" data-replay>Replay</button></div>
+
+      <div class="demo"><p class="lab"><b>3</b>A tile lining, seen as the top lifts</p>
+        <div class="sheet play-me" lang="pt-PT">
+          <div class="paper"></div><span class="crease"></span>
+          <div class="flapbox"><div class="flap">
+            <div class="fi"><svg class="over" viewBox="0 0 300 144" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect width="300" height="144" fill="url(#tiles-pale)"/></svg></div>
+            <div class="fo"></div>
+          </div></div>
+          <p class="nm r" style="--d:1.4s" translate="no">Maya e Tomás</p>
+          <p class="dt r" style="--d:1.6s">10 de julho</p>
+        </div>
+        <button type="button" class="pill" data-replay>Replay</button></div>
+
+      <div class="demo"><p class="lab"><b>4</b>The plaque closes the invitation</p>
+        <div class="play-me" lang="pt-PT" style="max-width:300px;margin:0 auto">
+          <div class="slot" data-plaque></div>
+          <p class="r" style="--d:4.4s;text-align:center;font-size:17px;margin-top:6px">10 de julho · Milharado</p>
+        </div>
+        <button type="button" class="pill" data-replay>Replay</button></div>
+
+      <div class="demo"><p class="lab"><b>5</b>One tile under the seal</p>
+        <div class="sheet play-me" lang="pt-PT" style="aspect-ratio:300/300">
+          <div class="paper"></div>
+          <svg class="over" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+            <path d="M0 186C80 190 220 182 300 188" stroke="#3B2F25" stroke-opacity=".12" stroke-width="1" fill="none"/>
+            <use class="p" style="--d:.3s;--t:.7s" href="#tile" x="118" y="134" width="64" height="64"/>
+            <path class="f" style="--d:.9s" d="M-4 166C80 170 220 162 304 168M-4 170C80 166 220 172 304 166" stroke="#B8946A" stroke-width="1.4" fill="none"/>
+            <g class="seal-drop"><use href="#wax" x="122" y="138" width="56" height="56"/></g>
+          </svg>
+          <p style="position:absolute;left:0;right:0;top:72%;text-align:center;font-style:italic;font-size:17px">Toca para abrir</p>
+        </div>
+        <button type="button" class="pill" data-replay>Replay</button></div>
+
+      <div class="demo"><p class="lab"><b>6</b>A tile row where the scene ends</p>
+        <div class="sheet play-me" lang="pt-PT">
+          <div class="paper"></div>
+          <img src="deck-crops/venue.jpg" width="630" height="220" alt="" style="position:absolute;left:0;top:44%;width:100%;height:auto;mix-blend-mode:multiply">
+          <svg class="over" viewBox="0 0 300 360" aria-hidden="true" focusable="false"><g id="row"></g></svg>
+          <p class="dt r" style="--d:.2s;top:18%;font-size:17px">Quinta do Grilo · Milharado</p>
+        </div>
+        <button type="button" class="pill" data-replay>Replay</button></div>
+
+    </div>
+  </section>
+
+  <!-- C. MONOGRAM -->
+  <section class="sec" aria-labelledby="c-h">
+    <h2 id="c-h"><span class="no">C</span>Monogram</h2>
+    <p class="note">Not used: you chose names only, no monogram. Kept here for the record.</p>
+    <div class="row three">
+      <div class="demo"><p class="lab"><b>1</b>Ink line</p>
+        <div class="play-me" style="max-width:200px;margin:0 auto">
+          <svg class="fig" viewBox="0 0 120 120" role="img" aria-label="M and T monogram">
+            <g fill="none" stroke="#3B2F25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path pathLength="1" style="--t:1.1s;--d:.1s" d="M24 98C30 80 34 60 38 42C44 58 50 74 55 88C61 72 68 56 76 42C78 62 82 82 90 98"/>
+              <path pathLength="1" style="--t:.7s;--d:1s" d="M26 32C46 24 80 24 100 30"/>
+              <path pathLength="1" style="--t:.8s;--d:1.5s" d="M62 28C63 52 62 76 58 100"/>
+            </g>
+          </svg>
+        </div><button type="button" class="pill" data-replay>Replay</button></div>
+      <div class="demo"><p class="lab"><b>2</b>Azulejo blue</p>
+        <div class="play-me" style="max-width:200px;margin:0 auto">
+          <svg class="fig" viewBox="0 0 120 120" role="img" aria-label="M and T monogram on a tile">
+            <rect class="f" style="--d:0s" x="8" y="8" width="104" height="104" fill="#ECEBE4"/>
+            <g fill="none" stroke="#34518C" stroke-width="1.8" stroke-linecap="round">
+              <path pathLength="1" style="--t:.5s;--d:.2s" d="M8 30A22 22 0 0 0 30 8"/><path pathLength="1" style="--t:.5s;--d:.3s" d="M90 8A22 22 0 0 0 112 30"/>
+              <path pathLength="1" style="--t:.5s;--d:.4s" d="M112 90A22 22 0 0 0 90 112"/><path pathLength="1" style="--t:.5s;--d:.5s" d="M30 112A22 22 0 0 0 8 90"/>
+              <rect pathLength="1" style="--t:1s;--d:.1s" x="8" y="8" width="104" height="104"/>
+            </g>
+            <g fill="none" stroke="#34518C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="translate(60 62) scale(.66) translate(-60 -64)">
+              <path pathLength="1" style="--t:1s;--d:.9s" d="M24 98C30 80 34 60 38 42C44 58 50 74 55 88C61 72 68 56 76 42C78 62 82 82 90 98"/>
+              <path pathLength="1" style="--t:.6s;--d:1.7s" d="M26 32C46 24 80 24 100 30"/>
+              <path pathLength="1" style="--t:.7s;--d:2.1s" d="M62 28C63 52 62 76 58 100"/>
+            </g>
+          </svg>
+        </div><button type="button" class="pill" data-replay>Replay</button></div>
+      <div class="demo"><p class="lab"><b>3</b>With the olive sprig</p>
+        <div class="play-me" style="max-width:200px;margin:0 auto">
+          <svg class="fig" viewBox="0 0 120 120" role="img" aria-label="M and T monogram with an olive sprig">
+            <g fill="#9DAE82" opacity=".5" class="f" style="--d:2.4s">
+              <path d="M28 104Q30 94 38 90Q38 100 28 104Z"/><path d="M46 110Q50 100 60 99Q56 109 46 110Z"/><path d="M68 108Q74 99 84 100Q78 109 68 108Z"/><path d="M88 100Q94 91 102 91Q98 101 88 100Z"/>
+            </g>
+            <g fill="none" stroke="#3B2F25" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path pathLength="1" style="--t:1.1s;--d:1.2s" d="M16 96C36 114 82 116 106 90"/>
+              <path pathLength="1" style="--t:.3s;--d:1.5s" d="M28 104Q30 94 38 90Q38 100 28 104Z"/>
+              <path pathLength="1" style="--t:.3s;--d:1.7s" d="M46 110Q50 100 60 99Q56 109 46 110Z"/>
+              <path pathLength="1" style="--t:.3s;--d:1.9s" d="M68 108Q74 99 84 100Q78 109 68 108Z"/>
+              <path pathLength="1" style="--t:.3s;--d:2.1s" d="M88 100Q94 91 102 91Q98 101 88 100Z"/>
+            </g>
+            <g fill="none" stroke="#4F5F2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(60 52) scale(.72) translate(-60 -64)">
+              <path pathLength="1" style="--t:1s;--d:.1s" d="M24 98C30 80 34 60 38 42C44 58 50 74 55 88C61 72 68 56 76 42C78 62 82 82 90 98"/>
+              <path pathLength="1" style="--t:.6s;--d:.8s" d="M26 32C46 24 80 24 100 30"/>
+              <path pathLength="1" style="--t:.7s;--d:1.1s" d="M62 28C63 52 62 76 58 100"/>
+            </g>
+          </svg>
+        </div><button type="button" class="pill" data-replay>Replay</button></div>
+    </div>
+  </section>
+
+  <!-- D. DATE AND PLACE -->
+  <section class="sec" aria-labelledby="d-h">
+    <h2 id="d-h"><span class="no">D</span>Date and place</h2>
+    <div style="margin-top:12px"><div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="pt-PT" lang="pt-PT" aria-pressed="true">PT</button><button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button><button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
+    </div></div>
+    <div class="row three">
+      <div class="demo"><p class="lab"><b>1</b>Classic</p>
+        <div class="play-me dp" lang="pt-PT" style="text-align:center;padding:18px 0">
+          <p class="r" style="--d:.1s;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:#3B2F25" data-i18n="date">10 de julho</p>
+          <svg class="fig" viewBox="0 0 120 8" style="width:90px;margin:10px auto" aria-hidden="true" focusable="false"><path pathLength="1" style="--t:.6s;--d:.4s" d="M4 4H116" stroke="#B8946A" stroke-width="1"/></svg>
+          <p class="r" style="--d:.7s;font-style:italic;font-size:19px"><span translate="no">Quinta do Grilo</span>, <span translate="no">Milharado</span></p>
+        </div><button type="button" class="pill" data-replay>Replay</button></div>
+      <div class="demo"><p class="lab"><b>2</b>Script date</p>
+        <div class="play-me dp" lang="pt-PT" style="text-align:center;padding:10px 0">
+          <p class="r" style="--d:.1s;font-family:'Allura',cursive;color:#4F5F2E;font-size:46px;line-height:1.1" data-i18n="date">10 de julho</p>
+          <p class="r" style="--d:.5s;font-size:14px;letter-spacing:.18em;text-transform:uppercase;margin-top:6px"><span translate="no">Quinta do Grilo</span> · <span translate="no">Milharado</span></p>
+        </div><button type="button" class="pill" data-replay>Replay</button></div>
+      <div class="demo"><p class="lab"><b>3</b>As on the sign</p>
+        <div class="play-me dp" lang="pt-PT" style="text-align:center;padding:8px 0">
+          <p class="r" style="--d:.1s;font-style:italic;font-size:18px" data-i18n="date">10 de julho</p>
+          <svg class="fig" viewBox="0 0 40 40" style="width:26px;margin:8px auto" aria-hidden="true" focusable="false"><use class="p" style="--d:.3s" href="#tile" width="40" height="40"/></svg>
+          <p class="r" style="--d:.5s;font-family:'Princess Sofia',cursive;font-size:36px;line-height:1.1;color:#2B2522" translate="no">Quinta do Grilo</p>
+          <p class="r" style="--d:.7s;font-size:14px;letter-spacing:.2em;text-transform:uppercase" translate="no">Milharado</p>
+        </div><button type="button" class="pill" data-replay>Replay</button></div>
+    </div>
+    <p class="note" style="margin-top:10px">Year, time and monogram: TODO(user).</p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>Names: Maya e Tomás. Date: 10 July; place: Quinta do Grilo, Milharado. Year and opening line: TODO(user). Back to the <a href="style-tile.html">style tile</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SVGNS = 'http://www.w3.org/2000/svg';
+
+  /* clone the plaque into each slot, with unique clip ids */
+  var tpl = document.getElementById('plaque'), n = 0;
+  document.querySelectorAll('[data-plaque]').forEach(function(slot){
+    var frag = tpl.content.cloneNode(true); n++;
+    frag.querySelectorAll('[id]').forEach(function(el){ el.id = el.id + '-' + n; });
+    frag.querySelectorAll('[clip-path]').forEach(function(el){ el.setAttribute('clip-path', 'url(#pq-clip-' + n + ')'); });
+    /* mirror the left half as a real copy (a <use> copy could not be animated from outside) */
+    frag.querySelectorAll('use[href="#pq-half"]').forEach(function(el){
+      var half = frag.getElementById('pq-half-' + n), copy = half.cloneNode(true);
+      copy.removeAttribute('id'); copy.setAttribute('transform', 'matrix(-1 0 0 1 650 0)');
+      el.parentNode.replaceChild(copy, el);
+    });
+    slot.appendChild(frag);
+  });
+
+  /* tile band along the fold (B1) and a tile row (B6): tiles pop in from the centre outward */
+  function tileRow(g, y, size, d0){
+    var cols = Math.ceil(300 / size), mid = (cols - 1) / 2;
+    for (var i = 0; i < cols; i++){
+      var u = document.createElementNS(SVGNS, 'use');
+      u.setAttribute('href', '#tile'); u.setAttribute('x', i * size); u.setAttribute('y', y);
+      u.setAttribute('width', size); u.setAttribute('height', size);
+      u.setAttribute('class', 'p'); u.style.setProperty('--d', (d0 + Math.abs(i - mid) * .07).toFixed(2) + 's');
+      g.appendChild(u);
+    }
+  }
+  tileRow(document.getElementById('band'), 136, 20, .2);
+  tileRow(document.getElementById('row'), 270, 24, .5);
+
+  /* corner tiles (B2): a quarter rosette in each corner, drawn in */
+  var corners = document.getElementById('corners');
+  [[0,0,0],[300,0,90],[300,360,180],[0,360,270]].forEach(function(c, k){
+    var g = document.createElementNS(SVGNS, 'g');
+    g.setAttribute('transform', 'translate(' + c[0] + ' ' + c[1] + ') rotate(' + c[2] + ')');
+    ['M10 0V10H0', 'M0 34A34 34 0 0 0 34 0', 'M0 22A22 22 0 0 0 22 0', 'M14 28Q22 22 28 14'].forEach(function(d, j){
+      var p = document.createElementNS(SVGNS, 'path');
+      p.setAttribute('d', d); p.setAttribute('pathLength', '1');
+      p.style.setProperty('--t', '.7s'); p.style.setProperty('--d', (.5 + k * .15 + j * .12).toFixed(2) + 's');
+      g.appendChild(p);
+    });
+    var dot = document.createElementNS(SVGNS, 'circle');
+    dot.setAttribute('cx', 12); dot.setAttribute('cy', 12); dot.setAttribute('r', 3); dot.setAttribute('fill', '#7F9BA8');
+    dot.setAttribute('class', 'f'); dot.style.setProperty('--d', (1.2 + k * .15) + 's');
+    g.appendChild(dot);
+    corners.appendChild(g);
+  });
+
+  /* split the plaque lettering into glyphs so it can appear letter by letter (kerning kept) */
+  function split(svg){
+    svg.querySelectorAll('text.split').forEach(function(t){
+      var s = t.textContent, d0 = t.style.getPropertyValue('--d0');
+      for (var i = 0; i < s.length; i++){
+        var pos = t.getStartPositionOfChar(i), c = document.createElementNS(SVGNS, 'text');
+        c.setAttribute('x', pos.x); c.setAttribute('y', pos.y); c.setAttribute('font-size', t.getAttribute('font-size'));
+        c.setAttribute('class', 'pq-l ch'); c.style.setProperty('--i', i); c.style.setProperty('--d0', d0);
+        c.textContent = s[i]; t.parentNode.insertBefore(c, t);
+      }
+      t.remove();
+    });
+  }
+  function afterFonts(fn){ if (document.fonts && document.fonts.ready) document.fonts.ready.then(fn); else window.addEventListener('load', fn); }
+
+  function play(el){
+    if (reduce) return;
+    el.classList.remove('play'); void el.offsetWidth; el.classList.add('play');
+  }
+  afterFonts(function(){
+    document.querySelectorAll('.play-me svg.plaque').forEach(split);
+    var items = document.querySelectorAll('.play-me');
+    document.querySelectorAll('[data-replay]').forEach(function(b){
+      b.addEventListener('click', function(){ play(b.parentNode.querySelector('.play-me')); });
+    });
+    if ('IntersectionObserver' in window && !reduce) {
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { play(e.target); io.unobserve(e.target); } }); }, {threshold:.4});
+      items.forEach(function(s){ io.observe(s); });
+    }
+  });
+
+  /* date in three languages */
+  var T = {'pt-PT':'10 de julho', 'en':'10 July', 'es':'10 de julio'};
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var code = b.getAttribute('data-lang');
+      document.querySelectorAll('[data-i18n="date"]').forEach(function(el){ el.textContent = T[code]; });
+      document.querySelectorAll('.dp').forEach(function(el){ el.setAttribute('lang', code); });
+      document.querySelectorAll('.lang button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

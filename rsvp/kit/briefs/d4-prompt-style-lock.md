@@ -1,0 +1,5 @@
+# Research brief (generic, no personal details)
+
+You are a research agent. Use web search. Answer ONLY from pages you actually opened; never invent a page, URL, author or fact. If you cannot find something real, write NOT FOUND. Keep the whole answer under 600 words, as short bullet points with the exact page URL beside each point. Context: we make a hand-painted watercolor invitation web page in Portugal (olive branches, oranges, lavender, wheat, swallows, blue azulejo plaque, warm paper), phone first, free tools only. Question:
+
+Research how to write image generation prompts so a SET of watercolor assets keeps one consistent style: style-lock sentences, palette words, brush and paper words, negative prompts, how to ask for a cut-out subject on a plain flat background, how to keep scale and light direction consistent across images, and common failures of free generators (fake upscaling, halos, glossy AI look) and fixes. Give 6 real sources with URLs and then 5 example prompt templates for botanical watercolor cut-outs (mushroom cluster, bee, leaf, pebble, trunk).

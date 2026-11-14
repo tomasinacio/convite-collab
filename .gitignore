@@ -1,0 +1,10 @@
+.venv/
+node_modules/
+__pycache__/
+.tools/
+assets/inbox/*
+!assets/inbox/.gitkeep
+rsvp/guests/
+rsvp/output/
+*.bak.*
+.DS_Store

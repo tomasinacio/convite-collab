@@ -1,0 +1,8 @@
+# TEST copy of the invitation with the form on (FAKE guests, FAKE wording). Static files only. Delete with: wrangler delete
+name = "convite-test"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[assets]
+directory = "./public"
+not_found_handling = "404-page"
