@@ -15,34 +15,32 @@ body{background:#F6EFDF url(@@IMG:00-img-paper@@) 0 0/341px repeat}
   --err-bg:rgb(154 76 50 / .08);   /* terracotta text about 4.9:1 */
   --script:'Allura',cursive;--serif:'EB Garamond',Georgia,'Times New Roman',serif;
   --ease:cubic-bezier(.22,.8,.24,1);
+  --sec:clamp(5.5rem, 4rem + 6vw, 6.5rem);   /* the section air of info.css (DESIGN-SPEC section 4 spacing scale) */
 }
 .rsvp,.rsvp *,.rsvp *::before,.rsvp *::after{box-sizing:border-box}
 .rvh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .rsvp :focus-visible{outline:3px solid var(--az-cobalt);outline-offset:3px;border-radius:6px}
 
 /* ---------- section ---------- */
-.rsvp{position:relative;color:var(--ink);font:400 1.125rem/1.55 var(--serif);-webkit-text-size-adjust:100%;max-width:36rem;margin:0 auto;padding:4.5rem 1.25rem 3rem;overflow:hidden}
+/* 2026-11-14 (REVIEW-DOLCE-VITA.md): the face's 440 pixel column on wide screens, as the information above; the section air */
+.rsvp{position:relative;color:var(--ink);font:400 1.125rem/1.55 var(--serif);-webkit-text-size-adjust:100%;max-width:calc(440px + 2.5rem);margin:0 auto;padding:var(--sec) 1.25rem 3.5rem;overflow:hidden}
 .prop{position:absolute;pointer-events:none;background:no-repeat center/contain}
-.prop.twig{width:9.5rem;height:6rem;left:-2.6rem;top:1.4rem;background-image:url(@@IMG:olive-twig-trailing@@);transform:rotate(-8deg)}
-/* 2026-11-14: the lavender (and a leaf, since dropped) were placed from the panel's foot, so they lay over the code field, the Abrir button and
-   the card edge, and over the message and send in the form. It now stands on a part that does not change with the state: the
-   lavender stands at the head's right edge with its foot on the rule's line */
-.prop.lav{width:4.6rem;height:9rem;right:-2rem;bottom:2.3rem;background-image:url(@@IMG:lavender@@);background-position:50% 100%;opacity:.95;scale:-1 1}   /* mirrored: the same lavender also stands in the schedule and the foot */
-/* the RSVP leaf was dropped on 2026-11-14 (restraint: the page carries enough props) */
+/* the face's trailing olive twig hangs at the head's left, at the face's scale (it was a 27 pixel sliver in a wide box) */
+.prop.twig{width:calc(var(--pu) * 15);aspect-ratio:150/530;left:calc(var(--pu) * 3);top:calc(var(--sec) - 2.5rem);background-image:url(@@ART:art/v17/olive-twig-l.webp@@);transform:rotate(-6deg);transform-origin:50% 0}   /* transform, not rotate: the reduced-motion rule clears rotate */
+/* the RSVP lavender and leaf were dropped on 2026-11-14 (restraint: the same lavender stands large in the schedule and at the
+   page foot, one screen below; a third copy here read as a stamp, REVIEW-DOLCE-VITA.md) */
 
 .head{text-align:center;position:relative}
 .rkick{margin:0;padding-left:.28em;font-size:.8125rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brown);font-weight:500}
-.h-script{margin:.1em 0 0;font:400 clamp(3rem,15vw,4.25rem)/1.05 var(--script);color:var(--olive);font-weight:400}
-.rule{display:block;width:4rem;height:1px;margin:1.1rem auto;background:var(--twine)}
-.sub{margin:0;padding-left:.2em;font-size:.8125rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--brown)}   /* the small-capital role: 13 px, 500 (DESIGN-SPEC 1) */
-.lead{margin:1.6rem auto 0;max-width:28rem;text-align:center;color:var(--brown);font-size:1.1875rem;line-height:1.6}
-
-/* v16: the flat vector tile band is gone (the user, Message 47); a twine hairline (info.css .idiv) takes its place */
-.rsvp .idiv{margin:2.75rem auto}
-@media (max-width:340px){.prop.twig,.prop.lav{display:none}}   /* 200% zoom: the twig and the lavender would cover the head */
+.h-script{margin:.25rem 0 0;font:400 clamp(3rem,15vw,4.25rem)/1.05 var(--script);color:var(--olive);font-weight:400}
+.rule{display:block;width:4rem;height:1px;margin:1.25rem auto;background:var(--twine)}
+.sub{margin:0;padding-left:.28em;font-size:.8125rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--brown)}   /* the small-capital role: 13 px, 500, .28em (DESIGN-SPEC 1) */
+.lead{margin:2.25rem auto 0;max-width:26rem;text-align:center;color:var(--brown);font-size:1.1875rem;line-height:1.6}   /* --s4 after the head, as info.css */
+@media (max-width:340px){.prop.twig{display:none}}   /* 200% zoom: the twig would cover the head */
 
 /* ---------- panel and states ---------- */
-.rpanel{position:relative;margin-top:.5rem}
+/* 2026-11-14: no hairline between the lead and the card (space separates blocks, as in info.css): 48 pixels, the scale's --s5 */
+.rpanel{position:relative;margin-top:3rem}
 .blk{display:none}
 [data-state=loading] .st-loading,[data-state=loaderr] .st-loaderr,[data-state=saved] .st-saved,[data-state=closed] .st-closed,[data-state=nolink] .st-nolink,[data-state=toomany] .st-nolink,[data-state=nojs] .st-nojs{display:block}
 [data-state=form] .st-form,[data-state=sending] .st-form,[data-state=error] .st-form,[data-state=network] .st-form,[data-state=conflict] .st-form{display:block}

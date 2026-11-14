@@ -40,6 +40,8 @@ Every observation from the user, the reviewers and the research, so none is lost
 | O30 | M54 | The Copilot images (Caesar's mushrooms, fly agaric) are slightly too realistic and AI-glossy; more watercolor and drawing like | in progress | designer rewrites the style lock before the next generation, R41 |
 | O31 | M55 (picker) | The user asked to find a working image avenue and thinks free `Gemini` can build pictures; Chrome extension was disconnected when I tried the `Gemini` web app | open | needs the Chrome extension reconnected on the PC |
 | O32 | picker | The user chose to load the router key through `start.sh` so images can use the OmniRoute Gemini free combo; a direct read of the key file was blocked and not worked around | in progress, needs a restart with `./start.sh` | `start.sh`, `scripts/router_models.py`, `rsvp/RESUME.md` |
+| O33 | chat, 2026-11-14 | The new parts feel too compacted, their assets too small, all over the place and not in line with the progress so far; "it really feels unprofessional now"; compare them with `Dolce Vita` and with the agreed face | done, waiting for the user's look | `rsvp/comps/REVIEW-DOLCE-VITA.md`, `DESIGN-SPEC.md` sections 4 and 6 |
+| O34 | chat, 2026-11-14 | Not too crowded; keep the art he added (wheat, lavender, olive, orange branch, swallows, names plaque, `rodapé`); assemble the rest as an experienced web designer would | adopted | same |
 
 ## From reviewers and tests
 
@@ -63,6 +65,9 @@ Every observation from the user, the reviewers and the research, so none is lost
 | R16 | Designer fix pass on R7 to R14 done (stand-ins removed, tokens only, two tiles, left-aligned schedule, hard edges faded, 200 percent zoom fixed); `consistency-red-team` and `spec-guardian` still to re-run after the real assets are in | in progress | `rsvp/comps/DESIGNER-NOTES.md`, `rsvp/comps/shots/` |
 | R17 | Copilot reached its daily image limit on 2026-11-12 ("check back at 12:00am") after M1 and M5 plus two test images; one human-check wall earlier was cleared by the user; no upgrade clicked. Remaining 19 assets (M2, M3, M4, B1, P1, B2, F1 to F4, T1, T2, L1 to L3, R1 to R3, B3) wait for the reset or the free fallback | open, user choice | `assets/LOG.md`, `rsvp/comps/ASSET-PROMPTS.md` |
 | R18 | Free fallback tried on 2026-11-12 after the user picked it: `Pollinations` returned a wrong subject, 768 pixels and a watermark for M2; no other route has a key (Cloudflare, Hugging Face, Gemini, OpenRouter, `OmniRoute` all unset), so the free route is not viable for the set | closed, not viable | `assets/LOG.md` |
+| R19 | `red-team` on the rebuilt new parts (5/10, 2026-11-14): no centrepiece per section, bare paper between sections, the schedule template-like, edge pieces zigzag, paintings repeat, generic interface, the gate wall the most saturated block | mostly done; declined items and reasons in the review | `rsvp/comps/REVIEW-DOLCE-VITA.md` |
+| R20 | `consistency-red-team` on the same (7/10): repeated face paintings, no air round the tile pause, `Como chegar` without a head, RSVP head spacing and tracking, a second rule, units weight, the leaf against the scale rule | done except the script card heads and the button shapes (approved RSVP look) | same |
+| R21 | The gate wall's yellow (frozen face) is the strongest colour on the page | open, user decision | same, "For the user to decide" |
 
 ## Research (free lanes, hints only, checked at source before use)
 

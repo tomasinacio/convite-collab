@@ -2,13 +2,15 @@
 <!-- The information (v16, rsvp/comps/DESIGNER-NOTES.md): between world 1 (names, land, vine) and world 2 (the gate), before the
      RSVP. Each fact appears once on the page: the date, venue and town are in the face; the countdown shows numbers only;
      the schedule shows times and moments only. data-fake marks invented wording (rsvp/comps/REPLACE-ME.md).
-     Layout: centred for the plaque, the countdown and the gifts; composed on the left for the schedule, the dress code and
-     the questions. Props marked PENDING in info.css stay hidden until their paintings arrive. -->
+     Layout (2026-11-14, rsvp/comps/REVIEW-DOLCE-VITA.md): one centred axis, as the face; space and painted pieces separate
+     the sections (no hairline between them); one painted composition per section, its side alternating down the page.
+     Props marked PENDING in info.css stay hidden until their paintings arrive. -->
 <div class="info" id="info">
 
   <!-- 1. where: the barra-framed plaque in the grapes area, under the vine and the eucalyptus that hang from world 1 -->
   <section class="isec i-where" id="i-where" aria-labelledby="i-where-h">
-    <h2 class="ikick" id="i-where-h" data-it="whereH" data-fake>Como chegar</h2>
+    <!-- the same anatomy as every section: the head (script) and its rule; the painted plaque is its content -->
+    <header class="ihead"><h2 class="ih" id="i-where-h" data-it="whereH" data-fake>Como chegar</h2></header>
     <div class="plaque">
       <address lang="pt-PT" translate="no"><span>R. Vale de São Gião</span><span>2665-382</span></address>
     </div>
@@ -22,12 +24,10 @@
     </div>
   </section>
 
-  <div class="idiv" aria-hidden="true"></div>
-
-  <!-- 2. countdown: numbers only (needs JavaScript; hidden without it) -->
+  <!-- 2. countdown: numbers only (needs JavaScript; hidden without it). The bee flies in above the kicker, left; the fly
+       agarics close the section, centred under the figures -->
   <section class="isec i-count" id="i-count" aria-labelledby="i-count-h">
     <i class="lv fly lv-bee" aria-hidden="true"><i></i></i>
-    <i class="lv hang lv-mush-a" aria-hidden="true"><i></i></i>
     <header class="ihead">
       <p class="ikick" data-it="countKick" data-fake>Contagem decrescente</p>
       <h2 class="ih" id="i-count-h" data-it="countH" data-fake>Faltam</h2>
@@ -37,56 +37,47 @@
       <p><span class="n" id="i-h">–</span><span class="u" id="i-hu" data-it="hours" data-fake>horas</span></p>
       <p><span class="n" id="i-m">–</span><span class="u" id="i-mu" data-it="minutes" data-fake>minutos</span></p>
     </div>
+    <i class="lv hang lv-mush-a" aria-hidden="true"><i></i></i>
   </section>
 
-  <div class="idiv" aria-hidden="true"></div>
-
-  <!-- 3. schedule: the user's times (2026-11-12, Maya will review); the wording of each moment is a draft. A left-aligned
-       timeline: a twine stem, an ink drawing for each moment (decorative) -->
-  <section class="isec i-day left" id="i-day" aria-labelledby="i-day-h">
+  <!-- 3. schedule: the user's times (2026-11-12, Maya will review); the wording of each moment is a draft. A centred order
+       of the day, as a printed programme: the time in small capitals over the moment, a twine thread between them. The wheat
+       (the face's own) and the wild carrot (the user's v5 painting) stand at its foot, right: a July field edge, not a copy of
+       the face's lavender cluster -->
+  <section class="isec i-day" id="i-day" aria-labelledby="i-day-h">
     <i class="lv from-r sway lv-wheat" aria-hidden="true"><i></i></i>
-    <i class="lv from-r sway lv-lav" aria-hidden="true"><i></i></i>
+    <i class="lv from-r sway lv-carrot" aria-hidden="true"><i></i></i>
     <header class="ihead">
       <p class="ikick" data-it="dayKick" data-fake>O dia</p>
       <h2 class="ih" id="i-day-h" data-it="dayH" data-fake>Programa</h2>
     </header>
     <ol class="sched">
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V11.5a7 7 0 0 1 14 0V21M3 21h18M9 21v-8M12 21v-9.5M15 21v-8"/></svg></span>
-        <span class="tx"><span class="t">15:00</span><span class="m" data-it="s1" data-fake>Chegada dos convidados</span></span></li>
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9.5" cy="13.5" r="5"/><circle cx="14.5" cy="13.5" r="5"/><path d="M8.2 6.8l1.3-2 1.3 2"/></svg></span>
-        <span class="tx"><span class="t">16:00</span><span class="m" data-it="s2" data-fake>Cerimónia</span></span></li>
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 3.5h9c0 4.6-1.9 7.5-4.5 7.5S7.5 8.1 7.5 3.5zM12 11v8.5M8.5 20.5h7M8 7h8"/></svg></span>
-        <span class="tx"><span class="t">17:30</span><span class="m" data-it="s3" data-fake>Cocktail</span></span></li>
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5v6.5a2 2 0 0 0 4 0V3.5M9 3.5v17M16.5 20.5V3.5c-2 1.2-3 3.6-3 6.5 0 1.8.9 2.8 3 2.8"/></svg></span>
-        <span class="tx"><span class="t">20:00</span><span class="m" data-it="s4" data-fake>Jantar</span></span></li>
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 20.5h15M6 20.5v-5.5h12v5.5M8 15v-4h8v4M12 11V7.5M11 5.5c0-1 1-2 1-2s1 1 1 2a1 1 0 0 1-2 0z"/></svg></span>
-        <span class="tx"><span class="t">23:00</span><span class="m" data-it="s5" data-fake>Corte do bolo</span></span></li>
-      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 17.5V5.5l9-2v12M9 9l9-2"/><ellipse cx="6.8" cy="17.6" rx="2.3" ry="1.8"/><ellipse cx="15.8" cy="15.6" rx="2.3" ry="1.8"/></svg></span>
-        <span class="tx"><span class="t" data-it="s6t" data-fake>Depois</span><span class="m" data-it="s6" data-fake>Festa</span></span></li>
+      <li><span class="t">15:00</span><span class="m" data-it="s1" data-fake>Chegada dos convidados</span></li>
+      <li><span class="t">16:00</span><span class="m" data-it="s2" data-fake>Cerimónia</span></li>
+      <li><span class="t">17:30</span><span class="m" data-it="s3" data-fake>Cocktail</span></li>
+      <li><span class="t">20:00</span><span class="m" data-it="s4" data-fake>Jantar</span></li>
+      <li><span class="t">23:00</span><span class="m" data-it="s5" data-fake>Corte do bolo</span></li>
+      <li><span class="t" data-it="s6t" data-fake>Depois</span><span class="m" data-it="s6" data-fake>Festa</span></li>
     </ol>
   </section>
 
-  <!-- the first of the two places the small painted tile appears (the other is the RSVP card) -->
+  <!-- the one pause between sections, and the first of the two places the small painted tile appears (the other is the RSVP card) -->
   <div class="idiv tiled" aria-hidden="true"><i></i></div>
 
-  <!-- 4. dress code: formal, no palette (the user, 2026-11-12). The orange branch (the face's own art) as a vignette on the
-       left, the text on the right -->
-  <section class="isec i-dress left" id="i-dress" aria-labelledby="i-dress-h">
+  <!-- 4. dress code: formal, no palette (the user, 2026-11-12). The orange branch (the face's own art) enters from the left
+       edge above the head, as the face's own branches enter its top corners -->
+  <section class="isec i-dress" id="i-dress" aria-labelledby="i-dress-h">
+    <i class="lv from-l sway lv-orange" aria-hidden="true"><i></i></i>
     <i class="lv fall lv-leaf" aria-hidden="true"><i><i></i></i></i>
-    <!-- the head spans the column (in the narrow text column it broke into two lines); the vignette and the note sit under it -->
     <header class="ihead">
       <p class="ikick" data-it="dressKick" data-fake>O que vestir</p>
       <h2 class="ih" id="i-dress-h" data-it="dressH" data-fake>Traje formal</h2>
     </header>
-    <div class="dress">
-      <i class="vig" aria-hidden="true"></i>
-      <p class="itext" data-it="dressText" data-fake>Escolham o vosso melhor, com sapatos para dançar: a festa vai noite fora.</p>
-    </div>
+    <p class="itext" data-it="dressText" data-fake>Escolham o vosso melhor, com sapatos para dançar: a festa vai noite fora.</p>
   </section>
 
-  <div class="idiv" aria-hidden="true"></div>
-
-  <!-- 5. gifts: the couple's own IBAN, shown on purpose (the user, Message 42); no account holder (the user, 2026-11-12) -->
+  <!-- 5. gifts: the couple's own IBAN, shown on purpose (the user, Message 42); no account holder (the user, 2026-11-12). The
+       fig branch enters from the right edge above the head -->
   <section class="isec i-gift" id="i-gift" aria-labelledby="i-gift-h">
     <i class="lv from-r sway lv-fig" aria-hidden="true"><i></i></i>
     <i class="lv from-l sway lv-branch-l" aria-hidden="true"><i></i></i>
@@ -105,10 +96,8 @@
     </div>
   </section>
 
-  <div class="idiv" aria-hidden="true"></div>
-
-  <!-- 6. questions: native details/summary (keyboard and screen readers for free) -->
-  <section class="isec i-faq left" id="i-faq" aria-labelledby="i-faq-h">
+  <!-- 6. questions: native details/summary (keyboard and screen readers for free). The dried peppers hang at the head's left -->
+  <section class="isec i-faq" id="i-faq" aria-labelledby="i-faq-h">
     <i class="lv hang sway lv-peppers" aria-hidden="true"><i></i></i>
     <header class="ihead">
       <p class="ikick" data-it="faqKick" data-fake>Perguntas frequentes</p>

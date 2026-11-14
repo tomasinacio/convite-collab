@@ -1,0 +1,220 @@
+/* Information sections. Every rule is scoped to .info-wrap, .info, .isec or .foot-flora. Same tokens, type roles, card,
+   button and prop hooks as the RSVP (rsvp.css); the paper is the body's (one tile, one phase).
+   Colours: palette tokens only (SPEC Derived), plus the two azulejo blues sampled from the painted names plaque
+   (--az-ink #1B2556, --az-cobalt #344680), used only on azulejo-linked things (the address plaque) and focus rings.
+   2026-11-14, rsvp/comps/REVIEW-DOLCE-VITA.md: one centred axis like the face; a spacing scale; sections separated by space
+   and painted pieces, not hairlines; the face's 440 pixel column on wide screens; props at the face's own scale. */
+html.js .info-wrap:not(.info-on){display:none}
+.info-wrap,.rsvp-wrap{--pu:calc(min(100vw, 440px) / 100)}   /* the face's u, for every prop on both wrappers (R13: the foot was 0 tall) */
+.foot-flora{--ease:cubic-bezier(.22,.8,.24,1);--ease-sine:cubic-bezier(.37,0,.63,1)}   /* the foot sits outside .info and .rsvp: without these its
+   entrance and sway shorthands were invalid, so its props stayed at opacity 0 (2026-11-14) */
+.info-wrap{overflow-x:clip}   /* props bleed to the screen edge, never past it */
+.info{
+  --paper:#F6EFDF;--ink:#3B2F25;--olive:#4F5F2E;--brown:#6B4F34;--twine:#B8946A;--az-ink:#1B2556;--az-cobalt:#344680;
+  --edge-a:rgb(107 79 52 / .4);--rule-a:rgb(107 79 52 / .26);
+  --script:'Allura',cursive;--serif:'EB Garamond',Georgia,'Times New Roman',serif;
+  --ease:cubic-bezier(.22,.8,.24,1);--ease-sine:cubic-bezier(.37,0,.63,1);
+  --gx:1.25rem;   /* side gutter */
+  /* spacing scale (DESIGN-SPEC section 4): 8, 16, 24, 36, 48, 64 pixels; --sec is the air at the top and the foot of every
+     section: 72 pixels on a phone, 96 on a wide screen, so 144 to 192 pixels between two sections, the painted pieces
+     filling part of it (the red team found 176 pixels of bare paper too empty, 2026-11-14) */
+  --s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2.25rem;--s5:3rem;--s6:4rem;
+  --sec:clamp(4.5rem, 3rem + 6vw, 6rem);
+  position:relative;max-width:calc(440px + var(--gx) * 2);margin:0 auto;padding:0 var(--gx);color:var(--ink);font:400 1.125rem/1.55 var(--serif);text-align:center}
+.info *,.info *::before,.info *::after{box-sizing:border-box}
+.info :focus-visible{outline:3px solid var(--az-cobalt);outline-offset:3px;border-radius:6px}
+
+/* ---------- section anatomy, one for all: kicker, script head in olive, a short twine rule, the content; all centred ---------- */
+.isec{position:relative;padding:var(--sec) 0}
+.isec>*:not(.lv){position:relative;z-index:1}
+.ikick{margin:0;padding-left:.28em;font-size:.8125rem;font-weight:500;letter-spacing:.28em;line-height:1.5;text-transform:uppercase;color:var(--brown)}
+.ih{margin:.25rem 0 0;font:400 clamp(3rem,15vw,4.25rem)/1.05 var(--script);color:var(--olive)}
+.ihead::after{content:"";display:block;width:4rem;height:1px;margin:1.25rem auto 0;background:var(--twine)}
+.itext{max-width:26rem;margin:var(--s4) auto 0;color:var(--brown);font-size:1.1875rem;line-height:1.6}
+
+/* the one pause between sections: the small painted tile between two twine hairlines (the second tile is on the RSVP card) */
+.idiv{display:block;width:6rem;height:1px;margin:0 auto;background:var(--twine)}
+.idiv.tiled{display:flex;align-items:center;gap:1rem;width:auto;max-width:15rem;height:auto;margin-block:var(--s5);background:none}   /* air of its own */
+.idiv.tiled::before,.idiv.tiled::after{content:"";flex:1;height:1px;background:var(--twine)}
+.idiv.tiled i{flex:none;width:2.75rem;height:2.75rem;border-radius:2px;background:url(img/az-tile.2a4f5096.webp) 0 0/100% 100% no-repeat;
+  box-shadow:1px 1px 1.5px rgb(107 79 52 / .22),2px 3px 8px rgb(107 79 52 / .08)}
+
+/* buttons: the RSVP's .btn, same box, radius, border and type */
+.iacts{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:var(--s4)}
+.ibtn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:0 1.25rem;border-radius:999px;border:1px solid var(--brown);
+  background:transparent;color:var(--ink);font:inherit;font-size:1.0625rem;line-height:1.2;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:scale .16s var(--ease)}
+.ibtn.solid{background:var(--olive);border-color:var(--olive);color:var(--paper)}
+.ibtn svg{width:18px;height:18px;flex:none}
+.ibtn:active{scale:.97}
+.ibtn[hidden]{display:none}
+@media (hover:hover) and (pointer:fine){.ibtn:not(.solid):hover{background:rgb(107 79 52 / .06)}}
+
+/* card: the RSVP's .card, a brown hairline on the same paper (no lighter fill: one paper) */
+.icard{max-width:22rem;margin:var(--s4) auto 0;padding:1.75rem 1.25rem;border:1px solid var(--edge-a);border-radius:14px;background:transparent}
+
+/* ---------- 1. where: a plaque framed in painted barra tiles (comps/art/v16/plaque-address.webp: the same cobalt hand as
+   the names plaque, a different and simpler frame), in the grapes area under the vine and the eucalyptus ---------- */
+.i-where{padding-top:calc(var(--pu) * 38)}   /* the head (script, with its rule, as every section, 2026-11-14) sits below the face's hanging vine and eucalyptus, which reach 36u into the section */
+.plaque{position:relative;width:min(100%, calc(var(--pu) * 92));margin:var(--s4) auto 0;aspect-ratio:1200/497;container-type:inline-size;
+  background:url(img/plaque-address.34bd6d86.webp) 0 0/100% 100% no-repeat;box-shadow:1px 2px 2px rgb(107 79 52 / .2),3px 6px 14px rgb(107 79 52 / .1)}
+.plaque address{position:absolute;left:14%;right:14%;top:27%;bottom:27%;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  font-style:normal;font-family:var(--serif);color:var(--az-ink);line-height:1.12}
+.plaque address span:first-child{font-weight:600;font-size:max(1rem, 6.2cqw);letter-spacing:.02em}
+.plaque address span+span{margin-top:.3em;font-size:max(.875rem, 5cqw);letter-spacing:.14em;font-variant-numeric:lining-nums}
+
+/* ---------- 2. countdown: three figures in olive, twine hairlines between them; numbers only. The fly agarics close it
+   as a centred vignette (in the flow, below) ---------- */
+html:not(.js) .i-count{display:none}
+.iclock{display:flex;justify-content:center;margin:var(--s4) auto 0}
+.iclock p{flex:0 1 7rem;margin:0;padding:0 .5rem;display:flex;flex-direction:column;align-items:center}
+.iclock p+p{border-left:1px solid var(--twine)}
+.iclock .n{font:400 clamp(2.5rem,12vw,3.25rem)/1 var(--serif);color:var(--olive);font-variant-numeric:tabular-nums lining-nums}
+.iclock .u{margin-top:.55rem;padding-left:.2em;font-size:.8125rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--brown)}
+@media (max-width:340px){.iclock{flex-wrap:wrap;gap:.75rem 0}.iclock p+p{border-left:0}}   /* 200% zoom: the figures wrap */
+
+/* ---------- 3. schedule: a centred order of the day, as a printed programme: the time in small capitals (the face's
+   village role) over the moment (the face's place role), a twine thread between the moments ---------- */
+.sched{list-style:none;max-width:22rem;margin:var(--s4) auto 0;padding:0}
+.sched li{display:flex;flex-direction:column;align-items:center}
+.sched li+li::before{content:"";display:block;width:1px;height:1.25rem;margin:.5rem 0;background:var(--twine)}
+.sched .t{padding-left:.24em;font-size:.8125rem;font-weight:500;letter-spacing:.24em;line-height:1.5;text-transform:uppercase;color:var(--brown);
+  font-variant-numeric:tabular-nums lining-nums}
+.sched .m{margin-top:.1rem;font-size:1.375rem;line-height:1.3;color:var(--ink)}
+
+/* ---------- 4. dress code: the note only; the orange branch above the head is a prop (below) ---------- */
+.i-dress{padding-top:calc(var(--sec) + var(--pu) * 22)}   /* room for the orange branch above the kicker */
+
+/* ---------- 5. gifts (centred): the IBAN as Portuguese invitations show it, a copy button, a quiet confirmation ---------- */
+.i-gift{padding-top:calc(var(--sec) + var(--pu) * 18)}   /* room for the fig branch above the kicker */
+.ilabel{margin:0;padding-left:.28em;font-size:.8125rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--brown)}
+.iban .num{margin:.45rem 0 1.1rem;font-size:1.1875rem;font-weight:500;letter-spacing:.05em;line-height:1.45;color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums;-webkit-user-select:all;user-select:all}
+.iban .done{min-height:1.55em;margin:.6rem 0 0;font-size:1rem;font-style:italic;color:var(--olive)}
+.iban .done:empty{min-height:0;margin:0}   /* no blank band under the button until there is something to say */
+
+/* ---------- 6. questions: native disclosure, a brown plus that turns to a cross; the head centred, the rows full width ---------- */
+.i-faq{padding-top:calc(var(--sec) + var(--pu) * 18)}   /* room for the peppers above the kicker */
+.faq{max-width:28rem;margin:var(--s4) auto 0;text-align:left}
+.faq details{border-top:1px solid var(--rule-a)}
+.faq details:last-child{border-bottom:1px solid var(--rule-a)}
+/* summary stays a block (older Safari does not toggle a flex summary); the plus is placed absolutely */
+.faq summary{position:relative;display:block;min-height:3.5rem;padding:.95rem 2.25rem .95rem .25rem;list-style:none;cursor:pointer;
+  font-size:1.1875rem;font-weight:500;line-height:1.35;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:.4rem;top:50%;margin-top:-7px;width:14px;height:14px;transition:rotate .25s var(--ease);
+  background:linear-gradient(var(--brown),var(--brown)) center/100% 1.5px no-repeat,linear-gradient(var(--brown),var(--brown)) center/1.5px 100% no-repeat}
+.faq details[open] summary::after{rotate:45deg}
+.faq details p{margin:0 .25rem 1.1rem;color:var(--brown);line-height:1.6}
+.faq details[open] p{animation:settle-up .3s var(--ease) both}
+@keyframes settle-up{from{opacity:0;translate:0 -4px}}
+
+/* =============== painted props and their motion hooks (DESIGN-SPEC section 6) ===============
+   ASSET SLOTS: each prop names its art once, here. The wheat, the lavender, the orange branch and the olive leaf are the face's
+   own art; the fly agarics, bee, fig branch, dried peppers, wild carrot and pebbles are the user's Copilot v5 and v6
+   paintings, cut and toned by comps/art/v17_props_v5.py (assets/LOG.md). Scale (2026-11-14): the face's own: branches 60 to
+   64u entering from a side edge (10u past it, the cut end dissolving), standing plants 21 to 34u, the vignette 30u, the bee
+   12u; u = min(100vw, 440px) / 100. No painting shows twice below the face, and none repeats a face composition. At most two
+   props per section, one composition per section, sides alternating, never over text or a button. A slot without art is
+   empty and hidden (PENDING below), so no stand-in ever shows. The art is applied one screen before a section is seen (.near,
+   info.js), so it never weighs on the first load. */
+.isec.near,.foot-flora.near,html:not(.js) .isec,html:not(.js) .foot-flora{
+  --ia-wheat:url(img/grass-a-2x.40ae28d7.webp);                 /* wheat and wild oats (the face's own) */
+  --ia-lav:url(img/lavender-l.1a056c8e.webp);      /* lavender (the face's own painting, its matte at 260 px for 21u): page foot, right */
+  --ia-orange:url(img/citrus-branch.3fe07c7d.webp);             /* the orange branch (the face's own, already loaded by the face) */
+  --ia-leaf:url(img/olive-leaf.250fab91.webp);                  /* the falling olive leaf (the face's own) */
+  --ia-mush-a:url(img/fly-agaric.f80fb18a.webp);   /* fly agarics (Copilot v6, toned): the countdown's centred vignette */
+  --ia-fig:url(img/fig-branch.74c0734f.webp);      /* fig branch (Copilot v5): gifts, above the head, from the right edge */
+  --ia-carrot:url(img/wild-carrot.308a486d.webp);  /* wild carrot (Copilot v5): schedule foot, right, before the wheat */
+  --ia-pebbles:url(img/pebbles.27ccb751.webp);     /* pebbles and a bay leaf (Copilot v5): page foot, left, on the rodape */
+  --ia-bee:url(img/bee.270a3a53.webp);             /* honeybee (Copilot v6, mirrored to face right, flies in from the left): countdown head */
+  --ia-peppers:url(img/peppers.5e854838.webp);     /* dried hot peppers (Copilot v6, toned to terracotta): questions head, left */
+  --ia-branch-l:none;                                 /* PENDING: olive branch entering from the left (L1) */
+}
+/* PENDING: hidden (take a class out of this list when its slot gets a url) */
+.lv.lv-branch-l{display:none}   /* .lv sets display:block later, so the class pair is needed to win */
+
+.lv{position:absolute;display:block;pointer-events:none}
+.lv>i{position:absolute;inset:0;display:block;background:var(--img,none) 0 0/100% 100% no-repeat}
+/* countdown: the bee above the kicker's left end, mirrored to face right, so it flies in from the left edge (sides alternate:
+   bee left, schedule right, dress left, gifts right, questions left); the fly agarics close the section as a centred
+   vignette under the figures, in the flow: the one mushroom piece on the page, static (fade in only), the base dissolving */
+.lv-bee{left:calc(var(--pu) * 8 - var(--gx));top:calc(var(--sec) - 3.75rem);width:calc(var(--pu) * 12);aspect-ratio:150/137;scale:-1 1;--img:var(--ia-bee,none);
+  --fx:calc(var(--pu) * -30);--fy:-1.5rem}
+.lv.lv-mush-a{position:relative;margin:var(--s5) auto 0;width:calc(var(--pu) * 30);aspect-ratio:340/384;--img:var(--ia-mush-a,none);
+  -webkit-mask-image:linear-gradient(to top,transparent,#000 16%);mask-image:linear-gradient(to top,transparent,#000 16%)}
+/* schedule: the wheat (the face's own) and the wild carrot (the user's) stand together at the foot, right, beside the short
+   last moments: a July field edge, not the face's lavender cluster again; the wheat runs 6u past the edge; roots dissolve */
+.lv-wheat{right:calc(var(--pu) * -6 - var(--gx));bottom:calc(var(--sec) * .3);width:calc(var(--pu) * 34);aspect-ratio:246/369;--img:var(--ia-wheat,none);
+  --o:50% 100%;--a:1.1deg;--p:5.3s;
+  -webkit-mask-image:linear-gradient(to top,transparent,#000 18%);mask-image:linear-gradient(to top,transparent,#000 18%)}
+.i-day .lv-carrot{right:calc(var(--pu) * 11 - var(--gx));bottom:calc(var(--sec) * .3);width:calc(var(--pu) * 24);aspect-ratio:300/453;--img:var(--ia-carrot,none);
+  --o:50% 100%;--a:1.3deg;--p:6.1s;--d:.1s;
+  -webkit-mask-image:linear-gradient(to top,transparent,#000 12%);mask-image:linear-gradient(to top,transparent,#000 12%)}
+/* dress code: the orange branch enters from the left edge above the head, mirrored so its cut end is at the top left (the
+   face hangs it from the top right); the cut end dissolves (the mask is drawn before the mirror) and sways about it */
+.lv-orange{left:calc(var(--pu) * -10 - var(--gx));top:calc(var(--s3) * -1);width:calc(var(--pu) * 60);aspect-ratio:760/537;scale:-1 1;
+  --img:var(--ia-orange,none);--o:97.6% 5.2%;--a:.9deg;--p:7.1s;
+  -webkit-mask-image:linear-gradient(to left,transparent,#000 18%);mask-image:linear-gradient(to left,transparent,#000 18%)}
+.lv-leaf{left:calc(var(--pu) * 2 - var(--gx));top:calc(var(--pu) * 30);width:calc(var(--pu) * 4);aspect-ratio:46/120;--fall:calc(var(--pu) * 70)}
+.lv-leaf i i{position:absolute;inset:0;display:block;background:var(--ia-leaf,none) 0 0/100% 100% no-repeat;transform-origin:50% 20%}
+/* gifts: the fig branch enters from the right edge above the head (rising into the space above the section) and sways about
+   its cut end, which dissolves */
+.lv-fig{right:calc(var(--pu) * -10 - var(--gx));top:calc(var(--pu) * -10);width:calc(var(--pu) * 64);aspect-ratio:640/456;--img:var(--ia-fig,none);
+  --o:100% 50%;--a:1deg;--p:6.7s;
+  -webkit-mask-image:linear-gradient(to left,transparent,#000 16%);mask-image:linear-gradient(to left,transparent,#000 16%)}
+.lv-branch-l{left:calc(var(--pu) * -1);top:.5rem;width:calc(var(--pu) * 30);aspect-ratio:3/1;--img:var(--ia-branch-l,none);--o:0 50%;--a:1.6deg;--p:5.7s}
+/* questions: the dried peppers hang from their string at the head's left (gifts had the right), above the kicker */
+.lv-peppers{left:calc(var(--pu) * 3 - var(--gx));top:calc(var(--pu) * -8);width:calc(var(--pu) * 20);aspect-ratio:230/507;--img:var(--ia-peppers,none);
+  --o:50% 0;--a:1.2deg;--p:5.6s;
+  -webkit-mask-image:linear-gradient(transparent,#000 8%);mask-image:linear-gradient(transparent,#000 8%)}
+/* the page foot: the pebbles lie at the rodapé's left end (rooted: fade in only, no sway), the lavender stands at its right */
+.foot-flora{position:relative;height:calc(var(--pu) * 52);max-width:calc(440px + 2.5rem);margin:0 auto;overflow-x:clip}
+.lv-flav{right:calc(var(--pu) * 6);bottom:-2px;width:calc(var(--pu) * 21);aspect-ratio:260/581;--img:var(--ia-lav,none);--o:50% 100%;--a:1.3deg;--p:6.4s;--d:.12s;
+  -webkit-mask-image:linear-gradient(to top,transparent,#000 10%);mask-image:linear-gradient(to top,transparent,#000 10%)}
+.lv-pebbles{left:calc(var(--pu) * 5);bottom:calc(var(--pu) * -1);width:calc(var(--pu) * 30);aspect-ratio:330/136;--img:var(--ia-pebbles,none)}
+.js .lv.hang{opacity:0}
+.js .seen .lv.hang{animation:settle-in .9s var(--ease) both}
+/* 200% zoom (195 pixels wide): the props would cover the wrapped heads and lines; only the rooted foot pieces stay */
+@media (max-width:340px){.isec .lv:not(.lv-mush-a){display:none}}
+
+/* motion: only when JavaScript runs (info.js marks a section .seen once, and .vis while it is in view). Enter from the side
+   (translate and opacity, 1.2 s, ease-out), then sway slowly about the cut end (a sine, 5 to 7 s); a leaf falls once on
+   sight and then every 24 s; a flier crosses once and then idles. All loops pause out of view. The names start with
+   settle, sway, leaf, soar and bob, so the face's Skip and scroll hurry leave them alone. */
+.js .lv.from-l{opacity:0;translate:calc(var(--pu) * -6) 0}
+.js .lv.from-r{opacity:0;translate:calc(var(--pu) * 6) 0}
+.js .seen .lv.from-l,.js .seen .lv.from-r{animation:settle-in 1.2s var(--ease) var(--d,0s) both}
+@keyframes settle-in{to{opacity:1;translate:0 0}}
+.lv.sway>i{transform-origin:var(--o,50% 100%)}
+.js .seen .lv.sway>i{animation:sway-i var(--p,6s) var(--ease-sine) calc(var(--d,0s) + 1.2s) infinite alternate both}
+@keyframes sway-i{from{rotate:calc(var(--a,1deg) * -1)}to{rotate:var(--a,1deg)}}
+.js .lv.fall{opacity:0}
+.js .seen .lv.fall{animation:leaf-i-fall 24s linear .6s infinite}
+.js .seen .lv.fall>i{animation:leaf-i-x 1.3s var(--ease-sine) .6s infinite alternate both}
+.js .seen .lv.fall>i>i{animation:leaf-i-r 1s var(--ease-sine) .6s infinite alternate both}
+@keyframes leaf-i-fall{0%{opacity:0;transform:translateY(0)}1.5%{opacity:1}10.5%{opacity:1}12.5%{opacity:0;transform:translateY(var(--fall))}12.51%,100%{opacity:0;transform:translateY(0)}}
+@keyframes leaf-i-x{from{translate:calc(var(--pu) * -2.5) 0}to{translate:calc(var(--pu) * 2.5) 0}}
+@keyframes leaf-i-r{from{rotate:-28deg}to{rotate:28deg}}
+.js .lv.fly{opacity:0}
+.js .seen .lv.fly{animation:soar-i-in 2.4s var(--ease) .3s both}
+.js .seen .lv.fly>i{animation:bob-i 2.3s var(--ease-sine) 2.7s infinite alternate both}
+@keyframes soar-i-in{from{opacity:0;translate:var(--fx) var(--fy)}18%{opacity:1}to{opacity:1;translate:0 0}}
+@keyframes bob-i{from{translate:0 -3px;rotate:-3deg}to{translate:0 3px;rotate:2deg}}
+.isec:not(.vis) .lv,.isec:not(.vis) .lv i,.foot-flora:not(.vis) .lv,.foot-flora:not(.vis) .lv i,.rsvp:not(.vis) .lv,.rsvp:not(.vis) .lv i{animation-play-state:paused}
+
+/* the RSVP's props take the same hooks (rsvp.html adds the classes) */
+.js .rsvp.seen .prop.lv.from-l,.js .rsvp.seen .prop.lv.from-r{animation:settle-in 1.2s var(--ease,cubic-bezier(.22,.8,.24,1)) var(--d,0s) both}
+
+/* the page foot, and the only rodapé: the names plaque's flower border mirrored into a repeat, its glaze lifted to white
+   (comps/art/v16/rodape-paint.webp) and multiplied onto the paper, so only the cobalt paint shows: no paler strip, no
+   seam; its top and bottom edges dissolve */
+.rodape{display:block;height:2.75rem;background:url(img/rodape-paint.43bf12c8.webp) 0 0/auto 100% repeat-x;mix-blend-mode:multiply;
+  -webkit-mask-image:linear-gradient(transparent,#000 22%,#000 80%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 80%,transparent)}
+
+@media (prefers-reduced-motion:reduce){
+  .info .lv,.info .lv i,.rsvp .lv,.rsvp .lv i,.foot-flora .lv,.foot-flora .lv i{animation:none !important;opacity:1 !important;translate:none !important;rotate:none !important}
+  .info .lv.fall{display:none}
+  .faq details[open] p{animation:none}
+  .ibtn{transition:none}
+}

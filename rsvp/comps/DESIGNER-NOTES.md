@@ -4,6 +4,16 @@ Owner: Tomas. Written 2026-11-12 by the Opus designer. Review date: 2026-11-19. 
 
 The user's feedback (Messages 41 to 53): the replay button goes, the opening is too slow (plants, the falling leaf), the page is light next to the five reference invitations, the information belongs in the middle where the grapes hang, keep the painted look, one paper tone, each fact said once, no flat vector tiles, and more painted life (mushrooms, bees, rocks, July wildflowers, dried peppers). This pass answers all of it in one build; `v15` stays untouched.
 
+## `Dolce Vita` review and rebuild of the new parts (2026-11-14, later)
+
+- The user: the new parts felt "too compacted", their assets "too small", "all over the place", "unprofessional". The measured comparison with `Dolce Vita` and with the face, the ranked causes and every decision are in `rsvp/comps/REVIEW-DOLCE-VITA.md`.
+- One centred axis for every section (the left-composed schedule, dress code and questions are retired). Space separates the sections, 72 pixels at each one's top and foot, never a hairline. One painted tile is the pause, after the schedule.
+- Pieces at the face's own scale: bee 12u, fly agarics 30u (a centred vignette closing the countdown), wheat 34u with the wild carrot 24u at the schedule's foot, the orange branch 60u above the dress head from the left edge, the fig 64u above the gifts head from the right edge, the peppers 20u above the questions kicker, the olive twig 15u at the RSVP head, the pebbles 30u and the lavender 21u on the `rodapé`. No painting shows twice below the face.
+- The schedule is a centred printed programme: time in the face's village role over the moment in its place role, on a twine thread; the circled icons are gone. `Como chegar` gets the script head and rule, below the face's hanging vine and eucalyptus.
+- Wide screens use the face's 440 pixel column for the information, the RSVP and the foot; every cut end dissolves.
+- Reviews: `red-team` 5/10 and `consistency-red-team` 7/10 on the first pass; their findings and the decisions are in the review file. Checked after the last build: nothing paints over text or a control at 390, 360, 195 and 1280; first load 1463 KB.
+- Shots: `rsvp/comps/shots/v6-where.jpg`, `v6-count.jpg`, `v6-day.jpg`, `v6-dress.jpg`, `v6-gift.jpg`, `v6-faq.jpg`, `v6-rsvp.jpg`, `v6-foot.jpg`, the `v6-1280-*.jpg` set and `v6-full.jpg`.
+
 ## Props from the user's new paintings (2026-11-14)
 
 - Restraint first: four new pieces, two sections bare. Countdown: fly agarics at the hairline's left end and the bee top right (it faces left, so it flies in from the right). Gifts: fig branch top right. Questions: dried peppers top right (user). Page foot: wild carrot left, lavender right. Where carries nothing.
