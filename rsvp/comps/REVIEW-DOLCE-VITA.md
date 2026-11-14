@@ -134,9 +134,9 @@ Ranked by how much each one cost. Each item names what in our own progress it br
 - `consistency-red-team` measured the paper within tolerance at every boundary, palette tokens only, two fonts only, each fact once in three languages.
 - Not checked: a real iPhone, Safari, the `WhatsApp` in-app browser, frame times at CPU 4x, and the `spec-guardian` audit (for the main session).
 
-## For the user to decide
+## Decided (the user delegated the taste, 2026-11-14)
 
-1. The dress code shows the face's orange branch again (mirrored, from the left). Keep it as a deliberate echo of the face, or leave the dress code as a bare pause?
-2. The gate wall's yellow is the strongest colour on the page, and it belongs to the frozen face. Leave it, or tone it about 15 % toward sand?
+1. The dress code keeps the face's orange branch, mirrored from the left: it is the user's gold-standard art.
+2. The gate wall stays as painted: it is part of the finished face.
 
 The remaining gap to `Dolce Vita` is painting, not layout: its sections each carry a scene (a church, a villa, a bus). Two or three scene paintings in the face's hand would close it, for example the terrace of the `quinta` or a laid table under the olives. That is a Copilot job for the user when he wants it.

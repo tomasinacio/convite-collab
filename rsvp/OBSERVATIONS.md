@@ -67,7 +67,7 @@ Every observation from the user, the reviewers and the research, so none is lost
 | R18 | Free fallback tried on 2026-11-12 after the user picked it: `Pollinations` returned a wrong subject, 768 pixels and a watermark for M2; no other route has a key (Cloudflare, Hugging Face, Gemini, OpenRouter, `OmniRoute` all unset), so the free route is not viable for the set | closed, not viable | `assets/LOG.md` |
 | R19 | `red-team` on the rebuilt new parts (5/10, 2026-11-14): no centrepiece per section, bare paper between sections, the schedule template-like, edge pieces zigzag, paintings repeat, generic interface, the gate wall the most saturated block | mostly done; declined items and reasons in the review | `rsvp/comps/REVIEW-DOLCE-VITA.md` |
 | R20 | `consistency-red-team` on the same (7/10): repeated face paintings, no air round the tile pause, `Como chegar` without a head, RSVP head spacing and tracking, a second rule, units weight, the leaf against the scale rule | done except the script card heads and the button shapes (approved RSVP look) | same |
-| R21 | The gate wall's yellow (frozen face) is the strongest colour on the page | open, user decision | same, "For the user to decide" |
+| R21 | The gate wall's yellow (frozen face) is the strongest colour on the page | closed: left as painted (user, taste delegated, 2026-11-14); the dress code keeps the mirrored orange branch | same, "Decided" |
 
 ## Research (free lanes, hints only, checked at source before use)
 
