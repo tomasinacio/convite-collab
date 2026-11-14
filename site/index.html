@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-PT" data-art="bindweed cloud-long cloud-round lavender meadow-strip olive-leaf olive-twig-trailing swallow-below">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E3E2D6">
+<title>Maya e Tomás</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Invitation face, round 2 (v10): a closed folded sheet tied with twine and a wax seal opens in two folds and becomes one painted page: a warm cloudy sky, an olive branch, swallows, the names on a cobalt azulejo panel in tall grass, the Sintra and Mafra land, and the Quinta do Grilo gate wall.">
+<!-- Share preview. og:image must be an absolute URL (your domain plus /og-image.jpg) for WhatsApp, iMessage and the rest:
+     rebuild with --base-url (the full https address) once the domain is known. TODO(user): the preview line (the description) is the dev note from the prototype. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maya e Tomás">
+<meta property="og:description" content="Invitation face, round 2 (v10): a closed folded sheet tied with twine and a wax seal opens in two folds and becomes one painted page: a warm cloudy sky, an olive branch, swallows, the names on a cobalt azulejo panel in tall grass, the Sintra and Mafra land, and the Quinta do Grilo gate wall.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://tomasinacio.github.io/convite/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://tomasinacio.github.io/convite/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maya e Tomás">
+<meta name="twitter:description" content="Invitation face, round 2 (v10): a closed folded sheet tied with twine and a wax seal opens in two folds and becomes one painted page: a warm cloudy sky, an olive branch, swallows, the names on a cobalt azulejo panel in tall grass, the Sintra and Mafra land, and the Quinta do Grilo gate wall.">
+<meta name="twitter:image" content="https://tomasinacio.github.io/convite/og-image.jpg">
+<script>(function(h){ h.classList.add('js');
+  /* lighter path: Save-Data or reduced motion get the smaller cut-outs (slots, :root.warm.lite) */
+  if ((navigator.connection && navigator.connection.saveData) || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) h.classList.add('lite');
+  /* motion tier (v13 perf pass): a weaker phone (4 cores or fewer, 4 GB or less, Save-Data) gets html.lite-motion: the same
+     page, without the costliest ambient motion and with a tighter meadow wave. A frame-time probe while the letter waits
+     can also set it (see the script). ?motion=full or ?motion=lite force a tier (for testing). */
+  var mq = /[?&]motion=(full|lite)/.exec(location.search);
+  /* v15 (critic 3): full by default. WebKit reports 4 cores on every iPhone, so the core count is not used; lite only with
+     Save-Data, under 4 GB of memory (Chrome), or when the frame-time probe below measures a slow phone while the letter waits */
+  if (mq ? mq[1] === 'lite' : ((navigator.deviceMemory && navigator.deviceMemory < 4) || (navigator.connection && navigator.connection.saveData))) h.classList.add('lite-motion');
+})(document.documentElement);</script>
+<link rel="preload" href="fonts/ebgaramond-italic-latin.d145e5e4.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/00-img-paper.2a9ce16b.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-top.2ba09968.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-bottom.0f2f2700.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-emboss.724f3105.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-deco.334f138a.webp" as="image" type="image/webp">
+<link rel="preload" href="img/seal-whole.4eec02fb.webp" as="image" type="image/webp">
+<link rel="preload" href="img/linen.29953ec4.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="app.7afd90de.css">
+<noscript><style>
+.vh{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;display:flex;flex-direction:column;align-items:center;
+  font-family:var(--serif);font-weight:600;color:var(--az-ink);font-size:11.2cqw;line-height:1.05;letter-spacing:.04em;text-transform:uppercase}
+.vh span:nth-child(2){font-style:italic;font-weight:400;font-size:.8em;text-transform:none}
+.skip,.seal,.sheet,.again{display:none}
+</style></noscript>
+</head>
+<body>
+
+<button type="button" class="skip" id="skip" data-i18n="skip">Saltar</button>
+
+<main class="page" id="page">
+  <!-- the world: one painted page under the sheet; it becomes visible as the sheet opens -->
+  <div class="world" id="world">
+    <div class="stage">
+      <i class="art sky amb"><i class="in amb"></i></i>
+      <div class="sky-b-wrap amb"><i class="art sky-b amb"></i></div>
+      <i class="art c1 go-art amb"><i class="in amb"></i></i>
+      <i class="art mist"></i>
+      <i class="art land"></i>
+      <i class="art olive-b go-art amb"><i class="in amb"></i></i>
+      <i class="art olive go-art amb"><i class="in amb"></i></i>
+      <i class="art leaf-fall amb" id="leaf"><i class="leaf-sway"><i></i></i></i>
+      <i class="art bird t1 go-art"></i><i class="art bird t2 go-art"></i>
+      <i class="art citrus go-art amb"><i class="in amb"></i></i>
+      <i class="art c2 go-art amb"><i class="in amb"></i></i>
+      <i class="art root-fade bgrass-l go-art amb"></i><i class="art bgrass-r go-art amb"><i class="in root-fade amb"></i></i>
+
+      <section class="names-block" id="names" tabindex="-1" aria-label="Convite">
+        <p class="kicker" data-i18n="kicker">TODO(user) · frase de abertura</p>
+        <div class="panel">
+          <i class="glint" aria-hidden="true"><i></i></i>
+          <h1 class="names"><span class="vh"><span translate="no">Maya</span> <span data-i18n="join">e</span> <span translate="no">Tomás</span></span><span class="pen" aria-hidden="true"></span></h1>
+        </div>
+        <div class="when">
+          <p class="date" data-i18n="date">10 de julho de 2027</p>
+          <p class="place" lang="pt-PT" translate="no">Quinta do Grilo</p>
+          <p class="village" lang="pt-PT" translate="no">Milharado</p>
+        </div>
+      </section>
+      <i class="art grass-l go-art amb"><i class="in root-fade amb"></i></i>
+      <i class="art bloom go-art amb"></i>
+      <i class="art grass-r go-art amb"><i class="in root-fade amb"></i></i>
+      <i class="art bloom-l go-art amb"></i>
+      <i class="art strip s1 go-art"></i><i class="art strip s2 go-art"></i>
+      <i class="art bind b1 go-art"></i>
+
+      <i class="art root-fade grass-l2 amb"></i><i class="art root-fade grass-r2 amb"></i>
+      <i class="art soar s3 amb"><i class="in amb"></i></i><i class="art soar s4 amb"><i class="in amb"></i></i>
+
+      <section class="gate-box" aria-label="Quinta do Grilo">
+        <i class="art gate lazy" data-lazy></i>
+        <p class="plaque-text" lang="pt-PT" translate="no"><span class="q">Quinta</span><span class="g"><span class="do">do</span> Grilo</span></p>
+      </section>
+      <i class="art vine lazy amb" data-lazy></i>
+      <i class="art euca amb"><i class="in euca-i amb" data-lazy></i></i>
+      <i class="art root-fade grass-p amb"></i>
+      <i class="art bind b2"></i>
+      <!-- the user's four dogs; decorative here. TODO(user): a line of copy if they should be announced -->
+      <div class="dogs" id="dogs" aria-hidden="true">
+        <i class="dog dg-tuft root-fade t-l"></i><i class="dog dg-tuft root-fade t-r"></i>
+        <span class="dog d-tan"><i class="d-tan-i" data-lazy></i></span>
+        <span class="dog d-collie"><i class="d-collie-i" data-lazy></i></span>
+        <span class="dog d-merle"><i class="d-merle-i" data-lazy></i><i class="d-tail" data-lazy></i></span>
+        <span class="dog d-golden"><i class="d-golden-i" data-lazy></i></span>
+        <i class="dog dg-posy"></i>
+      </div>
+      <i class="art strip s3"></i><i class="art strip s4"></i>
+      <i class="art bird t5"></i>
+      <i class="art grass-f1 amb"></i><i class="art grass-f2 amb"></i>
+      <div class="foot">
+        <p class="village" lang="pt-PT" translate="no">Milharado</p>
+        <p class="date" data-i18n="date">10 de julho de 2027</p>
+        <button type="button" class="again" id="again" data-i18n="again">Fechar e ver de novo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheet">
+    <div class="move">
+      <div class="ground g-mid" aria-hidden="true"></div>
+      <div class="ground g-top" aria-hidden="true"></div>
+      <div class="ground g-bot" aria-hidden="true"></div>
+      <div class="pnl mid paper" aria-hidden="true"><div class="mid-sky"><i></i></div><div class="print" id="print"></div><span class="crease"></span><span class="hinge h-top"></span><span class="hinge h-bot"></span></div>
+      <div class="folds">
+        <div class="pnl bt" id="bt" aria-hidden="true">
+          <div class="face face-in paper"><span class="crease"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+          <div class="face face-out"><span class="cast"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+        </div>
+        <div class="pnl tp" aria-hidden="true">
+          <div class="face face-in paper"><span class="gl"><i></i></span><span class="shade"></span></div>
+          <div class="face face-out"><span class="cast"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+        </div>
+        <!-- the seal halves ride copies of the two flaps (same box, origin, transform and timing), above both papers -->
+        <div class="pnl bt ride" aria-hidden="true"><div class="face face-out"><i class="half half-lo"></i></div></div>
+        <div class="pnl tp ride" aria-hidden="true"><div class="face face-out"><i class="half half-up"></i></div></div>
+      </div>
+      <div class="closed-deco" aria-hidden="true"><i class="deco deco-l"></i><i class="deco deco-r"></i></div>
+      <div class="light" id="light" aria-hidden="true"><i></i></div>
+      <button type="button" class="seal" id="seal">
+        <span class="wax" aria-hidden="true"></span>
+        <span class="seal-label" data-i18n="seal">Toca para abrir</span>
+      </button>
+    </div>
+  </div>
+</main>
+
+<script src="app.e16ac5ff.js"></script>
+</body>
+</html>

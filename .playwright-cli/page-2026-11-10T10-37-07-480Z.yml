@@ -1,0 +1,61 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - paragraph [ref=e4]: Stage 1 · the names section · for you to choose
+      - heading "Three ways to bring the names to life" [level=1] [ref=e5]
+      - paragraph [ref=e6]: "The same piece of the invitation three times: the hills above, the fold, Maya e Tomás, the date and place, and the villa below. Each version adds a little drawn, living detail around the names, with bare paper kept around them. Tap Replay to watch one again. Opening line, date and place are still TODO(user)."
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - region [ref=e9]:
+        - heading "1Written by hand" [level=2] [ref=e10]
+        - paragraph [ref=e11]: The names appear letter by letter as if written with a pen. An ink olive sprig draws itself beside them, its leaves take colour, and one leaf drifts down.
+        - generic [ref=e12]:
+          - paragraph [ref=e16]: TODO(user) · frase de abertura
+          - paragraph [ref=e17]:
+            - generic [ref=e18]: Maya e Tomás
+            - generic [aria-hidden] [ref=e19]:
+              - generic [ref=e20]:
+                - generic [ref=e21]: M
+                - generic [ref=e22]: a
+                - generic [ref=e23]: "y"
+                - generic [ref=e24]: a
+              - generic [ref=e25]:
+                - generic [ref=e26]: e
+                - generic [ref=e27]: T
+                - generic [ref=e28]: o
+                - generic [ref=e29]: m
+                - generic [ref=e30]: á
+                - generic [ref=e31]: s
+          - paragraph [ref=e32]: TODO(user) · data
+          - paragraph [ref=e33]: TODO(user) · lugar
+        - button "Replay" [ref=e34] [cursor=pointer]
+      - region [ref=e35]:
+        - heading "2Pigment bloom" [level=2] [ref=e36]
+        - paragraph [ref=e37]: A pale watercolour wash spreads behind the names, line first and then colour, like pigment soaking into paper. Then three petals float down and settle.
+        - generic [ref=e38]:
+          - paragraph [ref=e43]: TODO(user) · frase de abertura
+          - paragraph [ref=e44]:
+            - generic [ref=e45]: Maya
+            - generic [ref=e46]: e Tomás
+          - paragraph [ref=e47]: TODO(user) · data
+          - paragraph [ref=e48]: TODO(user) · lugar
+        - button "Replay" [ref=e49] [cursor=pointer]
+      - region [ref=e50]:
+        - heading "3A branch grows" [level=2] [ref=e51]
+        - paragraph [ref=e52]: The names appear first. Then an ink olive branch grows along the bottom and up the right side to frame them, its leaves take colour, and one flower opens at its tip.
+        - generic [ref=e53]:
+          - paragraph [ref=e57]: TODO(user) · frase de abertura
+          - paragraph [ref=e58]:
+            - generic [ref=e59]: Maya
+            - generic [ref=e60]: e Tomás
+          - paragraph [ref=e61]: TODO(user) · data
+          - paragraph [ref=e62]: TODO(user) · lugar
+        - button "Replay" [ref=e64] [cursor=pointer]
+  - contentinfo [ref=e65]:
+    - paragraph [ref=e66]:
+      - text: "Art: stand-in crops from your deck ("
+      - code [ref=e67]: comps/deck-crops/
+      - text: ). Ink lines draw stroke by stroke; everything else moves by transform and opacity. With reduced motion on, each section shows its finished state. Back to the
+      - link "style tile" [ref=e68] [cursor=pointer]:
+        - /url: style-tile.html
+      - text: .

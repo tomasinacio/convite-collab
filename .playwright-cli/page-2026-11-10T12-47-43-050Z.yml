@@ -1,0 +1,29 @@
+- generic [active] [ref=e1]:
+  - button "Saltar" [ref=e2] [cursor=pointer]
+  - main [ref=e3]:
+    - generic [ref=e5]:
+      - region "Convite" [ref=e6]:
+        - generic [ref=e10]:
+          - paragraph [ref=e11]: TODO(user) · frase de abertura
+          - heading "Maya e Tomás" [level=1] [ref=e13]:
+            - generic [aria-hidden] [ref=e15]:
+              - generic [ref=e16]:
+                - generic [ref=e17]: M
+                - generic [ref=e18]: a
+                - generic [ref=e19]: "y"
+                - generic [ref=e20]: a
+              - generic [ref=e21]:
+                - generic [ref=e22]: e
+                - generic [ref=e23]: T
+                - generic [ref=e24]: o
+                - generic [ref=e25]: m
+                - generic [ref=e26]: á
+                - generic [ref=e27]: s
+          - generic [ref=e31]:
+            - paragraph [ref=e32]: 10 de julho de TODO(user)
+            - paragraph [ref=e43]: Quinta do Grilo
+            - paragraph [ref=e44]: Milharado
+      - img [ref=e54]:
+        - generic [ref=e59]: Quinta
+        - generic [ref=e60]: do Grilo
+      - button "Toca para abrir" [ref=e82] [cursor=pointer]

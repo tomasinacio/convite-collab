@@ -1,0 +1,113 @@
+- main [ref=e2]:
+  - heading "Azulejo lab" [level=1] [ref=e3]
+  - paragraph [ref=e4]: Quinta do Grilo plaque, names in tiles, details. Hand-built, no stand-in font for the plaque.
+  - navigation "Sections" [ref=e5]:
+    - link "Plaque" [ref=e6] [cursor=pointer]:
+      - /url: "#plaque"
+    - link "Names panel" [ref=e7] [cursor=pointer]:
+      - /url: "#names"
+    - link "Details" [ref=e8] [cursor=pointer]:
+      - /url: "#details"
+    - link "References" [ref=e9] [cursor=pointer]:
+      - /url: "#refs"
+  - heading "1 · The plaque, against the photo" [level=2] [ref=e10]
+  - generic [ref=e11]:
+    - group "Zoom" [ref=e12]:
+      - button "1×" [pressed] [ref=e13] [cursor=pointer]
+      - button "2×" [ref=e14] [cursor=pointer]
+      - button "3×" [ref=e15] [cursor=pointer]
+    - group "Mark above the Q" [ref=e16]:
+      - button "Hat" [pressed] [ref=e17] [cursor=pointer]
+      - button "No mark" [ref=e18] [cursor=pointer]
+    - group "Ground" [ref=e19]:
+      - button "Paper" [pressed] [ref=e20] [cursor=pointer]
+      - button "Wall" [ref=e21] [cursor=pointer]
+  - generic [ref=e22]:
+    - img "Photo of the Quinta do Grilo plaque" [ref=e25]
+    - generic [ref=e28]:
+      - generic [ref=e29]: Photo · native pixels (≈620 px wide)
+      - group "Photo source" [ref=e30]:
+        - button "Native" [pressed] [ref=e31] [cursor=pointer]
+        - button "4× upscale" [ref=e32] [cursor=pointer]
+  - generic [ref=e33]:
+    - 'img "Plaque, approach A: Quinta do Grilo" [ref=e36]'
+    - generic [ref=e719]:
+      - generic [ref=e720]: A · vector strokes + SVG glaze filters
+      - generic [ref=e721]: ≈651 KB as SVG
+    - generic [ref=e722]:
+      - generic [ref=e723]: Photo under A
+      - slider "Photo overlay opacity on approach A" [ref=e724]: "0"
+  - generic [ref=e725]:
+    - 'img "Plaque, approach B: Quinta do Grilo" [ref=e728]'
+    - generic [ref=e729]:
+      - generic [ref=e730]: B · canvas brush dabs + pigment grain
+      - generic [ref=e731]: 1083px canvas, 0 KB of image
+  - paragraph [ref=e732]: "Traced from photo pixels: lettering, the hat over the Q, cartouche outline, cut top, 10×4 tile grid. Rebuilt from azulejo convention (too blurred to read): leaf and shell detail, hatching, brush texture."
+  - heading "2 · Names in tiles, quinta below" [level=2] [ref=e733]
+  - generic [ref=e734]:
+    - 'img "Concept: names panel above, quinta plaque below, olive between" [ref=e735]':
+      - generic [ref=e737]: Maya e Tomás
+    - paragraph [ref=e1708]: C1 · Stacked. Names lead; the plaque hangs below at 80% width; one olive branch ties them.
+  - generic [ref=e1709]:
+    - 'img "Concept: names panel to the left, plaque lower right, olive arching between" [ref=e1710]':
+      - generic [ref=e1712]: Maya e Tomás
+    - paragraph [ref=e2704]: C2 · Offset. Names left and larger; plaque lower right; olive grows from the top corner down to it.
+  - generic [ref=e2705]:
+    - 'img "Concept: one tile wall, names above and the quinta cartouche painted below" [ref=e2706]':
+      - generic [ref=e2708]: Maya e Tomás
+    - paragraph [ref=e3136]: "C3 · One wall. A single 6×5 panel: names on top, the quinta cartouche painted smaller underneath; a vine crosses the corner."
+  - generic [ref=e3137]:
+    - 'img "Concept: only the names in tiles, the place in type below" [ref=e3138]':
+      - generic [ref=e3140]: Maya e Tomás
+      - generic [ref=e3410]: QUINTA DO GRILO · MILHARADO
+    - paragraph [ref=e3411]: C4 · Names only. The tiles hold the names; the quinta is set in type underneath. Calmest option.
+  - heading "3 · Details" [level=2] [ref=e3412]
+  - generic [ref=e3413]:
+    - 'img "B3: azulejo lining under the lifting top panel" [ref=e3414]'
+    - paragraph [ref=e3627]: B3 · Lining under the lifting panel. Pattern tiles; four corners meet as one flower, olive leaves in the middle.
+  - generic [ref=e3628]:
+    - 'img "B4: the quinta plaque closing the invitation" [ref=e3629]':
+      - generic [ref=e4304]: MILHARADO
+    - paragraph [ref=e4305]: B4 · Closing plaque. The quinta as the last thing on the page, with the village set beneath.
+  - generic [ref=e4306]:
+    - generic [ref=e4307]:
+      - img "Tile under the wax seal" [ref=e4308]:
+        - generic [ref=e4325]: seal sits here
+      - paragraph [ref=e4326]: Under the seal. A ring of cobalt olive leaves leaves room for the wax.
+    - generic [ref=e4327]:
+      - img "Corner tile where the band turns" [ref=e4328]
+      - paragraph [ref=e4388]: Corner. The band turns on a rosette tile.
+  - generic [ref=e4389]:
+    - img "Azulejo tile band with a running olive vine" [ref=e4390]
+    - paragraph [ref=e4438]: Band. A running olive vine between fillets; joins tile to tile without a seam.
+  - heading "4 · What I studied" [level=2] [ref=e4439]
+  - list [ref=e4440]:
+    - listitem [ref=e4441]:
+      - link "Anjo músico com brasão (public domain, Commons)" [ref=e4442] [cursor=pointer]:
+        - /url: https://commons.wikimedia.org/wiki/File:Anjo_m%C3%BAsico_combras%C3%A3o_e_trombeta.jpg
+      - generic [ref=e4443]: "Brushwork: dark cobalt contour, flat diluted wash, white glaze left as highlight, pooled ends, thin grout, painting shifting across tiles."
+    - listitem [ref=e4444]:
+      - link "Maritime and country scene, 1725–50 (MNAz)" [ref=e4445] [cursor=pointer]:
+        - /url: https://artsandculture.google.com/asset/maritime-and-country-scene/iAFcmH80UVeFZw
+      - generic [ref=e4446]: A cut-out (recortado) top edge that follows the painted frame, as on the quinta plaque.
+    - listitem [ref=e4447]:
+      - link "18th-c. panel, vase with flowers (dealer)" [ref=e4448] [cursor=pointer]:
+        - /url: https://www.proantic.com/en/1555673-18th-century-antique-portuguese-tile-mural-panel-depicting-a-blue-and-white-vase-surrou.html
+      - generic [ref=e4449]: Plants painted in the same blue as the frame; leaves as soft washes with a darker edge on one side only.
+    - listitem [ref=e4450]:
+      - link "Tile with a rocaille ribbon (dealer)" [ref=e4451] [cursor=pointer]:
+        - /url: https://www.proantic.com/en/1735873-18th-century-blue-and-white-portuguese-tile-depicting-a-foot-on-a-rocaille-ribbon.html
+      - generic [ref=e4452]: "How a C-scroll is built: one confident contour, a wash on the shadow side, a volute ending in a pooled dot."
+    - listitem [ref=e4453]:
+      - link "Painel de padrão, c. 1590–1620 (MNAz, photo)" [ref=e4454] [cursor=pointer]:
+        - /url: https://flic.kr/photos/vribeiro/54483281002
+      - generic [ref=e4455]: "Pattern tiles where four corners make one flower: the logic of the B3 lining."
+    - listitem [ref=e4456]:
+      - link "Palácio Fronteira gardens (TCLF)" [ref=e4457] [cursor=pointer]:
+        - /url: https://www.tclf.org/palacio-fronteira-gardens-lisbon-portugal
+      - generic [ref=e4458]: "Blue panels with real green in front: the plant frames the tile, never covers the words."
+    - listitem [ref=e4459]:
+      - link "Portugal's blue and white (designer blog)" [ref=e4460] [cursor=pointer]:
+        - /url: https://suzannelovellinc.com/blog/portugals-blue-white-runneth-over/
+      - generic [ref=e4461]: "Vines and pots against tiled walls: green and cobalt stay in separate layers, the green casts a soft shadow."
+  - paragraph [ref=e4462]: Links are references only. Nothing from them is copied; all drawing on this page is authored here.

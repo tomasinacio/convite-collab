@@ -1,0 +1,144 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - paragraph [ref=e4]: Stage 1 · quinta, azulejo, monogram, date · for you to choose
+      - heading "Quinta do Grilo, in blue and ink" [level=1] [ref=e5]
+  - main [ref=e6]:
+    - region [ref=e7]:
+      - heading "A The plaque" [level=2] [ref=e8]:
+        - generic [ref=e9]: A
+        - text: The plaque
+      - paragraph [ref=e10]: The quinta's own sign, photographed by you, redrawn for your invitation.
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: Your photo(enlarged crop)
+          - img "Your photo of the Quinta do Grilo azulejo sign" [ref=e14]
+        - generic [ref=e15]:
+          - paragraph [ref=e16]: Redrawnvector, sharp at any size
+          - img "Quinta do Grilo" [ref=e18]:
+            - generic [ref=e88]:
+              - generic [ref=e92]: Quinta
+              - generic [ref=e93]: do
+              - generic [ref=e94]: Grilo
+      - generic [ref=e96]:
+        - paragraph [ref=e97]: Drawing itself inblue lines, then the tiles, then the lettering
+        - img "Quinta do Grilo" [ref=e99]:
+          - generic [ref=e169]:
+            - generic [ref=e173]: Q
+            - generic [ref=e174]: u
+            - generic [ref=e175]: i
+            - generic [ref=e176]: "n"
+            - generic [ref=e177]: t
+            - generic [ref=e178]: a
+            - generic [ref=e179]: d
+            - generic [ref=e180]: o
+            - generic [ref=e181]: G
+            - generic [ref=e182]: r
+            - generic [ref=e183]: i
+            - generic [ref=e184]: l
+            - generic [ref=e185]: o
+        - button "Replay" [ref=e186] [cursor=pointer]
+    - region [ref=e187]:
+      - heading "B Azulejo details" [level=2] [ref=e188]:
+        - generic [ref=e189]: B
+        - text: Azulejo details
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - paragraph [ref=e192]: 1A tile band along the fold
+          - generic [ref=e193]:
+            - paragraph [ref=e212]: Maya e Tomás
+            - paragraph [ref=e213]: 10 de julho
+          - button "Replay" [ref=e214] [cursor=pointer]
+        - generic [ref=e215]:
+          - paragraph [ref=e216]: 2Corner tiles on the open sheet
+          - generic [ref=e217]:
+            - paragraph [ref=e246]: Maya e Tomás
+            - paragraph [ref=e247]: 10 de julho
+          - button "Replay" [ref=e248] [cursor=pointer]
+        - generic [ref=e249]:
+          - paragraph [ref=e250]: 3A tile lining, seen as the top lifts
+          - generic [ref=e251]:
+            - paragraph [ref=e260]: Maya e Tomás
+            - paragraph [ref=e261]: 10 de julho
+          - button "Replay" [ref=e262] [cursor=pointer]
+        - generic [ref=e263]:
+          - paragraph [ref=e264]: 4The plaque closes the invitation
+          - generic [ref=e265]:
+            - img "Quinta do Grilo" [ref=e267]:
+              - generic [ref=e337]:
+                - generic [ref=e341]: Q
+                - generic [ref=e342]: u
+                - generic [ref=e343]: i
+                - generic [ref=e344]: "n"
+                - generic [ref=e345]: t
+                - generic [ref=e346]: a
+                - generic [ref=e347]: d
+                - generic [ref=e348]: o
+                - generic [ref=e349]: G
+                - generic [ref=e350]: r
+                - generic [ref=e351]: i
+                - generic [ref=e352]: l
+                - generic [ref=e353]: o
+            - paragraph [ref=e354]: 10 de julho · Milharado
+          - button "Replay" [ref=e355] [cursor=pointer]
+        - generic [ref=e356]:
+          - paragraph [ref=e357]: 5One tile under the seal
+          - paragraph [ref=e366]: Toca para abrir
+          - button "Replay" [ref=e367] [cursor=pointer]
+        - generic [ref=e368]:
+          - paragraph [ref=e369]: 6A tile row where the scene ends
+          - paragraph [ref=e387]: Quinta do Grilo · Milharado
+          - button "Replay" [ref=e388] [cursor=pointer]
+    - region [ref=e389]:
+      - heading "C Monogram" [level=2] [ref=e390]:
+        - generic [ref=e391]: C
+        - text: Monogram
+      - paragraph [ref=e392]: A monogram is your two initials, M and T, drawn together as one small mark.
+      - generic [ref=e393]:
+        - generic [ref=e394]:
+          - paragraph [ref=e395]: 1Ink line
+          - img "M and T monogram" [ref=e397]
+          - button "Replay" [ref=e402] [cursor=pointer]
+        - generic [ref=e403]:
+          - paragraph [ref=e404]: 2Azulejo blue
+          - img "M and T monogram on a tile" [ref=e406]
+          - button "Replay" [ref=e418] [cursor=pointer]
+        - generic [ref=e419]:
+          - paragraph [ref=e420]: 3With the olive sprig
+          - img "M and T monogram with an olive sprig" [ref=e422]
+          - button "Replay" [ref=e438] [cursor=pointer]
+    - region [ref=e439]:
+      - heading "D Date and place" [level=2] [ref=e440]:
+        - generic [ref=e441]: D
+        - text: Date and place
+      - group "Language" [ref=e443]:
+        - button "PT" [pressed] [ref=e444] [cursor=pointer]
+        - button "EN" [ref=e445] [cursor=pointer]
+        - button "ES" [ref=e446] [cursor=pointer]
+      - generic [ref=e447]:
+        - generic [ref=e448]:
+          - paragraph [ref=e449]: 1Classic
+          - generic [ref=e450]:
+            - paragraph [ref=e451]: 10 de julho
+            - paragraph [ref=e453]: Quinta do Grilo, Milharado
+          - button "Replay" [ref=e454] [cursor=pointer]
+        - generic [ref=e455]:
+          - paragraph [ref=e456]: 2Script date
+          - generic [ref=e457]:
+            - paragraph [ref=e458]: 10 de julho
+            - paragraph [ref=e459]: Quinta do Grilo · Milharado
+          - button "Replay" [ref=e460] [cursor=pointer]
+        - generic [ref=e461]:
+          - paragraph [ref=e462]: 3As on the sign
+          - generic [ref=e463]:
+            - paragraph [ref=e464]: 10 de julho
+            - paragraph [ref=e467]: Quinta do Grilo
+            - paragraph [ref=e468]: Milharado
+          - button "Replay" [ref=e469] [cursor=pointer]
+      - paragraph [ref=e470]: "Year, time and monogram: TODO(user)."
+  - contentinfo [ref=e471]:
+    - paragraph [ref=e472]:
+      - text: "Names: Maya e Tomás. Date: 10 July; place: Quinta do Grilo, Milharado. Year and opening line: TODO(user). Back to the"
+      - link "style tile" [ref=e473] [cursor=pointer]:
+        - /url: style-tile.html
+      - text: .

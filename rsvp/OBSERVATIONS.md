@@ -30,7 +30,7 @@ Every observation from the user, the reviewers and the research, so none is lost
 | O20 | M47 | The flat `azulejo` tiles look cheap; keep one or two; add a researched rodapé and a bigger `azulejo` plaque for information in the style of the names plaque | in progress | designer pass, research job d1 |
 | O21 | M48 | Use more researcher agents on what was said, and register every observation | done | `rsvp/kit/swarm-design.jobs`, this file |
 | O22 | M42 | The user asked for Portuguese invitation references for the IBAN gift section | in progress | research job d2 |
-| O23 | M50 | (private backlog note removed from the shared copy) | not started |
+| O23 | M50 | Long term, one of the final things: the invitation of `Pedro Rodrigues` is invaded by `Shreks` (dancing, ugly, and so on) | backlog, not started | `BACKLOG.md` item B1 |
 | O24 | M51 | The user likes three mushroom pictures (grey `inkcap` cluster and spotted cap, red-capped `russula` with gills, red fly agaric pair, tall pink-capped mushroom with dark gills); use that look for the mushrooms | in progress | `references/inspiration/mushrooms/`, designer pass |
 | O25 | M51 | More wild flowers, ideally native to Portugal | in progress | designer pass, `rsvp/comps/ASSET-PROMPTS.md` |
 | O26 | M52 | Use the better Copilot model for image generation | done | Copilot mode set to Think Deeper (the other choices were Auto and Quick Response) |

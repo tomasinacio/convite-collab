@@ -1,0 +1,19 @@
+[     696ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:8765/favicon.ico:0
+[    6224ms] TypeError: Cannot read properties of undefined (reading 'skip')
+    at http://127.0.0.1:8765/comps/style-tile.html:603:86
+    at NodeList.forEach (<anonymous>)
+    at setLang (http://127.0.0.1:8765/comps/style-tile.html:603:46)
+    at HTMLButtonElement.<anonymous> (http://127.0.0.1:8765/comps/style-tile.html:609:45)
+    at eval (eval at <anonymous> (eval at evaluate (:370:30)), <anonymous>:1:54)
+    at eval (eval at evaluate (:370:30), <anonymous>:4:50)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[   11707ms] TypeError: Cannot read properties of undefined (reading 'skip')
+    at http://127.0.0.1:8765/comps/style-tile.html:603:86
+    at NodeList.forEach (<anonymous>)
+    at setLang (http://127.0.0.1:8765/comps/style-tile.html:603:46)
+    at HTMLButtonElement.<anonymous> (http://127.0.0.1:8765/comps/style-tile.html:609:45)
+    at eval (eval at <anonymous> (eval at evaluate (:370:30)), <anonymous>:1:54)
+    at eval (eval at evaluate (:370:30), <anonymous>:4:50)
+    at UtilityScript.evaluate (<anonymous>:372:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)

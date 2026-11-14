@@ -1,0 +1,95 @@
+- main [ref=e2]:
+  - heading "Azulejo lab" [level=1] [ref=e3]
+  - paragraph [ref=e4]: Quinta do Grilo plaque, names in tiles, details. Hand-built, no stand-in font for the plaque.
+  - navigation "Sections" [ref=e5]:
+    - link "Plaque" [ref=e6] [cursor=pointer]:
+      - /url: "#plaque"
+    - link "Names panel" [ref=e7] [cursor=pointer]:
+      - /url: "#names"
+    - link "Details" [ref=e8] [cursor=pointer]:
+      - /url: "#details"
+    - link "References" [ref=e9] [cursor=pointer]:
+      - /url: "#refs"
+  - heading "1 · The plaque, against the photo" [level=2] [ref=e10]
+  - generic [ref=e11]:
+    - group "Zoom" [ref=e12]:
+      - button "1×" [pressed] [ref=e13] [cursor=pointer]
+      - button "2×" [ref=e14] [cursor=pointer]
+      - button "3×" [ref=e15] [cursor=pointer]
+    - group "Mark above the Q" [ref=e16]:
+      - button "Hat" [pressed] [ref=e17] [cursor=pointer]
+      - button "No mark" [ref=e18] [cursor=pointer]
+    - group "Ground" [ref=e19]:
+      - button "Paper" [pressed] [ref=e20] [cursor=pointer]
+      - button "Wall" [ref=e21] [cursor=pointer]
+  - generic [ref=e22]:
+    - img "Photo of the Quinta do Grilo plaque" [ref=e25]
+    - generic [ref=e28]:
+      - generic [ref=e29]: Photo · native pixels (≈620 px wide)
+      - group "Photo source" [ref=e30]:
+        - button "Native" [pressed] [ref=e31] [cursor=pointer]
+        - button "4× upscale" [ref=e32] [cursor=pointer]
+  - generic [ref=e33]:
+    - 'img "Plaque, approach A: Quinta do Grilo" [ref=e36]'
+    - generic [ref=e729]:
+      - generic [ref=e730]: A · vector strokes + SVG glaze filters
+      - generic [ref=e731]: ≈846 KB as SVG
+    - generic [ref=e732]:
+      - generic [ref=e733]: Photo under A
+      - slider "Photo overlay opacity on approach A" [ref=e734]: "0"
+  - generic [ref=e735]:
+    - 'img "Plaque, approach B: Quinta do Grilo" [ref=e738]'
+    - generic [ref=e739]:
+      - generic [ref=e740]: B · canvas brush dabs + pigment grain
+      - generic [ref=e741]: 1083px canvas, 0 KB of image
+  - paragraph [ref=e742]: "Traced from photo pixels: lettering, the hat over the Q, cartouche outline, cut top, 10×4 tile grid. Rebuilt from azulejo convention (too blurred to read): leaf and shell detail, hatching, brush texture."
+  - heading "2 · Names in tiles, quinta below" [level=2] [ref=e743]
+  - generic [ref=e744]:
+    - 'img "Concept: names panel above, quinta plaque below, olive between" [ref=e745]':
+      - generic [ref=e747]: Maya e Tomás
+    - paragraph [ref=e1725]: C1 · Stacked. Names lead; the plaque hangs below at 80% width; one olive branch ties them.
+  - generic [ref=e1726]:
+    - 'img "Concept: names panel to the left, plaque lower right, olive arching between" [ref=e1727]':
+      - generic [ref=e1729]: Maya e Tomás
+    - paragraph [ref=e2719]: C2 · Offset. Names left and larger; plaque lower right; olive grows from the top corner down to it.
+  - generic [ref=e2720]:
+    - 'img "Concept: one tile wall, names above and the quinta cartouche painted below" [ref=e2721]':
+      - generic [ref=e2723]: Maya e Tomás
+    - paragraph [ref=e3160]: "C3 · One wall. A single 6×5 panel: names on top, the quinta cartouche painted smaller underneath; a vine crosses the corner."
+  - generic [ref=e3161]:
+    - 'img "Concept: only the names in tiles, the place in type below" [ref=e3162]':
+      - generic [ref=e3164]: Maya e Tomás
+      - generic [ref=e3434]: QUINTA DO GRILO · MILHARADO
+    - paragraph [ref=e3435]: C4 · Names only. The tiles hold the names; the quinta is set in type underneath. Calmest option.
+  - heading "3 · Details" [level=2] [ref=e3436]
+  - heading "4 · What I studied" [level=2] [ref=e3443]
+  - list [ref=e3444]:
+    - listitem [ref=e3445]:
+      - link "Anjo músico com brasão (public domain, Commons)" [ref=e3446] [cursor=pointer]:
+        - /url: https://commons.wikimedia.org/wiki/File:Anjo_m%C3%BAsico_combras%C3%A3o_e_trombeta.jpg
+      - generic [ref=e3447]: "Brushwork: dark cobalt contour, flat diluted wash, white glaze left as highlight, pooled ends, thin grout, painting shifting across tiles."
+    - listitem [ref=e3448]:
+      - link "Maritime and country scene, 1725–50 (MNAz)" [ref=e3449] [cursor=pointer]:
+        - /url: https://artsandculture.google.com/asset/maritime-and-country-scene/iAFcmH80UVeFZw
+      - generic [ref=e3450]: A cut-out (recortado) top edge that follows the painted frame, as on the quinta plaque.
+    - listitem [ref=e3451]:
+      - link "18th-c. panel, vase with flowers (dealer)" [ref=e3452] [cursor=pointer]:
+        - /url: https://www.proantic.com/en/1555673-18th-century-antique-portuguese-tile-mural-panel-depicting-a-blue-and-white-vase-surrou.html
+      - generic [ref=e3453]: Plants painted in the same blue as the frame; leaves as soft washes with a darker edge on one side only.
+    - listitem [ref=e3454]:
+      - link "Tile with a rocaille ribbon (dealer)" [ref=e3455] [cursor=pointer]:
+        - /url: https://www.proantic.com/en/1735873-18th-century-blue-and-white-portuguese-tile-depicting-a-foot-on-a-rocaille-ribbon.html
+      - generic [ref=e3456]: "How a C-scroll is built: one confident contour, a wash on the shadow side, a volute ending in a pooled dot."
+    - listitem [ref=e3457]:
+      - link "Painel de padrão, c. 1590–1620 (MNAz, photo)" [ref=e3458] [cursor=pointer]:
+        - /url: https://flic.kr/photos/vribeiro/54483281002
+      - generic [ref=e3459]: "Pattern tiles where four corners make one flower: the logic of the B3 lining."
+    - listitem [ref=e3460]:
+      - link "Palácio Fronteira gardens (TCLF)" [ref=e3461] [cursor=pointer]:
+        - /url: https://www.tclf.org/palacio-fronteira-gardens-lisbon-portugal
+      - generic [ref=e3462]: "Blue panels with real green in front: the plant frames the tile, never covers the words."
+    - listitem [ref=e3463]:
+      - link "Portugal's blue and white (designer blog)" [ref=e3464] [cursor=pointer]:
+        - /url: https://suzannelovellinc.com/blog/portugals-blue-white-runneth-over/
+      - generic [ref=e3465]: "Vines and pots against tiled walls: green and cobalt stay in separate layers, the green casts a soft shadow."
+  - paragraph [ref=e3466]: Links are references only. Nothing from them is copied; all drawing on this page is authored here.

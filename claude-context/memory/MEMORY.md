@@ -1,0 +1,4 @@
+- [Wedding: adviser not red team](wedding-adviser-not-redteam.md) — user wants a timing/art design adviser using the skills
+- [Wedding: opening-only scope](wedding-opening-scope.md) — only seal + two-fold opening until fully open; research on free lanes
+- [Wedding year 2027](wedding-year-2027.md) — date is 10 July 2027; opening line still TODO
+- [Wedding RSVP: working style](wedding-rsvp-working-style.md) — picker questions, low cost, no repeated facts, coherent aesthetic, reviewers, register

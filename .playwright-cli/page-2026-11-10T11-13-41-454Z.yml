@@ -1,0 +1,81 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - paragraph [ref=f3e4]: Stage 1 · two folds, top and bottom · for you to choose
+      - heading "Two folds, opening up and down" [level=1] [ref=f3e5]
+  - main [ref=f3e6]:
+    - region [ref=f3e7]:
+      - heading "How it is usually done" [level=2] [ref=f3e8]
+      - list [ref=f3e9]:
+        - listitem [ref=f3e10]:
+          - img [aria-hidden] [ref=f3e11]:
+            - generic [ref=f3e14]: side view
+          - generic [ref=f3e15]: Letter fold
+          - text: Panels nest; the inner one is a little shorter.
+          - link "Printivity" [ref=f3e16] [cursor=pointer]:
+            - /url: https://www.printivity.com/insights/the-difference-between-tri-fold-and-z-fold
+        - listitem [ref=f3e17]:
+          - img [aria-hidden] [ref=f3e18]:
+            - generic [ref=f3e20]: side view
+          - generic [ref=f3e21]: Z-fold
+          - text: Equal panels, folded in a zigzag, open like a fan.
+          - link "4over4" [ref=f3e22] [cursor=pointer]:
+            - /url: https://v2.4over4.com/guide/how-to-fold-a-brochure
+        - listitem [ref=f3e23]:
+          - generic [ref=f3e30]: Gatefold on its side
+          - text: Top and bottom meet in the middle, open up and down.
+          - link "PaperSpecs" [ref=f3e31] [cursor=pointer]:
+            - /url: https://paperspecs.com/?p=185994
+        - listitem [ref=f3e32]:
+          - generic [ref=f3e38]: Vertical pocketfold
+          - text: A pocket holds the cards; closed with a seal, twine or band.
+          - link "Paperlust" [ref=f3e39] [cursor=pointer]:
+            - /url: https://paperlust.co/blog/styling-pocket-wedding-invitations/
+        - listitem [ref=f3e40]:
+          - generic [ref=f3e45]: On screen
+          - text: Panels hinge on rotateX with perspective; keep 3 to 6 panels; fade under reduced motion.
+          - link "Codrops" [ref=f3e46] [cursor=pointer]:
+            - /url: https://tympanus.net/codrops/2020/01/14/3d-folding-technique/
+          - text: ·
+          - link "PFold" [ref=f3e47] [cursor=pointer]:
+            - /url: https://tympanus.net/codrops/2012/10/17/pfold-paper-like-unfolding-effect/
+    - region [ref=f3e48]:
+      - heading "Three concepts" [level=2] [ref=f3e49]
+      - generic [ref=f3e50]:
+        - generic [ref=f3e51]:
+          - paragraph [ref=f3e52]: 1Both halves open at once
+          - paragraph [ref=f3e53]:
+            - text: From the gatefold on its side (
+            - link "PaperSpecs" [ref=f3e54] [cursor=pointer]:
+              - /url: https://paperspecs.com/?p=185994
+            - text: )
+          - generic [ref=f3e58]:
+            - paragraph [ref=f3e59]: Maya e Tomás
+            - paragraph [ref=f3e60]: 10 de julho
+          - button "Replay" [ref=f3e70] [cursor=pointer]
+        - generic [ref=f3e71]:
+          - paragraph [ref=f3e72]: 2Top lifts, then bottom drops
+          - paragraph [ref=f3e73]:
+            - text: From the letter fold (
+            - link "Printivity" [ref=f3e74] [cursor=pointer]:
+              - /url: https://www.printivity.com/insights/the-difference-between-tri-fold-and-z-fold
+            - text: )
+          - generic [ref=f3e78]:
+            - paragraph [ref=f3e79]: Maya e Tomás
+            - paragraph [ref=f3e80]: 10 de julho
+          - button "Replay" [ref=f3e90] [cursor=pointer]
+        - generic [ref=f3e91]:
+          - paragraph [ref=f3e92]: 3An accordion, unfolding down
+          - paragraph [ref=f3e93]:
+            - text: From the Z-fold (
+            - link "4over4" [ref=f3e94] [cursor=pointer]:
+              - /url: https://v2.4over4.com/guide/how-to-fold-a-brochure
+            - text: ) and
+            - link "PFold" [ref=f3e95] [cursor=pointer]:
+              - /url: https://tympanus.net/codrops/2012/10/17/pfold-paper-like-unfolding-effect/
+          - generic [ref=f3e102]:
+            - paragraph [ref=f3e103]: Maya e Tomás
+            - paragraph [ref=f3e104]: 10 de julho
+          - button "Replay" [ref=f3e112] [cursor=pointer]
+  - contentinfo [ref=f3e113]:
+    - paragraph [ref=f3e114]: "Links are references only; nothing was copied. Art: stand-in crops from your deck. Vertical only: no side doors."

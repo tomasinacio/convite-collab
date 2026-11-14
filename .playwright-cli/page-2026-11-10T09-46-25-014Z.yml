@@ -1,0 +1,27 @@
+- generic [active] [ref=f6e1]:
+  - banner [ref=f6e2]:
+    - generic [ref=f6e3]:
+      - paragraph [ref=f6e4]: Stage 1 · paper grain · for you to choose
+      - heading "Two papers for the folded sheet" [level=1] [ref=f6e5]
+      - paragraph [ref=f6e6]: "The closed invitation twice: same size, same seal, same light. Only the paper changes. Below each one is a close-up of its top-left corner at three times the size, so you can see the texture on a phone."
+  - main [ref=f6e7]:
+    - generic [ref=f6e8]:
+      - region [ref=f6e9]:
+        - heading "1Soft, barely there" [level=2] [ref=f6e10]
+        - paragraph [ref=f6e11]: Smooth cotton paper with a fine tooth you sense more than see, and gently torn edges. Quiet and clean; the seal and the drawings do the talking.
+        - generic [ref=f6e12]: Recommended · used in the style tile
+        - img "Closed folded sheet with a wax seal, soft paper" [ref=f6e13]:
+          - generic [ref=f6e23]: Toca para abrir
+        - paragraph [ref=f6e27]: Close-up, three times larger.
+      - region [ref=f6e28]:
+        - heading "2Visible handmade grain" [level=2] [ref=f6e29]
+        - paragraph [ref=f6e30]: "Rougher handmade paper: you can see fibres, slightly uneven colour and more ragged torn edges. More rustic and tactile, a little busier."
+        - img "Closed folded sheet with a wax seal, visible handmade paper" [ref=f6e31]:
+          - generic [ref=f6e41]: Toca para abrir
+        - paragraph [ref=f6e45]: Close-up, three times larger.
+  - contentinfo [ref=f6e46]:
+    - paragraph [ref=f6e47]:
+      - text: Both papers are drawn in SVG (no image, no download). The seal label is the one from DESIGN.md. Back to the
+      - link "style tile" [ref=f6e48] [cursor=pointer]:
+        - /url: style-tile.html
+      - text: .

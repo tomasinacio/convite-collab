@@ -1,0 +1,89 @@
+- generic [active] [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - paragraph [ref=f4e4]: Stage 1 · type concepts · for you to choose
+      - heading "Four ways to write Maya e Tomás" [level=1] [ref=f4e5]
+      - paragraph [ref=f4e6]: "The same card four times: same art, same colours, same layout, same placeholder text. Only the lettering changes, so you can compare fairly. Under each card is a test of the accented letters. Opening line, date and place are still TODO(user)."
+      - generic [ref=f4e7]:
+        - generic [ref=f4e8]: Show every card in
+        - group "Show every card in" [ref=f4e9]:
+          - button "PT" [pressed] [ref=f4e10] [cursor=pointer]
+          - button "EN" [ref=f4e11] [cursor=pointer]
+          - button "ES" [ref=f4e12] [cursor=pointer]
+  - main [ref=f4e13]:
+    - generic [ref=f4e14]:
+      - region [ref=f4e15]:
+        - heading "1Light handwriting" [level=2] [ref=f4e16]
+        - paragraph [ref=f4e17]: Allura with EB Garamond (DESIGN.md option B)
+        - paragraph [ref=f4e18]: "Relaxed, light handwriting with a classic book typeface: warm and countryside, still easy to read."
+        - generic [ref=f4e19]: Recommended
+        - 'img "Cartão aberto: Maya e Tomás" [ref=f4e21]':
+          - generic [ref=f4e29]:
+            - paragraph [ref=f4e30]: TODO(user) · frase de abertura
+            - paragraph [ref=f4e31]:
+              - generic [ref=f4e32]: Maya
+              - generic [ref=f4e33]: e Tomás
+            - paragraph [ref=f4e34]: TODO(user) · data
+            - paragraph [ref=f4e35]: TODO(user) · lugar
+        - generic [ref=f4e50]:
+          - paragraph [ref=f4e51]: Accent test
+          - paragraph [ref=f4e52]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f4e53]: ã ç ñ á é í ó ú ü · Coração · Señorita · Pingüino
+      - region [ref=f4e54]:
+        - heading "2No handwriting" [level=2] [ref=f4e55]
+        - paragraph [ref=f4e56]: EB Garamond italic with EB Garamond (new option)
+        - paragraph [ref=f4e57]: "The names in the italic of the same classic book typeface: the calmest and easiest to read, like a finely printed card."
+        - 'img "Cartão aberto: Maya e Tomás" [ref=f4e59]':
+          - generic [ref=f4e67]:
+            - paragraph [ref=f4e68]: TODO(user) · frase de abertura
+            - paragraph [ref=f4e69]:
+              - generic [ref=f4e70]: Maya
+              - generic [ref=f4e71]: e Tomás
+            - paragraph [ref=f4e72]: TODO(user) · data
+            - paragraph [ref=f4e73]: TODO(user) · lugar
+        - generic [ref=f4e88]:
+          - paragraph [ref=f4e89]: Accent test
+          - paragraph [ref=f4e90]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f4e91]: ã ç ñ á é í ó ú ü · Coração · Señorita · Pingüino
+      - region [ref=f4e92]:
+        - heading "3Bold handwriting" [level=2] [ref=f4e93]
+        - paragraph [ref=f4e94]: Great Vibes with Lora (DESIGN.md option A)
+        - paragraph [ref=f4e95]: "Rounder, heavier handwriting: the clearest script on a small screen, but the one most often seen on wedding templates."
+        - 'img "Cartão aberto: Maya e Tomás" [ref=f4e97]':
+          - generic [ref=f4e105]:
+            - paragraph [ref=f4e106]: TODO(user) · frase de abertura
+            - paragraph [ref=f4e107]:
+              - generic [ref=f4e108]: Maya
+              - generic [ref=f4e109]: e Tomás
+            - paragraph [ref=f4e110]: TODO(user) · data
+            - paragraph [ref=f4e111]: TODO(user) · lugar
+        - generic [ref=f4e126]:
+          - paragraph [ref=f4e127]: Accent test
+          - paragraph [ref=f4e128]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f4e129]: ã ç ñ á é í ó ú ü · Coração · Señorita · Pingüino
+      - region [ref=f4e130]:
+        - heading "4Formal calligraphy" [level=2] [ref=f4e131]
+        - paragraph [ref=f4e132]: Pinyon Script with Cormorant Garamond (DESIGN.md option C)
+        - paragraph [ref=f4e133]: "Formal pen-and-ink calligraphy: the most ceremonial, more city than countryside; its thin strokes get faint on small phones."
+        - 'img "Cartão aberto: Maya e Tomás" [ref=f4e135]':
+          - generic [ref=f4e143]:
+            - paragraph [ref=f4e144]: TODO(user) · frase de abertura
+            - paragraph [ref=f4e145]:
+              - generic [ref=f4e146]: Maya
+              - generic [ref=f4e147]: e Tomás
+            - paragraph [ref=f4e148]: TODO(user) · data
+            - paragraph [ref=f4e149]: TODO(user) · lugar
+        - generic [ref=f4e164]:
+          - paragraph [ref=f4e165]: Accent test
+          - paragraph [ref=f4e166]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f4e167]: ã ç ñ á é í ó ú ü · Coração · Señorita · Pingüino
+  - contentinfo [ref=f4e168]:
+    - paragraph [ref=f4e169]:
+      - text: "Watercolours: USDA Pomological Watercolor Collection, public domain (see"
+      - code [ref=f4e170]: assets/LOG.md
+      - text: "). Fonts: Google Fonts, all with the Portuguese and Spanish accents."
+    - paragraph [ref=f4e171]:
+      - text: "Names: Maya e Tomás (Maya and Tomás, Maya y Tomás). Opening line, date and place: TODO(user). Back to the"
+      - link "style tile" [ref=f4e172] [cursor=pointer]:
+        - /url: style-tile.html
+      - text: .

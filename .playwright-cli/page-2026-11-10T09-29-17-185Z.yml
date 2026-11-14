@@ -1,0 +1,265 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - paragraph [ref=f2e4]: Stage 1 · style tile · DRAFT r2 for your approval
+      - heading "The invitation face" [level=1] [ref=f2e5]
+      - paragraph [ref=f2e6]: "Southern Italy and Portugal in summer: limewashed walls in shade, real olive and lemon watercolours, a handmade envelope with one terracotta seal. It opens vertically: the flap lifts up, then the invitation continues down and the guest scrolls. Everything below is the proposed look, not the final art."
+    - generic [ref=f2e7]:
+      - generic [ref=f2e8]: Invitation language
+      - group "Invitation language" [ref=f2e9]:
+        - button "PT" [pressed] [ref=f2e10] [cursor=pointer]
+        - button "EN" [ref=f2e11] [cursor=pointer]
+        - button "ES" [ref=f2e12] [cursor=pointer]
+  - main [ref=f2e13]:
+    - region [ref=f2e14]:
+      - generic [ref=f2e15]:
+        - 'heading "The face: arrangement, closed envelope, open state" [level=2] [ref=f2e16]'
+        - generic [ref=f2e17]:
+          - 'figure "The arrangement: an ink stem (1.5 px) carrying five real olive leaves cut from one USDA plate, two lemons breaking the card edge. One script voice, for the names only; everything else in the plain serif. Opening line, date and place stay TODO(user)." [ref=f2e18]':
+            - generic [ref=f2e33]:
+              - paragraph [ref=f2e34]: TODO(user) · frase de abertura
+              - paragraph [ref=f2e35]:
+                - generic [ref=f2e36]: Maya
+                - generic [ref=f2e37]: e Tomás
+              - paragraph [ref=f2e38]: TODO(user) · data
+              - paragraph [ref=f2e39]: TODO(user) · lugar
+          - generic [ref=f2e41]:
+            - generic [ref=f2e42]:
+              - generic [ref=f2e43]:
+                - generic [ref=f2e44]: Closed · try it
+                - button "Saltar" [ref=f2e45] [cursor=pointer]
+              - generic [ref=f2e47]:
+                - group "Convite (amostra)" [ref=f2e51]:
+                  - paragraph [ref=f2e59]: Maya e Tomás
+                  - paragraph [ref=f2e60]: TODO(user) · data
+                  - paragraph [ref=f2e61]: TODO(user) · lugar
+                - button "Toca para abrir" [ref=f2e69] [cursor=pointer]
+              - paragraph [ref=f2e77]: "Deckled sand paper, twine seams, a sprig tucked under the wax. The seal is a real button. Tap it: the flap hinges at its top edge and lifts up, then the front drops down and the card reads top to bottom. Nothing moves sideways."
+            - generic [aria-hidden] [ref=f2e78]:
+              - text: Open state
+              - generic [ref=f2e84]:
+                - paragraph [ref=f2e92]: Maya e Tomás
+                - paragraph [ref=f2e93]: TODO(user) · data
+                - paragraph [ref=f2e94]: TODO(user) · lugar
+              - paragraph [ref=f2e102]: "Open: flap up, then scroll down. The flap has swung up on its top hinge, showing the faded azulejo liner, the one surprise seen only once the seal breaks. The front has dropped away and the card stays upright; in the build the card becomes the page and continues downward, so the guest scrolls down to read on. No side opening, nothing slides sideways."
+    - region [ref=f2e103]:
+      - generic [ref=f2e104]:
+        - generic [aria-hidden] [ref=f2e105]: i
+        - heading "What this tile decides" [level=2] [ref=f2e106]
+      - list [ref=f2e107]:
+        - listitem [ref=f2e108]:
+          - generic [ref=f2e109]: Quiet, not contrasty.
+          - text: Paper and sand carry most of the face; colour lives only in small details (the leaves, the lemons, one wax seal). One soft light from the top-left, short warm shadows, no gradients in the art, nothing tilted.
+        - listitem [ref=f2e110]:
+          - generic [ref=f2e111]: Real plates, drawn together with ink.
+          - text: Watercolour comes only from public-domain USDA plates; the 1.5 px ink line is what ties them into one hand. The arrangement runs on a diagonal from the top-left corner.
+        - listitem [ref=f2e112]:
+          - generic [ref=f2e113]: The envelope is material, not decoration.
+          - text: "Handmade sand paper with deckled edges and grain, twine-coloured seams, a sprig under the seal. Terracotta appears in one place only: the wax. Blue appears only inside, on the liner."
+        - listitem [ref=f2e114]:
+          - generic [ref=f2e115]: Vertical opening only.
+          - text: "Flap up, then scroll down: the flap lifts on its top hinge, the front drops away, and the invitation continues downward as the page the guest scrolls. No side opening, no card sliding sideways."
+        - listitem [ref=f2e116]:
+          - generic [ref=f2e117]: Two type voices.
+          - text: "A script for Maya e Tomás only (recommended: Allura, deep olive); EB Garamond for every word a guest must read, at 17 px or more. Your choice below."
+    - region [ref=f2e118]:
+      - generic [ref=f2e119]:
+        - generic [aria-hidden] [ref=f2e120]: ii
+        - heading "Palette" [level=2] [ref=f2e121]
+        - paragraph [ref=f2e122]:
+          - text: Tokens from DESIGN.md, sized in the strip by how much of the face each one covers. Contrast measured with
+          - code [ref=f2e123]: scripts/contrast.py
+          - text: .
+      - paragraph [ref=f2e136]: "Proportions are the point: paper and sand carry the face, terracotta is a single spot."
+      - generic [ref=f2e137]:
+        - list [ref=f2e138]:
+          - listitem [ref=f2e139]:
+            - generic [ref=f2e141]:
+              - code [ref=f2e142]: "--paper"
+              - text: "#F6EFDF"
+              - generic [ref=f2e143]: card and page ground
+            - generic [ref=f2e144]: ground
+          - listitem [ref=f2e145]:
+            - generic [ref=f2e147]:
+              - code [ref=f2e148]: "--sand"
+              - text: "#E6D6B8"
+              - generic [ref=f2e149]: envelope body
+            - generic [ref=f2e150]:
+              - text: ground
+              - generic [ref=f2e151]: ink 9.06:1
+          - listitem [ref=f2e152]:
+            - generic [ref=f2e154]:
+              - code [ref=f2e155]: "--ink"
+              - text: "#3B2F25"
+              - generic [ref=f2e156]: body text, ink lines
+            - generic [ref=f2e157]:
+              - text: 11.32:1
+              - generic [ref=f2e158]: on paper
+          - listitem [ref=f2e159]:
+            - generic [ref=f2e161]:
+              - code [ref=f2e162]: "--olive"
+              - text: "#4F5F2E"
+              - generic [ref=f2e163]: names, headings
+            - generic [ref=f2e164]:
+              - text: 6.09:1
+              - generic [ref=f2e165]: on paper
+          - listitem [ref=f2e166]:
+            - generic [ref=f2e168]:
+              - code [ref=f2e169]: "--terracotta"
+              - text: "#9A4C32"
+              - generic [ref=f2e170]: wax seal only
+            - generic [ref=f2e171]:
+              - text: 5.31:1
+              - generic [ref=f2e172]: on paper
+          - listitem [ref=f2e173]:
+            - generic [ref=f2e175]:
+              - code [ref=f2e176]: "--brown"
+              - text: "#6B4F34"
+              - generic [ref=f2e177]: captions
+            - generic [ref=f2e178]:
+              - text: 6.56:1
+              - generic [ref=f2e179]: on paper
+          - listitem [ref=f2e180]:
+            - generic [ref=f2e182]:
+              - code [ref=f2e183]: "--sage"
+              - text: "#9DAE82"
+              - generic [ref=f2e184]: leaf washes
+            - generic [ref=f2e185]:
+              - text: 2.08:1
+              - generic [ref=f2e186]: decoration only
+          - listitem [ref=f2e187]:
+            - generic [ref=f2e189]:
+              - code [ref=f2e190]: "--twine"
+              - text: "#B8946A"
+              - generic [ref=f2e191]: seams, rules, borders
+            - generic [ref=f2e192]:
+              - text: 2.45:1
+              - generic [ref=f2e193]: decoration only
+          - listitem [ref=f2e194]:
+            - generic [ref=f2e196]:
+              - code [ref=f2e197]: "--clay"
+              - text: "#C98B6B"
+              - generic [ref=f2e198]: blush wash, fruit
+            - generic [ref=f2e199]:
+              - text: 2.48:1
+              - generic [ref=f2e200]: decoration only
+          - listitem [ref=f2e201]:
+            - generic [ref=f2e203]:
+              - code [ref=f2e204]: "--lemon"
+              - text: "#EBDDA0"
+              - generic [ref=f2e205]: wash highlights
+            - generic [ref=f2e206]:
+              - text: 1.19:1
+              - generic [ref=f2e207]: decoration only
+          - listitem [ref=f2e208]:
+            - generic [ref=f2e210]:
+              - code [ref=f2e211]: "--azulejo"
+              - text: "#7F9BA8"
+              - generic [ref=f2e212]: envelope liner only
+            - generic [ref=f2e213]:
+              - text: 2.56:1
+              - generic [ref=f2e214]: decoration only
+          - listitem [ref=f2e215]:
+            - generic [ref=f2e217]:
+              - code [ref=f2e218]: "--shade"
+              - text: "#E3E2D6"
+              - generic [ref=f2e219]: "derived ground: paper 84% + azulejo 16%"
+            - generic [ref=f2e220]:
+              - text: ground
+              - generic [ref=f2e221]: ink 9.95:1
+        - generic [ref=f2e222]:
+          - heading "Text pairs in use" [level=3] [ref=f2e223]
+          - list [ref=f2e224]:
+            - listitem [ref=f2e225]:
+              - generic [ref=f2e226]: 11.32:1
+              - text: ink on paper
+            - listitem [ref=f2e227]:
+              - generic [ref=f2e228]: 9.06:1
+              - text: ink on sand · seal label
+            - listitem [ref=f2e229]:
+              - generic [ref=f2e230]: 9.95:1
+              - text: ink on shade · captions
+            - listitem [ref=f2e231]:
+              - generic [ref=f2e232]: 6.09:1
+              - text: olive on paper · names
+            - listitem [ref=f2e233]:
+              - generic [ref=f2e234]: 6.56:1
+              - text: brown on paper
+            - listitem [ref=f2e235]:
+              - generic [ref=f2e236]: 5.25:1
+              - text: brown on sand
+            - listitem [ref=f2e237]:
+              - generic [ref=f2e238]: 5.31:1
+              - text: terracotta on paper
+            - listitem [ref=f2e239]:
+              - generic [ref=f2e240]: 5.77:1
+              - text: brown on shade · labels
+            - listitem [ref=f2e241]:
+              - generic [ref=f2e242]: 6.09:1
+              - text: paper on olive
+            - listitem [ref=f2e243]:
+              - generic [ref=f2e244]: 5.31:1
+              - text: paper on terracotta
+          - paragraph [ref=f2e245]: DESIGN.md lists brown at 5.25:1 "on paper"; that figure is brown on sand. On paper it is 6.56:1.
+          - paragraph [ref=f2e246]: "Never: terracotta words on the envelope (sand), 4.25:1. That is why the seal label is ink."
+    - region [ref=f2e248]:
+      - generic [ref=f2e249]:
+        - generic [aria-hidden] [ref=f2e250]: iii
+        - 'heading "Type: three script candidates" [level=2] [ref=f2e251]'
+        - paragraph [ref=f2e252]: "Script for the names only, in deep olive: each candidate sets Maya e Tomás, so you can see its á. Every word a guest must read is in the serif beside it. Choice: TODO(user)."
+      - generic [ref=f2e253]:
+        - paragraph [ref=f2e254]:
+          - generic [ref=f2e255]: A · Great Vibes
+          - text: with Lora
+        - generic [ref=f2e256]:
+          - paragraph [ref=f2e257]: Maya e Tomás
+          - paragraph [ref=f2e258]: ã ç ñ á é í ó ú ü
+        - generic [ref=f2e259]:
+          - paragraph [ref=f2e260]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f2e261]: Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola
+          - paragraph [ref=f2e262]: Heaviest stroke, the easiest to read small. Also the most common script on template sites; Lora feels a little modern-bookish here.
+      - generic [ref=f2e263]:
+        - paragraph [ref=f2e264]:
+          - generic [ref=f2e265]: B · Allura
+          - text: with EB Garamond
+          - generic [ref=f2e266]: Recommended
+        - generic [ref=f2e267]:
+          - paragraph [ref=f2e268]: Maya e Tomás
+          - paragraph [ref=f2e269]: ã ç ñ á é í ó ú ü
+        - generic [ref=f2e270]:
+          - paragraph [ref=f2e271]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f2e272]: Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola
+          - paragraph [ref=f2e273]: "A relaxed, light hand: reads as written, not engraved, which suits the countryside. Joins stay open at 34 px on a phone. EB Garamond has the cleanest accents of the three serifs."
+      - generic [ref=f2e274]:
+        - paragraph [ref=f2e275]:
+          - generic [ref=f2e276]: C · Pinyon Script
+          - text: with Cormorant Garamond
+        - generic [ref=f2e277]:
+          - paragraph [ref=f2e278]: Maya e Tomás
+          - paragraph [ref=f2e279]: ã ç ñ á é í ó ú ü
+        - generic [ref=f2e280]:
+          - paragraph [ref=f2e281]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f2e282]: Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola
+          - paragraph [ref=f2e283]: Copperplate formality, more city than campestre. Hairlines thin out below 40 px on low-density Android screens; Cormorant needs 19 px at weight 500 to stay readable.
+    - region [ref=f2e284]:
+      - generic [ref=f2e285]:
+        - generic [aria-hidden] [ref=f2e286]: iv
+        - heading "Ink line" [level=2] [ref=f2e287]
+        - paragraph [ref=f2e288]:
+          - text: "One weight everywhere: 1.5 CSS px, ink #3B2F25, round caps and joins. Drawn with"
+          - code [ref=f2e289]: stroke-dashoffset
+          - text: ", once; under reduced motion it is simply there."
+      - generic [ref=f2e290]:
+        - list [ref=f2e291]:
+          - listitem [ref=f2e292]: 0.75 px · too faint at arm's length in sunlight
+          - listitem [ref=f2e295]: 1.5 px · the line · reads as a fine nib on a phone
+          - listitem [ref=f2e298]: 3 px · reads as a felt marker, fights the watercolour
+        - 'figure "Outline only: stem first, then each leaf as petiole, edge, midrib, then two olives. About 3.5 s; in the build the washes bloom under it." [ref=f2e301]'
+  - contentinfo [ref=f2e331]:
+    - paragraph [ref=f2e332]:
+      - text: "Watercolours: USDA Pomological Watercolor Collection, public domain, cut out with"
+      - code [ref=f2e333]: extract_asset.py
+      - text: (see
+      - code [ref=f2e334]: assets/LOG.md
+      - text: ). Shown unfiltered, only rotated, scaled, cropped from the leaf plate and shadowed.
+    - paragraph [ref=f2e335]: "Names: Maya e Tomás (Maya and Tomás, Maya y Tomás). Date, place and opening line: TODO(user)."

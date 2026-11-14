@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="pt-PT" data-art="bindweed cloud-long cloud-round lavender meadow-strip olive-leaf olive-twig-trailing swallow-below">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6EFDF">
+<title>Maya e Tomás</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Invitation face, round 2 (v10): a closed folded sheet tied with twine and a wax seal opens in two folds and becomes one painted page: a warm cloudy sky, an olive branch, swallows, the names on a cobalt azulejo panel in tall grass, the Sintra and Mafra land, and the Quinta do Grilo gate wall.">
+<!-- Share preview. og:image must be an absolute URL (your domain plus /og-image.jpg) for WhatsApp, iMessage and the rest:
+     rebuild with --base-url (the full https address) once the domain is known. TODO(user): the preview line (the description) is the dev note from the prototype. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maya e Tomás">
+<meta property="og:description" content="Invitation face, round 2 (v10): a closed folded sheet tied with twine and a wax seal opens in two folds and becomes one painted page: a warm cloudy sky, an olive branch, swallows, the names on a cobalt azulejo panel in tall grass, the Sintra and Mafra land, and the Quinta do Grilo gate wall.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maya e Tomás">
+<meta name="twitter:description" content="Invitation face, round 2 (v10): a closed folded sheet tied with twine and a wax seal opens in two folds and becomes one painted page: a warm cloudy sky, an olive branch, swallows, the names on a cobalt azulejo panel in tall grass, the Sintra and Mafra land, and the Quinta do Grilo gate wall.">
+<meta name="twitter:image" content="og-image.jpg">
+<script>(function(h){ h.classList.add('js');
+  /* lighter path: Save-Data or reduced motion get the smaller cut-outs (slots, :root.warm.lite) */
+  if ((navigator.connection && navigator.connection.saveData) || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) h.classList.add('lite');
+  /* motion tier (v13 perf pass): a weaker phone (4 cores or fewer, 4 GB or less, Save-Data) gets html.lite-motion: the same
+     page, without the costliest ambient motion and with a tighter meadow wave. A frame-time probe while the letter waits
+     can also set it (see the script). ?motion=full or ?motion=lite force a tier (for testing). */
+  var mq = /[?&]motion=(full|lite)/.exec(location.search);
+  /* v15 (critic 3): full by default. WebKit reports 4 cores on every iPhone, so the core count is not used; lite only with
+     Save-Data, under 4 GB of memory (Chrome), or when the frame-time probe below measures a slow phone while the letter waits */
+  if (mq ? mq[1] === 'lite' : ((navigator.deviceMemory && navigator.deviceMemory < 4) || (navigator.connection && navigator.connection.saveData))) h.classList.add('lite-motion');
+})(document.documentElement);</script>
+<link rel="preload" href="fonts/ebgaramond-italic-latin.d145e5e4.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/00-img-paper.2a9ce16b.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-top.2ba09968.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-bottom.0f2f2700.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-emboss.724f3105.webp" as="image" type="image/webp">
+<link rel="preload" href="img/closed-deco.334f138a.webp" as="image" type="image/webp">
+<link rel="preload" href="img/seal-whole.4eec02fb.webp" as="image" type="image/webp">
+<link rel="preload" href="img/linen.29953ec4.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="app.2c4c68aa.css">
+<link rel="stylesheet" href="info.3a8957a3.css">
+<link rel="stylesheet" href="rsvp.8ac764a5.css">
+<noscript><style>
+.vh{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;display:flex;flex-direction:column;align-items:center;
+  font-family:var(--serif);font-weight:600;color:var(--az-ink);font-size:11.2cqw;line-height:1.05;letter-spacing:.04em;text-transform:uppercase}
+.vh span:nth-child(2){font-style:italic;font-weight:400;font-size:.8em;text-transform:none}
+.skip,.seal,.sheet,.again{display:none}
+</style></noscript>
+</head>
+<body>
+
+<button type="button" class="skip" id="skip" data-i18n="skip">Saltar</button>
+
+<main class="page" id="page">
+  <!-- the world: one painted page under the sheet; it becomes visible as the sheet opens -->
+  <div class="world" id="world">
+    <div class="stage">
+      <i class="art sky amb"><i class="in amb"></i></i>
+      <div class="sky-b-wrap amb"><i class="art sky-b amb"></i></div>
+      <i class="art c1 go-art amb"><i class="in amb"></i></i>
+      <i class="art mist"></i>
+      <i class="art land"></i>
+      <i class="art olive-b go-art amb"><i class="in amb"></i></i>
+      <i class="art olive go-art amb"><i class="in amb"></i></i>
+      <i class="art leaf-fall amb" id="leaf"><i class="leaf-sway"><i></i></i></i>
+      <i class="art bird t1 go-art"></i><i class="art bird t2 go-art"></i>
+      <i class="art citrus go-art amb"><i class="in amb"></i></i>
+      <i class="art c2 go-art amb"><i class="in amb"></i></i>
+      <i class="art root-fade bgrass-l go-art amb"></i><i class="art bgrass-r go-art amb"><i class="in root-fade amb"></i></i>
+
+      <section class="names-block" id="names" tabindex="-1" aria-label="Convite">
+        <p class="kicker" data-i18n="kicker" data-fake>Com alegria, convidamos-vos para o nosso casamento</p>
+        <div class="panel">
+          <i class="glint" aria-hidden="true"><i></i></i>
+          <h1 class="names"><span class="vh"><span translate="no">Maya</span> <span data-i18n="join">e</span> <span translate="no">Tomás</span></span><span class="pen" aria-hidden="true"></span></h1>
+        </div>
+        <div class="when">
+          <p class="date" data-i18n="date">10 de julho de 2027</p>
+          <p class="place" lang="pt-PT" translate="no">Quinta do Grilo</p>
+          <p class="village" lang="pt-PT" translate="no">Milharado</p>
+        </div>
+      </section>
+      <i class="art grass-l go-art amb"><i class="in root-fade amb"></i></i>
+      <i class="art bloom go-art amb"></i>
+      <i class="art grass-r go-art amb"><i class="in root-fade amb"></i></i>
+      <i class="art bloom-l go-art amb"></i>
+      <i class="art strip s1 go-art"></i><i class="art strip s2 go-art"></i>
+      <i class="art bind b1 go-art"></i>
+
+      <i class="art root-fade grass-l2 amb"></i><i class="art root-fade grass-r2 amb"></i>
+      <i class="art soar s3 amb"><i class="in amb"></i></i><i class="art soar s4 amb"><i class="in amb"></i></i>
+
+      <i class="art vine lazy amb" data-lazy></i>
+      <i class="art euca amb"><i class="in euca-i amb" data-lazy></i></i>
+    </div>
+  </div>
+
+  <!-- v16: world 1 is absolute; this spacer gives it its height in the flow, then the information, then world 2 -->
+  <div class="w-gap" aria-hidden="true"></div>
+<div class="info-wrap" id="info-wrap">
+<!-- The information (v16, rsvp/comps/DESIGNER-NOTES.md): between world 1 (names, land, vine) and world 2 (the gate), before the
+     RSVP. Each fact appears once on the page: the date, venue and town are in the face; the countdown shows numbers only;
+     the schedule shows times and moments only. data-fake marks invented wording (rsvp/comps/REPLACE-ME.md).
+     Layout: centred for the plaque, the countdown and the gifts; composed on the left for the schedule, the dress code and
+     the questions. Props marked PENDING in info.css stay hidden until their paintings arrive. -->
+<div class="info" id="info">
+
+  <!-- 1. where: the barra-framed plaque in the grapes area, under the vine and the eucalyptus that hang from world 1 -->
+  <section class="isec i-where" id="i-where" aria-labelledby="i-where-h">
+    <h2 class="ikick" id="i-where-h" data-it="whereH" data-fake>Como chegar</h2>
+    <div class="plaque">
+      <address lang="pt-PT" translate="no"><span>R. Vale de São Gião</span><span>2665-382</span></address>
+    </div>
+    <div class="iacts">
+      <a class="ibtn solid" href="https://maps.app.goo.gl/7gWufo1vMswyDxfbA?g_st=ac" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span data-it="maps" data-fake>Abrir no mapa</span></a>
+      <a class="ibtn" id="i-cal" href="#i-where" download="maya-e-tomas.ics" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+        <span data-it="cal" data-fake>Juntar ao calendário</span></a>
+    </div>
+  </section>
+
+  <div class="idiv" aria-hidden="true"></div>
+
+  <!-- 2. countdown: numbers only (needs JavaScript; hidden without it) -->
+  <section class="isec i-count" id="i-count" aria-labelledby="i-count-h">
+    <i class="lv fly lv-bee" aria-hidden="true"><i></i></i>
+    <i class="lv hang lv-mush-a" aria-hidden="true"><i></i></i>
+    <header class="ihead">
+      <p class="ikick" data-it="countKick" data-fake>Contagem decrescente</p>
+      <h2 class="ih" id="i-count-h" data-it="countH" data-fake>Faltam</h2>
+    </header>
+    <div class="iclock" id="i-clock">
+      <p><span class="n" id="i-d">–</span><span class="u" id="i-du" data-it="days" data-fake>dias</span></p>
+      <p><span class="n" id="i-h">–</span><span class="u" id="i-hu" data-it="hours" data-fake>horas</span></p>
+      <p><span class="n" id="i-m">–</span><span class="u" id="i-mu" data-it="minutes" data-fake>minutos</span></p>
+    </div>
+  </section>
+
+  <div class="idiv" aria-hidden="true"></div>
+
+  <!-- 3. schedule: the user's times (2026-11-12, Maya will review); the wording of each moment is a draft. A left-aligned
+       timeline: a twine stem, an ink drawing for each moment (decorative) -->
+  <section class="isec i-day left" id="i-day" aria-labelledby="i-day-h">
+    <i class="lv from-r sway lv-wheat" aria-hidden="true"><i></i></i>
+    <i class="lv from-r sway lv-lav" aria-hidden="true"><i></i></i>
+    <header class="ihead">
+      <p class="ikick" data-it="dayKick" data-fake>O dia</p>
+      <h2 class="ih" id="i-day-h" data-it="dayH" data-fake>Programa</h2>
+    </header>
+    <ol class="sched">
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V11.5a7 7 0 0 1 14 0V21M3 21h18M9 21v-8M12 21v-9.5M15 21v-8"/></svg></span>
+        <span class="tx"><span class="t">15:00</span><span class="m" data-it="s1" data-fake>Chegada dos convidados</span></span></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9.5" cy="13.5" r="5"/><circle cx="14.5" cy="13.5" r="5"/><path d="M8.2 6.8l1.3-2 1.3 2"/></svg></span>
+        <span class="tx"><span class="t">16:00</span><span class="m" data-it="s2" data-fake>Cerimónia</span></span></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.5 3.5h9c0 4.6-1.9 7.5-4.5 7.5S7.5 8.1 7.5 3.5zM12 11v8.5M8.5 20.5h7M8 7h8"/></svg></span>
+        <span class="tx"><span class="t">17:30</span><span class="m" data-it="s3" data-fake>Cocktail</span></span></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5v6.5a2 2 0 0 0 4 0V3.5M9 3.5v17M16.5 20.5V3.5c-2 1.2-3 3.6-3 6.5 0 1.8.9 2.8 3 2.8"/></svg></span>
+        <span class="tx"><span class="t">20:00</span><span class="m" data-it="s4" data-fake>Jantar</span></span></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 20.5h15M6 20.5v-5.5h12v5.5M8 15v-4h8v4M12 11V7.5M11 5.5c0-1 1-2 1-2s1 1 1 2a1 1 0 0 1-2 0z"/></svg></span>
+        <span class="tx"><span class="t">23:00</span><span class="m" data-it="s5" data-fake>Corte do bolo</span></span></li>
+      <li><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 17.5V5.5l9-2v12M9 9l9-2"/><ellipse cx="6.8" cy="17.6" rx="2.3" ry="1.8"/><ellipse cx="15.8" cy="15.6" rx="2.3" ry="1.8"/></svg></span>
+        <span class="tx"><span class="t" data-it="s6t" data-fake>Depois</span><span class="m" data-it="s6" data-fake>Festa</span></span></li>
+    </ol>
+  </section>
+
+  <!-- the first of the two places the small painted tile appears (the other is the RSVP card) -->
+  <div class="idiv tiled" aria-hidden="true"><i></i></div>
+
+  <!-- 4. dress code: formal, no palette (the user, 2026-11-12). The orange branch (the face's own art) as a vignette on the
+       left, the text on the right -->
+  <section class="isec i-dress left" id="i-dress" aria-labelledby="i-dress-h">
+    <i class="lv fall lv-leaf" aria-hidden="true"><i><i></i></i></i>
+    <!-- the head spans the column (in the narrow text column it broke into two lines); the vignette and the note sit under it -->
+    <header class="ihead">
+      <p class="ikick" data-it="dressKick" data-fake>O que vestir</p>
+      <h2 class="ih" id="i-dress-h" data-it="dressH" data-fake>Traje formal</h2>
+    </header>
+    <div class="dress">
+      <i class="vig" aria-hidden="true"></i>
+      <p class="itext" data-it="dressText" data-fake>Escolham o vosso melhor, com sapatos para dançar: a festa vai noite fora.</p>
+    </div>
+  </section>
+
+  <div class="idiv" aria-hidden="true"></div>
+
+  <!-- 5. gifts: the couple's own IBAN, shown on purpose (the user, Message 42); no account holder (the user, 2026-11-12) -->
+  <section class="isec i-gift" id="i-gift" aria-labelledby="i-gift-h">
+    <i class="lv from-l sway lv-branch-l" aria-hidden="true"><i></i></i>
+    <i class="lv hang lv-mush-c" aria-hidden="true"><i></i></i>
+    <header class="ihead">
+      <p class="ikick" data-it="giftKick" data-fake>Se quiserem</p>
+      <h2 class="ih" id="i-gift-h" data-it="giftH" data-fake>Prendas</h2>
+    </header>
+    <p class="itext" data-it="giftText" data-fake>A vossa presença é o melhor presente. Se quiserem deixar-nos uma prenda, uma ajuda para começarmos a nossa vida a dois será recebida com muito carinho.</p>
+    <div class="icard iban">
+      <p class="ilabel">IBAN</p>
+      <p class="num" id="i-iban" translate="no">PT50 0023 0000 4582 0590 0509 4</p>
+      <button type="button" class="ibtn" id="i-copy" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="12" rx="1.5"/><path d="M15.5 8.5V5a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 5v10A1.5 1.5 0 0 0 6 16.5h2.5"/></svg>
+        <span id="i-copyl" data-it="copy" data-fake>Copiar IBAN</span></button>
+      <p class="done" id="i-copied" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div class="idiv" aria-hidden="true"></div>
+
+  <!-- 6. questions: native details/summary (keyboard and screen readers for free) -->
+  <section class="isec i-faq left" id="i-faq" aria-labelledby="i-faq-h">
+    <i class="lv hang sway lv-peppers" aria-hidden="true"><i></i></i>
+    <header class="ihead">
+      <p class="ikick" data-it="faqKick" data-fake>Perguntas frequentes</p>
+      <h2 class="ih" id="i-faq-h" data-it="faqH" data-fake>Antes do dia</h2>
+    </header>
+    <div class="faq">
+      <details><summary><span data-it="q1" data-fake>Há estacionamento?</span></summary><p data-it="a1" data-fake>Sim, há estacionamento na quinta.</p></details>
+      <details><summary><span data-it="q2" data-fake>Podemos levar acompanhantes ou crianças?</span></summary><p data-it="a2" data-fake>O vosso link pessoal já diz quantos lugares guardámos para vós. Se tiverem dúvidas, falem connosco.</p></details>
+      <details><summary><span data-it="q3" data-fake>Como vai estar o tempo?</span></summary><p data-it="a3" data-fake>Os dias costumam ser quentes e as noites frescas. Tragam um casaco leve para depois do jantar.</p></details>
+    </div>
+  </section>
+
+</div>
+</div>
+
+  <div class="world2" id="world2">
+    <div class="stage">
+      <div class="gate-box" aria-hidden="true">
+        <i class="art gate lazy" data-lazy></i>
+        <p class="plaque-text" lang="pt-PT" translate="no"><span class="q">Quinta</span><span class="g"><span class="do">do</span> Grilo</span></p>
+      </div>
+      <i class="art root-fade grass-p amb"></i>
+      <i class="art bind b2"></i>
+      <!-- the user's four dogs; decorative here. TODO(user): a line of copy if they should be announced -->
+      <div class="dogs" id="dogs" aria-hidden="true">
+        <i class="dog dg-tuft root-fade t-l"></i><i class="dog dg-tuft root-fade t-r"></i>
+        <span class="dog d-tan"><i class="d-tan-i" data-lazy></i></span>
+        <span class="dog d-collie"><i class="d-collie-i" data-lazy></i></span>
+        <span class="dog d-merle"><i class="d-merle-i" data-lazy></i><i class="d-tail" data-lazy></i></span>
+        <span class="dog d-golden"><i class="d-golden-i" data-lazy></i></span>
+        <i class="dog dg-posy"></i>
+      </div>
+      <i class="art strip s3"></i><i class="art strip s4"></i>
+      <i class="art bird t5"></i>
+      <i class="art root-fade grass-f1 amb"></i><i class="art root-fade grass-f2 amb"></i>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheet">
+    <div class="move">
+      <div class="ground g-mid" aria-hidden="true"></div>
+      <div class="ground g-top" aria-hidden="true"></div>
+      <div class="ground g-bot" aria-hidden="true"></div>
+      <div class="pnl mid paper" aria-hidden="true"><div class="mid-sky"><i></i></div><div class="print" id="print"></div><span class="crease"></span><span class="hinge h-top"></span><span class="hinge h-bot"></span></div>
+      <div class="folds">
+        <div class="pnl bt" id="bt" aria-hidden="true">
+          <div class="face face-in paper"><span class="crease"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+          <div class="face face-out"><span class="cast"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+        </div>
+        <div class="pnl tp" aria-hidden="true">
+          <div class="face face-in paper"><span class="gl"><i></i></span><span class="shade"></span></div>
+          <div class="face face-out"><span class="cast"></span><span class="gl"><i></i></span><span class="shade"></span></div>
+        </div>
+        <!-- the seal halves ride copies of the two flaps (same box, origin, transform and timing), above both papers -->
+        <div class="pnl bt ride" aria-hidden="true"><div class="face face-out"><i class="half half-lo"></i></div></div>
+        <div class="pnl tp ride" aria-hidden="true"><div class="face face-out"><i class="half half-up"></i></div></div>
+      </div>
+      <div class="closed-deco" aria-hidden="true"><i class="deco deco-l"></i><i class="deco deco-r"></i></div>
+      <div class="light" id="light" aria-hidden="true"><i></i></div>
+      <button type="button" class="seal" id="seal">
+        <span class="wax" aria-hidden="true"></span>
+        <span class="seal-label" data-i18n="seal">Toca para abrir</span>
+      </button>
+    </div>
+  </div>
+</main>
+
+<div class="rsvp-wrap" id="rsvp-wrap">
+<section class="rsvp" id="rsvp" data-state="nojs" aria-labelledby="rsvp-h">
+  <i class="prop lv from-l twig" aria-hidden="true"></i>
+
+  <header class="head">
+    <p class="rkick" data-i18n="kicker" data-fake>Confirmação</p>
+    <h2 class="h-script" id="rsvp-h" data-i18n="title" data-fake>Contamos convosco?</h2>
+    <span class="rule" aria-hidden="true"></span>
+    <!-- the lavender stands on the rule's line at the right edge, beside the head, clear of every field and button (2026-11-14) -->
+    <i class="prop lv from-r lav" aria-hidden="true"></i>
+    <p class="sub" data-i18n="sub" data-fake>Respondam até 30 de abril</p>
+  </header>
+  <p class="lead" data-i18n="lead" data-fake>Guardámos um lugar para cada um de vós. Digam-nos quem vem; podem mudar a resposta até lá.</p>
+
+  <!-- a twine hairline, as between the information sections (the rodapé is only the page foot) -->
+  <div class="idiv" aria-hidden="true"><i class="prop lv from-l leaf" aria-hidden="true"></i></div>
+
+  <div class="rpanel" id="panel">
+    <!-- loading -->
+    <div class="blk st-loading" aria-busy="true">
+      <p data-i18n="loading" data-fake>A abrir o vosso convite…</p>
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    </div>
+
+    <!-- form (also: sending, error, network, conflict) -->
+    <form class="blk st-form" id="form" novalidate>
+      <div class="notice n-error" id="errsum" tabindex="-1">
+        <h3 id="errsum-h" data-i18n="errTitle" data-fake>Falta pouco. Corrijam isto:</h3>
+        <ul id="errlist"></ul>
+      </div>
+      <div class="notice n-net" id="netbox" tabindex="-1">
+        <h3 data-i18n="netTitle" data-fake>Não foi possível enviar.</h3>
+        <p data-i18n="netText" data-fake>A ligação falhou. Não se perdeu nada: as vossas respostas continuam aqui.</p>
+        <div class="row"><button type="button" class="btn solid" id="retry" data-i18n="retry" data-fake>Tentar de novo</button></div>
+      </div>
+      <div class="notice n-conf" id="confbox" tabindex="-1">
+        <h3 data-i18n="confTitle" data-fake>As respostas mudaram noutro telemóvel.</h3>
+        <p data-i18n="confText" data-fake>Esta é a resposta guardada agora. Querem ficar com ela ou enviar a vossa?</p>
+        <ul class="saved-list" id="conflist"></ul>
+        <div class="row">
+          <button type="button" class="btn" id="usesaved" data-i18n="useSaved" data-fake>Ficar com a guardada</button>
+          <button type="button" class="btn solid" id="sendmine" data-i18n="sendMine" data-fake>Enviar a minha</button>
+        </div>
+      </div>
+
+      <p class="for"><span data-i18n="formFor" data-fake>Convite para</span> <strong id="family" translate="no"></strong></p>
+      <div id="people"></div>
+
+      <div class="field" id="f-msg">
+        <label for="msg"><span data-i18n="msg" data-fake>Uma mensagem para nós (opcional)</span> <span class="count" id="msgcount" aria-hidden="true">0/600</span></label>
+        <textarea id="msg" name="message" maxlength="600" rows="4" data-i18n-ph="msgPh" data-fake placeholder="Escrevam-nos umas linhas…"></textarea>
+      </div>
+      <!-- honeypot: hidden from people and assistive tech; a bot that fills it is ignored server-side -->
+      <div class="hp" aria-hidden="true"><label for="hp-field">Leave this empty</label><input type="text" id="hp-field" name="hp-field" tabindex="-1" autocomplete="off"></div>
+
+      <button type="submit" class="send" id="send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+        <span class="spin" aria-hidden="true"></span>
+        <span id="sendlbl" data-i18n="send" data-fake>Enviar resposta</span>
+      </button>
+    </form>
+
+    <!-- saved -->
+    <div class="blk st-saved" id="savedbox" tabindex="-1">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 data-i18n="savedTitle" data-fake>Obrigado!</h3>
+        <p id="savedtext" data-i18n="savedText" data-fake>Recebemos a vossa resposta.</p>
+        <ul class="saved-list" id="savedlist"></ul>
+        <div class="row"><button type="button" class="btn" id="edit" data-i18n="edit" data-fake>Alterar respostas</button></div>
+      </div>
+    </div>
+
+    <!-- closed -->
+    <div class="blk st-closed">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif" data-i18n="closedTitle" data-fake>As respostas já fecharam.</h3>
+        <p data-i18n="closedText" data-fake>Já não aceitamos respostas. Para mudar alguma coisa, falem connosco no WhatsApp.</p>
+        <ul class="saved-list" id="closedlist"></ul>
+        <div class="row"><a class="btn solid" href="#whatsapp-TODO" data-i18n="wa" data-fake>WhatsApp</a></div>
+      </div>
+    </div>
+
+    <!-- no or invalid link, and too many attempts -->
+    <div class="blk st-nolink">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif nl" data-i18n="nolinkTitle" data-fake>Não encontrámos o vosso convite.</h3>
+        <p class="nl" data-i18n="nolinkText" data-fake>Abram o link pessoal que vos enviámos no WhatsApp, ou escrevam o código que vem no fim dele.</p>
+        <h3 class="serif tm" data-i18n="tmTitle" data-fake>Demasiadas tentativas.</h3>
+        <p class="tm" data-i18n="tmText" data-fake>Por segurança, esperem uma hora e tentem de novo, ou abram o link do WhatsApp.</p>
+        <form class="code-row" id="codeform" novalidate>
+          <label class="lbl" for="code" data-i18n="code" data-fake>O vosso código</label>
+          <input type="text" id="code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="codehint" placeholder="XXXXXXXXXXXXXXXX">
+          <p class="err" id="codeerr" style="display:block"></p>
+          <p class="note" id="codehint" data-i18n="codeHint" data-fake>16 letras e números, sem espaços.</p>
+          <button type="submit" class="btn solid" data-i18n="open" data-fake>Abrir</button>
+        </form>
+        <div class="row"><a class="btn solid" href="#whatsapp-TODO" data-i18n="wa" data-fake>WhatsApp</a></div>
+      </div>
+    </div>
+
+    <!-- the invitation could not be loaded (network or server) -->
+    <div class="blk st-loaderr">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif" data-i18n="netTitle" data-fake>Não foi possível enviar.</h3>
+        <p data-i18n="loadErrText" data-fake>Não conseguimos abrir o vosso convite agora. Tentem de novo daqui a pouco.</p>
+        <div class="row"><button type="button" class="btn solid" id="reload" data-i18n="retry" data-fake>Tentar de novo</button></div>
+      </div>
+    </div>
+
+    <!-- JavaScript off: the same block the real <noscript> shows -->
+    <div class="blk st-nojs" id="nojs">
+      <div class="card">
+        <i class="tile" aria-hidden="true"></i>
+        <h3 class="serif" data-i18n="nojsTitle" data-fake>Para responder aqui, esta página precisa de JavaScript.</h3>
+        <p data-i18n="nojsText" data-fake>Respondam-nos pelo WhatsApp, ou abram o link noutro navegador.</p>
+        <div class="row"><a class="btn solid" href="#whatsapp-TODO" data-i18n="wa" data-fake>WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="rvh" id="live" role="status" aria-live="polite"></p>
+</section>
+<!-- the page foot: July wildflowers standing on the same painted rodapé, the wall's baseboard (art slots: info.css) -->
+<div class="foot-flora" aria-hidden="true"><i class="lv from-l sway lv-fennel"><i></i></i><i class="lv from-r sway lv-flav"><i></i></i></div>
+<div class="rodape foot" aria-hidden="true"></div>
+</div>
+
+
+<script src="app.9015fa46.js"></script>
+<script src="info.2af505bf.js"></script>
+<script src="rsvp.db680763.js"></script>
+</body>
+</html>

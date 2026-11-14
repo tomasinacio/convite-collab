@@ -1,0 +1,59 @@
+{
+ "buttons": [
+  "BUTTON inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none hover:bg-accent hover:text-accent-foreground h-12 px-8 py-3 t5-menu-btn Open menu",
+  "A yp-nl yp-nl--t5m Yes Planner\nNEW",
+  "A  Invitations",
+  "A  Save the Dates",
+  "BUTTON t5-nav-caret Classic · 3D Pop-Up Save the Dates",
+  "A  Plans",
+  "A  How it works",
+  "BUTTON t5-nav-more-btn MoreNew",
+  "A t5-logo t5-header-brand THE DIGITAL YES",
+  "A yp-nl yp-nl--t5d Yes PlannerNew",
+  "A inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 py-3 t5-btn Buy now",
+  "BUTTON inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none hover:bg-accent hover:text-accent-foreground h-12 px-8 py-3 t5-lnk t5-lng EN",
+  "A t5-lnk Portal",
+  "BUTTON t5-mnav-region-btn English · EUR",
+  "A yp-nl yp-nl--menu Yes PlannerNew",
+  "A  Invitations",
+  "A  Save the Dates",
+  "A  3D Pop-Up Save the DatesNew",
+  "A  Plans",
+  "A  How it works",
+  "A  BirthdaysNew",
+  "A  Baby showerNew",
+  "A  Bridesmaid proposalNew",
+  "A  Blog",
+  "A  Client portal",
+  "A inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 py-3 t5-btn Buy now",
+  "A  Collection",
+  "BUTTON inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none hover:bg-accent hover:text-accent-foreground h-12 px-8 py-3 t5-heart2 Save Embroidered Garden",
+  "BUTTON inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none hover:bg-accent hover:text-accent-foreground h-12 px-8 py-3 t5-gallery-arrow t5-gallery-prev Previous screen",
+  "BUTTON inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-sans font-medium tracking-widest uppercase transition-[transform,opacity,background-color,border-color,color] duration-150 ease-apple-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-xl active:scale-[0.98] motion-reduce:transform-none hover:bg-accent hover:text-accent-foreground h-12 px-8 py-3 t5-gallery-arrow t5-gallery-next Next screen"
+ ],
+ "canvas": 0,
+ "videos": [
+  "https://www.thedigitalyes.com/__l5e/assets-v1/f289352a-6d44-445c-ad20-34780163ed07/irene-subtitled.mp4",
+  "https://www.thedigitalyes.com/__l5e/assets-v1/f3a118fd-45cd-410c-8be2-df78210b1756/ugc-9.mp4",
+  "https://www.thedigitalyes.com/__l5e/assets-v1/8c21ae57-482d-44c8-9dad-75b944578291/ugc-10.mp4",
+  "https://www.thedigitalyes.com/__l5e/assets-v1/2af5b86f-6523-4ebd-aafe-d2afbea0641b/ugc-3.mp4",
+  "https://www.thedigitalyes.com/__l5e/assets-v1/3bc758b1-bc89-47c5-8655-1eb8c9c0df3d/ugc-5.mp4",
+  "https://www.thedigitalyes.com/__l5e/assets-v1/73ef31b0-5f61-4a04-b954-b080eaf4b99e/ugc-2.mp4",
+  "https://www.thedigitalyes.com/__l5e/assets-v1/6b0c6674-996e-45c7-90ff-8c2cfdcaefb2/ugc-6.mp4"
+ ],
+ "svg": 39,
+ "audio": 0,
+ "lottie": false,
+ "bodyText": "Yes Planner\nNEW\nTHE DIGITAL YES\nEN\nCollection\n/\nEmbroidered Garden\nEmbroidered Garden\n\nEmbroidered florals and a Provençal villa.\n\nFROM\n€175\n\nInteractive demo\n\nThe Digital Yes, The Digital Yes, The Digital Yes, The Digital Yes, The Digital Yes, The Digital Yes\nThe Digital Yes, The Digital Yes, The Digital Yes, The Digital Yes, The Digital Yes, The Digital Yes\nThe Digital Yes, The Digital Yes, The ",
+ "scripts": [
+  "https://www.thedigitalyes.com/assets/index-z_o8VqF3.js",
+  "https://www.thedigitalyes.com/__l5e/events.270c78a44fc53e7b.js"
+ ],
+ "styles": [
+  "https://www.thedigitalyes.com/assets/index-DwAWLr4T.css",
+  "https://www.thedigitalyes.com/assets/home4-pages-DNKyUplE.css",
+  "https://www.thedigitalyes.com/assets/home4-BB7BPZ21.css",
+  "https://www.thedigitalyes.com/assets/V5ProductPreview-3vY6Kmpf.css",
+  "https://www.thedigitalyes.com/assets/home4-product-ce0_BTYA.css"
+ ]
+}

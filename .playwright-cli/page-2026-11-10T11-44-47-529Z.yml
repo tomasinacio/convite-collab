@@ -1,0 +1,159 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - paragraph [ref=e4]: Stage 1 · style tile · DRAFT r7
+      - heading "The invitation face" [level=1] [ref=e5]
+      - paragraph [ref=e6]: Your deck, made vertical. Tap the seal.
+    - generic [ref=e7]:
+      - generic [ref=e8]: Invitation language
+      - group "Invitation language" [ref=e9]:
+        - button "PT" [pressed] [ref=e10] [cursor=pointer]
+        - button "EN" [ref=e11] [cursor=pointer]
+        - button "ES" [ref=e12] [cursor=pointer]
+  - main [ref=e13]:
+    - region [ref=e14]:
+      - generic [ref=e15]:
+        - 'heading "The face: the closed sheet, then the open sheet" [level=2] [ref=e16]'
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - generic [ref=e19]:
+              - generic [ref=e20]: Closed · try it
+              - button "Saltar" [ref=e21] [cursor=pointer]
+            - generic [ref=e23]:
+              - paragraph [ref=e24]: Seal and twine fall away · the top lifts · the paper grows down · line, then colour.
+              - generic [ref=e25]:
+                - group "Convite (amostra)" [ref=e26]:
+                  - generic [ref=e36]:
+                    - paragraph [ref=e37]: TODO(user) · frase de abertura
+                    - paragraph [ref=e38]:
+                      - generic [ref=e39]: Maya e Tomás
+                      - generic [aria-hidden] [ref=e40]:
+                        - generic [ref=e41]:
+                          - generic [ref=e42]: M
+                          - generic [ref=e43]: a
+                          - generic [ref=e44]: "y"
+                          - generic [ref=e45]: a
+                        - generic [ref=e46]:
+                          - generic [ref=e47]: e
+                          - generic [ref=e48]: T
+                          - generic [ref=e49]: o
+                          - generic [ref=e50]: m
+                          - generic [ref=e51]: á
+                          - generic [ref=e52]: s
+                    - paragraph [ref=e73]: 10 de julho
+                    - paragraph [ref=e74]: Quinta do Grilo, Milharado
+                - button "Toca para abrir" [ref=e95] [cursor=pointer]
+          - figure [aria-hidden] [ref=e100]:
+            - text: Open · scroll past it
+            - generic [ref=e114]:
+              - paragraph [ref=e115]: TODO(user) · frase de abertura
+              - paragraph [ref=e116]:
+                - generic [ref=e117]: Maya e Tomás
+                - generic [aria-hidden] [ref=e118]:
+                  - generic [ref=e119]:
+                    - generic [ref=e120]: M
+                    - generic [ref=e121]: a
+                    - generic [ref=e122]: "y"
+                    - generic [ref=e123]: a
+                  - generic [ref=e124]:
+                    - generic [ref=e125]: e
+                    - generic [ref=e126]: T
+                    - generic [ref=e127]: o
+                    - generic [ref=e128]: m
+                    - generic [ref=e129]: á
+                    - generic [ref=e130]: s
+              - paragraph [ref=e151]: 10 de julho
+              - paragraph [ref=e152]: Quinta do Grilo, Milharado
+            - generic [ref=e169]: Sky · hills · names · villa · olive · flowers. Near planes move faster as you scroll.
+    - region [ref=e170]:
+      - generic [ref=e171]:
+        - generic [aria-hidden] [ref=e172]: i
+        - heading "From your deck" [level=2] [ref=e173]
+      - generic [ref=e174]:
+        - paragraph [ref=e175]: Folded sheet, seal, twine 6 · 8 · 14
+        - paragraph [ref=e176]: 60 / 25 / 15 colour 3 · 4
+        - paragraph [ref=e177]: Pastoral scene 16 · 20 · 33
+        - paragraph [ref=e178]: Line, then colour 13 · 30
+        - paragraph [ref=e179]: Slow clouds, one bird 27 · 28
+        - paragraph [ref=e180]: Paper theatre → stacked down 14 · 31
+        - paragraph [ref=e181]: Belly band → twine 7
+        - paragraph [ref=e182]: "Gatefold: opens sideways 9"
+        - paragraph [ref=e183]: Swaying loops 29
+      - paragraph [ref=e184]: adopted made vertical left out
+    - region [ref=e188]:
+      - generic [ref=e189]:
+        - generic [aria-hidden] [ref=e190]: ii
+        - heading "Decided" [level=2] [ref=e191]
+      - list [ref=e192]:
+        - listitem [ref=e193]: Up, then down
+        - listitem [ref=e198]: Paint in the paper
+        - listitem [ref=e203]:
+          - img [aria-hidden] [ref=e204]:
+            - generic [ref=e205]: M·T
+          - text: Names lead
+        - listitem [ref=e206]: 60 / 25 / 15
+        - listitem [ref=e211]: Soft paper
+        - listitem [ref=e214]:
+          - img [aria-hidden] [ref=e215]:
+            - generic [ref=e216]: A
+            - generic [ref=e217]: a
+          - text: Allura + Garamond
+    - region [ref=e218]:
+      - generic [ref=e219]:
+        - generic [aria-hidden] [ref=e220]: iii
+        - heading "Palette" [level=2] [ref=e221]
+      - paragraph [ref=e233]: 60 · 25 · 15
+      - list [ref=e234]:
+        - listitem [ref=e235]: paper
+        - listitem [ref=e236]: ink
+        - listitem [ref=e237]: olive
+        - listitem [ref=e238]: brown
+        - listitem [ref=e239]: terracotta
+        - listitem [ref=e240]: sage
+        - listitem [ref=e241]: twine
+        - listitem [ref=e242]: blush
+        - listitem [ref=e243]: sky
+        - listitem [ref=e244]: blue-grey
+      - list [ref=e245]:
+        - listitem [ref=e246]:
+          - generic [ref=e247]: 11.32:1
+          - text: ink
+        - listitem [ref=e248]:
+          - generic [ref=e249]: 6.09:1
+          - text: olive
+        - listitem [ref=e250]:
+          - generic [ref=e251]: 6.56:1
+          - text: brown
+        - listitem [ref=e252]:
+          - generic [ref=e253]: 9.95:1
+          - text: on mist
+    - region [ref=e254]:
+      - generic [ref=e255]:
+        - generic [aria-hidden] [ref=e256]: iv
+        - heading "Type" [level=2] [ref=e257]
+      - generic [ref=e258]:
+        - paragraph [ref=e259]:
+          - generic [ref=e260]: Allura
+          - text: names
+          - generic [ref=e261]: EB Garamond
+          - text: everything else
+        - generic [ref=e262]:
+          - paragraph [ref=e263]: Maya e Tomás
+          - paragraph [ref=e264]: ã ç ñ á é í ó ú ü
+        - generic [ref=e265]:
+          - paragraph [ref=e266]: 10 de julho
+          - paragraph [ref=e267]: Quinta do Grilo, Milharado
+          - paragraph [ref=e268]: ã ç ñ á é í ó ú ü · Coração · Señorita · Pingüino
+    - region [ref=e269]:
+      - generic [ref=e270]:
+        - generic [aria-hidden] [ref=e271]: v
+        - heading "Ink line" [level=2] [ref=e272]
+      - generic [ref=e273]:
+        - list [ref=e274]:
+          - listitem [ref=e275]: 0.75 px · too faint
+          - listitem [ref=e278]: 1.5 px · the line
+          - listitem [ref=e281]: 3 px · too heavy
+        - figure "Embossed when closed, drawn when open." [ref=e284]
+  - contentinfo [ref=e295]:
+    - paragraph [ref=e296]: "Art: stand-in crops from your deck, for this tile only. Real art: stage 3."
+    - paragraph [ref=e297]: "Year, monogram, opening line: TODO(user)."

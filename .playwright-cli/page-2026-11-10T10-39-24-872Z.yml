@@ -1,0 +1,243 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - paragraph [ref=f3e4]: Stage 1 · style tile · DRAFT r5, fuller, like your deck
+      - heading "The invitation face" [level=1] [ref=f3e5]
+      - paragraph [ref=f3e6]: "Your deck, made vertical. A tall sheet of handmade paper, folded once and closed with a wax seal and twine. Tap the seal: the top lifts up and the paper grows downward. A full pastoral scene in line and wash then fills it from top to bottom: sky and swallows, hills, the names with a drawn olive sprig, a villa by the water, an olive tree, flowers. The guest scrolls down to read on. The art is cut from your own deck as a stand-in. Real artwork comes in stage 3, once you approve the look."
+    - generic [ref=f3e7]:
+      - generic [ref=f3e8]: Paper
+      - group "Paper" [ref=f3e9]:
+        - button "Soft" [pressed] [ref=f3e10] [cursor=pointer]
+        - button "Handmade" [ref=f3e11] [cursor=pointer]
+      - generic [ref=f3e12]: Invitation language
+      - group "Invitation language" [ref=f3e13]:
+        - button "PT" [pressed] [ref=f3e14] [cursor=pointer]
+        - button "EN" [ref=f3e15] [cursor=pointer]
+        - button "ES" [ref=f3e16] [cursor=pointer]
+  - main [ref=f3e17]:
+    - region [ref=f3e18]:
+      - generic [ref=f3e19]:
+        - 'heading "The face: the closed sheet, then the open sheet" [level=2] [ref=f3e20]'
+        - generic [ref=f3e21]:
+          - generic [ref=f3e22]:
+            - generic [ref=f3e23]:
+              - generic [ref=f3e24]: Closed · try it
+              - button "Saltar" [ref=f3e25] [cursor=pointer]
+            - generic [ref=f3e27]:
+              - paragraph [ref=f3e28]: "Closed, as in your deck: a quiet folded sheet with a blind-embossed sprig, a wax seal, twine and one olive sprig. The seal is a real button. Tap it: the seal and twine fall away, the top swings up on the fold, the paper grows downward, then the scene draws in, line first and colour second. Nothing moves sideways."
+              - generic [ref=f3e29]:
+                - group "Convite (amostra)" [ref=f3e30]:
+                  - generic [ref=f3e40]:
+                    - paragraph [ref=f3e41]: TODO(user) · frase de abertura
+                    - paragraph [ref=f3e42]:
+                      - generic [ref=f3e43]: Maya
+                      - generic [ref=f3e44]: e Tomás
+                    - paragraph [ref=f3e54]: TODO(user) · data
+                    - paragraph [ref=f3e55]: TODO(user) · lugar
+                - button "Toca para abrir" [ref=f3e76] [cursor=pointer]
+          - figure [aria-hidden] [ref=f3e81]:
+            - text: Open · scroll past it
+            - generic [ref=f3e95]:
+              - paragraph [ref=f3e96]: TODO(user) · frase de abertura
+              - paragraph [ref=f3e97]:
+                - generic [ref=f3e98]: Maya
+                - generic [ref=f3e99]: e Tomás
+              - paragraph [ref=f3e109]: TODO(user) · data
+              - paragraph [ref=f3e110]: TODO(user) · lugar
+            - generic [ref=f3e127]: "Open: the top part has swung up on its fold (the fine line is the crease) and the paper has grown downward. Your deck's paper theatre is here as planes stacked top to bottom: sky with clouds, an olive branch and swallows, distant hills, then the names with an ink sprig drawn under them, the villa by the water, the olive tree, and terracotta, blush and lavender flowers in front. As you scroll, the near planes move a little faster than the far ones. That is the only depth, and nothing slides sideways. The villa is a generic stand-in; the real place is TODO(user), and so are the opening line and the date."
+    - region [ref=f3e128]:
+      - generic [ref=f3e129]:
+        - generic [aria-hidden] [ref=f3e130]: i
+        - heading "From your deck" [level=2] [ref=f3e131]
+        - paragraph [ref=f3e132]: "Your deck sets the look. SPEC.md still sets the opening: up and down only."
+      - generic [ref=f3e133]:
+        - generic [ref=f3e134]:
+          - heading "Adopted" [level=3] [ref=f3e135]
+          - list [ref=f3e136]:
+            - listitem [ref=f3e137]: Quiet folded exterior with one botanical accent; blind-embossed sprig; wax seal with an olive-sprig emboss; twine. Slides 6, 8, 14, 35
+            - listitem [ref=f3e138]: "Palette and its 60 / 25 / 15 split: paper and mist; sage, olive and warm brown; small sparks of terracotta, blush and blue-grey. Slides 3, 4"
+            - listitem [ref=f3e139]: "Airy pastoral scene: sky and clouds, hills, a villa with cypress by the water, olive tree, flowers. Slides 16, 20, 33, 35"
+            - listitem [ref=f3e140]: "Line and wash; pigment bloom: line first, colour second, then stillness. Slides 13, 21, 30"
+            - listitem [ref=f3e141]: "Fuller, as you asked: three flower families (terracotta, blush, lavender and blue), the olive tree, villa and cypress, a few small birds. Slides 14, 17, 33, 34"
+            - listitem [ref=f3e142]: Clouds that move slower than anyone notices; one bird crosses once after the opening. Slides 27, 28
+        - generic [ref=f3e143]:
+          - heading "Made vertical" [level=3] [ref=f3e144]
+          - list [ref=f3e145]:
+            - listitem [ref=f3e146]: "Layered paper theatre: the same planes, stacked top to bottom on the opened sheet. Depth comes only from scroll parallax. Slides 14, 31"
+            - listitem [ref=f3e147]: "Belly band: replaced by twine that falls away with the seal, because a band sliding off moves sideways. Slide 7"
+            - listitem [ref=f3e148]: "Gatefold: not used, because its doors open sideways. The single fold opens upward instead. Slide 9"
+        - generic [ref=f3e149]:
+          - heading "Held back, for calm" [level=3] [ref=f3e150]
+          - list [ref=f3e151]:
+            - listitem [ref=f3e152]: "Swaying branches and repeating loops: nothing loops past 5 seconds. Slide 29"
+            - listitem [ref=f3e153]: Butterflies and the hare. Slide 18
+            - listitem [ref=f3e154]: "The guardrail is the deck's own 60 / 25 / 15 rule: the names keep bare paper around them, and the colour sits in the flowers, birds and sky."
+    - region [ref=f3e155]:
+      - generic [ref=f3e156]:
+        - generic [aria-hidden] [ref=f3e157]: ii
+        - heading "What this tile decides" [level=2] [ref=f3e158]
+      - list [ref=f3e159]:
+        - listitem [ref=f3e160]:
+          - generic [ref=f3e161]: Vertical opening only.
+          - text: "Your pick: one tall sheet with one fold across it. The top part is folded down and sealed; on a tap it lifts up on the fold while the paper grows downward. The guest then scrolls down."
+        - listitem [ref=f3e162]:
+          - generic [ref=f3e163]: Paint in the paper.
+          - text: "The art has no drop shadows; it is multiplied into the paper like pigment. Only the sheet and the wax cast soft shadows. One drawing language: line and wash. The few pure ink lines draw stroke by stroke."
+        - listitem [ref=f3e164]:
+          - generic [ref=f3e165]: Names lead.
+          - text: Maya e Tomás sit on bare paper just below the fold, in olive script. The scene surrounds them and never sits behind words.
+        - listitem [ref=f3e166]:
+          - generic [ref=f3e167]: Full, but not contrasty.
+          - text: The paper still carries most of the face. Terracotta is in the wax and the flowers; blue-grey is in the clouds and swallows.
+        - listitem [ref=f3e168]:
+          - generic [ref=f3e169]: Paper grain, your pick.
+          - text: "Soft by default: a fine cotton tooth and gently torn edges. Tap “Handmade” at the top of the page to see visible handmade grain on everything."
+        - listitem [ref=f3e170]:
+          - generic [ref=f3e171]: Type, your pick.
+          - text: Allura for the names only; EB Garamond for every word a guest must read, at 16 px or more.
+    - region [ref=f3e172]:
+      - generic [ref=f3e173]:
+        - generic [aria-hidden] [ref=f3e174]: iii
+        - heading "Palette" [level=2] [ref=f3e175]
+        - paragraph [ref=f3e176]: DESIGN.md tokens plus the deck's three accents (blush, sky, blue-grey), sized in the strip by the deck's 60 / 25 / 15 rule. Words only ever use ink, olive and brown on paper.
+      - paragraph [ref=f3e188]: 60 paper and mist, 25 sage, olive and warm brown, 15 the small sparks.
+      - generic [ref=f3e189]:
+        - list [ref=f3e190]:
+          - listitem [ref=f3e191]:
+            - generic [ref=f3e193]:
+              - code [ref=f3e194]: "--paper"
+              - text: "#F6EFDF"
+              - generic [ref=f3e195]: the sheet, both sides; page ground
+            - generic [ref=f3e196]: ground
+          - listitem [ref=f3e197]:
+            - generic [ref=f3e199]:
+              - code [ref=f3e200]: "--ink"
+              - text: "#3B2F25"
+              - generic [ref=f3e201]: body text, ink lines
+            - generic [ref=f3e202]:
+              - text: 11.32:1
+              - generic [ref=f3e203]: on paper
+          - listitem [ref=f3e204]:
+            - generic [ref=f3e206]:
+              - code [ref=f3e207]: "--olive"
+              - text: "#4F5F2E"
+              - generic [ref=f3e208]: names, links
+            - generic [ref=f3e209]:
+              - text: 6.09:1
+              - generic [ref=f3e210]: on paper
+          - listitem [ref=f3e211]:
+            - generic [ref=f3e213]:
+              - code [ref=f3e214]: "--brown"
+              - text: "#6B4F34"
+              - generic [ref=f3e215]: opening line, captions
+            - generic [ref=f3e216]:
+              - text: 6.56:1
+              - generic [ref=f3e217]: on paper
+          - listitem [ref=f3e218]:
+            - generic [ref=f3e220]:
+              - code [ref=f3e221]: "--terracotta"
+              - text: "#9A4C32"
+              - generic [ref=f3e222]: wax seal; flowers in the art
+            - generic [ref=f3e223]:
+              - text: 5.31:1
+              - generic [ref=f3e224]: on paper
+          - listitem [ref=f3e225]:
+            - generic [ref=f3e227]:
+              - code [ref=f3e228]: "--sage"
+              - text: "#9DAE82"
+              - generic [ref=f3e229]: leaves, hills
+            - generic [ref=f3e230]: decoration
+          - listitem [ref=f3e231]:
+            - generic [ref=f3e233]:
+              - code [ref=f3e234]: "--twine"
+              - text: "#B8946A"
+              - generic [ref=f3e235]: twine, the crease, rules
+            - generic [ref=f3e236]: decoration
+          - listitem [ref=f3e237]:
+            - generic [ref=f3e239]:
+              - code [ref=f3e240]: "--blush"
+              - text: "#E7C3B2"
+              - generic [ref=f3e241]: "new, from the deck: flowers, cloud light"
+            - generic [ref=f3e242]: decoration
+          - listitem [ref=f3e243]:
+            - generic [ref=f3e245]:
+              - code [ref=f3e246]: "--sky"
+              - text: "#C6D4DB"
+              - generic [ref=f3e247]: "new, from the deck: sky, water"
+            - generic [ref=f3e248]: decoration
+          - listitem [ref=f3e249]:
+            - generic [ref=f3e251]:
+              - code [ref=f3e252]: "--bluegrey"
+              - text: "#7F9BA8"
+              - generic [ref=f3e253]: "the deck's blue-grey (was azulejo): clouds, the bird"
+            - generic [ref=f3e254]: decoration
+          - listitem [ref=f3e255]:
+            - generic [ref=f3e257]:
+              - code [ref=f3e258]: "--shade"
+              - text: "#E3E2D6"
+              - generic [ref=f3e259]: "mist: the ground around the sheet"
+            - generic [ref=f3e260]:
+              - text: ground
+              - generic [ref=f3e261]: ink 9.95:1
+        - generic [ref=f3e262]:
+          - heading "Text pairs in use" [level=3] [ref=f3e263]
+          - list [ref=f3e264]:
+            - listitem [ref=f3e265]:
+              - generic [ref=f3e266]: 11.32:1
+              - text: ink on paper · dates, seal label
+            - listitem [ref=f3e267]:
+              - generic [ref=f3e268]: 6.09:1
+              - text: olive on paper · names
+            - listitem [ref=f3e269]:
+              - generic [ref=f3e270]: 6.56:1
+              - text: brown on paper · opening line
+            - listitem [ref=f3e271]:
+              - generic [ref=f3e272]: 9.95:1
+              - text: ink on shade · captions
+            - listitem [ref=f3e273]:
+              - generic [ref=f3e274]: 5.77:1
+              - text: brown on shade · labels
+            - listitem [ref=f3e275]:
+              - generic [ref=f3e276]: 9.06:1
+              - text: ink on sand · selected
+    - region [ref=f3e277]:
+      - generic [ref=f3e278]:
+        - generic [aria-hidden] [ref=f3e279]: iv
+        - 'heading "Type: Allura with EB Garamond" [level=2] [ref=f3e280]'
+        - paragraph [ref=f3e281]: Your pick. Allura for the names only, in deep olive; EB Garamond for everything a guest must read.
+      - generic [ref=f3e282]:
+        - paragraph [ref=f3e283]:
+          - generic [ref=f3e284]: Allura
+          - text: names only
+          - generic [ref=f3e285]: Your pick
+        - generic [ref=f3e286]:
+          - paragraph [ref=f3e287]: Maya e Tomás
+          - paragraph [ref=f3e288]: ã ç ñ á é í ó ú ü
+        - generic [ref=f3e289]:
+          - paragraph [ref=f3e290]: ã ç ñ á é í ó ú ü
+          - paragraph [ref=f3e291]: Coração · Ação · Señorita · Pingüino · Lâmpada · Pérola
+          - paragraph [ref=f3e292]:
+            - text: A relaxed, light hand that reads as written, not engraved. The other candidates stay in
+            - link "type-concepts.html" [ref=f3e293] [cursor=pointer]:
+              - /url: type-concepts.html
+            - text: for the record.
+    - region [ref=f3e294]:
+      - generic [ref=f3e295]:
+        - generic [aria-hidden] [ref=f3e296]: v
+        - heading "Ink line" [level=2] [ref=f3e297]
+        - paragraph [ref=f3e298]:
+          - text: "One weight: 1.5 CSS px, ink #3B2F25, round caps. The few ink lines draw stroke by stroke with"
+          - code [ref=f3e299]: stroke-dashoffset
+          - text: ", as you allowed; everything else moves by transform and opacity only."
+      - generic [ref=f3e300]:
+        - list [ref=f3e301]:
+          - listitem [ref=f3e302]: 0.75 px · too faint at arm's length in sunlight
+          - listitem [ref=f3e305]: 1.5 px · the line · reads as a fine nib on a phone
+          - listitem [ref=f3e308]: 3 px · reads as a felt marker, fights the watercolour
+        - figure "The same sprig is blind-embossed on the closed sheet and drawn under the names when it opens." [ref=f3e311]
+  - contentinfo [ref=f3e322]:
+    - paragraph [ref=f3e323]:
+      - text: "Art: stand-in crops from your deck (slides 16 and 20), with the cream ground removed so they sit in the paper, edges feathered and an ink-only version derived for the line pass. These are for this tile only ("
+      - code [ref=f3e324]: comps/deck-crops/
+      - text: ), not for the build. Real assets come in stage 3, after you approve. The paper is drawn in SVG.
+    - paragraph [ref=f3e325]: "Names: Maya e Tomás (Maya and Tomás, Maya y Tomás). Date, place, venue and opening line: TODO(user)."

@@ -295,7 +295,9 @@ Source of truth for `spec-guardian`. Quoted verbatim (typos kept), in the order 
 
 ### Message 50
 
-> (A private note about a friend's invitation was removed from this shared copy. It is a long-term backlog idea, not a design requirement.)
+> And another long term olsn. Csn be one of the finsl things.
+>
+> Specifically for Pedro Rodrigues. Put it in the bscklog. For his specifically I want his invite to be invaded by shreks. Like dsncing shreks, ugly shreks, rtc... we'll think of this muvh later once everything is basicslly finished snd srt up
 
 ### Message 51
 
